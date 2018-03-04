@@ -14,14 +14,19 @@ client := c.NewNationalRailClient("YOUR_ACCESS_TOKEN")
 ``` 
 
 ## Get departures
+To obtain upcoming departures, it's necessary to provide the origin and destination train station codes and a number
+of departures to return. The following example demonstrates how to obtain 5 upcoming departures for train services from
+London Charing Cross to Dartford.
 ```golang
 originCode := "CHX"
 destinationCode := "DFD"
+numberOfDepartures := 5
 
-departures, err := client.GetDepartures(originCode, destinationCode)
+departures, err := client.GetDepartures(originCode, destinationCode, numberOfDepartures)
 if err != nil {
     logrus.WithError(err).
-        Panicf("failed to get departure for %s-%s", originCode, destinationCode)
+        Panicf("failed to get departure for %s-%s with %d departures",
+            originCode, destinationCode, numberOfDepartures)
 }
 ```
 
@@ -29,7 +34,9 @@ if err != nil {
 ```json
 {
     "origin_code": "CHX",
+    "origin": "London Charing Cross",
     "destination_code": "DFD",
+    "destination": "Dartford",
     "departure_details": [
         {
             "origin_location": "London Charing Cross",

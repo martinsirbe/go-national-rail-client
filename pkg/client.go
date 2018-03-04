@@ -29,8 +29,8 @@ func NewNationalRailClient(token string) *NationalRailClient {
 }
 
 // GetDepartures used to obtain departure information
-func (c *NationalRailClient) GetDepartures(originCode, destinationCode string) (*models.DepartureInfo, error) {
-	body := c.createRequestBody(originCode, destinationCode)
+func (c *NationalRailClient) GetDepartures(originCode, destinationCode string, numberOfDepartures int) (*models.DepartureInfo, error) {
+	body := c.createRequestBody(originCode, destinationCode, numberOfDepartures)
 	client := &http.Client{}
 
 	req, newReqErr := http.NewRequest(http.MethodPost, nationalRailWebService, body)
@@ -76,7 +76,7 @@ func (c *NationalRailClient) GetDepartures(originCode, destinationCode string) (
 	return mappedResp, nil
 }
 
-func (c *NationalRailClient) createRequestBody(from, to string) *strings.Reader {
+func (c *NationalRailClient) createRequestBody(from, to string, dep int) *strings.Reader {
 	body := strings.NewReader(
 		fmt.Sprintf(`<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://thalesgroup.com/RTTI/2014-02-20/ldb/" xmlns:ns2="http://thalesgroup.com/RTTI/2010-11-01/ldb/commontypes">
 		  <SOAP-ENV:Header>
@@ -86,11 +86,11 @@ func (c *NationalRailClient) createRequestBody(from, to string) *strings.Reader 
 		  </SOAP-ENV:Header>
 		  <SOAP-ENV:Body>
 			<ns1:GetDepartureBoardRequest>
-			  <ns1:numRows>4</ns1:numRows>
+			  <ns1:numRows>%d</ns1:numRows>
 			  <ns1:crs>%s</ns1:crs>
 			  <ns1:filterCrs>%s</ns1:filterCrs>
 			</ns1:GetDepartureBoardRequest>
 		  </SOAP-ENV:Body>
-		</SOAP-ENV:Envelope>`, c.Token, from, to))
+		</SOAP-ENV:Envelope>`, c.Token, dep, from, to))
 	return body
 }
