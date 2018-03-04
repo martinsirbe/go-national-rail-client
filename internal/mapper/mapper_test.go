@@ -91,27 +91,6 @@ func (s *MapperSuite) TestErrorReturnedOnMissingGetStationBoardResultDestination
 	c.Assert(err, check.ErrorMatches, "failed to map: expected to have destination location code but was missing")
 }
 
-func (s *MapperSuite) TestErrorReturnedOnMissingGetStationBoardResultTrainServiceDetailsFromResponseBody(c *check.C) {
-	_, err := s.mapper.MapDepartureResponse(&im.DepartureResponse{
-		Body: &im.Body{
-			GetDepartureBoardResponse: &im.GetDepartureBoardResponse{
-				GetStationBoardResult: &im.GetStationBoardResult{
-					LocationName: &im.LocationName{
-						Text: "test",
-					},
-					OriginLocationCode: &im.OriginLocationCode{
-						Text: "test",
-					},
-					DestinationLocationCode: &im.DestinationLocationCode{
-						Text: "test",
-					},
-				},
-			},
-		},
-	})
-	c.Assert(err, check.ErrorMatches, "failed to map: expected to have train services details but was missing")
-}
-
 func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 	mappedResp, err := s.mapper.MapDepartureResponse(&im.DepartureResponse{
 		Body: &im.Body{
