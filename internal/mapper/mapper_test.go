@@ -96,6 +96,13 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 		Body: &im.Body{
 			GetDepartureBoardResponse: &im.GetDepartureBoardResponse{
 				GetStationBoardResult: &im.GetStationBoardResult{
+					FilterLocationName: &im.FilterLocationName{
+						Text: "test-FilterLocationName-1",
+						XMLName: xml.Name{
+							Space: "space-FilterLocationName-1",
+							Local: "local-FilterLocationName-1",
+						},
+					},
 					WarningMessages: &im.WarningMessages{
 						Messages: []*im.WarningMessage{
 							{
@@ -133,17 +140,17 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 						},
 					},
 					OriginLocationCode: &im.OriginLocationCode{
-						Text: "test-OriginLocationCode",
+						Text: "test-OriginCode",
 						XMLName: xml.Name{
-							Space: "space-OriginLocationCode",
-							Local: "local-OriginLocationCode",
+							Space: "space-OriginCode",
+							Local: "local-OriginCode",
 						},
 					},
 					DestinationLocationCode: &im.DestinationLocationCode{
-						Text: "test-DestinationLocationCode",
+						Text: "test-DestinationCode",
 						XMLName: xml.Name{
-							Space: "space-DestinationLocationCode",
-							Local: "local-DestinationLocationCode",
+							Space: "space-DestinationCode",
+							Local: "local-DestinationCode",
 						},
 					},
 					TrainServiceDetails: &im.TrainServiceDetails{
@@ -152,10 +159,10 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 								Destination: &im.Destination{
 									Location: &im.Location{
 										CRS: &im.OriginLocationCode{
-											Text: "test-OriginLocationCode-1",
+											Text: "test-OriginCode-1",
 											XMLName: xml.Name{
-												Space: "space-OriginLocationCode",
-												Local: "local-OriginLocationCode",
+												Space: "space-OriginCode",
+												Local: "local-OriginCode",
 											},
 										},
 										LocationName: &im.LocationName{
@@ -206,10 +213,10 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 								Origin: &im.Origin{
 									Location: &im.Location{
 										CRS: &im.OriginLocationCode{
-											Text: "test-OriginLocationCode-1",
+											Text: "test-OriginCode-1",
 											XMLName: xml.Name{
-												Space: "space-OriginLocationCode",
-												Local: "local-OriginLocationCode",
+												Space: "space-OriginCode",
+												Local: "local-OriginCode",
 											},
 										},
 										LocationName: &im.LocationName{
@@ -266,10 +273,10 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 								Destination: &im.Destination{
 									Location: &im.Location{
 										CRS: &im.OriginLocationCode{
-											Text: "test-OriginLocationCode-2",
+											Text: "test-OriginCode-2",
 											XMLName: xml.Name{
-												Space: "space-OriginLocationCode",
-												Local: "local-OriginLocationCode",
+												Space: "space-OriginCode",
+												Local: "local-OriginCode",
 											},
 										},
 										LocationName: &im.LocationName{
@@ -320,10 +327,10 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 								Origin: &im.Origin{
 									Location: &im.Location{
 										CRS: &im.OriginLocationCode{
-											Text: "test-OriginLocationCode-2",
+											Text: "test-OriginCode-2",
 											XMLName: xml.Name{
-												Space: "space-OriginLocationCode",
-												Local: "local-OriginLocationCode",
+												Space: "space-OriginCode",
+												Local: "local-OriginCode",
 											},
 										},
 										LocationName: &im.LocationName{
@@ -371,8 +378,11 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 
 	c.Assert(err, check.IsNil)
 
-	c.Assert(mappedResp.DestinationLocationCode, check.Equals, "test-DestinationLocationCode")
-	c.Assert(mappedResp.OriginLocationCode, check.Equals, "test-OriginLocationCode")
+	c.Assert(mappedResp.DestinationCode, check.Equals, "test-DestinationCode")
+	c.Assert(mappedResp.OriginCode, check.Equals, "test-OriginCode")
+	c.Assert(mappedResp.Destination, check.Equals, "test-FilterLocationName-1")
+	c.Assert(mappedResp.Origin, check.Equals, "test-LocationName")
+
 	c.Assert(len(mappedResp.WarningMessages), check.Equals, 3)
 	c.Assert(mappedResp.WarningMessages[0], check.Equals, "test-WarningMessage-1")
 	c.Assert(mappedResp.WarningMessages[1], check.Equals, "test-WarningMessage-2")
@@ -382,7 +392,7 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 
 	dd1 := mappedResp.DepartureDetails[0]
 	c.Assert(*dd1.Via, check.Equals, "test-Via-1")
-	c.Assert(dd1.Destination, check.Equals, "test-Destination-LocationName-1")
+	c.Assert(dd1.DestinationLocation, check.Equals, "test-Destination-LocationName-1")
 	c.Assert(dd1.Operator, check.Equals, "test-Operator-1")
 	c.Assert(dd1.Platform, check.Equals, "test-Platform-1")
 	c.Assert(dd1.Status, check.Equals, "test-ServiceStatus-1")
@@ -392,7 +402,7 @@ func (s *MapperSuite) TestSuccessfullyMappedDepartureResponse(c *check.C) {
 
 	dd2 := mappedResp.DepartureDetails[1]
 	c.Assert(*dd2.Via, check.Equals, "test-Via-2")
-	c.Assert(dd2.Destination, check.Equals, "test-Destination-LocationName-2")
+	c.Assert(dd2.DestinationLocation, check.Equals, "test-Destination-LocationName-2")
 	c.Assert(dd2.Operator, check.Equals, "test-Operator-2")
 	c.Assert(dd2.Platform, check.Equals, "not available")
 	c.Assert(dd2.Status, check.Equals, "test-ServiceStatus-2")
