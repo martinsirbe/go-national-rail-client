@@ -3,8 +3,8 @@ package mapper
 import (
 	"time"
 
-	"github.com/MartinsIrbe/national-rail-go-client/pkg/models"
 	im "github.com/MartinsIrbe/national-rail-go-client/internal/models"
+	"github.com/MartinsIrbe/national-rail-go-client/pkg/models"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
@@ -34,8 +34,6 @@ func (m *NationalRailResponseMapper) MapDepartureResponse(r *im.DepartureRespons
 		return nil, errors.New("failed to map: expected to have current location code but was missing")
 	case r.Body.GetDepartureBoardResponse.GetStationBoardResult.DestinationLocationCode == nil:
 		return nil, errors.New("failed to map: expected to have destination location code but was missing")
-	case r.Body.GetDepartureBoardResponse.GetStationBoardResult.TrainServiceDetails == nil:
-		return nil, errors.New("failed to map: expected to have train services details but was missing")
 	}
 
 	sbr := r.Body.GetDepartureBoardResponse.GetStationBoardResult
@@ -64,6 +62,11 @@ func getWarningMessages(sbr *im.GetStationBoardResult) []string {
 // getDepartureDetails used to extract departure details from the station board result
 func getDepartureDetails(sbr *im.GetStationBoardResult) []models.DepartureDetails {
 	var departureDetails []models.DepartureDetails
+
+	if sbr.TrainServiceDetails == nil {
+		return departureDetails
+	}
+
 	for _, ts := range sbr.TrainServiceDetails.TrainServices {
 		dpd := models.DepartureDetails{}
 
