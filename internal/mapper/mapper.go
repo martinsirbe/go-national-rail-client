@@ -39,10 +39,12 @@ func (m *NationalRailResponseMapper) MapDepartureResponse(r *im.DepartureRespons
 	sbr := r.Body.GetDepartureBoardResponse.GetStationBoardResult
 
 	return &models.DepartureInfo{
-		OriginLocationCode:      sbr.OriginLocationCode.Text,
-		DestinationLocationCode: sbr.DestinationLocationCode.Text,
-		WarningMessages:         getWarningMessages(sbr),
-		DepartureDetails:        getDepartureDetails(sbr),
+		OriginCode:       sbr.OriginLocationCode.Text,
+		Origin:           sbr.LocationName.Text,
+		DestinationCode:  sbr.DestinationLocationCode.Text,
+		Destination:      sbr.FilterLocationName.Text,
+		WarningMessages:  getWarningMessages(sbr),
+		DepartureDetails: getDepartureDetails(sbr),
 	}, nil
 }
 
@@ -86,7 +88,7 @@ func getDepartureDetails(sbr *im.GetStationBoardResult) []models.DepartureDetail
 			loc := ts.Destination.Location
 
 			if loc.LocationName != nil {
-				dpd.Destination = loc.LocationName.Text
+				dpd.DestinationLocation = loc.LocationName.Text
 			}
 
 			if loc.Via != nil {
