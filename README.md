@@ -78,6 +78,9 @@ if err != nil {
 }
 ```
 
+## Station codes
+Station codes can be obtained from [National Rail stations destinations][2]
+
 ## Run tests
 ```golang
 go test -v --cover ./...
@@ -87,3 +90,4 @@ go test -v --cover ./...
 See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
 
 [1]: http://realtime.nationalrail.co.uk/OpenLDBWSRegistration/
+[2]: http://www.nationalrail.co.uk/stations_destinations/48541.aspx

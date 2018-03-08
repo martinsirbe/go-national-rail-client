@@ -6,26 +6,56 @@ import (
 	"net/http"
 	"strings"
 
+	"bufio"
+	"encoding/csv"
 	"github.com/MartinsIrbe/national-rail-go-client/internal/decoder"
 	"github.com/MartinsIrbe/national-rail-go-client/internal/mapper"
 	"github.com/MartinsIrbe/national-rail-go-client/pkg/models"
 	"github.com/pkg/errors"
+	"github.com/sirupsen/logrus"
+	"io"
+	"os"
 )
 
 const nationalRailWebService = "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb6.asmx"
 
 type NationalRailClient struct {
-	Token           string
-	ResponseDecoder *decoder.NationalRailResponseDecoder
-	ResponseMapper  *mapper.NationalRailResponseMapper
+	Token                string
+	StationToCRSCodeMaps map[string]string
+	ResponseDecoder      *decoder.NationalRailResponseDecoder
+	ResponseMapper       *mapper.NationalRailResponseMapper
 }
 
 func NewNationalRailClient(token string) *NationalRailClient {
 	return &NationalRailClient{
-		Token:           token,
-		ResponseDecoder: decoder.NewNationalRailResponseDecoder(),
-		ResponseMapper:  mapper.NewNationalRailResponseMapper(),
+		Token:                token,
+		StationToCRSCodeMaps: loadStations(),
+		ResponseDecoder:      decoder.NewNationalRailResponseDecoder(),
+		ResponseMapper:       mapper.NewNationalRailResponseMapper(),
 	}
+}
+
+func loadStations() map[string]string {
+	stations, err := os.Open("station_codes.csv")
+	if err != nil {
+		logrus.WithError(err).Panic("failed to load train station codes")
+	}
+	reader := csv.NewReader(bufio.NewReader(stations))
+
+	stationCodeMap := make(map[string]string)
+
+	for {
+		l, readErr := reader.Read()
+		if readErr == io.EOF {
+			break
+		} else if readErr != nil {
+			logrus.WithError(readErr).Error("failed to read line from the station codes csv file")
+		}
+
+		stationCodeMap[l[0]] = l[1]
+	}
+
+	return stationCodeMap
 }
 
 // GetDepartures used to obtain departure information
@@ -74,6 +104,18 @@ func (c *NationalRailClient) GetDepartures(originCode, destinationCode string, n
 	}
 
 	return mappedResp, nil
+}
+
+// GetCRSFromKeyword used to match the given keyword to train station names to obtain matching CRS codes
+func (c *NationalRailClient) GetCRSFromKeyword(keyword string) map[string]string {
+	crsMap := make(map[string]string)
+	for station, crs := range c.StationToCRSCodeMaps {
+		if strings.Contains(strings.ToLower(station), strings.ToLower(keyword)) {
+			crsMap[station] = crs
+		}
+	}
+
+	return crsMap
 }
 
 func (c *NationalRailClient) createRequestBody(from, to string, dep int) *strings.Reader {
