@@ -28,7 +28,7 @@ func (s *DecoderSuite) TestSuccessfullyDecodedDepartureResponse(c *check.C) {
 		c.Errorf("failed to load departure_response.xml, err - %v", err)
 	}
 
-	resp, decodeErr := s.decoder.DecodeDepartureResponse(dr)
+	resp, decodeErr := s.decoder.DecodeArrBoardWithDetailsResponse(dr)
 	if decodeErr != nil {
 		c.Errorf("got an error while decoding departure response")
 	}
@@ -187,7 +187,7 @@ func (s *DecoderSuite) TestSuccessfullyDecodedDepartureResponse(c *check.C) {
 }
 
 func (s *DecoderSuite) TestDecodeDepartureResponseFailedInvalidResponseString(c *check.C) {
-	_, decodeErr := s.decoder.DecodeDepartureResponse(strings.NewReader("bad string"))
+	_, decodeErr := s.decoder.DecodeArrBoardWithDetailsResponse(strings.NewReader("bad string"))
 	c.Assert(decodeErr, check.NotNil)
 	c.Assert(decodeErr, check.ErrorMatches, "failed to decode departure xml response")
 }
@@ -198,7 +198,7 @@ func (s *DecoderSuite) TestDecodeDepartureResponseFailedMissingEnvelopeFromRespo
 		c.Errorf("failed to load departure_response_missing_envelope.xml, err - %v", err)
 	}
 
-	_, decodeErr := s.decoder.DecodeDepartureResponse(dr)
+	_, decodeErr := s.decoder.DecodeArrBoardWithDetailsResponse(dr)
 	c.Assert(decodeErr, check.NotNil)
 	c.Assert(decodeErr, check.ErrorMatches, "failed to decode departure response as the expected envelope xml start element is missing")
 }
