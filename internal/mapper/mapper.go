@@ -1,10 +1,11 @@
 package mapper
 
 import (
+	"strconv"
 	"time"
 
-	im "github.com/MartinsIrbe/national-rail-go-client/internal/models"
-	"github.com/MartinsIrbe/national-rail-go-client/pkg/models"
+	nrm "github.com/MartinsIrbe/national-rail-go-client/internal/models"
+	m "github.com/MartinsIrbe/national-rail-go-client/pkg/models"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
@@ -17,108 +18,495 @@ func NewNationalRailResponseMapper() *NationalRailResponseMapper {
 	return &NationalRailResponseMapper{}
 }
 
-// MapDepartureResponse maps national rail departure response to a simple model
-func (m *NationalRailResponseMapper) MapDepartureResponse(r *im.DepartureResponse) (*models.DepartureInfo, error) {
+func (nrm *NationalRailResponseMapper) MapArrivalBoardWithDetails(r *nrm.GetArrBoardWithDetailsResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
-		return nil, errors.New("failed to map: expected to have departure response but was missing")
+		fallthrough
 	case r.Body == nil:
-		return nil, errors.New("failed to map: expected to have response body but was missing")
-	case r.Body.GetDepartureBoardResponse == nil:
-		return nil, errors.New("failed to map: expected to have departure board response but was missing")
-	case r.Body.GetDepartureBoardResponse.GetStationBoardResult == nil:
-		return nil, errors.New("failed to map: expected to have station board result but was missing")
-	case r.Body.GetDepartureBoardResponse.GetStationBoardResult.LocationName == nil:
-		return nil, errors.New("failed to map: expected to have location name but was missing")
-	case r.Body.GetDepartureBoardResponse.GetStationBoardResult.OriginLocationCode == nil:
-		return nil, errors.New("failed to map: expected to have current location code but was missing")
-	case r.Body.GetDepartureBoardResponse.GetStationBoardResult.DestinationLocationCode == nil:
-		return nil, errors.New("failed to map: expected to have destination location code but was missing")
+		fallthrough
+	case r.Body.ArrBoardWithDetails == nil:
+		fallthrough
+	case r.Body.ArrBoardWithDetails.StationBoardResult == nil:
+		return nil, errors.New("failed to map ArrivalBoardWithDetails, expected objects were missing")
 	}
 
-	sbr := r.Body.GetDepartureBoardResponse.GetStationBoardResult
+	mappedResponse := mapStationBoardWithDetails(r.Body.ArrBoardWithDetails.StationBoardResult)
 
-	return &models.DepartureInfo{
-		OriginCode:       sbr.OriginLocationCode.Text,
-		Origin:           sbr.LocationName.Text,
-		DestinationCode:  sbr.DestinationLocationCode.Text,
-		Destination:      sbr.FilterLocationName.Text,
-		WarningMessages:  getWarningMessages(sbr),
-		DepartureDetails: getDepartureDetails(sbr),
-	}, nil
+	return &mappedResponse, nil
 }
 
-// getWarningMessages used to extract warning messages from the station board result
-func getWarningMessages(sbr *im.GetStationBoardResult) []string {
-	var warningMessages []string
-	if sbr.WarningMessages != nil {
-		for _, wm := range sbr.WarningMessages.Messages {
-			if wm != nil {
-				warningMessages = append(warningMessages, wm.Text)
-			}
-		}
+func (nrm *NationalRailResponseMapper) MapArrDepBoardWithDetails(r *nrm.GetArrDepBoardWithDetailsResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.ArrDepBoardWithDetails == nil:
+		fallthrough
+	case r.Body.ArrDepBoardWithDetails.StationBoardResult == nil:
+		return nil, errors.New("failed to map ArrDepBoardWithDetails, expected objects were missing")
 	}
-	return warningMessages
+
+	mappedResponse := mapStationBoardWithDetails(r.Body.ArrDepBoardWithDetails.StationBoardResult)
+
+	return &mappedResponse, nil
 }
 
-// getDepartureDetails used to extract departure details from the station board result
-func getDepartureDetails(sbr *im.GetStationBoardResult) []models.DepartureDetails {
-	var departureDetails []models.DepartureDetails
-
-	if sbr.TrainServiceDetails == nil {
-		return departureDetails
+func (nrm *NationalRailResponseMapper) MapArrivalBoard(r *nrm.GetArrivalBoardResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.ArrivalBoard == nil:
+		fallthrough
+	case r.Body.ArrivalBoard.StationBoardResult == nil:
+		return nil, errors.New("failed to map ArrivalBoard, expected objects were missing")
 	}
 
-	for _, ts := range sbr.TrainServiceDetails.TrainServices {
-		dpd := models.DepartureDetails{}
+	mappedResponse := mapStationBoardWithDetails(r.Body.ArrivalBoard.StationBoardResult)
 
-		if ts.Platform != nil {
-			dpd.Platform = ts.Platform.Text
-		}
+	return &mappedResponse, nil
+}
 
-		if ts.Origin != nil && ts.Origin.Location != nil {
-			loc := ts.Origin.Location
+func (nrm *NationalRailResponseMapper) MapArrivalDepartureBoard(r *nrm.GetArrivalDepartureBoardResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.ArrivalDepartureBoard == nil:
+		fallthrough
+	case r.Body.ArrivalDepartureBoard.StationBoardResult == nil:
+		return nil, errors.New("failed to map ArrivalDepartureBoard, expected objects were missing")
+	}
 
-			if loc.LocationName != nil {
-				dpd.OriginLocation = loc.LocationName.Text
-			}
-		}
+	mappedResponse := mapStationBoardWithDetails(r.Body.ArrivalDepartureBoard.StationBoardResult)
 
-		if ts.Destination != nil && ts.Destination.Location != nil {
-			loc := ts.Destination.Location
+	return &mappedResponse, nil
+}
 
-			if loc.LocationName != nil {
-				dpd.DestinationLocation = loc.LocationName.Text
-			}
+func (nrm *NationalRailResponseMapper) MapDepartureBoard(r *nrm.GetDepartureBoardResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.DepartureBoard == nil:
+		fallthrough
+	case r.Body.DepartureBoard.StationBoardResult == nil:
+		return nil, errors.New("failed to map DepartureBoard, expected objects were missing")
+	}
 
-			if loc.Via != nil {
-				dpd.Via = &loc.Via.Text
-			}
-		}
+	mappedResponse := mapStationBoardWithDetails(r.Body.DepartureBoard.StationBoardResult)
 
-		if ts.DepartureTime != nil {
-			if dt, err := time.Parse("15:04", ts.DepartureTime.Text); err != nil {
-				logrus.WithError(err).Warn("failed to parse departure time string of %s", ts.DepartureTime.Text)
-			} else {
-				dpd.Time = &dt
-			}
-		}
+	return &mappedResponse, nil
+}
 
-		if ts.ServiceStatus != nil {
-			dpd.Status = ts.ServiceStatus.Text
-		}
+func (nrm *NationalRailResponseMapper) MapDepBoardWithDetails(r *nrm.GetDepBoardWithDetailsResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.DepBoardWithDetails == nil:
+		fallthrough
+	case r.Body.DepBoardWithDetails.StationBoardResult == nil:
+		return nil, errors.New("failed to map DepBoardWithDetails, expected objects were missing")
+	}
 
-		if ts.Operator != nil {
-			dpd.Operator = ts.Operator.Text
-		}
+	mappedResponse := mapStationBoardWithDetails(r.Body.DepBoardWithDetails.StationBoardResult)
 
-		if ts.Platform != nil {
-			dpd.Platform = ts.Platform.Text
+	return &mappedResponse, nil
+}
+
+func (nrm *NationalRailResponseMapper) MapFastestDepartures(r *nrm.GetFastestDeparturesResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.FastestDepartures == nil:
+		fallthrough
+	case r.Body.FastestDepartures.DeparturesBoard == nil:
+		return nil, errors.New("failed to map FastestDepartures, expected objects were missing")
+	}
+
+	mappedResponse := mapDeparturesBoard(r.Body.FastestDepartures.DeparturesBoard)
+
+	return &mappedResponse, nil
+}
+
+func (nrm *NationalRailResponseMapper) MapFastestDeparturesWithDetails(r *nrm.GetFastestDeparturesWithDetailsResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.FastestDeparturesWithDetails == nil:
+		fallthrough
+	case r.Body.FastestDeparturesWithDetails.DeparturesBoard == nil:
+		return nil, errors.New("failed to map FastestDeparturesWithDetails, expected objects were missing")
+	}
+
+	mappedResponse := mapDeparturesBoard(r.Body.FastestDeparturesWithDetails.DeparturesBoard)
+
+	return &mappedResponse, nil
+}
+
+func (nrm *NationalRailResponseMapper) MapNextDepartures(r *nrm.GetNextDeparturesResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.NextDepartures == nil:
+		fallthrough
+	case r.Body.NextDepartures.DeparturesBoard == nil:
+		return nil, errors.New("failed to map NextDepartures, expected objects were missing")
+	}
+
+	mappedResponse := mapDeparturesBoard(r.Body.NextDepartures.DeparturesBoard)
+
+	return &mappedResponse, nil
+}
+
+func (nrm *NationalRailResponseMapper) MapNextDeparturesWithDetails(r *nrm.GetNextDeparturesWithDetailsResponse) (*m.StationBoard, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.NextDeparturesWithDetails == nil:
+		fallthrough
+	case r.Body.NextDeparturesWithDetails.DeparturesBoard == nil:
+		return nil, errors.New("failed to map NextDeparturesWithDetails, expected objects were missing")
+	}
+
+	mappedResponse := mapDeparturesBoard(r.Body.NextDeparturesWithDetails.DeparturesBoard)
+
+	return &mappedResponse, nil
+}
+
+func (nrm *NationalRailResponseMapper) MapServiceDetails(r *nrm.GetServiceDetailsResponse) (*m.TrainServiceDetails, error) {
+	switch {
+	case r == nil:
+		fallthrough
+	case r.Body == nil:
+		fallthrough
+	case r.Body.ServiceDetails == nil:
+		fallthrough
+	case r.Body.ServiceDetails.ServiceDetailsResult == nil:
+		return nil, errors.New("failed to map ServiceDetails, expected objects were missing")
+	}
+
+	mappedResponse := mapServiceDetails(r.Body.ServiceDetails.ServiceDetailsResult)
+
+	return &mappedResponse, nil
+}
+
+func mapServiceDetails(sdr *nrm.ServiceDetailsResult) m.TrainServiceDetails {
+	var mappedResponse m.TrainServiceDetails
+
+	if sdr.GeneratedAt != nil && sdr.GeneratedAt.Text != "" {
+		if t, err := time.Parse(time.RFC3339Nano, sdr.GeneratedAt.Text); err != nil {
+			logrus.WithError(err).Errorf("failed to map generated at time date string - %s", sdr.GeneratedAt.Text)
 		} else {
-			dpd.Platform = "not available"
+			mappedResponse.GeneratedAt = t
+		}
+	}
+
+	if sdr.ServiceType != nil && sdr.ServiceType.Text != "" {
+		mappedResponse.ServiceType = sdr.ServiceType.Text
+	}
+
+	if sdr.LocationName != nil && sdr.LocationName.Text != "" {
+		mappedResponse.LocationName = sdr.LocationName.Text
+	}
+
+	if sdr.CRS != nil && sdr.CRS.Text != "" {
+		mappedResponse.CRS = sdr.LocationName.Text
+	}
+
+	if sdr.STA != nil && sdr.STA.Text != "" {
+		mappedResponse.STA = &sdr.STA.Text
+	}
+
+	if sdr.ETA != nil && sdr.ETA.Text != "" {
+		mappedResponse.ETA = &sdr.ETA.Text
+	}
+
+	if sdr.STD != nil && sdr.STD.Text != "" {
+		mappedResponse.STD = &sdr.STD.Text
+	}
+
+	if sdr.ETD != nil && sdr.ETD.Text != "" {
+		mappedResponse.ETD = &sdr.ETD.Text
+	}
+
+	if sdr.Platform != nil && sdr.Platform.Text != "" {
+		mappedResponse.Platform = &sdr.Platform.Text
+	}
+
+	if sdr.Operator != nil && sdr.Operator.Text != "" {
+		mappedResponse.Operator = sdr.Operator.Text
+	}
+
+	if sdr.OperatorCode != nil && sdr.OperatorCode.Text != "" {
+		mappedResponse.OperatorCode = sdr.OperatorCode.Text
+	}
+
+	if sdr.RSID != nil && sdr.RSID.Text != "" {
+		mappedResponse.RSID = sdr.RSID.Text
+	}
+
+	if sdr.PreviousCallingPoints != nil && sdr.PreviousCallingPoints.CallingPointList != nil {
+		previousCallingPoints := mapCallingPoints(
+			sdr.PreviousCallingPoints.CallingPointList.CallingPoints,
+			"previous calling point")
+		mappedResponse.PreviousCallingPoints = &previousCallingPoints
+	}
+
+	if sdr.SubsequentCallingPoints != nil && sdr.SubsequentCallingPoints.CallingPointList != nil {
+		subsequentCallingPoints := mapCallingPoints(
+			sdr.SubsequentCallingPoints.CallingPointList.CallingPoints,
+			"subsequent calling point")
+		mappedResponse.SubsequentCallingPoints = &subsequentCallingPoints
+	}
+
+	return mappedResponse
+}
+
+func mapDeparturesBoard(depBoard *nrm.DeparturesBoard) m.StationBoard {
+	var mappedResponse m.StationBoard
+
+	if depBoard.GeneratedAt != nil && depBoard.GeneratedAt.Text != "" {
+		if t, err := time.Parse(time.RFC3339Nano, depBoard.GeneratedAt.Text); err != nil {
+			logrus.WithError(err).Errorf("failed to map generated at time date string - %s", depBoard.GeneratedAt.Text)
+		} else {
+			mappedResponse.GeneratedAt = t
+		}
+	}
+
+	if depBoard.LocationName != nil && depBoard.LocationName.Text != "" {
+		mappedResponse.LocationName = depBoard.LocationName.Text
+	}
+
+	if depBoard.CRS != nil && depBoard.CRS.Text != "" {
+		mappedResponse.CRS = depBoard.LocationName.Text
+	}
+
+	if depBoard.PlatformAvailable != nil && depBoard.PlatformAvailable.Text != "" {
+		if b, err := strconv.ParseBool(depBoard.PlatformAvailable.Text); err != nil {
+			logrus.WithError(err).Errorf("failed to map platform available boolean string - %s", depBoard.PlatformAvailable.Text)
+		} else {
+			mappedResponse.PlatformAvailable = b
+		}
+	}
+
+	if depBoard.Departures != nil && depBoard.Departures.Destination != nil {
+		var trainServices []m.TrainService
+		for _, d := range depBoard.Departures.Destination {
+			if d == nil || d.Service == nil {
+				continue
+			}
+
+			trainServices = append(trainServices, mapTrainService(d.Service))
 		}
 
-		departureDetails = append(departureDetails, dpd)
+		mappedResponse.TrainServices = trainServices
 	}
-	return departureDetails
+
+	if depBoard.NRCCMessages != nil && depBoard.NRCCMessages.Messages != nil {
+		var msgs []string
+		for _, msg := range depBoard.NRCCMessages.Messages {
+			msgs = append(msgs, msg.Text)
+		}
+		mappedResponse.NRCCMessages = &msgs
+	}
+
+	return mappedResponse
+}
+
+func mapStationBoardWithDetails(sbr *nrm.GetStationBoardResult) m.StationBoard {
+	var mappedResponse m.StationBoard
+	if sbr.GeneratedAt != nil && sbr.GeneratedAt.Text != "" {
+		if t, err := time.Parse(time.RFC3339Nano, sbr.GeneratedAt.Text); err != nil {
+			logrus.WithError(err).Errorf("failed to map generated at time date string - %s", sbr.GeneratedAt.Text)
+		} else {
+			mappedResponse.GeneratedAt = t
+		}
+	}
+
+	if sbr.LocationName != nil && sbr.LocationName.Text != "" {
+		mappedResponse.LocationName = sbr.LocationName.Text
+	}
+
+	if sbr.CRS != nil && sbr.CRS.Text != "" {
+		mappedResponse.CRS = sbr.LocationName.Text
+	}
+
+	if sbr.FilterLocationName != nil && sbr.FilterLocationName.Text != "" {
+		mappedResponse.FilterLocationName = &sbr.FilterLocationName.Text
+	}
+
+	if sbr.FilterCRS != nil && sbr.FilterCRS.Text != "" {
+		mappedResponse.FilterCRS = &sbr.FilterCRS.Text
+	}
+
+	if sbr.PlatformAvailable != nil && sbr.PlatformAvailable.Text != "" {
+		if b, err := strconv.ParseBool(sbr.PlatformAvailable.Text); err != nil {
+			logrus.WithError(err).Errorf("failed to map platform available boolean string - %s", sbr.PlatformAvailable.Text)
+		} else {
+			mappedResponse.PlatformAvailable = b
+		}
+	}
+
+	if sbr.TrainServices != nil && sbr.TrainServices.Services != nil {
+		mappedResponse.TrainServices = mapTrainServices(sbr)
+	}
+
+	if sbr.NRCCMessages != nil && sbr.NRCCMessages.Messages != nil {
+		var msgs []string
+		for _, msg := range sbr.NRCCMessages.Messages {
+			msgs = append(msgs, msg.Text)
+		}
+		mappedResponse.NRCCMessages = &msgs
+	}
+
+	return mappedResponse
+}
+
+func mapTrainServices(sbr *nrm.GetStationBoardResult) []m.TrainService {
+	var trainServices []m.TrainService
+	for _, ts := range sbr.TrainServices.Services {
+		if ts == nil {
+			continue
+		}
+
+		trainServices = append(trainServices, mapTrainService(ts))
+	}
+
+	return trainServices
+}
+
+func mapTrainService(ts *nrm.ServiceLT7) m.TrainService {
+	var trainService m.TrainService
+
+	if ts.STA != nil && ts.STA.Text != "" {
+		trainService.STA = &ts.STA.Text
+	}
+
+	if ts.ETA != nil && ts.ETA.Text != "" {
+		trainService.ETA = &ts.ETA.Text
+	}
+
+	if ts.STD != nil && ts.STD.Text != "" {
+		trainService.STD = ts.STD.Text
+	}
+
+	if ts.ETD != nil && ts.ETD.Text != "" {
+		trainService.ETD = ts.ETD.Text
+	}
+
+	if ts.Platform != nil && ts.Platform.Text != "" {
+		trainService.Platform = ts.Platform.Text
+	}
+
+	if ts.Operator != nil && ts.Operator.Text != "" {
+		trainService.Operator = ts.Operator.Text
+	}
+
+	if ts.OperatorCode != nil && ts.OperatorCode.Text != "" {
+		trainService.OperatorCode = ts.OperatorCode.Text
+	}
+
+	if ts.ServiceType != nil && ts.ServiceType.Text != "" {
+		trainService.ServiceType = ts.ServiceType.Text
+	}
+
+	if ts.ServiceID != nil && ts.ServiceID.Text != "" {
+		trainService.ServiceID = ts.ServiceID.Text
+	}
+
+	if ts.RSID != nil && ts.RSID.Text != "" {
+		trainService.RSID = ts.RSID.Text
+	}
+
+	if ts.Origin != nil && ts.Origin.Location != nil {
+		origin := mapLocation(ts.Origin.Location, "origin")
+		trainService.Origin = origin
+	}
+
+	if ts.Destination != nil && ts.Destination.Location != nil {
+		destination := mapLocation(ts.Origin.Location, "destination")
+		trainService.Destination = destination
+	}
+
+	if ts.PreviousCallingPoints != nil && ts.PreviousCallingPoints.CallingPointList != nil {
+		previousCallingPoints := mapCallingPoints(
+			ts.PreviousCallingPoints.CallingPointList.CallingPoints,
+			"previous calling point")
+		trainService.PreviousCallingPoints = &previousCallingPoints
+	}
+
+	if ts.SubsequentCallingPoints != nil && ts.SubsequentCallingPoints.CallingPointList != nil {
+		subsequentCallingPoints := mapCallingPoints(
+			ts.SubsequentCallingPoints.CallingPointList.CallingPoints,
+			"subsequent calling point")
+		trainService.SubsequentCallingPoints = &subsequentCallingPoints
+	}
+
+	return trainService
+}
+
+func mapLocation(location *nrm.LocationLT4, locationType string) m.Location {
+	mappedLocation := m.Location{Type: locationType}
+
+	if location.LocationName != nil && location.LocationName.Text != "" {
+		mappedLocation.Name = location.LocationName.Text
+	}
+	if location.CRS != nil && location.CRS.Text != "" {
+		mappedLocation.CRS = location.CRS.Text
+	}
+	if location.Via != nil && location.Via.Text != "" {
+		mappedLocation.Via = &location.Via.Text
+	}
+
+	return mappedLocation
+}
+
+func mapCallingPoints(cps []*nrm.CallingPoint, locationType string) []m.Location {
+	var callingPoints []m.Location
+	for _, cp := range cps {
+		if cp == nil {
+			continue
+		}
+
+		callingPoint := m.Location{Type: locationType}
+
+		if cp.CRS != nil {
+			callingPoint.CRS = cp.CRS.Text
+		}
+
+		if cp.LocationName != nil {
+			callingPoint.Name = cp.LocationName.Text
+		}
+
+		if cp.St != nil {
+			callingPoint.St = &cp.St.Text
+		}
+
+		if cp.At != nil {
+			callingPoint.At = &cp.At.Text
+		}
+
+		if cp.ET != nil {
+			callingPoint.Et = &cp.ET.Text
+		}
+
+		callingPoints = append(callingPoints, callingPoint)
+	}
+
+	return callingPoints
 }
