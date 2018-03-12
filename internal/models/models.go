@@ -407,6 +407,7 @@ type DestinationLT7 struct {
 type ServiceLT7 struct {
 	AttrXsiSpacenil         string                   `xml:"http://www.w3.org/2001/XMLSchema-instance nil,attr"  json:",omitempty"`
 	Destination             *DestinationLT5          `xml:"http://thalesgroup.com/RTTI/2016-02-16/ldb/types destination,omitempty" json:"destination,omitempty"`
+	DelayReason             *DelayReasonLT4          `xml:"http://thalesgroup.com/RTTI/2015-11-27/ldb/types delayReason,omitempty" json:"delayReason,omitempty"`
 	ETD                     *ETDLT4                  `xml:"http://thalesgroup.com/RTTI/2015-11-27/ldb/types etd,omitempty" json:"etd,omitempty"`
 	ETA                     *ETALT4                  `xml:"http://thalesgroup.com/RTTI/2015-11-27/ldb/types eta,omitempty" json:"eta,omitempty"`
 	OperatorCode            *OperatorCodeLT4         `xml:"http://thalesgroup.com/RTTI/2015-11-27/ldb/types operatorCode,omitempty" json:"operatorCode,omitempty"`
@@ -421,6 +422,11 @@ type ServiceLT7 struct {
 	STA                     *STALT4                  `xml:"http://thalesgroup.com/RTTI/2015-11-27/ldb/types sta,omitempty" json:"sta,omitempty"`
 	PreviousCallingPoints   *PreviousCallingPoints   `xml:"http://thalesgroup.com/RTTI/2017-10-01/ldb/types previousCallingPoints,omitempty" json:"previousCallingPoints,omitempty"`
 	XMLName                 xml.Name                 `xml:"http://thalesgroup.com/RTTI/2017-10-01/ldb/types service,omitempty" json:"service,omitempty"`
+}
+
+type DelayReasonLT4 struct {
+	Text    string   `xml:",chardata" json:",omitempty"`
+	XMLName xml.Name `xml:"http://thalesgroup.com/RTTI/2015-11-27/ldb/types delayReason,omitempty" json:"delayReason,omitempty"`
 }
 
 type STLT7 struct {

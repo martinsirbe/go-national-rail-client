@@ -293,7 +293,7 @@ func mapDeparturesBoard(depBoard *nrm.DeparturesBoard) m.StationBoard {
 	}
 
 	if depBoard.CRS != nil && depBoard.CRS.Text != "" {
-		mappedResponse.CRS = depBoard.LocationName.Text
+		mappedResponse.CRS = depBoard.CRS.Text
 	}
 
 	if depBoard.PlatformAvailable != nil && depBoard.PlatformAvailable.Text != "" {
@@ -343,7 +343,7 @@ func mapStationBoardWithDetails(sbr *nrm.GetStationBoardResult) m.StationBoard {
 	}
 
 	if sbr.CRS != nil && sbr.CRS.Text != "" {
-		mappedResponse.CRS = sbr.LocationName.Text
+		mappedResponse.CRS = sbr.CRS.Text
 	}
 
 	if sbr.FilterLocationName != nil && sbr.FilterLocationName.Text != "" {
@@ -410,7 +410,7 @@ func mapTrainService(ts *nrm.ServiceLT7) m.TrainService {
 	}
 
 	if ts.Platform != nil && ts.Platform.Text != "" {
-		trainService.Platform = ts.Platform.Text
+		trainService.Platform = &ts.Platform.Text
 	}
 
 	if ts.Operator != nil && ts.Operator.Text != "" {
@@ -439,7 +439,7 @@ func mapTrainService(ts *nrm.ServiceLT7) m.TrainService {
 	}
 
 	if ts.Destination != nil && ts.Destination.Location != nil {
-		destination := mapLocation(ts.Origin.Location, "destination")
+		destination := mapLocation(ts.Destination.Location, "destination")
 		trainService.Destination = destination
 	}
 
@@ -455,6 +455,10 @@ func mapTrainService(ts *nrm.ServiceLT7) m.TrainService {
 			ts.SubsequentCallingPoints.CallingPointList.CallingPoints,
 			"subsequent calling point")
 		trainService.SubsequentCallingPoints = &subsequentCallingPoints
+	}
+
+	if ts.DelayReason != nil && ts.DelayReason.Text != "" {
+		trainService.DelayReason = &ts.DelayReason.Text
 	}
 
 	return trainService

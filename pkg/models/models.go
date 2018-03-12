@@ -36,7 +36,7 @@ type TrainService struct {
 	ETA                     *string     `json:"eta"`
 	STD                     string      `json:"std"`
 	ETD                     string      `json:"etd"`
-	Platform                string      `json:"platform"`
+	Platform                *string     `json:"platform"`
 	Operator                string      `json:"operator"`
 	OperatorCode            string      `json:"operator_code"`
 	ServiceType             string      `json:"service_type"`
@@ -44,6 +44,7 @@ type TrainService struct {
 	RSID                    string      `json:"rsid"`
 	Origin                  Location    `json:"origin"`
 	Destination             Location    `json:"destination"`
+	DelayReason             *string     `json:"delay_reason"`
 	PreviousCallingPoints   *[]Location `json:"previous_calling_points"`
 	SubsequentCallingPoints *[]Location `json:"subsequent_calling_points"`
 	GeneratedAt             *time.Time  `json:"generated_at"`
