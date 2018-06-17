@@ -4,7 +4,7 @@ import (
 	"encoding/xml"
 	"io"
 
-	models "github.com/MartinsIrbe/national-rail-go-client/internal/models"
+	models "github.com/martinsirbe/national-rail-go-client/internal/models"
 	"github.com/pkg/errors"
 )
 
