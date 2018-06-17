@@ -4,8 +4,8 @@ import (
 	"strconv"
 	"time"
 
-	nrm "github.com/MartinsIrbe/national-rail-go-client/internal/models"
-	m "github.com/MartinsIrbe/national-rail-go-client/pkg/models"
+	nrm "github.com/martinsirbe/national-rail-go-client/internal/models"
+	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
