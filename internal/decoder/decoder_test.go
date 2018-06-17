@@ -6,7 +6,7 @@ import (
 
 	"strings"
 
-	"github.com/MartinsIrbe/national-rail-go-client/internal/decoder"
+	"github.com/martinsirbe/national-rail-go-client/internal/decoder"
 	"gopkg.in/check.v1"
 )
 

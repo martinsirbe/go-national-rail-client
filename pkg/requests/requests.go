@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	m "github.com/MartinsIrbe/national-rail-go-client/pkg/models"
+	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
 )
 
 const (

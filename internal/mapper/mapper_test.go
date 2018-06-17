@@ -4,8 +4,8 @@ import (
 	"encoding/xml"
 	"testing"
 
-	"github.com/MartinsIrbe/national-rail-go-client/internal/mapper"
-	im "github.com/MartinsIrbe/national-rail-go-client/internal/models"
+	"github.com/martinsirbe/national-rail-go-client/internal/mapper"
+	im "github.com/martinsirbe/national-rail-go-client/internal/models"
 	"gopkg.in/check.v1"
 )
 

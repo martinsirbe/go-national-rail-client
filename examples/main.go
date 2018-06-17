@@ -1,8 +1,8 @@
 package main
 
 import (
-	c "github.com/MartinsIrbe/national-rail-go-client/pkg"
-	"github.com/MartinsIrbe/national-rail-go-client/pkg/models"
+	c "github.com/martinsirbe/national-rail-go-client/pkg"
+	"github.com/martinsirbe/national-rail-go-client/pkg/models"
 	"github.com/sirupsen/logrus"
 )
 

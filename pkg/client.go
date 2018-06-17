@@ -10,10 +10,10 @@ import (
 	"io"
 	"os"
 
-	"github.com/MartinsIrbe/national-rail-go-client/internal/decoder"
-	"github.com/MartinsIrbe/national-rail-go-client/internal/mapper"
-	m "github.com/MartinsIrbe/national-rail-go-client/pkg/models"
-	"github.com/MartinsIrbe/national-rail-go-client/pkg/requests"
+	"github.com/martinsirbe/national-rail-go-client/internal/decoder"
+	"github.com/martinsirbe/national-rail-go-client/internal/mapper"
+	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
+	"github.com/martinsirbe/national-rail-go-client/pkg/requests"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
