@@ -20,7 +20,7 @@ const (
 	NextDeparturesWithDetailsResponse    = "GetNextDeparturesWithDetailsResponse"
 	ServiceDetailsResponse               = "GetServiceDetailsResponse"
 
-	decodeErr = "failed to decode %s"
+	decodeErr = "failed to decode %s: %w"
 )
 
 func DecodeArrBoardWithDetailsResponse(resp io.Reader) (*GetArrBoardWithDetailsResponse, error) {
