@@ -1,12 +1,12 @@
 # National Rail Go client
+
 A simple National Rail web-service client written in Golang that allows to communicate with National Rail SOAP web-service.
 The current implementation includes only support for checking for departures by providing the origin and destination train station codes.
 To obtain National Rail web-service access token you can register for OpenLDBWS and obtain an access token over [here][1].
 
-## Download
-```bash
-go get github.com/martinsirbe/go-national-rail-client
-```
+[![Go Report Card](https://goreportcard.com/badge/github.com/martinsirbe/go-national-rail-client)](https://goreportcard.com/report/github.com/martinsirbe/go-national-rail-client)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmartinsirbe%2Fgo-national-rail-client.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmartinsirbe%2Fgo-national-rail-client?ref=badge_shield)
+[![codecov](https://codecov.io/gh/martinsirbe/go-national-rail-client/branch/main/graph/badge.svg)](https://codecov.io/gh/martinsirbe/go-national-rail-client)
 
 ## Configuration
 
