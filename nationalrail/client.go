@@ -3,12 +3,8 @@ package nationalrail
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"strings"
-
-	"github.com/pkg/errors"
-	"github.com/sirupsen/logrus"
 
 	"github.com/martinsirbe/go-national-rail-client/nationalrail/soap"
 )
@@ -33,14 +29,14 @@ func (c *Client) GetArrBoardWithDetails(req StationBoardRequest) (*StationBoard,
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeArrBoardWithDetailsResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode ArrBoardWithDetailsResponse xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeArrBoardWithDetailsResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapArrivalBoardWithDetails(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapArrivalBoardWithDetails(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -52,14 +48,14 @@ func (c *Client) GetArrDepBoardWithDetails(req StationBoardRequest) (*StationBoa
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeArrDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode ArrDepBoardWithDetailsResponse xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeArrDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapArrDepBoardWithDetails(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapArrDepBoardWithDetails(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -71,14 +67,14 @@ func (c *Client) GetArrivalBoard(req StationBoardRequest) (*StationBoard, error)
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeArrivalBoardResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode ArrivalBoardResponse xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeArrivalBoardResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapArrivalBoard(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapArrivalBoard(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -90,14 +86,14 @@ func (c *Client) GetArrivalDepartureBoard(req StationBoardRequest) (*StationBoar
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeArrivalDepartureBoardResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode ArrivalDepartureBoard xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeArrivalDepartureBoardResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapArrivalDepartureBoard(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapArrivalDepartureBoard(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -112,14 +108,14 @@ func (c *Client) GetDepartureBoard(req StationBoardRequest) (*StationBoard, erro
 	r := string(resp)
 	fmt.Println(r)
 
-	decodedResp, decodeErr := soap.DecodeDepartureBoardResponse(strings.NewReader(r))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode DepartureBoard xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeDepartureBoardResponse(strings.NewReader(r))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapDepartureBoard(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapDepartureBoard(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -131,17 +127,15 @@ func (c *Client) GetDepBoardWithDetails(req StationBoardRequest) (*StationBoard,
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode DepBoardWithDetails xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapDepBoardWithDetails(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapDepBoardWithDetails(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
-
-	logrus.Infof("GetDepBoardWithDetails - %+v", mappedResp)
 
 	return mappedResp, nil
 }
@@ -152,14 +146,14 @@ func (c *Client) GetFastestDepartures(req DeparturesBoardRequest) (*StationBoard
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeFastestDeparturesResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode FastestDepartures xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeFastestDeparturesResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapFastestDepartures(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapFastestDepartures(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -171,14 +165,14 @@ func (c *Client) GetFastestDeparturesWithDetails(req DeparturesBoardRequest) (*S
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeFastestDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode FastestDeparturesWithDetails xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeFastestDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapFastestDeparturesWithDetails(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapFastestDeparturesWithDetails(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -190,14 +184,14 @@ func (c *Client) GetNextDepartures(req DeparturesBoardRequest) (*StationBoard, e
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeNextDeparturesResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode NextDepartures xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeNextDeparturesResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapNextDepartures(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapNextDepartures(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -209,14 +203,14 @@ func (c *Client) GetNextDeparturesWithDetails(req DeparturesBoardRequest) (*Stat
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeNextDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode NextDeparturesWithDetails xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeNextDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapNextDeparturesWithDetails(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapNextDeparturesWithDetails(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -228,14 +222,14 @@ func (c *Client) GetServiceDetails(serviceID string) (*TrainServiceDetails, erro
 		return nil, err
 	}
 
-	decodedResp, decodeErr := soap.DecodeServiceDetailsResponse(strings.NewReader(string(resp)))
-	if decodeErr != nil {
-		return nil, errors.Wrapf(decodeErr, "failed to decode ServiceDetails xml response, response body - %s", string(resp))
+	decodedResp, err := soap.DecodeServiceDetailsResponse(strings.NewReader(string(resp)))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode xml response: %w", err)
 	}
 
-	mappedResp, mapErr := MapServiceDetails(decodedResp)
-	if mapErr != nil {
-		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
+	mappedResp, err := MapServiceDetails(decodedResp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
 	}
 
 	return mappedResp, nil
@@ -254,30 +248,26 @@ func (c *Client) GetCRSFromKeyword(keyword string) map[string]string {
 }
 
 func (c *Client) makeRequest(body io.Reader) ([]byte, error) {
-	req, newReqErr := http.NewRequest(http.MethodPost, nationalRailWebService, body)
-	if newReqErr != nil {
-		return nil, errors.Wrapf(
-			newReqErr,
-			"failed to create a new HTTP POST request for %s",
-			nationalRailWebService)
+	req, err := http.NewRequest(http.MethodPost, nationalRailWebService, body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create a new HTTP POST request: %w", err)
 	}
 
 	req.Header.Add("Content-Type", "text/xml")
 
-	resp, reqErr := c.httpClient.Do(req)
-	if reqErr != nil || resp.StatusCode != 200 {
-		return nil, errors.Wrapf(
-			newReqErr,
-			"failed to perform HTTP POST request to %s, resp - %+v",
-			nationalRailWebService,
-			resp)
-	}
-
+	resp, err := c.httpClient.Do(req)
 	defer resp.Body.Close()
 
-	respBody, err := ioutil.ReadAll(resp.Body)
+	switch {
+	case err != nil:
+		return nil, fmt.Errorf("request failed: %w", err)
+	case resp.StatusCode != http.StatusOK:
+		return nil, fmt.Errorf("expected HTTP 200 response, got %d", resp.StatusCode)
+	}
+
+	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, errors.Wrap(err, "fail")
+		return nil, fmt.Errorf("failed to read response body: %w", err)
 	}
 
 	return respBody, nil

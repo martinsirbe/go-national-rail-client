@@ -2,9 +2,9 @@ package soap
 
 import (
 	"encoding/xml"
+	"errors"
+	"fmt"
 	"io"
-
-	"github.com/pkg/errors"
 )
 
 const (
@@ -26,7 +26,7 @@ const (
 func DecodeArrBoardWithDetailsResponse(resp io.Reader) (*GetArrBoardWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, ArrBoardWithDetailsResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, ArrBoardWithDetailsResponse)
+		return nil, fmt.Errorf(decodeErr, ArrBoardWithDetailsResponse, err)
 	}
 
 	return decodedResp.(*GetArrBoardWithDetailsResponse), nil
@@ -35,7 +35,7 @@ func DecodeArrBoardWithDetailsResponse(resp io.Reader) (*GetArrBoardWithDetailsR
 func DecodeArrDepBoardWithDetailsResponse(resp io.Reader) (*GetArrDepBoardWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, ArrDepBoardWithDetailsResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, ArrDepBoardWithDetailsResponse)
+		return nil, fmt.Errorf(decodeErr, ArrDepBoardWithDetailsResponse, err)
 	}
 
 	return decodedResp.(*GetArrDepBoardWithDetailsResponse), nil
@@ -44,7 +44,7 @@ func DecodeArrDepBoardWithDetailsResponse(resp io.Reader) (*GetArrDepBoardWithDe
 func DecodeArrivalBoardResponse(resp io.Reader) (*GetArrivalBoardResponse, error) {
 	decodedResp, err := decode(resp, ArrivalBoardResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, ArrivalBoardResponse)
+		return nil, fmt.Errorf(decodeErr, ArrivalBoardResponse, err)
 	}
 
 	return decodedResp.(*GetArrivalBoardResponse), nil
@@ -53,7 +53,7 @@ func DecodeArrivalBoardResponse(resp io.Reader) (*GetArrivalBoardResponse, error
 func DecodeArrivalDepartureBoardResponse(resp io.Reader) (*GetArrivalDepartureBoardResponse, error) {
 	decodedResp, err := decode(resp, ArrivalDepartureBoardResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, ArrivalDepartureBoardResponse)
+		return nil, fmt.Errorf(decodeErr, ArrivalDepartureBoardResponse, err)
 	}
 
 	return decodedResp.(*GetArrivalDepartureBoardResponse), nil
@@ -62,7 +62,7 @@ func DecodeArrivalDepartureBoardResponse(resp io.Reader) (*GetArrivalDepartureBo
 func DecodeDepartureBoardResponse(resp io.Reader) (*GetDepartureBoardResponse, error) {
 	decodedResp, err := decode(resp, DepartureBoardResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, DepartureBoardResponse)
+		return nil, fmt.Errorf(decodeErr, DepartureBoardResponse, err)
 	}
 
 	return decodedResp.(*GetDepartureBoardResponse), nil
@@ -71,7 +71,7 @@ func DecodeDepartureBoardResponse(resp io.Reader) (*GetDepartureBoardResponse, e
 func DecodeDepBoardWithDetailsResponse(resp io.Reader) (*GetDepBoardWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, DepBoardWithDetailsResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, DepBoardWithDetailsResponse)
+		return nil, fmt.Errorf(decodeErr, DepBoardWithDetailsResponse, err)
 	}
 
 	return decodedResp.(*GetDepBoardWithDetailsResponse), nil
@@ -80,7 +80,7 @@ func DecodeDepBoardWithDetailsResponse(resp io.Reader) (*GetDepBoardWithDetailsR
 func DecodeFastestDeparturesResponse(resp io.Reader) (*GetFastestDeparturesResponse, error) {
 	decodedResp, err := decode(resp, FastestDeparturesResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, FastestDeparturesResponse)
+		return nil, fmt.Errorf(decodeErr, FastestDeparturesResponse, err)
 	}
 
 	return decodedResp.(*GetFastestDeparturesResponse), nil
@@ -89,7 +89,7 @@ func DecodeFastestDeparturesResponse(resp io.Reader) (*GetFastestDeparturesRespo
 func DecodeFastestDeparturesWithDetailsResponse(resp io.Reader) (*GetFastestDeparturesWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, FastestDeparturesWithDetailsResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, FastestDeparturesWithDetailsResponse)
+		return nil, fmt.Errorf(decodeErr, FastestDeparturesWithDetailsResponse, err)
 	}
 
 	return decodedResp.(*GetFastestDeparturesWithDetailsResponse), nil
@@ -98,7 +98,7 @@ func DecodeFastestDeparturesWithDetailsResponse(resp io.Reader) (*GetFastestDepa
 func DecodeNextDeparturesResponse(resp io.Reader) (*GetNextDeparturesResponse, error) {
 	decodedResp, err := decode(resp, NextDeparturesResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, NextDeparturesResponse)
+		return nil, fmt.Errorf(decodeErr, NextDeparturesResponse, err)
 	}
 
 	return decodedResp.(*GetNextDeparturesResponse), nil
@@ -107,7 +107,7 @@ func DecodeNextDeparturesResponse(resp io.Reader) (*GetNextDeparturesResponse, e
 func DecodeNextDeparturesWithDetailsResponse(resp io.Reader) (*GetNextDeparturesWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, NextDeparturesWithDetailsResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, NextDeparturesWithDetailsResponse)
+		return nil, fmt.Errorf(decodeErr, NextDeparturesWithDetailsResponse, err)
 	}
 
 	return decodedResp.(*GetNextDeparturesWithDetailsResponse), nil
@@ -116,7 +116,7 @@ func DecodeNextDeparturesWithDetailsResponse(resp io.Reader) (*GetNextDepartures
 func DecodeServiceDetailsResponse(resp io.Reader) (*GetServiceDetailsResponse, error) {
 	decodedResp, err := decode(resp, ServiceDetailsResponse)
 	if err != nil {
-		return nil, errors.Wrapf(err, decodeErr, ServiceDetailsResponse)
+		return nil, fmt.Errorf(decodeErr, ServiceDetailsResponse, err)
 	}
 
 	return decodedResp.(*GetServiceDetailsResponse), nil

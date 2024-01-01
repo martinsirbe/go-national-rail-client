@@ -1,11 +1,10 @@
 package nationalrail
 
 import (
+	"errors"
+	"fmt"
 	"strconv"
 	"time"
-
-	"github.com/pkg/errors"
-	"github.com/sirupsen/logrus"
 
 	nr "github.com/martinsirbe/go-national-rail-client/nationalrail/soap"
 )
@@ -22,9 +21,7 @@ func MapArrivalBoardWithDetails(r *nr.GetArrBoardWithDetailsResponse) (*StationB
 		return nil, errors.New("failed to map ArrivalBoardWithDetails, expected objects were missing")
 	}
 
-	mappedResponse := mapStationBoardWithDetails(r.Body.ArrBoardWithDetails.StationBoardResult)
-
-	return mappedResponse, nil
+	return mapStationBoardWithDetails(r.Body.ArrBoardWithDetails.StationBoardResult)
 }
 
 func MapArrDepBoardWithDetails(r *nr.GetArrDepBoardWithDetailsResponse) (*StationBoard, error) {
@@ -39,9 +36,7 @@ func MapArrDepBoardWithDetails(r *nr.GetArrDepBoardWithDetailsResponse) (*Statio
 		return nil, errors.New("failed to map ArrDepBoardWithDetails, expected objects were missing")
 	}
 
-	mappedResponse := mapStationBoardWithDetails(r.Body.ArrDepBoardWithDetails.StationBoardResult)
-
-	return mappedResponse, nil
+	return mapStationBoardWithDetails(r.Body.ArrDepBoardWithDetails.StationBoardResult)
 }
 
 func MapArrivalBoard(r *nr.GetArrivalBoardResponse) (*StationBoard, error) {
@@ -56,9 +51,7 @@ func MapArrivalBoard(r *nr.GetArrivalBoardResponse) (*StationBoard, error) {
 		return nil, errors.New("failed to map ArrivalBoard, expected objects were missing")
 	}
 
-	mappedResponse := mapStationBoardWithDetails(r.Body.ArrivalBoard.StationBoardResult)
-
-	return mappedResponse, nil
+	return mapStationBoardWithDetails(r.Body.ArrivalBoard.StationBoardResult)
 }
 
 func MapArrivalDepartureBoard(r *nr.GetArrivalDepartureBoardResponse) (*StationBoard, error) {
@@ -73,9 +66,7 @@ func MapArrivalDepartureBoard(r *nr.GetArrivalDepartureBoardResponse) (*StationB
 		return nil, errors.New("failed to map ArrivalDepartureBoard, expected objects were missing")
 	}
 
-	mappedResponse := mapStationBoardWithDetails(r.Body.ArrivalDepartureBoard.StationBoardResult)
-
-	return mappedResponse, nil
+	return mapStationBoardWithDetails(r.Body.ArrivalDepartureBoard.StationBoardResult)
 }
 
 func MapDepartureBoard(r *nr.GetDepartureBoardResponse) (*StationBoard, error) {
@@ -90,9 +81,7 @@ func MapDepartureBoard(r *nr.GetDepartureBoardResponse) (*StationBoard, error) {
 		return nil, errors.New("failed to map DepartureBoard, expected objects were missing")
 	}
 
-	mappedResponse := mapStationBoardWithDetails(r.Body.DepartureBoard.StationBoardResult)
-
-	return mappedResponse, nil
+	return mapStationBoardWithDetails(r.Body.DepartureBoard.StationBoardResult)
 }
 
 func MapDepBoardWithDetails(r *nr.GetDepBoardWithDetailsResponse) (*StationBoard, error) {
@@ -107,9 +96,7 @@ func MapDepBoardWithDetails(r *nr.GetDepBoardWithDetailsResponse) (*StationBoard
 		return nil, errors.New("failed to map DepBoardWithDetails, expected objects were missing")
 	}
 
-	mappedResponse := mapStationBoardWithDetails(r.Body.DepBoardWithDetails.StationBoardResult)
-
-	return mappedResponse, nil
+	return mapStationBoardWithDetails(r.Body.DepBoardWithDetails.StationBoardResult)
 }
 
 func MapFastestDepartures(r *nr.GetFastestDeparturesResponse) (*StationBoard, error) {
@@ -124,9 +111,7 @@ func MapFastestDepartures(r *nr.GetFastestDeparturesResponse) (*StationBoard, er
 		return nil, errors.New("failed to map FastestDepartures, expected objects were missing")
 	}
 
-	mappedResponse := mapDeparturesBoard(r.Body.FastestDepartures.DeparturesBoard)
-
-	return mappedResponse, nil
+	return mapDeparturesBoard(r.Body.FastestDepartures.DeparturesBoard)
 }
 
 func MapFastestDeparturesWithDetails(r *nr.GetFastestDeparturesWithDetailsResponse) (*StationBoard, error) {
@@ -141,9 +126,7 @@ func MapFastestDeparturesWithDetails(r *nr.GetFastestDeparturesWithDetailsRespon
 		return nil, errors.New("failed to map FastestDeparturesWithDetails, expected objects were missing")
 	}
 
-	mappedResponse := mapDeparturesBoard(r.Body.FastestDeparturesWithDetails.DeparturesBoard)
-
-	return mappedResponse, nil
+	return mapDeparturesBoard(r.Body.FastestDeparturesWithDetails.DeparturesBoard)
 }
 
 func MapNextDepartures(r *nr.GetNextDeparturesResponse) (*StationBoard, error) {
@@ -158,9 +141,7 @@ func MapNextDepartures(r *nr.GetNextDeparturesResponse) (*StationBoard, error) {
 		return nil, errors.New("failed to map NextDepartures, expected objects were missing")
 	}
 
-	mappedResponse := mapDeparturesBoard(r.Body.NextDepartures.DeparturesBoard)
-
-	return mappedResponse, nil
+	return mapDeparturesBoard(r.Body.NextDepartures.DeparturesBoard)
 }
 
 func MapNextDeparturesWithDetails(r *nr.GetNextDeparturesWithDetailsResponse) (*StationBoard, error) {
@@ -175,9 +156,7 @@ func MapNextDeparturesWithDetails(r *nr.GetNextDeparturesWithDetailsResponse) (*
 		return nil, errors.New("failed to map NextDeparturesWithDetails, expected objects were missing")
 	}
 
-	mappedResponse := mapDeparturesBoard(r.Body.NextDeparturesWithDetails.DeparturesBoard)
-
-	return mappedResponse, nil
+	return mapDeparturesBoard(r.Body.NextDeparturesWithDetails.DeparturesBoard)
 }
 
 func MapServiceDetails(r *nr.GetServiceDetailsResponse) (*TrainServiceDetails, error) {
@@ -192,20 +171,19 @@ func MapServiceDetails(r *nr.GetServiceDetailsResponse) (*TrainServiceDetails, e
 		return nil, errors.New("failed to map ServiceDetails, expected objects were missing")
 	}
 
-	mappedResponse := mapServiceDetails(r.Body.ServiceDetails.ServiceDetailsResult)
-
-	return mappedResponse, nil
+	return mapServiceDetails(r.Body.ServiceDetails.ServiceDetailsResult)
 }
 
-func mapServiceDetails(sdr *nr.ServiceDetailsResult) *TrainServiceDetails {
+func mapServiceDetails(sdr *nr.ServiceDetailsResult) (*TrainServiceDetails, error) {
 	mappedResponse := &TrainServiceDetails{}
 
 	if sdr.GeneratedAt != nil && sdr.GeneratedAt.Text != "" {
-		if t, err := time.Parse(time.RFC3339Nano, sdr.GeneratedAt.Text); err != nil {
-			logrus.WithError(err).Errorf("failed to map generated at time date string - %s", sdr.GeneratedAt.Text)
-		} else {
-			mappedResponse.GeneratedAt = t
+		t, err := time.Parse(time.RFC3339Nano, sdr.GeneratedAt.Text)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse generated at: %w", err)
 		}
+
+		mappedResponse.GeneratedAt = t
 	}
 
 	if sdr.ServiceType != nil && sdr.ServiceType.Text != "" {
@@ -266,18 +244,19 @@ func mapServiceDetails(sdr *nr.ServiceDetailsResult) *TrainServiceDetails {
 		mappedResponse.SubsequentCallingPoints = subsequentCallingPoints
 	}
 
-	return mappedResponse
+	return mappedResponse, nil
 }
 
-func mapDeparturesBoard(depBoard *nr.DeparturesBoard) *StationBoard {
+func mapDeparturesBoard(depBoard *nr.DeparturesBoard) (*StationBoard, error) {
 	mappedResponse := &StationBoard{}
 
 	if depBoard.GeneratedAt != nil && depBoard.GeneratedAt.Text != "" {
-		if t, err := time.Parse(time.RFC3339Nano, depBoard.GeneratedAt.Text); err != nil {
-			logrus.WithError(err).Errorf("failed to map generated at time date string - %s", depBoard.GeneratedAt.Text)
-		} else {
-			mappedResponse.GeneratedAt = t
+		t, err := time.Parse(time.RFC3339Nano, depBoard.GeneratedAt.Text)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse generated at: %w", err)
 		}
+
+		mappedResponse.GeneratedAt = t
 	}
 
 	if depBoard.LocationName != nil && depBoard.LocationName.Text != "" {
@@ -289,11 +268,12 @@ func mapDeparturesBoard(depBoard *nr.DeparturesBoard) *StationBoard {
 	}
 
 	if depBoard.PlatformAvailable != nil && depBoard.PlatformAvailable.Text != "" {
-		if b, err := strconv.ParseBool(depBoard.PlatformAvailable.Text); err != nil {
-			logrus.WithError(err).Errorf("failed to map platform available boolean string - %s", depBoard.PlatformAvailable.Text)
-		} else {
-			mappedResponse.PlatformAvailable = b
+		b, err := strconv.ParseBool(depBoard.PlatformAvailable.Text)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse platform available: %w", err)
 		}
+
+		mappedResponse.PlatformAvailable = b
 	}
 
 	if depBoard.Departures != nil && depBoard.Departures.Destination != nil {
@@ -317,17 +297,18 @@ func mapDeparturesBoard(depBoard *nr.DeparturesBoard) *StationBoard {
 		mappedResponse.NRCCMessages = &msgs
 	}
 
-	return mappedResponse
+	return mappedResponse, nil
 }
 
-func mapStationBoardWithDetails(sbr *nr.GetStationBoardResult) *StationBoard {
+func mapStationBoardWithDetails(sbr *nr.GetStationBoardResult) (*StationBoard, error) {
 	mappedResponse := &StationBoard{}
 	if sbr.GeneratedAt != nil && sbr.GeneratedAt.Text != "" {
-		if t, err := time.Parse(time.RFC3339Nano, sbr.GeneratedAt.Text); err != nil {
-			logrus.WithError(err).Errorf("failed to map generated at time date string - %s", sbr.GeneratedAt.Text)
-		} else {
-			mappedResponse.GeneratedAt = t
+		t, err := time.Parse(time.RFC3339Nano, sbr.GeneratedAt.Text)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse generated at: %w", err)
 		}
+
+		mappedResponse.GeneratedAt = t
 	}
 
 	if sbr.LocationName != nil && sbr.LocationName.Text != "" {
@@ -347,11 +328,12 @@ func mapStationBoardWithDetails(sbr *nr.GetStationBoardResult) *StationBoard {
 	}
 
 	if sbr.PlatformAvailable != nil && sbr.PlatformAvailable.Text != "" {
-		if b, err := strconv.ParseBool(sbr.PlatformAvailable.Text); err != nil {
-			logrus.WithError(err).Errorf("failed to map platform available boolean string - %s", sbr.PlatformAvailable.Text)
-		} else {
-			mappedResponse.PlatformAvailable = b
+		b, err := strconv.ParseBool(sbr.PlatformAvailable.Text)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse platform available: %w", err)
 		}
+
+		mappedResponse.PlatformAvailable = b
 	}
 
 	if sbr.TrainServices != nil && sbr.TrainServices.Services != nil {
@@ -366,7 +348,7 @@ func mapStationBoardWithDetails(sbr *nr.GetStationBoardResult) *StationBoard {
 		mappedResponse.NRCCMessages = &msgs
 	}
 
-	return mappedResponse
+	return mappedResponse, nil
 }
 
 func mapTrainServices(sbr *nr.GetStationBoardResult) []*TrainService {
