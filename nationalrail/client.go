@@ -1,13 +1,10 @@
 package nationalrail
 
 import (
-	"bufio"
-	"encoding/csv"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/pkg/errors"
@@ -19,40 +16,15 @@ import (
 const nationalRailWebService = "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx"
 
 type Client struct {
-	Token                string
-	StationToCRSCodeMaps map[string]string
-	httpClient           *http.Client
+	Token      string
+	httpClient *http.Client
 }
 
 func NewClient(token string) *Client {
 	return &Client{
-		Token:                token,
-		StationToCRSCodeMaps: loadStations(),
-		httpClient:           &http.Client{},
+		Token:      token,
+		httpClient: &http.Client{},
 	}
-}
-
-func loadStations() map[string]string {
-	stations, err := os.Open("station_codes.csv")
-	if err != nil {
-		logrus.WithError(err).Panic("failed to load train station codes")
-	}
-	reader := csv.NewReader(bufio.NewReader(stations))
-
-	stationCodeMap := make(map[string]string)
-
-	for {
-		l, readErr := reader.Read()
-		if readErr == io.EOF {
-			break
-		} else if readErr != nil {
-			logrus.WithError(readErr).Error("failed to read line from the station codes csv file")
-		}
-
-		stationCodeMap[l[0]] = l[1]
-	}
-
-	return stationCodeMap
 }
 
 func (c *Client) GetArrBoardWithDetails(req StationBoardRequest) (*StationBoard, error) {
@@ -272,7 +244,7 @@ func (c *Client) GetServiceDetails(serviceID string) (*TrainServiceDetails, erro
 // GetCRSFromKeyword used to match the given keyword to train station names to obtain matching CRS codes
 func (c *Client) GetCRSFromKeyword(keyword string) map[string]string {
 	crsMap := make(map[string]string)
-	for station, crs := range c.StationToCRSCodeMaps {
+	for station, crs := range StationNameToCodeMap {
 		if strings.Contains(strings.ToLower(station), strings.ToLower(keyword)) {
 			crsMap[station] = crs
 		}
