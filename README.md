@@ -8,10 +8,21 @@ To obtain National Rail web-service access token you can register for OpenLDBWS 
 go get github.com/martinsirbe/go-national-rail-client
 ```
 
-## Initialise the client
-```golang
-client := nationalrail.NewClient("NR_ACCESS_TOKEN")
-``` 
+## Configuration
+
+The API client can be configured using the following options:
+- **AccessTokenOpt**: Set using `AccessTokenOpt("YOUR_ACCESS_TOKEN")`. If not provided, the library attempts to 
+retrieve the access token from the `NR_ACCESS_TOKEN` environment variable. This token is crucial for API authentication.  
+Client initialisation will fail if neither `AccessTokenOpt` nor `NR_ACCESS_TOKEN` environment variable is provided.
+
+- **HTTPClientOpt**: Customised using `HTTPClientOpt(customHttpClient)`. If not provided, a default HTTP client with 
+the following configuration is used:
+    - `Timeout`: 10 seconds
+    - `MaxIdleConns`: 10 connections
+    - `MaxConnsPerHost`: 10 connections
+    - `MaxIdleConnsPerHost`: 10 connections
+
+These options allow flexibility in authentication and network settings. If options are omitted, sensible defaults are used, with environment variables as a fallback for the access token.
 
 ## Examples
 ### Obtain Departure Board
@@ -25,14 +36,16 @@ package main
 import (
 	"fmt"
 
-	"github.com/martinsirbe/go-national-rail-client/nationalrail"
+	nr "github.com/martinsirbe/go-national-rail-client/nationalrail"
 )
 
 func main() {
-	client := nationalrail.NewClient("NR_ACCESS_TOKEN")
+	client, err := nr.NewClient(
+		nr.AccessTokenOpt("e995265f-df60-4787-bafc-af5a433f9b22"),
+	)
 
-	board, err := client.GetDepartureBoard(nationalrail.StationBoardRequest{
-		CRS:     nationalrail.StationCodeGillinghamKent,
+	board, err := client.GetDepartureBoard(nr.StationBoardRequest{
+		CRS:     nr.StationCodeGillinghamKent,
 		NumRows: 5,
 	})
 	if err != nil {

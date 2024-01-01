@@ -1,10 +1,13 @@
 package nationalrail
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 	"strings"
+	"time"
 
 	"github.com/martinsirbe/go-national-rail-client/nationalrail/soap"
 )
@@ -12,19 +15,40 @@ import (
 const nationalRailWebService = "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx"
 
 type Client struct {
-	Token      string
-	httpClient *http.Client
+	AccessToken string
+	httpClient  *http.Client
 }
 
-func NewClient(token string) *Client {
-	return &Client{
-		Token:      token,
-		httpClient: &http.Client{},
+func NewClient(opts ...ClientOption) (*Client, error) {
+	client := &Client{}
+	for _, opt := range opts {
+		opt(client)
 	}
+
+	if client.httpClient == nil {
+		t := http.DefaultTransport.(*http.Transport).Clone()
+		t.MaxIdleConns = 10
+		t.MaxConnsPerHost = 10
+		t.MaxIdleConnsPerHost = 10
+
+		client.httpClient = &http.Client{
+			Transport: t,
+			Timeout:   10 * time.Second,
+		}
+	}
+
+	if client.AccessToken == "" {
+		client.AccessToken = os.Getenv("NR_ACCESS_TOKEN")
+		if client.AccessToken == "" {
+			return nil, errors.New("access token is missing, provide it via option or env var")
+		}
+	}
+
+	return client, nil
 }
 
 func (c *Client) GetArrBoardWithDetails(req StationBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetArrBoardWithDetailsRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetArrBoardWithDetailsRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +67,7 @@ func (c *Client) GetArrBoardWithDetails(req StationBoardRequest) (*StationBoard,
 }
 
 func (c *Client) GetArrDepBoardWithDetails(req StationBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetArrDepBoardWithDetailsRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetArrDepBoardWithDetailsRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +86,7 @@ func (c *Client) GetArrDepBoardWithDetails(req StationBoardRequest) (*StationBoa
 }
 
 func (c *Client) GetArrivalBoard(req StationBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetArrivalBoardRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetArrivalBoardRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +105,7 @@ func (c *Client) GetArrivalBoard(req StationBoardRequest) (*StationBoard, error)
 }
 
 func (c *Client) GetArrivalDepartureBoard(req StationBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetArrivalDepartureBoardRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetArrivalDepartureBoardRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +124,7 @@ func (c *Client) GetArrivalDepartureBoard(req StationBoardRequest) (*StationBoar
 }
 
 func (c *Client) GetDepartureBoard(req StationBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetDepartureBoardRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetDepartureBoardRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -122,7 +146,7 @@ func (c *Client) GetDepartureBoard(req StationBoardRequest) (*StationBoard, erro
 }
 
 func (c *Client) GetDepBoardWithDetails(req StationBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetDepBoardWithDetailsRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetDepBoardWithDetailsRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -141,7 +165,7 @@ func (c *Client) GetDepBoardWithDetails(req StationBoardRequest) (*StationBoard,
 }
 
 func (c *Client) GetFastestDepartures(req DeparturesBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetFastestDeparturesRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetFastestDeparturesRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -160,7 +184,7 @@ func (c *Client) GetFastestDepartures(req DeparturesBoardRequest) (*StationBoard
 }
 
 func (c *Client) GetFastestDeparturesWithDetails(req DeparturesBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetFastestDeparturesWithDetailsRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetFastestDeparturesWithDetailsRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -179,7 +203,7 @@ func (c *Client) GetFastestDeparturesWithDetails(req DeparturesBoardRequest) (*S
 }
 
 func (c *Client) GetNextDepartures(req DeparturesBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetNextDeparturesRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetNextDeparturesRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -198,7 +222,7 @@ func (c *Client) GetNextDepartures(req DeparturesBoardRequest) (*StationBoard, e
 }
 
 func (c *Client) GetNextDeparturesWithDetails(req DeparturesBoardRequest) (*StationBoard, error) {
-	resp, err := c.makeRequest(CreateGetNextDeparturesWithDetailsRequest(c.Token, req))
+	resp, err := c.makeRequest(CreateGetNextDeparturesWithDetailsRequest(c.AccessToken, req))
 	if err != nil {
 		return nil, err
 	}
@@ -217,7 +241,7 @@ func (c *Client) GetNextDeparturesWithDetails(req DeparturesBoardRequest) (*Stat
 }
 
 func (c *Client) GetServiceDetails(serviceID string) (*TrainServiceDetails, error) {
-	resp, err := c.makeRequest(CreateGetServiceDetailsRequest(c.Token, serviceID))
+	resp, err := c.makeRequest(CreateGetServiceDetailsRequest(c.AccessToken, serviceID))
 	if err != nil {
 		return nil, err
 	}
