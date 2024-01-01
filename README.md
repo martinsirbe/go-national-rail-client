@@ -5,7 +5,7 @@ To obtain National Rail web-service access token you can register for OpenLDBWS 
 
 ## Download
 ```bash
-go get github.com/martinsirbe/national-rail-go-client
+go get github.com/martinsirbe/go-national-rail-client
 ```
 
 ## Initialise the client
@@ -25,7 +25,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/martinsirbe/national-rail-go-client/nationalrail"
+	"github.com/martinsirbe/go-national-rail-client/nationalrail"
 )
 
 func main() {

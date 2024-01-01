@@ -7,7 +7,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	nr "github.com/martinsirbe/national-rail-go-client/nationalrail/soap"
+	nr "github.com/martinsirbe/go-national-rail-client/nationalrail/soap"
 )
 
 func MapArrivalBoardWithDetails(r *nr.GetArrBoardWithDetailsResponse) (*StationBoard, error) {

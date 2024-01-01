@@ -1,4 +1,4 @@
-module github.com/martinsirbe/national-rail-go-client
+module github.com/martinsirbe/go-national-rail-client
 
 go 1.21.4
 

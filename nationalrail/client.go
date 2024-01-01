@@ -10,7 +10,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	"github.com/martinsirbe/national-rail-go-client/nationalrail/soap"
+	"github.com/martinsirbe/go-national-rail-client/nationalrail/soap"
 )
 
 const nationalRailWebService = "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx"
