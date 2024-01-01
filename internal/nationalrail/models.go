@@ -1,4 +1,4 @@
-package internal_models
+package nationalrail
 
 import "encoding/xml"
 

@@ -1,24 +1,16 @@
-package mapper
+package nationalrail
 
 import (
 	"strconv"
 	"time"
 
-	nrm "github.com/martinsirbe/national-rail-go-client/internal/models"
-	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
+
+	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
 )
 
-// NationalRailResponseMapper a mapper used to map national rail response to a simpler model
-type NationalRailResponseMapper struct{}
-
-// NewNationalRailResponseMapper used to create a new instance of national rail response mapper
-func NewNationalRailResponseMapper() *NationalRailResponseMapper {
-	return &NationalRailResponseMapper{}
-}
-
-func (nrm *NationalRailResponseMapper) MapArrivalBoardWithDetails(r *nrm.GetArrBoardWithDetailsResponse) (*m.StationBoard, error) {
+func MapArrivalBoardWithDetails(r *GetArrBoardWithDetailsResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -35,7 +27,7 @@ func (nrm *NationalRailResponseMapper) MapArrivalBoardWithDetails(r *nrm.GetArrB
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapArrDepBoardWithDetails(r *nrm.GetArrDepBoardWithDetailsResponse) (*m.StationBoard, error) {
+func MapArrDepBoardWithDetails(r *GetArrDepBoardWithDetailsResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -52,7 +44,7 @@ func (nrm *NationalRailResponseMapper) MapArrDepBoardWithDetails(r *nrm.GetArrDe
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapArrivalBoard(r *nrm.GetArrivalBoardResponse) (*m.StationBoard, error) {
+func MapArrivalBoard(r *GetArrivalBoardResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -69,7 +61,7 @@ func (nrm *NationalRailResponseMapper) MapArrivalBoard(r *nrm.GetArrivalBoardRes
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapArrivalDepartureBoard(r *nrm.GetArrivalDepartureBoardResponse) (*m.StationBoard, error) {
+func MapArrivalDepartureBoard(r *GetArrivalDepartureBoardResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -86,7 +78,7 @@ func (nrm *NationalRailResponseMapper) MapArrivalDepartureBoard(r *nrm.GetArriva
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapDepartureBoard(r *nrm.GetDepartureBoardResponse) (*m.StationBoard, error) {
+func MapDepartureBoard(r *GetDepartureBoardResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -103,7 +95,7 @@ func (nrm *NationalRailResponseMapper) MapDepartureBoard(r *nrm.GetDepartureBoar
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapDepBoardWithDetails(r *nrm.GetDepBoardWithDetailsResponse) (*m.StationBoard, error) {
+func MapDepBoardWithDetails(r *GetDepBoardWithDetailsResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -120,7 +112,7 @@ func (nrm *NationalRailResponseMapper) MapDepBoardWithDetails(r *nrm.GetDepBoard
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapFastestDepartures(r *nrm.GetFastestDeparturesResponse) (*m.StationBoard, error) {
+func MapFastestDepartures(r *GetFastestDeparturesResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -137,7 +129,7 @@ func (nrm *NationalRailResponseMapper) MapFastestDepartures(r *nrm.GetFastestDep
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapFastestDeparturesWithDetails(r *nrm.GetFastestDeparturesWithDetailsResponse) (*m.StationBoard, error) {
+func MapFastestDeparturesWithDetails(r *GetFastestDeparturesWithDetailsResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -154,7 +146,7 @@ func (nrm *NationalRailResponseMapper) MapFastestDeparturesWithDetails(r *nrm.Ge
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapNextDepartures(r *nrm.GetNextDeparturesResponse) (*m.StationBoard, error) {
+func MapNextDepartures(r *GetNextDeparturesResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -171,7 +163,7 @@ func (nrm *NationalRailResponseMapper) MapNextDepartures(r *nrm.GetNextDeparture
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapNextDeparturesWithDetails(r *nrm.GetNextDeparturesWithDetailsResponse) (*m.StationBoard, error) {
+func MapNextDeparturesWithDetails(r *GetNextDeparturesWithDetailsResponse) (*m.StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -188,7 +180,7 @@ func (nrm *NationalRailResponseMapper) MapNextDeparturesWithDetails(r *nrm.GetNe
 	return &mappedResponse, nil
 }
 
-func (nrm *NationalRailResponseMapper) MapServiceDetails(r *nrm.GetServiceDetailsResponse) (*m.TrainServiceDetails, error) {
+func MapServiceDetails(r *GetServiceDetailsResponse) (*m.TrainServiceDetails, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -205,7 +197,7 @@ func (nrm *NationalRailResponseMapper) MapServiceDetails(r *nrm.GetServiceDetail
 	return &mappedResponse, nil
 }
 
-func mapServiceDetails(sdr *nrm.ServiceDetailsResult) m.TrainServiceDetails {
+func mapServiceDetails(sdr *ServiceDetailsResult) m.TrainServiceDetails {
 	var mappedResponse m.TrainServiceDetails
 
 	if sdr.GeneratedAt != nil && sdr.GeneratedAt.Text != "" {
@@ -277,7 +269,7 @@ func mapServiceDetails(sdr *nrm.ServiceDetailsResult) m.TrainServiceDetails {
 	return mappedResponse
 }
 
-func mapDeparturesBoard(depBoard *nrm.DeparturesBoard) m.StationBoard {
+func mapDeparturesBoard(depBoard *DeparturesBoard) m.StationBoard {
 	var mappedResponse m.StationBoard
 
 	if depBoard.GeneratedAt != nil && depBoard.GeneratedAt.Text != "" {
@@ -328,7 +320,7 @@ func mapDeparturesBoard(depBoard *nrm.DeparturesBoard) m.StationBoard {
 	return mappedResponse
 }
 
-func mapStationBoardWithDetails(sbr *nrm.GetStationBoardResult) m.StationBoard {
+func mapStationBoardWithDetails(sbr *GetStationBoardResult) m.StationBoard {
 	var mappedResponse m.StationBoard
 	if sbr.GeneratedAt != nil && sbr.GeneratedAt.Text != "" {
 		if t, err := time.Parse(time.RFC3339Nano, sbr.GeneratedAt.Text); err != nil {
@@ -377,7 +369,7 @@ func mapStationBoardWithDetails(sbr *nrm.GetStationBoardResult) m.StationBoard {
 	return mappedResponse
 }
 
-func mapTrainServices(sbr *nrm.GetStationBoardResult) []m.TrainService {
+func mapTrainServices(sbr *GetStationBoardResult) []m.TrainService {
 	var trainServices []m.TrainService
 	for _, ts := range sbr.TrainServices.Services {
 		if ts == nil {
@@ -390,7 +382,7 @@ func mapTrainServices(sbr *nrm.GetStationBoardResult) []m.TrainService {
 	return trainServices
 }
 
-func mapTrainService(ts *nrm.ServiceLT7) m.TrainService {
+func mapTrainService(ts *ServiceLT7) m.TrainService {
 	var trainService m.TrainService
 
 	if ts.STA != nil && ts.STA.Text != "" {
@@ -464,7 +456,7 @@ func mapTrainService(ts *nrm.ServiceLT7) m.TrainService {
 	return trainService
 }
 
-func mapLocation(location *nrm.LocationLT4, locationType string) m.Location {
+func mapLocation(location *LocationLT4, locationType string) m.Location {
 	mappedLocation := m.Location{Type: locationType}
 
 	if location.LocationName != nil && location.LocationName.Text != "" {
@@ -480,7 +472,7 @@ func mapLocation(location *nrm.LocationLT4, locationType string) m.Location {
 	return mappedLocation
 }
 
-func mapCallingPoints(cps []*nrm.CallingPoint, locationType string) []m.Location {
+func mapCallingPoints(cps []*CallingPoint, locationType string) []m.Location {
 	var callingPoints []m.Location
 	for _, cp := range cps {
 		if cp == nil {

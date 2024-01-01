@@ -1,10 +1,9 @@
-package decoder
+package nationalrail
 
 import (
 	"encoding/xml"
 	"io"
 
-	models "github.com/martinsirbe/national-rail-go-client/internal/models"
 	"github.com/pkg/errors"
 )
 
@@ -24,111 +23,103 @@ const (
 	decodeErr = "failed to decode %s"
 )
 
-// NationalRailResponseDecoder used to decode national rail responses
-type NationalRailResponseDecoder struct{}
-
-// NewNationalRailResponseDecoder used to create a new instance of national rail response decoder
-func NewNationalRailResponseDecoder() *NationalRailResponseDecoder {
-	return &NationalRailResponseDecoder{}
-}
-
-func (d *NationalRailResponseDecoder) DecodeArrBoardWithDetailsResponse(resp io.Reader) (*models.GetArrBoardWithDetailsResponse, error) {
+func DecodeArrBoardWithDetailsResponse(resp io.Reader) (*GetArrBoardWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, ArrBoardWithDetailsResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, ArrBoardWithDetailsResponse)
 	}
 
-	return decodedResp.(*models.GetArrBoardWithDetailsResponse), nil
+	return decodedResp.(*GetArrBoardWithDetailsResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeArrDepBoardWithDetailsResponse(resp io.Reader) (*models.GetArrDepBoardWithDetailsResponse, error) {
+func DecodeArrDepBoardWithDetailsResponse(resp io.Reader) (*GetArrDepBoardWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, ArrDepBoardWithDetailsResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, ArrDepBoardWithDetailsResponse)
 	}
 
-	return decodedResp.(*models.GetArrDepBoardWithDetailsResponse), nil
+	return decodedResp.(*GetArrDepBoardWithDetailsResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeArrivalBoardResponse(resp io.Reader) (*models.GetArrivalBoardResponse, error) {
+func DecodeArrivalBoardResponse(resp io.Reader) (*GetArrivalBoardResponse, error) {
 	decodedResp, err := decode(resp, ArrivalBoardResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, ArrivalBoardResponse)
 	}
 
-	return decodedResp.(*models.GetArrivalBoardResponse), nil
+	return decodedResp.(*GetArrivalBoardResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeArrivalDepartureBoardResponse(resp io.Reader) (*models.GetArrivalDepartureBoardResponse, error) {
+func DecodeArrivalDepartureBoardResponse(resp io.Reader) (*GetArrivalDepartureBoardResponse, error) {
 	decodedResp, err := decode(resp, ArrivalDepartureBoardResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, ArrivalDepartureBoardResponse)
 	}
 
-	return decodedResp.(*models.GetArrivalDepartureBoardResponse), nil
+	return decodedResp.(*GetArrivalDepartureBoardResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeDepartureBoardResponse(resp io.Reader) (*models.GetDepartureBoardResponse, error) {
+func DecodeDepartureBoardResponse(resp io.Reader) (*GetDepartureBoardResponse, error) {
 	decodedResp, err := decode(resp, DepartureBoardResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, DepartureBoardResponse)
 	}
 
-	return decodedResp.(*models.GetDepartureBoardResponse), nil
+	return decodedResp.(*GetDepartureBoardResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeDepBoardWithDetailsResponse(resp io.Reader) (*models.GetDepBoardWithDetailsResponse, error) {
+func DecodeDepBoardWithDetailsResponse(resp io.Reader) (*GetDepBoardWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, DepBoardWithDetailsResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, DepBoardWithDetailsResponse)
 	}
 
-	return decodedResp.(*models.GetDepBoardWithDetailsResponse), nil
+	return decodedResp.(*GetDepBoardWithDetailsResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeFastestDeparturesResponse(resp io.Reader) (*models.GetFastestDeparturesResponse, error) {
+func DecodeFastestDeparturesResponse(resp io.Reader) (*GetFastestDeparturesResponse, error) {
 	decodedResp, err := decode(resp, FastestDeparturesResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, FastestDeparturesResponse)
 	}
 
-	return decodedResp.(*models.GetFastestDeparturesResponse), nil
+	return decodedResp.(*GetFastestDeparturesResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeFastestDeparturesWithDetailsResponse(resp io.Reader) (*models.GetFastestDeparturesWithDetailsResponse, error) {
+func DecodeFastestDeparturesWithDetailsResponse(resp io.Reader) (*GetFastestDeparturesWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, FastestDeparturesWithDetailsResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, FastestDeparturesWithDetailsResponse)
 	}
 
-	return decodedResp.(*models.GetFastestDeparturesWithDetailsResponse), nil
+	return decodedResp.(*GetFastestDeparturesWithDetailsResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeNextDeparturesResponse(resp io.Reader) (*models.GetNextDeparturesResponse, error) {
+func DecodeNextDeparturesResponse(resp io.Reader) (*GetNextDeparturesResponse, error) {
 	decodedResp, err := decode(resp, NextDeparturesResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, NextDeparturesResponse)
 	}
 
-	return decodedResp.(*models.GetNextDeparturesResponse), nil
+	return decodedResp.(*GetNextDeparturesResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeNextDeparturesWithDetailsResponse(resp io.Reader) (*models.GetNextDeparturesWithDetailsResponse, error) {
+func DecodeNextDeparturesWithDetailsResponse(resp io.Reader) (*GetNextDeparturesWithDetailsResponse, error) {
 	decodedResp, err := decode(resp, NextDeparturesWithDetailsResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, NextDeparturesWithDetailsResponse)
 	}
 
-	return decodedResp.(*models.GetNextDeparturesWithDetailsResponse), nil
+	return decodedResp.(*GetNextDeparturesWithDetailsResponse), nil
 }
 
-func (d *NationalRailResponseDecoder) DecodeServiceDetailsResponse(resp io.Reader) (*models.GetServiceDetailsResponse, error) {
+func DecodeServiceDetailsResponse(resp io.Reader) (*GetServiceDetailsResponse, error) {
 	decodedResp, err := decode(resp, ServiceDetailsResponse)
 	if err != nil {
 		return nil, errors.Wrapf(err, decodeErr, ServiceDetailsResponse)
 	}
 
-	return decodedResp.(*models.GetServiceDetailsResponse), nil
+	return decodedResp.(*GetServiceDetailsResponse), nil
 }
 
 func decode(resp io.Reader, respType string) (interface{}, error) {
@@ -148,67 +139,67 @@ func decode(resp io.Reader, respType string) (interface{}, error) {
 			if startElement.Name.Local == "Envelope" && startElement.Name.Space == "http://schemas.xmlsoap.org/soap/envelope/" {
 				switch respType {
 				case ArrBoardWithDetailsResponse:
-					var resp models.GetArrBoardWithDetailsResponse
+					var resp GetArrBoardWithDetailsResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case ArrDepBoardWithDetailsResponse:
-					var resp models.GetArrDepBoardWithDetailsResponse
+					var resp GetArrDepBoardWithDetailsResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case ArrivalBoardResponse:
-					var resp models.GetArrivalBoardResponse
+					var resp GetArrivalBoardResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case ArrivalDepartureBoardResponse:
-					var resp models.GetArrivalDepartureBoardResponse
+					var resp GetArrivalDepartureBoardResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case DepartureBoardResponse:
-					var resp models.GetDepartureBoardResponse
+					var resp GetDepartureBoardResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case DepBoardWithDetailsResponse:
-					var resp models.GetDepBoardWithDetailsResponse
+					var resp GetDepBoardWithDetailsResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case FastestDeparturesResponse:
-					var resp models.GetFastestDeparturesResponse
+					var resp GetFastestDeparturesResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case FastestDeparturesWithDetailsResponse:
-					var resp models.GetFastestDeparturesWithDetailsResponse
+					var resp GetFastestDeparturesWithDetailsResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case NextDeparturesResponse:
-					var resp models.GetNextDeparturesResponse
+					var resp GetNextDeparturesResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case NextDeparturesWithDetailsResponse:
-					var resp models.GetNextDeparturesWithDetailsResponse
+					var resp GetNextDeparturesWithDetailsResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}
 					return &resp, nil
 				case ServiceDetailsResponse:
-					var resp models.GetServiceDetailsResponse
+					var resp GetServiceDetailsResponse
 					if err := decoder.DecodeElement(&resp, &startElement); err != nil {
 						return nil, err
 					}

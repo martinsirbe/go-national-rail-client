@@ -1,21 +1,21 @@
 package client
 
 import (
-	"io/ioutil"
-	"net/http"
-	"strings"
-
 	"bufio"
 	"encoding/csv"
+	"fmt"
 	"io"
+	"io/ioutil"
+	"net/http"
 	"os"
+	"strings"
 
-	"github.com/martinsirbe/national-rail-go-client/internal/decoder"
-	"github.com/martinsirbe/national-rail-go-client/internal/mapper"
-	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
-	"github.com/martinsirbe/national-rail-go-client/pkg/requests"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
+
+	"github.com/martinsirbe/national-rail-go-client/internal/nationalrail"
+	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
+	"github.com/martinsirbe/national-rail-go-client/pkg/requests"
 )
 
 const nationalRailWebService = "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx"
@@ -23,8 +23,6 @@ const nationalRailWebService = "https://lite.realtime.nationalrail.co.uk/OpenLDB
 type NationalRailClient struct {
 	Token                string
 	StationToCRSCodeMaps map[string]string
-	ResponseDecoder      *decoder.NationalRailResponseDecoder
-	ResponseMapper       *mapper.NationalRailResponseMapper
 	httpClient           *http.Client
 }
 
@@ -32,8 +30,6 @@ func NewNationalRailClient(token string) *NationalRailClient {
 	return &NationalRailClient{
 		Token:                token,
 		StationToCRSCodeMaps: loadStations(),
-		ResponseDecoder:      decoder.NewNationalRailResponseDecoder(),
-		ResponseMapper:       mapper.NewNationalRailResponseMapper(),
 		httpClient:           &http.Client{},
 	}
 }
@@ -67,12 +63,12 @@ func (c *NationalRailClient) GetArrBoardWithDetails(req m.StationBoardRequest) (
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeArrBoardWithDetailsResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeArrBoardWithDetailsResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode ArrBoardWithDetailsResponse xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapArrivalBoardWithDetails(decodedResp)
+	mappedResp, mapErr := nationalrail.MapArrivalBoardWithDetails(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -86,12 +82,12 @@ func (c *NationalRailClient) GetArrDepBoardWithDetails(req m.StationBoardRequest
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeArrDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeArrDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode ArrDepBoardWithDetailsResponse xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapArrDepBoardWithDetails(decodedResp)
+	mappedResp, mapErr := nationalrail.MapArrDepBoardWithDetails(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -105,12 +101,12 @@ func (c *NationalRailClient) GetArrivalBoard(req m.StationBoardRequest) (*m.Stat
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeArrivalBoardResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeArrivalBoardResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode ArrivalBoardResponse xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapArrivalBoard(decodedResp)
+	mappedResp, mapErr := nationalrail.MapArrivalBoard(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -124,12 +120,12 @@ func (c *NationalRailClient) GetArrivalDepartureBoard(req m.StationBoardRequest)
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeArrivalDepartureBoardResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeArrivalDepartureBoardResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode ArrivalDepartureBoard xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapArrivalDepartureBoard(decodedResp)
+	mappedResp, mapErr := nationalrail.MapArrivalDepartureBoard(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -143,12 +139,15 @@ func (c *NationalRailClient) GetDepartureBoard(req m.StationBoardRequest) (*m.St
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeDepartureBoardResponse(strings.NewReader(string(resp)))
+	r := string(resp)
+	fmt.Println(r)
+
+	decodedResp, decodeErr := nationalrail.DecodeDepartureBoardResponse(strings.NewReader(r))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode DepartureBoard xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapDepartureBoard(decodedResp)
+	mappedResp, mapErr := nationalrail.MapDepartureBoard(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -162,12 +161,12 @@ func (c *NationalRailClient) GetDepBoardWithDetails(req m.StationBoardRequest) (
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode DepBoardWithDetails xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapDepBoardWithDetails(decodedResp)
+	mappedResp, mapErr := nationalrail.MapDepBoardWithDetails(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -183,12 +182,12 @@ func (c *NationalRailClient) GetFastestDepartures(req m.DeparturesBoardRequest) 
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeFastestDeparturesResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeFastestDeparturesResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode FastestDepartures xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapFastestDepartures(decodedResp)
+	mappedResp, mapErr := nationalrail.MapFastestDepartures(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -202,12 +201,12 @@ func (c *NationalRailClient) GetFastestDeparturesWithDetails(req m.DeparturesBoa
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeFastestDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeFastestDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode FastestDeparturesWithDetails xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapFastestDeparturesWithDetails(decodedResp)
+	mappedResp, mapErr := nationalrail.MapFastestDeparturesWithDetails(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -221,12 +220,12 @@ func (c *NationalRailClient) GetNextDepartures(req m.DeparturesBoardRequest) (*m
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeNextDeparturesResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeNextDeparturesResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode NextDepartures xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapNextDepartures(decodedResp)
+	mappedResp, mapErr := nationalrail.MapNextDepartures(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -240,12 +239,12 @@ func (c *NationalRailClient) GetNextDeparturesWithDetails(req m.DeparturesBoardR
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeNextDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeNextDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode NextDeparturesWithDetails xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapNextDeparturesWithDetails(decodedResp)
+	mappedResp, mapErr := nationalrail.MapNextDeparturesWithDetails(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
@@ -259,12 +258,12 @@ func (c *NationalRailClient) GetServiceDetails(serviceID string) (*m.TrainServic
 		return nil, err
 	}
 
-	decodedResp, decodeErr := c.ResponseDecoder.DecodeServiceDetailsResponse(strings.NewReader(string(resp)))
+	decodedResp, decodeErr := nationalrail.DecodeServiceDetailsResponse(strings.NewReader(string(resp)))
 	if decodeErr != nil {
 		return nil, errors.Wrapf(decodeErr, "failed to decode ServiceDetails xml response, response body - %s", string(resp))
 	}
 
-	mappedResp, mapErr := c.ResponseMapper.MapServiceDetails(decodedResp)
+	mappedResp, mapErr := nationalrail.MapServiceDetails(decodedResp)
 	if mapErr != nil {
 		return nil, errors.Wrap(mapErr, "failed to map national rail response to the simplified model")
 	}
