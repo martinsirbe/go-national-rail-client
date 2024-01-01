@@ -22,7 +22,7 @@ the following configuration is used:
     - `MaxConnsPerHost`: 10 connections
     - `MaxIdleConnsPerHost`: 10 connections
 
-These options allow flexibility in authentication and network settings. If options are omitted, sensible defaults are used, with environment variables as a fallback for the access token.
+- **URLOpt**: Set using `URLOpt("https://example.com")`. If not provided, will use `https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx`.
 
 ## Examples
 ### Obtain Departure Board
@@ -44,7 +44,7 @@ func main() {
 		nr.AccessTokenOpt("e995265f-df60-4787-bafc-af5a433f9b22"),
 	)
 
-	board, err := client.GetDepartureBoard(nr.StationBoardRequest{
+	board, err := client.GetDepartures(nr.StationBoardRequest{
 		CRS:     nr.StationCodeGillinghamKent,
 		NumRows: 5,
 	})

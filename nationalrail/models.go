@@ -28,7 +28,7 @@ type StationBoard struct {
 	FilterCRS          *string         `json:"filter_crs"`
 	PlatformAvailable  bool            `json:"platform_available"`
 	TrainServices      []*TrainService `json:"train_services"`
-	NRCCMessages       *[]string       `json:"nrcc_messages"`
+	NRCCMessages       []string        `json:"nrcc_messages"`
 }
 
 type TrainService struct {

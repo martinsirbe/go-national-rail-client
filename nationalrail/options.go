@@ -4,6 +4,12 @@ import "net/http"
 
 type ClientOption func(*Client)
 
+func URLOpt(url string) ClientOption {
+	return func(c *Client) {
+		c.url = url
+	}
+}
+
 func HTTPClientOpt(client *http.Client) ClientOption {
 	return func(c *Client) {
 		c.httpClient = client
@@ -16,6 +22,6 @@ func HTTPClientOpt(client *http.Client) ClientOption {
 // train information.
 func AccessTokenOpt(accessToken string) ClientOption {
 	return func(c *Client) {
-		c.AccessToken = accessToken
+		c.accessToken = accessToken
 	}
 }

@@ -294,7 +294,7 @@ func mapDeparturesBoard(depBoard *nr.DeparturesBoard) (*StationBoard, error) {
 		for _, msg := range depBoard.NRCCMessages.Messages {
 			msgs = append(msgs, msg.Text)
 		}
-		mappedResponse.NRCCMessages = &msgs
+		mappedResponse.NRCCMessages = msgs
 	}
 
 	return mappedResponse, nil
@@ -343,9 +343,9 @@ func mapStationBoardWithDetails(sbr *nr.GetStationBoardResult) (*StationBoard, e
 	if sbr.NRCCMessages != nil && sbr.NRCCMessages.Messages != nil {
 		var msgs []string
 		for _, msg := range sbr.NRCCMessages.Messages {
-			msgs = append(msgs, msg.Text)
+			msgs = append(msgs, cleanNRCCMessage(msg.Text))
 		}
-		mappedResponse.NRCCMessages = &msgs
+		mappedResponse.NRCCMessages = msgs
 	}
 
 	return mappedResponse, nil

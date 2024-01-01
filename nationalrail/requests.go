@@ -92,7 +92,7 @@ const (
 	  </ldb:GetServiceDetailsRequest>`
 )
 
-func CreateGetArrBoardWithDetailsRequest(token string, req StationBoardRequest) *strings.Reader {
+func CreateGetArrBoardWithDetailsRequest(token string, req *StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
