@@ -1,4 +1,4 @@
-package models
+package nationalrail
 
 import "time"
 
@@ -21,14 +21,14 @@ type DeparturesBoardRequest struct {
 }
 
 type StationBoard struct {
-	GeneratedAt        time.Time      `json:"generated_at"`
-	LocationName       string         `json:"location_name"`
-	CRS                string         `json:"crs"`
-	FilterLocationName *string        `json:"filter_location_name"`
-	FilterCRS          *string        `json:"filter_crs"`
-	PlatformAvailable  bool           `json:"platform_available"`
-	TrainServices      []TrainService `json:"train_services"`
-	NRCCMessages       *[]string      `json:"nrcc_messages"`
+	GeneratedAt        time.Time       `json:"generated_at"`
+	LocationName       string          `json:"location_name"`
+	CRS                string          `json:"crs"`
+	FilterLocationName *string         `json:"filter_location_name"`
+	FilterCRS          *string         `json:"filter_crs"`
+	PlatformAvailable  bool            `json:"platform_available"`
+	TrainServices      []*TrainService `json:"train_services"`
+	NRCCMessages       *[]string       `json:"nrcc_messages"`
 }
 
 type TrainService struct {
@@ -42,11 +42,11 @@ type TrainService struct {
 	ServiceType             string      `json:"service_type"`
 	ServiceID               string      `json:"service_id"`
 	RSID                    string      `json:"rsid"`
-	Origin                  Location    `json:"origin"`
-	Destination             Location    `json:"destination"`
+	Origin                  *Location   `json:"origin"`
+	Destination             *Location   `json:"destination"`
 	DelayReason             *string     `json:"delay_reason"`
-	PreviousCallingPoints   *[]Location `json:"previous_calling_points"`
-	SubsequentCallingPoints *[]Location `json:"subsequent_calling_points"`
+	PreviousCallingPoints   []*Location `json:"previous_calling_points"`
+	SubsequentCallingPoints []*Location `json:"subsequent_calling_points"`
 	GeneratedAt             *time.Time  `json:"generated_at"`
 }
 
@@ -63,8 +63,8 @@ type TrainServiceDetails struct {
 	ETA                     *string     `json:"eta"`
 	STD                     *string     `json:"std"`
 	ETD                     *string     `json:"etd"`
-	PreviousCallingPoints   *[]Location `json:"previous_calling_points"`
-	SubsequentCallingPoints *[]Location `json:"subsequent_calling_points"`
+	PreviousCallingPoints   []*Location `json:"previous_calling_points"`
+	SubsequentCallingPoints []*Location `json:"subsequent_calling_points"`
 }
 
 type Location struct {

@@ -7,10 +7,10 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
+	nr "github.com/martinsirbe/national-rail-go-client/nationalrail/soap"
 )
 
-func MapArrivalBoardWithDetails(r *GetArrBoardWithDetailsResponse) (*m.StationBoard, error) {
+func MapArrivalBoardWithDetails(r *nr.GetArrBoardWithDetailsResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -24,10 +24,10 @@ func MapArrivalBoardWithDetails(r *GetArrBoardWithDetailsResponse) (*m.StationBo
 
 	mappedResponse := mapStationBoardWithDetails(r.Body.ArrBoardWithDetails.StationBoardResult)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapArrDepBoardWithDetails(r *GetArrDepBoardWithDetailsResponse) (*m.StationBoard, error) {
+func MapArrDepBoardWithDetails(r *nr.GetArrDepBoardWithDetailsResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -41,10 +41,10 @@ func MapArrDepBoardWithDetails(r *GetArrDepBoardWithDetailsResponse) (*m.Station
 
 	mappedResponse := mapStationBoardWithDetails(r.Body.ArrDepBoardWithDetails.StationBoardResult)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapArrivalBoard(r *GetArrivalBoardResponse) (*m.StationBoard, error) {
+func MapArrivalBoard(r *nr.GetArrivalBoardResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -58,10 +58,10 @@ func MapArrivalBoard(r *GetArrivalBoardResponse) (*m.StationBoard, error) {
 
 	mappedResponse := mapStationBoardWithDetails(r.Body.ArrivalBoard.StationBoardResult)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapArrivalDepartureBoard(r *GetArrivalDepartureBoardResponse) (*m.StationBoard, error) {
+func MapArrivalDepartureBoard(r *nr.GetArrivalDepartureBoardResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -75,10 +75,10 @@ func MapArrivalDepartureBoard(r *GetArrivalDepartureBoardResponse) (*m.StationBo
 
 	mappedResponse := mapStationBoardWithDetails(r.Body.ArrivalDepartureBoard.StationBoardResult)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapDepartureBoard(r *GetDepartureBoardResponse) (*m.StationBoard, error) {
+func MapDepartureBoard(r *nr.GetDepartureBoardResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -92,10 +92,10 @@ func MapDepartureBoard(r *GetDepartureBoardResponse) (*m.StationBoard, error) {
 
 	mappedResponse := mapStationBoardWithDetails(r.Body.DepartureBoard.StationBoardResult)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapDepBoardWithDetails(r *GetDepBoardWithDetailsResponse) (*m.StationBoard, error) {
+func MapDepBoardWithDetails(r *nr.GetDepBoardWithDetailsResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -109,10 +109,10 @@ func MapDepBoardWithDetails(r *GetDepBoardWithDetailsResponse) (*m.StationBoard,
 
 	mappedResponse := mapStationBoardWithDetails(r.Body.DepBoardWithDetails.StationBoardResult)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapFastestDepartures(r *GetFastestDeparturesResponse) (*m.StationBoard, error) {
+func MapFastestDepartures(r *nr.GetFastestDeparturesResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -126,10 +126,10 @@ func MapFastestDepartures(r *GetFastestDeparturesResponse) (*m.StationBoard, err
 
 	mappedResponse := mapDeparturesBoard(r.Body.FastestDepartures.DeparturesBoard)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapFastestDeparturesWithDetails(r *GetFastestDeparturesWithDetailsResponse) (*m.StationBoard, error) {
+func MapFastestDeparturesWithDetails(r *nr.GetFastestDeparturesWithDetailsResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -143,10 +143,10 @@ func MapFastestDeparturesWithDetails(r *GetFastestDeparturesWithDetailsResponse)
 
 	mappedResponse := mapDeparturesBoard(r.Body.FastestDeparturesWithDetails.DeparturesBoard)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapNextDepartures(r *GetNextDeparturesResponse) (*m.StationBoard, error) {
+func MapNextDepartures(r *nr.GetNextDeparturesResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -160,10 +160,10 @@ func MapNextDepartures(r *GetNextDeparturesResponse) (*m.StationBoard, error) {
 
 	mappedResponse := mapDeparturesBoard(r.Body.NextDepartures.DeparturesBoard)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapNextDeparturesWithDetails(r *GetNextDeparturesWithDetailsResponse) (*m.StationBoard, error) {
+func MapNextDeparturesWithDetails(r *nr.GetNextDeparturesWithDetailsResponse) (*StationBoard, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -177,10 +177,10 @@ func MapNextDeparturesWithDetails(r *GetNextDeparturesWithDetailsResponse) (*m.S
 
 	mappedResponse := mapDeparturesBoard(r.Body.NextDeparturesWithDetails.DeparturesBoard)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func MapServiceDetails(r *GetServiceDetailsResponse) (*m.TrainServiceDetails, error) {
+func MapServiceDetails(r *nr.GetServiceDetailsResponse) (*TrainServiceDetails, error) {
 	switch {
 	case r == nil:
 		fallthrough
@@ -194,11 +194,11 @@ func MapServiceDetails(r *GetServiceDetailsResponse) (*m.TrainServiceDetails, er
 
 	mappedResponse := mapServiceDetails(r.Body.ServiceDetails.ServiceDetailsResult)
 
-	return &mappedResponse, nil
+	return mappedResponse, nil
 }
 
-func mapServiceDetails(sdr *ServiceDetailsResult) m.TrainServiceDetails {
-	var mappedResponse m.TrainServiceDetails
+func mapServiceDetails(sdr *nr.ServiceDetailsResult) *TrainServiceDetails {
+	mappedResponse := &TrainServiceDetails{}
 
 	if sdr.GeneratedAt != nil && sdr.GeneratedAt.Text != "" {
 		if t, err := time.Parse(time.RFC3339Nano, sdr.GeneratedAt.Text); err != nil {
@@ -256,21 +256,21 @@ func mapServiceDetails(sdr *ServiceDetailsResult) m.TrainServiceDetails {
 		previousCallingPoints := mapCallingPoints(
 			sdr.PreviousCallingPoints.CallingPointList.CallingPoints,
 			"previous calling point")
-		mappedResponse.PreviousCallingPoints = &previousCallingPoints
+		mappedResponse.PreviousCallingPoints = previousCallingPoints
 	}
 
 	if sdr.SubsequentCallingPoints != nil && sdr.SubsequentCallingPoints.CallingPointList != nil {
 		subsequentCallingPoints := mapCallingPoints(
 			sdr.SubsequentCallingPoints.CallingPointList.CallingPoints,
 			"subsequent calling point")
-		mappedResponse.SubsequentCallingPoints = &subsequentCallingPoints
+		mappedResponse.SubsequentCallingPoints = subsequentCallingPoints
 	}
 
 	return mappedResponse
 }
 
-func mapDeparturesBoard(depBoard *DeparturesBoard) m.StationBoard {
-	var mappedResponse m.StationBoard
+func mapDeparturesBoard(depBoard *nr.DeparturesBoard) *StationBoard {
+	mappedResponse := &StationBoard{}
 
 	if depBoard.GeneratedAt != nil && depBoard.GeneratedAt.Text != "" {
 		if t, err := time.Parse(time.RFC3339Nano, depBoard.GeneratedAt.Text); err != nil {
@@ -297,7 +297,7 @@ func mapDeparturesBoard(depBoard *DeparturesBoard) m.StationBoard {
 	}
 
 	if depBoard.Departures != nil && depBoard.Departures.Destination != nil {
-		var trainServices []m.TrainService
+		var trainServices []*TrainService
 		for _, d := range depBoard.Departures.Destination {
 			if d == nil || d.Service == nil {
 				continue
@@ -320,8 +320,8 @@ func mapDeparturesBoard(depBoard *DeparturesBoard) m.StationBoard {
 	return mappedResponse
 }
 
-func mapStationBoardWithDetails(sbr *GetStationBoardResult) m.StationBoard {
-	var mappedResponse m.StationBoard
+func mapStationBoardWithDetails(sbr *nr.GetStationBoardResult) *StationBoard {
+	mappedResponse := &StationBoard{}
 	if sbr.GeneratedAt != nil && sbr.GeneratedAt.Text != "" {
 		if t, err := time.Parse(time.RFC3339Nano, sbr.GeneratedAt.Text); err != nil {
 			logrus.WithError(err).Errorf("failed to map generated at time date string - %s", sbr.GeneratedAt.Text)
@@ -369,8 +369,8 @@ func mapStationBoardWithDetails(sbr *GetStationBoardResult) m.StationBoard {
 	return mappedResponse
 }
 
-func mapTrainServices(sbr *GetStationBoardResult) []m.TrainService {
-	var trainServices []m.TrainService
+func mapTrainServices(sbr *nr.GetStationBoardResult) []*TrainService {
+	var trainServices []*TrainService
 	for _, ts := range sbr.TrainServices.Services {
 		if ts == nil {
 			continue
@@ -382,8 +382,8 @@ func mapTrainServices(sbr *GetStationBoardResult) []m.TrainService {
 	return trainServices
 }
 
-func mapTrainService(ts *ServiceLT7) m.TrainService {
-	var trainService m.TrainService
+func mapTrainService(ts *nr.ServiceLT7) *TrainService {
+	trainService := &TrainService{}
 
 	if ts.STA != nil && ts.STA.Text != "" {
 		trainService.STA = &ts.STA.Text
@@ -439,14 +439,14 @@ func mapTrainService(ts *ServiceLT7) m.TrainService {
 		previousCallingPoints := mapCallingPoints(
 			ts.PreviousCallingPoints.CallingPointList.CallingPoints,
 			"previous calling point")
-		trainService.PreviousCallingPoints = &previousCallingPoints
+		trainService.PreviousCallingPoints = previousCallingPoints
 	}
 
 	if ts.SubsequentCallingPoints != nil && ts.SubsequentCallingPoints.CallingPointList != nil {
 		subsequentCallingPoints := mapCallingPoints(
 			ts.SubsequentCallingPoints.CallingPointList.CallingPoints,
 			"subsequent calling point")
-		trainService.SubsequentCallingPoints = &subsequentCallingPoints
+		trainService.SubsequentCallingPoints = subsequentCallingPoints
 	}
 
 	if ts.DelayReason != nil && ts.DelayReason.Text != "" {
@@ -456,8 +456,8 @@ func mapTrainService(ts *ServiceLT7) m.TrainService {
 	return trainService
 }
 
-func mapLocation(location *LocationLT4, locationType string) m.Location {
-	mappedLocation := m.Location{Type: locationType}
+func mapLocation(location *nr.LocationLT4, locationType string) *Location {
+	mappedLocation := &Location{Type: locationType}
 
 	if location.LocationName != nil && location.LocationName.Text != "" {
 		mappedLocation.Name = location.LocationName.Text
@@ -472,14 +472,14 @@ func mapLocation(location *LocationLT4, locationType string) m.Location {
 	return mappedLocation
 }
 
-func mapCallingPoints(cps []*CallingPoint, locationType string) []m.Location {
-	var callingPoints []m.Location
+func mapCallingPoints(cps []*nr.CallingPoint, locationType string) []*Location {
+	var callingPoints []*Location
 	for _, cp := range cps {
 		if cp == nil {
 			continue
 		}
 
-		callingPoint := m.Location{Type: locationType}
+		callingPoint := &Location{Type: locationType}
 
 		if cp.CRS != nil {
 			callingPoint.CRS = cp.CRS.Text

@@ -1,10 +1,8 @@
-package requests
+package nationalrail
 
 import (
 	"fmt"
 	"strings"
-
-	m "github.com/martinsirbe/national-rail-go-client/pkg/models"
 )
 
 const (
@@ -94,7 +92,7 @@ const (
 	  </ldb:GetServiceDetailsRequest>`
 )
 
-func CreateGetArrBoardWithDetailsRequest(token string, req m.StationBoardRequest) *strings.Reader {
+func CreateGetArrBoardWithDetailsRequest(token string, req StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -109,7 +107,7 @@ func CreateGetArrBoardWithDetailsRequest(token string, req m.StationBoardRequest
 	))
 }
 
-func CreateGetArrDepBoardWithDetailsRequest(token string, req m.StationBoardRequest) *strings.Reader {
+func CreateGetArrDepBoardWithDetailsRequest(token string, req StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -124,7 +122,7 @@ func CreateGetArrDepBoardWithDetailsRequest(token string, req m.StationBoardRequ
 	))
 }
 
-func CreateGetArrivalBoardRequest(token string, req m.StationBoardRequest) *strings.Reader {
+func CreateGetArrivalBoardRequest(token string, req StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -139,7 +137,7 @@ func CreateGetArrivalBoardRequest(token string, req m.StationBoardRequest) *stri
 	))
 }
 
-func CreateGetArrivalDepartureBoardRequest(token string, req m.StationBoardRequest) *strings.Reader {
+func CreateGetArrivalDepartureBoardRequest(token string, req StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -154,7 +152,7 @@ func CreateGetArrivalDepartureBoardRequest(token string, req m.StationBoardReque
 	))
 }
 
-func CreateGetDepartureBoardRequest(token string, req m.StationBoardRequest) *strings.Reader {
+func CreateGetDepartureBoardRequest(token string, req StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -169,7 +167,7 @@ func CreateGetDepartureBoardRequest(token string, req m.StationBoardRequest) *st
 	))
 }
 
-func CreateGetDepBoardWithDetailsRequest(token string, req m.StationBoardRequest) *strings.Reader {
+func CreateGetDepBoardWithDetailsRequest(token string, req StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -184,7 +182,7 @@ func CreateGetDepBoardWithDetailsRequest(token string, req m.StationBoardRequest
 	))
 }
 
-func CreateGetFastestDeparturesRequest(token string, req m.DeparturesBoardRequest) *strings.Reader {
+func CreateGetFastestDeparturesRequest(token string, req DeparturesBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
 	filterListProperties := getFilterListProperties(req.FilterList)
 
@@ -200,7 +198,7 @@ func CreateGetFastestDeparturesRequest(token string, req m.DeparturesBoardReques
 	))
 }
 
-func CreateGetFastestDeparturesWithDetailsRequest(token string, req m.DeparturesBoardRequest) *strings.Reader {
+func CreateGetFastestDeparturesWithDetailsRequest(token string, req DeparturesBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
 	filterListProperties := getFilterListProperties(req.FilterList)
 
@@ -216,7 +214,7 @@ func CreateGetFastestDeparturesWithDetailsRequest(token string, req m.Departures
 	))
 }
 
-func CreateGetNextDeparturesRequest(token string, req m.DeparturesBoardRequest) *strings.Reader {
+func CreateGetNextDeparturesRequest(token string, req DeparturesBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
 	filterListProperties := getFilterListProperties(req.FilterList)
 
@@ -232,7 +230,7 @@ func CreateGetNextDeparturesRequest(token string, req m.DeparturesBoardRequest) 
 	))
 }
 
-func CreateGetNextDeparturesWithDetailsRequest(token string, req m.DeparturesBoardRequest) *strings.Reader {
+func CreateGetNextDeparturesWithDetailsRequest(token string, req DeparturesBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
 	filterListProperties := getFilterListProperties(req.FilterList)
 

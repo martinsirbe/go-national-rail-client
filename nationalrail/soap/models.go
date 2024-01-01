@@ -1,4 +1,4 @@
-package nationalrail
+package soap
 
 import "encoding/xml"
 
