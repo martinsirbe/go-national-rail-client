@@ -195,7 +195,7 @@ func mapServiceDetails(sdr *nr.ServiceDetailsResult) (*TrainServiceDetails, erro
 	}
 
 	if sdr.CRS != nil && sdr.CRS.Text != "" {
-		mappedResponse.CRS = sdr.LocationName.Text
+		mappedResponse.CRS = sdr.CRS.Text
 	}
 
 	if sdr.STA != nil && sdr.STA.Text != "" {

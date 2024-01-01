@@ -284,12 +284,12 @@ func (c *Client) makeRequest(body io.Reader) ([]byte, error) {
 	req.Header.Add("Content-Type", "text/xml")
 
 	resp, err := c.httpClient.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("request failed: %w", err)
+	}
 	defer resp.Body.Close()
 
-	switch {
-	case err != nil:
-		return nil, fmt.Errorf("request failed: %w", err)
-	case resp.StatusCode != http.StatusOK:
+	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("expected HTTP 200 response, got %d", resp.StatusCode)
 	}
 

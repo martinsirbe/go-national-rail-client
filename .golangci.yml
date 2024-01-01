@@ -49,3 +49,21 @@ linters:
     - lll
     - nakedret
   fast: false
+
+issues:
+  exclude-rules:
+    - path: "nationalrail/stations.go"
+      linters:
+        - dupl
+    - path: "nationalrail/mapper.go"
+      linters:
+        - gocyclo
+    - path: "nationalrail/soap/decoder.go"
+      linters:
+        - gocyclo
+    - path: "nationalrail/soap/models.go"
+      linters:
+        - lll
+    - path: _test\.go
+      linters:
+        - lll

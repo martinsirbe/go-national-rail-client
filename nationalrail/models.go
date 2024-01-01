@@ -54,7 +54,7 @@ type TrainServiceDetails struct {
 	GeneratedAt             time.Time   `json:"generated_at"`
 	LocationName            string      `json:"location_name"`
 	ServiceType             string      `json:"service_type"`
-	CRS                     string      `json:"location_name"`
+	CRS                     string      `json:"crs"`
 	Operator                string      `json:"operator"`
 	OperatorCode            string      `json:"operator_code"`
 	RSID                    string      `json:"rsid"`

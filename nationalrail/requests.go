@@ -296,7 +296,7 @@ func getTimeWindowProp(timeWindow *int) string {
 }
 
 func getFilterListProperties(filterList []string) string {
-	if filterList == nil || len(filterList) == 0 {
+	if len(filterList) == 0 {
 		return ""
 	}
 

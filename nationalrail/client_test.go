@@ -34,7 +34,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 
 				ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 					w.WriteHeader(http.StatusOK)
-					w.Write(data)
+					_, err := w.Write(data)
+					require.NoError(t, err)
 				}))
 				return ts
 			},
@@ -231,7 +232,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 
 				ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 					w.WriteHeader(http.StatusInternalServerError)
-					w.Write(data)
+					_, err := w.Write(data)
+					require.NoError(t, err)
 				}))
 				return ts
 			},
