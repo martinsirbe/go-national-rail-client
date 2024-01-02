@@ -18,16 +18,13 @@ const testAccessToken = "93f1cb45-b961-4906-bd89-f0158053e696"
 
 func TestGetArrivalsWithDetails(t *testing.T) {
 	for name, tc := range map[string]struct {
-		req                  *nr.StationBoardRequest
+		crs                  nr.CRSCode
 		setupMock            func() *httptest.Server
 		expectedStationBoard *nr.StationBoard
 		errAssert            assert.ErrorAssertionFunc
 	}{
 		"Success": {
-			req: &nr.StationBoardRequest{
-				CRS:     nr.StationCodeGillinghamKent,
-				NumRows: 2,
-			},
+			crs: nr.StationCodeGillinghamKent,
 			setupMock: func() *httptest.Server {
 				data, err := os.ReadFile(filepath.Join("testdata", "GetStationBoard_Success.xml"))
 				require.NoError(t, err)
@@ -211,8 +208,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 			},
 			errAssert: assert.NoError,
 		},
-		"Fail_MissingRequest": {
-			req: nil,
+		"Fail_BadCRS": {
+			crs: nr.CRSCode("test"),
 			setupMock: func() *httptest.Server {
 				ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 					w.WriteHeader(http.StatusOK)
@@ -222,10 +219,7 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 			errAssert: assert.Error,
 		},
 		"Fail_UnexpectedServerError": {
-			req: &nr.StationBoardRequest{
-				CRS:     nr.StationCodeGillinghamKent,
-				NumRows: 2,
-			},
+			crs: nr.StationCodeGillinghamKent,
 			setupMock: func() *httptest.Server {
 				data, err := os.ReadFile(filepath.Join("testdata", "UnexpectedServerError.xml"))
 				require.NoError(t, err)
@@ -251,7 +245,7 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 			)
 			require.NoError(t, err)
 
-			stationBoard, err := client.GetArrivalsWithDetails(tc.req)
+			stationBoard, err := client.GetArrivalsWithDetails(tc.crs)
 			tc.errAssert(t, err)
 			if err != nil {
 				return

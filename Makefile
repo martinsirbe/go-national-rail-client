@@ -5,8 +5,8 @@ GOLANGCI_LINT_VER := v1.55
 tests:
 	@go test -v -cover -race -coverprofile=coverage.txt -covermode=atomic ./...
 
-.PHONY: go-lint
-go-lint:
+.PHONY: lint
+lint:
 	docker run \
 		--rm \
 		--volume "$$PWD":/src/github.com/martinsirbe/$(PROJECT_NAME) \

@@ -3,7 +3,7 @@ package nationalrail
 import "time"
 
 type StationBoardRequest struct {
-	CRS        string
+	CRS        CRSCode
 	NumRows    int
 	FilterCRS  *string
 	FilterType *string
@@ -13,7 +13,7 @@ type StationBoardRequest struct {
 }
 
 type DeparturesBoardRequest struct {
-	CRS        string
+	CRS        CRSCode
 	NumRows    int
 	FilterList []string
 	TimeOffset *int

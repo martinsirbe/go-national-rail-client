@@ -1,6 +1,2579 @@
 package nationalrail
 
-var StationNameToCodeMap = map[string]string{
+var StationCodeToNameMap = map[CRSCode]string{
+	StationCodeAbbeyWood:                         StationNameAbbeyWood,
+	StationCodeAber:                              StationNameAber,
+	StationCodeAbercynon:                         StationNameAbercynon,
+	StationCodeAberdare:                          StationNameAberdare,
+	StationCodeAberdeen:                          StationNameAberdeen,
+	StationCodeAberdour:                          StationNameAberdour,
+	StationCodeAberdovey:                         StationNameAberdovey,
+	StationCodeAbererch:                          StationNameAbererch,
+	StationCodeAbergavenny:                       StationNameAbergavenny,
+	StationCodeAbergeleAndPensarn:                StationNameAbergeleAndPensarn,
+	StationCodeAberystwyth:                       StationNameAberystwyth,
+	StationCodeAccrington:                        StationNameAccrington,
+	StationCodeAchanalt:                          StationNameAchanalt,
+	StationCodeAchnasheen:                        StationNameAchnasheen,
+	StationCodeAchnashellach:                     StationNameAchnashellach,
+	StationCodeAcklington:                        StationNameAcklington,
+	StationCodeAcle:                              StationNameAcle,
+	StationCodeAcocksGreen:                       StationNameAcocksGreen,
+	StationCodeActonBridgeCheshire:               StationNameActonBridgeCheshire,
+	StationCodeActonCentral:                      StationNameActonCentral,
+	StationCodeActonMainLine:                     StationNameActonMainLine,
+	StationCodeAdderleyPark:                      StationNameAdderleyPark,
+	StationCodeAddiewell:                         StationNameAddiewell,
+	StationCodeAddlestone:                        StationNameAddlestone,
+	StationCodeAdisham:                           StationNameAdisham,
+	StationCodeAdlingtonCheshire:                 StationNameAdlingtonCheshire,
+	StationCodeAdlingtonLancs:                    StationNameAdlingtonLancs,
+	StationCodeAdwick:                            StationNameAdwick,
+	StationCodeAigburth:                          StationNameAigburth,
+	StationCodeAinsdale:                          StationNameAinsdale,
+	StationCodeAintree:                           StationNameAintree,
+	StationCodeAirbles:                           StationNameAirbles,
+	StationCodeAirdrie:                           StationNameAirdrie,
+	StationCodeAlbanyPark:                        StationNameAlbanyPark,
+	StationCodeAlbrighton:                        StationNameAlbrighton,
+	StationCodeAlderleyEdge:                      StationNameAlderleyEdge,
+	StationCodeAldermaston:                       StationNameAldermaston,
+	StationCodeAldershot:                         StationNameAldershot,
+	StationCodeAldrington:                        StationNameAldrington,
+	StationCodeAlexandraPalace:                   StationNameAlexandraPalace,
+	StationCodeAlexandraParade:                   StationNameAlexandraParade,
+	StationCodeAlexandria:                        StationNameAlexandria,
+	StationCodeAlfreton:                          StationNameAlfreton,
+	StationCodeAllensWest:                        StationNameAllensWest,
+	StationCodeAlloa:                             StationNameAlloa,
+	StationCodeAlness:                            StationNameAlness,
+	StationCodeAlnmouth:                          StationNameAlnmouth,
+	StationCodeAlresfordEssex:                    StationNameAlresfordEssex,
+	StationCodeAlsager:                           StationNameAlsager,
+	StationCodeAlthorneEssex:                     StationNameAlthorneEssex,
+	StationCodeAlthorpe:                          StationNameAlthorpe,
+	StationCodeAltnabreac:                        StationNameAltnabreac,
+	StationCodeAlton:                             StationNameAlton,
+	StationCodeAltrincham:                        StationNameAltrincham,
+	StationCodeAlvechurch:                        StationNameAlvechurch,
+	StationCodeAmbergate:                         StationNameAmbergate,
+	StationCodeAmberley:                          StationNameAmberley,
+	StationCodeAmersham:                          StationNameAmersham,
+	StationCodeAmmanford:                         StationNameAmmanford,
+	StationCodeAncaster:                          StationNameAncaster,
+	StationCodeAnderston:                         StationNameAnderston,
+	StationCodeAndover:                           StationNameAndover,
+	StationCodeAnerley:                           StationNameAnerley,
+	StationCodeAngelRoad:                         StationNameAngelRoad,
+	StationCodeAngmering:                         StationNameAngmering,
+	StationCodeAnnan:                             StationNameAnnan,
+	StationCodeAnniesland:                        StationNameAnniesland,
+	StationCodeAnsdellAndFairhaven:               StationNameAnsdellAndFairhaven,
+	StationCodeApperleyBridge:                    StationNameApperleyBridge,
+	StationCodeAppleby:                           StationNameAppleby,
+	StationCodeAppledoreKent:                     StationNameAppledoreKent,
+	StationCodeAppleford:                         StationNameAppleford,
+	StationCodeAppleyBridge:                      StationNameAppleyBridge,
+	StationCodeApsley:                            StationNameApsley,
+	StationCodeArbroath:                          StationNameArbroath,
+	StationCodeArdgay:                            StationNameArdgay,
+	StationCodeArdlui:                            StationNameArdlui,
+	StationCodeArdrossanHarbour:                  StationNameArdrossanHarbour,
+	StationCodeArdrossanSouthBeach:               StationNameArdrossanSouthBeach,
+	StationCodeArdrossanTown:                     StationNameArdrossanTown,
+	StationCodeArdwick:                           StationNameArdwick,
+	StationCodeArgyleStreet:                      StationNameArgyleStreet,
+	StationCodeArisaig:                           StationNameArisaig,
+	StationCodeArlesey:                           StationNameArlesey,
+	StationCodeArmadaleWestLothian:               StationNameArmadaleWestLothian,
+	StationCodeArmathwaite:                       StationNameArmathwaite,
+	StationCodeArnside:                           StationNameArnside,
+	StationCodeArram:                             StationNameArram,
+	StationCodeArrocharAndTarbet:                 StationNameArrocharAndTarbet,
+	StationCodeArundel:                           StationNameArundel,
+	StationCodeAscotBerks:                        StationNameAscotBerks,
+	StationCodeAscottunderWychwood:               StationNameAscottunderWychwood,
+	StationCodeAsh:                               StationNameAsh,
+	StationCodeAshVale:                           StationNameAshVale,
+	StationCodeAshburys:                          StationNameAshburys,
+	StationCodeAshchurchforTewkesbury:            StationNameAshchurchforTewkesbury,
+	StationCodeAshfield:                          StationNameAshfield,
+	StationCodeAshfordInternational:              StationNameAshfordInternational,
+	StationCodeAshfordInternationalEurostar:      StationNameAshfordInternationalEurostar,
+	StationCodeAshfordSurrey:                     StationNameAshfordSurrey,
+	StationCodeAshley:                            StationNameAshley,
+	StationCodeAshtead:                           StationNameAshtead,
+	StationCodeAshtonunderLyne:                   StationNameAshtonunderLyne,
+	StationCodeAshurstKent:                       StationNameAshurstKent,
+	StationCodeAshurstNewForest:                  StationNameAshurstNewForest,
+	StationCodeAshwellAndMorden:                  StationNameAshwellAndMorden,
+	StationCodeAskam:                             StationNameAskam,
+	StationCodeAslockton:                         StationNameAslockton,
+	StationCodeAspatria:                          StationNameAspatria,
+	StationCodeAspleyGuise:                       StationNameAspleyGuise,
+	StationCodeAston:                             StationNameAston,
+	StationCodeAtherstone:                        StationNameAtherstone,
+	StationCodeAtherton:                          StationNameAtherton,
+	StationCodeAttadale:                          StationNameAttadale,
+	StationCodeAttenborough:                      StationNameAttenborough,
+	StationCodeAttleborough:                      StationNameAttleborough,
+	StationCodeAuchinleck:                        StationNameAuchinleck,
+	StationCodeAudleyEnd:                         StationNameAudleyEnd,
+	StationCodeAughtonPark:                       StationNameAughtonPark,
+	StationCodeAviemore:                          StationNameAviemore,
+	StationCodeAvoncliff:                         StationNameAvoncliff,
+	StationCodeAvonmouth:                         StationNameAvonmouth,
+	StationCodeAxminster:                         StationNameAxminster,
+	StationCodeAylesbury:                         StationNameAylesbury,
+	StationCodeAylesburyValeParkway:              StationNameAylesburyValeParkway,
+	StationCodeAylesford:                         StationNameAylesford,
+	StationCodeAylesham:                          StationNameAylesham,
+	StationCodeAyr:                               StationNameAyr,
+	StationCodeBache:                             StationNameBache,
+	StationCodeBaglan:                            StationNameBaglan,
+	StationCodeBagshot:                           StationNameBagshot,
+	StationCodeBaildon:                           StationNameBaildon,
+	StationCodeBaillieston:                       StationNameBaillieston,
+	StationCodeBalcombe:                          StationNameBalcombe,
+	StationCodeBaldock:                           StationNameBaldock,
+	StationCodeBalham:                            StationNameBalham,
+	StationCodeBalloch:                           StationNameBalloch,
+	StationCodeBalmossie:                         StationNameBalmossie,
+	StationCodeBamberBridge:                      StationNameBamberBridge,
+	StationCodeBamford:                           StationNameBamford,
+	StationCodeBanavie:                           StationNameBanavie,
+	StationCodeBanbury:                           StationNameBanbury,
+	StationCodeBangorGwynedd:                     StationNameBangorGwynedd,
+	StationCodeBankHall:                          StationNameBankHall,
+	StationCodeBanstead:                          StationNameBanstead,
+	StationCodeBarassie:                          StationNameBarassie,
+	StationCodeBarbican:                          StationNameBarbican,
+	StationCodeBardonMill:                        StationNameBardonMill,
+	StationCodeBareLane:                          StationNameBareLane,
+	StationCodeBargeddie:                         StationNameBargeddie,
+	StationCodeBargoed:                           StationNameBargoed,
+	StationCodeBarking:                           StationNameBarking,
+	StationCodeBarlaston:                         StationNameBarlaston,
+	StationCodeBarming:                           StationNameBarming,
+	StationCodeBarmouth:                          StationNameBarmouth,
+	StationCodeBarnehurst:                        StationNameBarnehurst,
+	StationCodeBarnes:                            StationNameBarnes,
+	StationCodeBarnesBridge:                      StationNameBarnesBridge,
+	StationCodeBarnetby:                          StationNameBarnetby,
+	StationCodeBarnham:                           StationNameBarnham,
+	StationCodeBarnhill:                          StationNameBarnhill,
+	StationCodeBarnsley:                          StationNameBarnsley,
+	StationCodeBarnstaple:                        StationNameBarnstaple,
+	StationCodeBarntGreen:                        StationNameBarntGreen,
+	StationCodeBarrhead:                          StationNameBarrhead,
+	StationCodeBarrhill:                          StationNameBarrhill,
+	StationCodeBarrowHaven:                       StationNameBarrowHaven,
+	StationCodeBarrowUponSoar:                    StationNameBarrowUponSoar,
+	StationCodeBarrowinFurness:                   StationNameBarrowinFurness,
+	StationCodeBarry:                             StationNameBarry,
+	StationCodeBarryDocks:                        StationNameBarryDocks,
+	StationCodeBarryIsland:                       StationNameBarryIsland,
+	StationCodeBarryLinks:                        StationNameBarryLinks,
+	StationCodeBartononHumber:                    StationNameBartononHumber,
+	StationCodeBasildon:                          StationNameBasildon,
+	StationCodeBasingstoke:                       StationNameBasingstoke,
+	StationCodeBatAndBall:                        StationNameBatAndBall,
+	StationCodeBathSpa:                           StationNameBathSpa,
+	StationCodeBathgate:                          StationNameBathgate,
+	StationCodeBatley:                            StationNameBatley,
+	StationCodeBattersby:                         StationNameBattersby,
+	StationCodeBatterseaPark:                     StationNameBatterseaPark,
+	StationCodeBattle:                            StationNameBattle,
+	StationCodeBattlesbridge:                     StationNameBattlesbridge,
+	StationCodeBayford:                           StationNameBayford,
+	StationCodeBeaconsfield:                      StationNameBeaconsfield,
+	StationCodeBearley:                           StationNameBearley,
+	StationCodeBearsden:                          StationNameBearsden,
+	StationCodeBearsted:                          StationNameBearsted,
+	StationCodeBeasdale:                          StationNameBeasdale,
+	StationCodeBeaulieuRoad:                      StationNameBeaulieuRoad,
+	StationCodeBeauly:                            StationNameBeauly,
+	StationCodeBebington:                         StationNameBebington,
+	StationCodeBeccles:                           StationNameBeccles,
+	StationCodeBeckenhamHill:                     StationNameBeckenhamHill,
+	StationCodeBeckenhamJunction:                 StationNameBeckenhamJunction,
+	StationCodeBedford:                           StationNameBedford,
+	StationCodeBedfordStJohns:                    StationNameBedfordStJohns,
+	StationCodeBedhampton:                        StationNameBedhampton,
+	StationCodeBedminster:                        StationNameBedminster,
+	StationCodeBedworth:                          StationNameBedworth,
+	StationCodeBedwyn:                            StationNameBedwyn,
+	StationCodeBeeston:                           StationNameBeeston,
+	StationCodeBekesbourne:                       StationNameBekesbourne,
+	StationCodeBelleVue:                          StationNameBelleVue,
+	StationCodeBellgrove:                         StationNameBellgrove,
+	StationCodeBellingham:                        StationNameBellingham,
+	StationCodeBellshill:                         StationNameBellshill,
+	StationCodeBelmont:                           StationNameBelmont,
+	StationCodeBelper:                            StationNameBelper,
+	StationCodeBeltring:                          StationNameBeltring,
+	StationCodeBelvedere:                         StationNameBelvedere,
+	StationCodeBempton:                           StationNameBempton,
+	StationCodeBenRhydding:                       StationNameBenRhydding,
+	StationCodeBenfleet:                          StationNameBenfleet,
+	StationCodeBentham:                           StationNameBentham,
+	StationCodeBentleyHants:                      StationNameBentleyHants,
+	StationCodeBentleySouthYorks:                 StationNameBentleySouthYorks,
+	StationCodeBereAlston:                        StationNameBereAlston,
+	StationCodeBereFerrers:                       StationNameBereFerrers,
+	StationCodeBerkhamsted:                       StationNameBerkhamsted,
+	StationCodeBerkswell:                         StationNameBerkswell,
+	StationCodeBermudaPark:                       StationNameBermudaPark,
+	StationCodeBerneyArms:                        StationNameBerneyArms,
+	StationCodeBerryBrow:                         StationNameBerryBrow,
+	StationCodeBerrylands:                        StationNameBerrylands,
+	StationCodeBerwickSussex:                     StationNameBerwickSussex,
+	StationCodeBerwickUponTweed:                  StationNameBerwickUponTweed,
+	StationCodeBescarLane:                        StationNameBescarLane,
+	StationCodeBescotStadium:                     StationNameBescotStadium,
+	StationCodeBetchworth:                        StationNameBetchworth,
+	StationCodeBethnalGreen:                      StationNameBethnalGreen,
+	StationCodeBetwsyCoed:                        StationNameBetwsyCoed,
+	StationCodeBeverley:                          StationNameBeverley,
+	StationCodeBexhill:                           StationNameBexhill,
+	StationCodeBexley:                            StationNameBexley,
+	StationCodeBexleyheath:                       StationNameBexleyheath,
+	StationCodeBicesterNorth:                     StationNameBicesterNorth,
+	StationCodeBicesterVillage:                   StationNameBicesterVillage,
+	StationCodeBickley:                           StationNameBickley,
+	StationCodeBidston:                           StationNameBidston,
+	StationCodeBiggleswade:                       StationNameBiggleswade,
+	StationCodeBilbrook:                          StationNameBilbrook,
+	StationCodeBillericay:                        StationNameBillericay,
+	StationCodeBillinghamCleveland:               StationNameBillinghamCleveland,
+	StationCodeBillingshurst:                     StationNameBillingshurst,
+	StationCodeBingham:                           StationNameBingham,
+	StationCodeBingley:                           StationNameBingley,
+	StationCodeBirchgrove:                        StationNameBirchgrove,
+	StationCodeBirchingtononsea:                  StationNameBirchingtononsea,
+	StationCodeBirchwood:                         StationNameBirchwood,
+	StationCodeBirkbeck:                          StationNameBirkbeck,
+	StationCodeBirkdale:                          StationNameBirkdale,
+	StationCodeBirkenheadCentral:                 StationNameBirkenheadCentral,
+	StationCodeBirkenheadHamiltonSquare:          StationNameBirkenheadHamiltonSquare,
+	StationCodeBirkenheadNorth:                   StationNameBirkenheadNorth,
+	StationCodeBirkenheadPark:                    StationNameBirkenheadPark,
+	StationCodeBirminghamInternational:           StationNameBirminghamInternational,
+	StationCodeBirminghamMoorStreet:              StationNameBirminghamMoorStreet,
+	StationCodeBirminghamNewStreet:               StationNameBirminghamNewStreet,
+	StationCodeBirminghamSnowHill:                StationNameBirminghamSnowHill,
+	StationCodeBishopAuckland:                    StationNameBishopAuckland,
+	StationCodeBishopbriggs:                      StationNameBishopbriggs,
+	StationCodeBishopsStortford:                  StationNameBishopsStortford,
+	StationCodeBishopstoneSussex:                 StationNameBishopstoneSussex,
+	StationCodeBishoptonStrathclyde:              StationNameBishoptonStrathclyde,
+	StationCodeBitterne:                          StationNameBitterne,
+	StationCodeBlackburn:                         StationNameBlackburn,
+	StationCodeBlackheath:                        StationNameBlackheath,
+	StationCodeBlackhorseRoad:                    StationNameBlackhorseRoad,
+	StationCodeBlackpoolNorth:                    StationNameBlackpoolNorth,
+	StationCodeBlackpoolPleasureBeach:            StationNameBlackpoolPleasureBeach,
+	StationCodeBlackpoolSouth:                    StationNameBlackpoolSouth,
+	StationCodeBlackridge:                        StationNameBlackridge,
+	StationCodeBlackrod:                          StationNameBlackrod,
+	StationCodeBlackwater:                        StationNameBlackwater,
+	StationCodeBlaenauFfestiniog:                 StationNameBlaenauFfestiniog,
+	StationCodeBlairAtholl:                       StationNameBlairAtholl,
+	StationCodeBlairhill:                         StationNameBlairhill,
+	StationCodeBlakeStreet:                       StationNameBlakeStreet,
+	StationCodeBlakedown:                         StationNameBlakedown,
+	StationCodeBlantyre:                          StationNameBlantyre,
+	StationCodeBlaydon:                           StationNameBlaydon,
+	StationCodeBleasby:                           StationNameBleasby,
+	StationCodeBletchley:                         StationNameBletchley,
+	StationCodeBloxwich:                          StationNameBloxwich,
+	StationCodeBloxwichNorth:                     StationNameBloxwichNorth,
+	StationCodeBlundellsandsAndCrosby:            StationNameBlundellsandsAndCrosby,
+	StationCodeBlytheBridge:                      StationNameBlytheBridge,
+	StationCodeBodminParkway:                     StationNameBodminParkway,
+	StationCodeBodorgan:                          StationNameBodorgan,
+	StationCodeBognorRegis:                       StationNameBognorRegis,
+	StationCodeBogston:                           StationNameBogston,
+	StationCodeBolton:                            StationNameBolton,
+	StationCodeBoltonUponDearne:                  StationNameBoltonUponDearne,
+	StationCodeBookham:                           StationNameBookham,
+	StationCodeBootleCumbria:                     StationNameBootleCumbria,
+	StationCodeBootleNewStrand:                   StationNameBootleNewStrand,
+	StationCodeBootleOrielRoad:                   StationNameBootleOrielRoad,
+	StationCodeBordesley:                         StationNameBordesley,
+	StationCodeBoroughGreenAndWrotham:            StationNameBoroughGreenAndWrotham,
+	StationCodeBorth:                             StationNameBorth,
+	StationCodeBosham:                            StationNameBosham,
+	StationCodeBoston:                            StationNameBoston,
+	StationCodeBotley:                            StationNameBotley,
+	StationCodeBottesford:                        StationNameBottesford,
+	StationCodeBourneEnd:                         StationNameBourneEnd,
+	StationCodeBournemouth:                       StationNameBournemouth,
+	StationCodeBournville:                        StationNameBournville,
+	StationCodeBowBrickhill:                      StationNameBowBrickhill,
+	StationCodeBowesPark:                         StationNameBowesPark,
+	StationCodeBowling:                           StationNameBowling,
+	StationCodeBoxHillAndWesthumble:              StationNameBoxHillAndWesthumble,
+	StationCodeBracknell:                         StationNameBracknell,
+	StationCodeBradfordForsterSquare:             StationNameBradfordForsterSquare,
+	StationCodeBradfordInterchange:               StationNameBradfordInterchange,
+	StationCodeBradfordonAvon:                    StationNameBradfordonAvon,
+	StationCodeBrading:                           StationNameBrading,
+	StationCodeBraintree:                         StationNameBraintree,
+	StationCodeBraintreeFreeport:                 StationNameBraintreeFreeport,
+	StationCodeBramhall:                          StationNameBramhall,
+	StationCodeBramleyHants:                      StationNameBramleyHants,
+	StationCodeBramleyWYorks:                     StationNameBramleyWYorks,
+	StationCodeBramptonCumbria:                   StationNameBramptonCumbria,
+	StationCodeBramptonSuffolk:                   StationNameBramptonSuffolk,
+	StationCodeBranchton:                         StationNameBranchton,
+	StationCodeBrandon:                           StationNameBrandon,
+	StationCodeBranksome:                         StationNameBranksome,
+	StationCodeBraystonesCumbria:                 StationNameBraystonesCumbria,
+	StationCodeBredbury:                          StationNameBredbury,
+	StationCodeBreich:                            StationNameBreich,
+	StationCodeBrentford:                         StationNameBrentford,
+	StationCodeBrentwood:                         StationNameBrentwood,
+	StationCodeBricketWood:                       StationNameBricketWood,
+	StationCodeBridgend:                          StationNameBridgend,
+	StationCodeBridgeofAllan:                     StationNameBridgeofAllan,
+	StationCodeBridgeofOrchy:                     StationNameBridgeofOrchy,
+	StationCodeBridgeton:                         StationNameBridgeton,
+	StationCodeBridgwater:                        StationNameBridgwater,
+	StationCodeBridlington:                       StationNameBridlington,
+	StationCodeBrierfield:                        StationNameBrierfield,
+	StationCodeBrigg:                             StationNameBrigg,
+	StationCodeBrighouse:                         StationNameBrighouse,
+	StationCodeBrightonEastSussex:                StationNameBrightonEastSussex,
+	StationCodeBrimsdown:                         StationNameBrimsdown,
+	StationCodeBrinnington:                       StationNameBrinnington,
+	StationCodeBristolParkway:                    StationNameBristolParkway,
+	StationCodeBristolTempleMeads:                StationNameBristolTempleMeads,
+	StationCodeBrithdir:                          StationNameBrithdir,
+	StationCodeBritonFerry:                       StationNameBritonFerry,
+	StationCodeBrixton:                           StationNameBrixton,
+	StationCodeBroadGreen:                        StationNameBroadGreen,
+	StationCodeBroadbottom:                       StationNameBroadbottom,
+	StationCodeBroadstairs:                       StationNameBroadstairs,
+	StationCodeBrockenhurst:                      StationNameBrockenhurst,
+	StationCodeBrockholes:                        StationNameBrockholes,
+	StationCodeBrockley:                          StationNameBrockley,
+	StationCodeBromborough:                       StationNameBromborough,
+	StationCodeBromboroughRake:                   StationNameBromboroughRake,
+	StationCodeBromleyCrossLancs:                 StationNameBromleyCrossLancs,
+	StationCodeBromleyNorth:                      StationNameBromleyNorth,
+	StationCodeBromleySouth:                      StationNameBromleySouth,
+	StationCodeBromsgrove:                        StationNameBromsgrove,
+	StationCodeBrondesbury:                       StationNameBrondesbury,
+	StationCodeBrondesburyPark:                   StationNameBrondesburyPark,
+	StationCodeBrookmansPark:                     StationNameBrookmansPark,
+	StationCodeBrookwood:                         StationNameBrookwood,
+	StationCodeBroome:                            StationNameBroome,
+	StationCodeBroomfleet:                        StationNameBroomfleet,
+	StationCodeBrora:                             StationNameBrora,
+	StationCodeBrough:                            StationNameBrough,
+	StationCodeBroughtyFerry:                     StationNameBroughtyFerry,
+	StationCodeBroxbourne:                        StationNameBroxbourne,
+	StationCodeBruceGrove:                        StationNameBruceGrove,
+	StationCodeBrundall:                          StationNameBrundall,
+	StationCodeBrundallGardens:                   StationNameBrundallGardens,
+	StationCodeBrunstane:                         StationNameBrunstane,
+	StationCodeBrunswick:                         StationNameBrunswick,
+	StationCodeBruton:                            StationNameBruton,
+	StationCodeBryn:                              StationNameBryn,
+	StationCodeBuckenhamNorfolk:                  StationNameBuckenhamNorfolk,
+	StationCodeBuckley:                           StationNameBuckley,
+	StationCodeBucknell:                          StationNameBucknell,
+	StationCodeBuckshawParkway:                   StationNameBuckshawParkway,
+	StationCodeBugle:                             StationNameBugle,
+	StationCodeBuilthRoad:                        StationNameBuilthRoad,
+	StationCodeBulwell:                           StationNameBulwell,
+	StationCodeBures:                             StationNameBures,
+	StationCodeBurgessHill:                       StationNameBurgessHill,
+	StationCodeBurleyPark:                        StationNameBurleyPark,
+	StationCodeBurleyinWharfedale:                StationNameBurleyinWharfedale,
+	StationCodeBurnage:                           StationNameBurnage,
+	StationCodeBurnesideCumbria:                  StationNameBurnesideCumbria,
+	StationCodeBurnhamBucks:                      StationNameBurnhamBucks,
+	StationCodeBurnhamonCrouch:                   StationNameBurnhamonCrouch,
+	StationCodeBurnleyBarracks:                   StationNameBurnleyBarracks,
+	StationCodeBurnleyCentral:                    StationNameBurnleyCentral,
+	StationCodeBurnleyManchesterRoad:             StationNameBurnleyManchesterRoad,
+	StationCodeBurnsideStrathclyde:               StationNameBurnsideStrathclyde,
+	StationCodeBurntisland:                       StationNameBurntisland,
+	StationCodeBurscoughBridge:                   StationNameBurscoughBridge,
+	StationCodeBurscoughJunction:                 StationNameBurscoughJunction,
+	StationCodeBursledon:                         StationNameBursledon,
+	StationCodeBurtonJoyce:                       StationNameBurtonJoyce,
+	StationCodeBurtononTrent:                     StationNameBurtononTrent,
+	StationCodeBuryStEdmunds:                     StationNameBuryStEdmunds,
+	StationCodeBusby:                             StationNameBusby,
+	StationCodeBushHillPark:                      StationNameBushHillPark,
+	StationCodeBushey:                            StationNameBushey,
+	StationCodeButlersLane:                       StationNameButlersLane,
+	StationCodeBuxted:                            StationNameBuxted,
+	StationCodeBuxton:                            StationNameBuxton,
+	StationCodeByfleetAndNewHaw:                  StationNameByfleetAndNewHaw,
+	StationCodeBynea:                             StationNameBynea,
+	StationCodeCadoxton:                          StationNameCadoxton,
+	StationCodeCaergwrle:                         StationNameCaergwrle,
+	StationCodeCaerphilly:                        StationNameCaerphilly,
+	StationCodeCaersws:                           StationNameCaersws,
+	StationCodeCaldercruix:                       StationNameCaldercruix,
+	StationCodeCaldicot:                          StationNameCaldicot,
+	StationCodeCaledonianRdAndBarnsbury:          StationNameCaledonianRdAndBarnsbury,
+	StationCodeCalstock:                          StationNameCalstock,
+	StationCodeCamAndDursley:                     StationNameCamAndDursley,
+	StationCodeCamberley:                         StationNameCamberley,
+	StationCodeCamborne:                          StationNameCamborne,
+	StationCodeCambridge:                         StationNameCambridge,
+	StationCodeCambridgeHeath:                    StationNameCambridgeHeath,
+	StationCodeCambuslang:                        StationNameCambuslang,
+	StationCodeCamdenRoad:                        StationNameCamdenRoad,
+	StationCodeCamelon:                           StationNameCamelon,
+	StationCodeCanadaWater:                       StationNameCanadaWater,
+	StationCodeCanley:                            StationNameCanley,
+	StationCodeCannock:                           StationNameCannock,
+	StationCodeCanonbury:                         StationNameCanonbury,
+	StationCodeCanterburyEast:                    StationNameCanterburyEast,
+	StationCodeCanterburyWest:                    StationNameCanterburyWest,
+	StationCodeCantley:                           StationNameCantley,
+	StationCodeCapenhurst:                        StationNameCapenhurst,
+	StationCodeCarbisBay:                         StationNameCarbisBay,
+	StationCodeCardenden:                         StationNameCardenden,
+	StationCodeCardiffBay:                        StationNameCardiffBay,
+	StationCodeCardiffCentral:                    StationNameCardiffCentral,
+	StationCodeCardiffQueenStreet:                StationNameCardiffQueenStreet,
+	StationCodeCardonald:                         StationNameCardonald,
+	StationCodeCardross:                          StationNameCardross,
+	StationCodeCarfin:                            StationNameCarfin,
+	StationCodeCarkAndCartmel:                    StationNameCarkAndCartmel,
+	StationCodeCarlisle:                          StationNameCarlisle,
+	StationCodeCarlton:                           StationNameCarlton,
+	StationCodeCarluke:                           StationNameCarluke,
+	StationCodeCarmarthen:                        StationNameCarmarthen,
+	StationCodeCarmyle:                           StationNameCarmyle,
+	StationCodeCarnforth:                         StationNameCarnforth,
+	StationCodeCarnoustie:                        StationNameCarnoustie,
+	StationCodeCarntyne:                          StationNameCarntyne,
+	StationCodeCarpendersPark:                    StationNameCarpendersPark,
+	StationCodeCarrbridge:                        StationNameCarrbridge,
+	StationCodeCarshalton:                        StationNameCarshalton,
+	StationCodeCarshaltonBeeches:                 StationNameCarshaltonBeeches,
+	StationCodeCarstairs:                         StationNameCarstairs,
+	StationCodeCartsdyke:                         StationNameCartsdyke,
+	StationCodeCastleBarPark:                     StationNameCastleBarPark,
+	StationCodeCastleCary:                        StationNameCastleCary,
+	StationCodeCastleford:                        StationNameCastleford,
+	StationCodeCastletonManchester:               StationNameCastletonManchester,
+	StationCodeCastletonMoor:                     StationNameCastletonMoor,
+	StationCodeCaterham:                          StationNameCaterham,
+	StationCodeCatford:                           StationNameCatford,
+	StationCodeCatfordBridge:                     StationNameCatfordBridge,
+	StationCodeCathays:                           StationNameCathays,
+	StationCodeCathcart:                          StationNameCathcart,
+	StationCodeCattal:                            StationNameCattal,
+	StationCodeCauseland:                         StationNameCauseland,
+	StationCodeCefnyBedd:                         StationNameCefnyBedd,
+	StationCodeChadwellHeath:                     StationNameChadwellHeath,
+	StationCodeChaffordHundredLakeside:           StationNameChaffordHundredLakeside,
+	StationCodeChalfontAndLatimer:                StationNameChalfontAndLatimer,
+	StationCodeChalkwell:                         StationNameChalkwell,
+	StationCodeChandlersFord:                     StationNameChandlersFord,
+	StationCodeChapelenleFrith:                   StationNameChapelenleFrith,
+	StationCodeChapeltonDevon:                    StationNameChapeltonDevon,
+	StationCodeChapeltownSouthYorks:              StationNameChapeltownSouthYorks,
+	StationCodeChappelAndWakesColne:              StationNameChappelAndWakesColne,
+	StationCodeCharingCrossGlasgow:               StationNameCharingCrossGlasgow,
+	StationCodeCharingKent:                       StationNameCharingKent,
+	StationCodeCharlbury:                         StationNameCharlbury,
+	StationCodeCharlton:                          StationNameCharlton,
+	StationCodeChartham:                          StationNameChartham,
+	StationCodeChassenRoad:                       StationNameChassenRoad,
+	StationCodeChatelherault:                     StationNameChatelherault,
+	StationCodeChatham:                           StationNameChatham,
+	StationCodeChathill:                          StationNameChathill,
+	StationCodeCheadleHulme:                      StationNameCheadleHulme,
+	StationCodeCheam:                             StationNameCheam,
+	StationCodeCheddington:                       StationNameCheddington,
+	StationCodeChelfordCheshire:                  StationNameChelfordCheshire,
+	StationCodeChelmsford:                        StationNameChelmsford,
+	StationCodeChelsfield:                        StationNameChelsfield,
+	StationCodeCheltenhamSpa:                     StationNameCheltenhamSpa,
+	StationCodeChepstow:                          StationNameChepstow,
+	StationCodeCherryTree:                        StationNameCherryTree,
+	StationCodeChertsey:                          StationNameChertsey,
+	StationCodeCheshunt:                          StationNameCheshunt,
+	StationCodeChessingtonNorth:                  StationNameChessingtonNorth,
+	StationCodeChessingtonSouth:                  StationNameChessingtonSouth,
+	StationCodeChester:                           StationNameChester,
+	StationCodeChesterRoad:                       StationNameChesterRoad,
+	StationCodeChesterfield:                      StationNameChesterfield,
+	StationCodeChesterleStreet:                   StationNameChesterleStreet,
+	StationCodeChestfieldAndSwalecliffe:          StationNameChestfieldAndSwalecliffe,
+	StationCodeChetnole:                          StationNameChetnole,
+	StationCodeChichester:                        StationNameChichester,
+	StationCodeChilham:                           StationNameChilham,
+	StationCodeChilworth:                         StationNameChilworth,
+	StationCodeChingford:                         StationNameChingford,
+	StationCodeChinley:                           StationNameChinley,
+	StationCodeChippenham:                        StationNameChippenham,
+	StationCodeChipstead:                         StationNameChipstead,
+	StationCodeChirk:                             StationNameChirk,
+	StationCodeChislehurst:                       StationNameChislehurst,
+	StationCodeChiswick:                          StationNameChiswick,
+	StationCodeCholsey:                           StationNameCholsey,
+	StationCodeChorley:                           StationNameChorley,
+	StationCodeChorleywood:                       StationNameChorleywood,
+	StationCodeChristchurch:                      StationNameChristchurch,
+	StationCodeChristsHospital:                   StationNameChristsHospital,
+	StationCodeChurchAndOswaldtwistle:            StationNameChurchAndOswaldtwistle,
+	StationCodeChurchFenton:                      StationNameChurchFenton,
+	StationCodeChurchStretton:                    StationNameChurchStretton,
+	StationCodeCilmeri:                           StationNameCilmeri,
+	StationCodeCityThameslink:                    StationNameCityThameslink,
+	StationCodeClactononSea:                      StationNameClactononSea,
+	StationCodeClandon:                           StationNameClandon,
+	StationCodeClaphamHighStreet:                 StationNameClaphamHighStreet,
+	StationCodeClaphamJunction:                   StationNameClaphamJunction,
+	StationCodeClaphamNorthYorkshire:             StationNameClaphamNorthYorkshire,
+	StationCodeClapton:                           StationNameClapton,
+	StationCodeClarbestonRoad:                    StationNameClarbestonRoad,
+	StationCodeClarkston:                         StationNameClarkston,
+	StationCodeClaverdon:                         StationNameClaverdon,
+	StationCodeClaygate:                          StationNameClaygate,
+	StationCodeCleethorpes:                       StationNameCleethorpes,
+	StationCodeCleland:                           StationNameCleland,
+	StationCodeCliftonDown:                       StationNameCliftonDown,
+	StationCodeCliftonManchester:                 StationNameCliftonManchester,
+	StationCodeClitheroe:                         StationNameClitheroe,
+	StationCodeClockHouse:                        StationNameClockHouse,
+	StationCodeClunderwen:                        StationNameClunderwen,
+	StationCodeClydebank:                         StationNameClydebank,
+	StationCodeCoatbridgeCentral:                 StationNameCoatbridgeCentral,
+	StationCodeCoatbridgeSunnyside:               StationNameCoatbridgeSunnyside,
+	StationCodeCoatdyke:                          StationNameCoatdyke,
+	StationCodeCobhamAndStokedAbernon:            StationNameCobhamAndStokedAbernon,
+	StationCodeCodsall:                           StationNameCodsall,
+	StationCodeCogan:                             StationNameCogan,
+	StationCodeColchester:                        StationNameColchester,
+	StationCodeColchesterTown:                    StationNameColchesterTown,
+	StationCodeColeshillParkway:                  StationNameColeshillParkway,
+	StationCodeCollingham:                        StationNameCollingham,
+	StationCodeCollington:                        StationNameCollington,
+	StationCodeColne:                             StationNameColne,
+	StationCodeColwall:                           StationNameColwall,
+	StationCodeColwynBay:                         StationNameColwynBay,
+	StationCodeCombeOxon:                         StationNameCombeOxon,
+	StationCodeCommondale:                        StationNameCommondale,
+	StationCodeCongleton:                         StationNameCongleton,
+	StationCodeConisbrough:                       StationNameConisbrough,
+	StationCodeConnelFerry:                       StationNameConnelFerry,
+	StationCodeCononBridge:                       StationNameCononBridge,
+	StationCodeCononley:                          StationNameCononley,
+	StationCodeConwayPark:                        StationNameConwayPark,
+	StationCodeConwy:                             StationNameConwy,
+	StationCodeCoodenBeach:                       StationNameCoodenBeach,
+	StationCodeCookham:                           StationNameCookham,
+	StationCodeCooksbridge:                       StationNameCooksbridge,
+	StationCodeCoombeJunctionHalt:                StationNameCoombeJunctionHalt,
+	StationCodeCopplestone:                       StationNameCopplestone,
+	StationCodeCorbridge:                         StationNameCorbridge,
+	StationCodeCorby:                             StationNameCorby,
+	StationCodeCorkerhill:                        StationNameCorkerhill,
+	StationCodeCorkickle:                         StationNameCorkickle,
+	StationCodeCorpach:                           StationNameCorpach,
+	StationCodeCorrour:                           StationNameCorrour,
+	StationCodeCoryton:                           StationNameCoryton,
+	StationCodeCoseley:                           StationNameCoseley,
+	StationCodeCosford:                           StationNameCosford,
+	StationCodeCosham:                            StationNameCosham,
+	StationCodeCottingham:                        StationNameCottingham,
+	StationCodeCottingley:                        StationNameCottingley,
+	StationCodeCoulsdonSouth:                     StationNameCoulsdonSouth,
+	StationCodeCoulsdonTown:                      StationNameCoulsdonTown,
+	StationCodeCoventry:                          StationNameCoventry,
+	StationCodeCoventryArena:                     StationNameCoventryArena,
+	StationCodeCowdenKent:                        StationNameCowdenKent,
+	StationCodeCowdenbeath:                       StationNameCowdenbeath,
+	StationCodeCradleyHeath:                      StationNameCradleyHeath,
+	StationCodeCraigendoran:                      StationNameCraigendoran,
+	StationCodeCramlington:                       StationNameCramlington,
+	StationCodeCranbrookDevon:                    StationNameCranbrookDevon,
+	StationCodeCravenArms:                        StationNameCravenArms,
+	StationCodeCrawley:                           StationNameCrawley,
+	StationCodeCrayford:                          StationNameCrayford,
+	StationCodeCrediton:                          StationNameCrediton,
+	StationCodeCressingEssex:                     StationNameCressingEssex,
+	StationCodeCressington:                       StationNameCressington,
+	StationCodeCreswell:                          StationNameCreswell,
+	StationCodeCrewe:                             StationNameCrewe,
+	StationCodeCrewkerne:                         StationNameCrewkerne,
+	StationCodeCrewsHill:                         StationNameCrewsHill,
+	StationCodeCrianlarich:                       StationNameCrianlarich,
+	StationCodeCriccieth:                         StationNameCriccieth,
+	StationCodeCricklewood:                       StationNameCricklewood,
+	StationCodeCroftfoot:                         StationNameCroftfoot,
+	StationCodeCroftonPark:                       StationNameCroftonPark,
+	StationCodeCromer:                            StationNameCromer,
+	StationCodeCromford:                          StationNameCromford,
+	StationCodeCrookston:                         StationNameCrookston,
+	StationCodeCrossGates:                        StationNameCrossGates,
+	StationCodeCrossflatts:                       StationNameCrossflatts,
+	StationCodeCrosshill:                         StationNameCrosshill,
+	StationCodeCrosskeys:                         StationNameCrosskeys,
+	StationCodeCrossmyloof:                       StationNameCrossmyloof,
+	StationCodeCroston:                           StationNameCroston,
+	StationCodeCrouchHill:                        StationNameCrouchHill,
+	StationCodeCrowborough:                       StationNameCrowborough,
+	StationCodeCrowhurst:                         StationNameCrowhurst,
+	StationCodeCrowle:                            StationNameCrowle,
+	StationCodeCrowthorne:                        StationNameCrowthorne,
+	StationCodeCroy:                              StationNameCroy,
+	StationCodeCrystalPalace:                     StationNameCrystalPalace,
+	StationCodeCuddington:                        StationNameCuddington,
+	StationCodeCuffley:                           StationNameCuffley,
+	StationCodeCulham:                            StationNameCulham,
+	StationCodeCulrain:                           StationNameCulrain,
+	StationCodeCumbernauld:                       StationNameCumbernauld,
+	StationCodeCupar:                             StationNameCupar,
+	StationCodeCurriehill:                        StationNameCurriehill,
+	StationCodeCuxton:                            StationNameCuxton,
+	StationCodeCwmbach:                           StationNameCwmbach,
+	StationCodeCwmbran:                           StationNameCwmbran,
+	StationCodeCynghordy:                         StationNameCynghordy,
+	StationCodeDagenhamDock:                      StationNameDagenhamDock,
+	StationCodeDaisyHill:                         StationNameDaisyHill,
+	StationCodeDalgetyBay:                        StationNameDalgetyBay,
+	StationCodeDalmally:                          StationNameDalmally,
+	StationCodeDalmarnock:                        StationNameDalmarnock,
+	StationCodeDalmeny:                           StationNameDalmeny,
+	StationCodeDalmuir:                           StationNameDalmuir,
+	StationCodeDalreoch:                          StationNameDalreoch,
+	StationCodeDalry:                             StationNameDalry,
+	StationCodeDalstonCumbria:                    StationNameDalstonCumbria,
+	StationCodeDalstonJunction:                   StationNameDalstonJunction,
+	StationCodeDalstonKingsland:                  StationNameDalstonKingsland,
+	StationCodeDaltonCumbria:                     StationNameDaltonCumbria,
+	StationCodeDalwhinnie:                        StationNameDalwhinnie,
+	StationCodeDanby:                             StationNameDanby,
+	StationCodeDanescourt:                        StationNameDanescourt,
+	StationCodeDanzey:                            StationNameDanzey,
+	StationCodeDarlington:                        StationNameDarlington,
+	StationCodeDarnall:                           StationNameDarnall,
+	StationCodeDarsham:                           StationNameDarsham,
+	StationCodeDartford:                          StationNameDartford,
+	StationCodeDarton:                            StationNameDarton,
+	StationCodeDarwen:                            StationNameDarwen,
+	StationCodeDatchet:                           StationNameDatchet,
+	StationCodeDavenport:                         StationNameDavenport,
+	StationCodeDawlish:                           StationNameDawlish,
+	StationCodeDawlishWarren:                     StationNameDawlishWarren,
+	StationCodeDeal:                              StationNameDeal,
+	StationCodeDeanWilts:                         StationNameDeanWilts,
+	StationCodeDeansgate:                         StationNameDeansgate,
+	StationCodeDeganwy:                           StationNameDeganwy,
+	StationCodeDeighton:                          StationNameDeighton,
+	StationCodeDelamere:                          StationNameDelamere,
+	StationCodeDenbyDale:                         StationNameDenbyDale,
+	StationCodeDenham:                            StationNameDenham,
+	StationCodeDenhamGolfClub:                    StationNameDenhamGolfClub,
+	StationCodeDenmarkHill:                       StationNameDenmarkHill,
+	StationCodeDent:                              StationNameDent,
+	StationCodeDenton:                            StationNameDenton,
+	StationCodeDeptford:                          StationNameDeptford,
+	StationCodeDerby:                             StationNameDerby,
+	StationCodeDerbyRoadIpswich:                  StationNameDerbyRoadIpswich,
+	StationCodeDevonportDevon:                    StationNameDevonportDevon,
+	StationCodeDevonportDockyard:                 StationNameDevonportDockyard,
+	StationCodeDewsbury:                          StationNameDewsbury,
+	StationCodeDidcotParkway:                     StationNameDidcotParkway,
+	StationCodeDigbyAndSowton:                    StationNameDigbyAndSowton,
+	StationCodeDiltonMarsh:                       StationNameDiltonMarsh,
+	StationCodeDinasPowys:                        StationNameDinasPowys,
+	StationCodeDinasRhondda:                      StationNameDinasRhondda,
+	StationCodeDingleRoad:                        StationNameDingleRoad,
+	StationCodeDingwall:                          StationNameDingwall,
+	StationCodeDinsdale:                          StationNameDinsdale,
+	StationCodeDinting:                           StationNameDinting,
+	StationCodeDisley:                            StationNameDisley,
+	StationCodeDiss:                              StationNameDiss,
+	StationCodeDodworth:                          StationNameDodworth,
+	StationCodeDolau:                             StationNameDolau,
+	StationCodeDoleham:                           StationNameDoleham,
+	StationCodeDolgarrog:                         StationNameDolgarrog,
+	StationCodeDolwyddelan:                       StationNameDolwyddelan,
+	StationCodeDoncaster:                         StationNameDoncaster,
+	StationCodeDorchesterSouth:                   StationNameDorchesterSouth,
+	StationCodeDorchesterWest:                    StationNameDorchesterWest,
+	StationCodeDoreAndTotley:                     StationNameDoreAndTotley,
+	StationCodeDorkingDeepdene:                   StationNameDorkingDeepdene,
+	StationCodeDorkingMain:                       StationNameDorkingMain,
+	StationCodeDorkingWest:                       StationNameDorkingWest,
+	StationCodeDormans:                           StationNameDormans,
+	StationCodeDorridge:                          StationNameDorridge,
+	StationCodeDoveHoles:                         StationNameDoveHoles,
+	StationCodeDoverPriory:                       StationNameDoverPriory,
+	StationCodeDovercourt:                        StationNameDovercourt,
+	StationCodeDoveyJunction:                     StationNameDoveyJunction,
+	StationCodeDownhamMarket:                     StationNameDownhamMarket,
+	StationCodeDraytonGreen:                      StationNameDraytonGreen,
+	StationCodeDraytonPark:                       StationNameDraytonPark,
+	StationCodeDrem:                              StationNameDrem,
+	StationCodeDriffield:                         StationNameDriffield,
+	StationCodeDrigg:                             StationNameDrigg,
+	StationCodeDroitwichSpa:                      StationNameDroitwichSpa,
+	StationCodeDronfield:                         StationNameDronfield,
+	StationCodeDrumchapel:                        StationNameDrumchapel,
+	StationCodeDrumfrochar:                       StationNameDrumfrochar,
+	StationCodeDrumgelloch:                       StationNameDrumgelloch,
+	StationCodeDrumry:                            StationNameDrumry,
+	StationCodeDublinFerryport:                   StationNameDublinFerryport,
+	StationCodeDublinPortStena:                   StationNameDublinPortStena,
+	StationCodeDuddeston:                         StationNameDuddeston,
+	StationCodeDudleyPort:                        StationNameDudleyPort,
+	StationCodeDuffield:                          StationNameDuffield,
+	StationCodeDuirinish:                         StationNameDuirinish,
+	StationCodeDukeStreet:                        StationNameDukeStreet,
+	StationCodeDullingham:                        StationNameDullingham,
+	StationCodeDumbartonCentral:                  StationNameDumbartonCentral,
+	StationCodeDumbartonEast:                     StationNameDumbartonEast,
+	StationCodeDumbreck:                          StationNameDumbreck,
+	StationCodeDumfries:                          StationNameDumfries,
+	StationCodeDumptonPark:                       StationNameDumptonPark,
+	StationCodeDunbar:                            StationNameDunbar,
+	StationCodeDunblane:                          StationNameDunblane,
+	StationCodeDuncraig:                          StationNameDuncraig,
+	StationCodeDundee:                            StationNameDundee,
+	StationCodeDunfermlineQueenMargaret:          StationNameDunfermlineQueenMargaret,
+	StationCodeDunfermlineTown:                   StationNameDunfermlineTown,
+	StationCodeDunkeldAndBirnam:                  StationNameDunkeldAndBirnam,
+	StationCodeDunlop:                            StationNameDunlop,
+	StationCodeDunrobinCastle:                    StationNameDunrobinCastle,
+	StationCodeDunston:                           StationNameDunston,
+	StationCodeDuntonGreen:                       StationNameDuntonGreen,
+	StationCodeDurham:                            StationNameDurham,
+	StationCodeDurringtononSea:                   StationNameDurringtononSea,
+	StationCodeDyce:                              StationNameDyce,
+	StationCodeDyffrynArdudwy:                    StationNameDyffrynArdudwy,
+	StationCodeEaglescliffe:                      StationNameEaglescliffe,
+	StationCodeEalingBroadway:                    StationNameEalingBroadway,
+	StationCodeEarlestown:                        StationNameEarlestown,
+	StationCodeEarley:                            StationNameEarley,
+	StationCodeEarlsfield:                        StationNameEarlsfield,
+	StationCodeEarlswoodSurrey:                   StationNameEarlswoodSurrey,
+	StationCodeEarlswoodWestMidlands:             StationNameEarlswoodWestMidlands,
+	StationCodeEastCroydon:                       StationNameEastCroydon,
+	StationCodeEastDidsbury:                      StationNameEastDidsbury,
+	StationCodeEastDulwich:                       StationNameEastDulwich,
+	StationCodeEastFarleigh:                      StationNameEastFarleigh,
+	StationCodeEastGarforth:                      StationNameEastGarforth,
+	StationCodeEastGrinstead:                     StationNameEastGrinstead,
+	StationCodeEastKilbride:                      StationNameEastKilbride,
+	StationCodeEastMalling:                       StationNameEastMalling,
+	StationCodeEastMidlandsParkway:               StationNameEastMidlandsParkway,
+	StationCodeEastTilbury:                       StationNameEastTilbury,
+	StationCodeEastWorthing:                      StationNameEastWorthing,
+	StationCodeEastbourne:                        StationNameEastbourne,
+	StationCodeEastbrook:                         StationNameEastbrook,
+	StationCodeEasterhouse:                       StationNameEasterhouse,
+	StationCodeEasthamRake:                       StationNameEasthamRake,
+	StationCodeEastleigh:                         StationNameEastleigh,
+	StationCodeEastrington:                       StationNameEastrington,
+	StationCodeEbbsfleetInternational:            StationNameEbbsfleetInternational,
+	StationCodeEbbwValeParkway:                   StationNameEbbwValeParkway,
+	StationCodeEbbwValeTown:                      StationNameEbbwValeTown,
+	StationCodeEcclesManchester:                  StationNameEcclesManchester,
+	StationCodeEcclesRoad:                        StationNameEcclesRoad,
+	StationCodeEcclestonPark:                     StationNameEcclestonPark,
+	StationCodeEdale:                             StationNameEdale,
+	StationCodeEdenPark:                          StationNameEdenPark,
+	StationCodeEdenbridge:                        StationNameEdenbridge,
+	StationCodeEdenbridgeTown:                    StationNameEdenbridgeTown,
+	StationCodeEdgeHill:                          StationNameEdgeHill,
+	StationCodeEdinburgh:                         StationNameEdinburgh,
+	StationCodeEdinburghGateway:                  StationNameEdinburghGateway,
+	StationCodeEdinburghPark:                     StationNameEdinburghPark,
+	StationCodeEdmontonGreen:                     StationNameEdmontonGreen,
+	StationCodeEffinghamJunction:                 StationNameEffinghamJunction,
+	StationCodeEggesford:                         StationNameEggesford,
+	StationCodeEgham:                             StationNameEgham,
+	StationCodeEgton:                             StationNameEgton,
+	StationCodeElephantAndCastle:                 StationNameElephantAndCastle,
+	StationCodeElephantAndCastleUnderground:      StationNameElephantAndCastleUnderground,
+	StationCodeElgin:                             StationNameElgin,
+	StationCodeEllesmerePort:                     StationNameEllesmerePort,
+	StationCodeElmersEnd:                         StationNameElmersEnd,
+	StationCodeElmsteadWoods:                     StationNameElmsteadWoods,
+	StationCodeElmswell:                          StationNameElmswell,
+	StationCodeElsecar:                           StationNameElsecar,
+	StationCodeElsenhamEssex:                     StationNameElsenhamEssex,
+	StationCodeElstreeAndBorehamwood:             StationNameElstreeAndBorehamwood,
+	StationCodeEltham:                            StationNameEltham,
+	StationCodeEltonAndOrston:                    StationNameEltonAndOrston,
+	StationCodeEly:                               StationNameEly,
+	StationCodeEmersonPark:                       StationNameEmersonPark,
+	StationCodeEmsworth:                          StationNameEmsworth,
+	StationCodeEnerglynAndChurchillPark:          StationNameEnerglynAndChurchillPark,
+	StationCodeEnfieldChase:                      StationNameEnfieldChase,
+	StationCodeEnfieldLock:                       StationNameEnfieldLock,
+	StationCodeEnfieldTown:                       StationNameEnfieldTown,
+	StationCodeEntwistle:                         StationNameEntwistle,
+	StationCodeEpsomDowns:                        StationNameEpsomDowns,
+	StationCodeEpsomSurrey:                       StationNameEpsomSurrey,
+	StationCodeErdington:                         StationNameErdington,
+	StationCodeEridge:                            StationNameEridge,
+	StationCodeErith:                             StationNameErith,
+	StationCodeEsher:                             StationNameEsher,
+	StationCodeEskbank:                           StationNameEskbank,
+	StationCodeEssexRoad:                         StationNameEssexRoad,
+	StationCodeEtchingham:                        StationNameEtchingham,
+	StationCodeEuxtonBalshawLane:                 StationNameEuxtonBalshawLane,
+	StationCodeEvesham:                           StationNameEvesham,
+	StationCodeEwellEast:                         StationNameEwellEast,
+	StationCodeEwellWest:                         StationNameEwellWest,
+	StationCodeExeterCentral:                     StationNameExeterCentral,
+	StationCodeExeterStDavids:                    StationNameExeterStDavids,
+	StationCodeExeterStThomas:                    StationNameExeterStThomas,
+	StationCodeExhibitionCentreGlasgow:           StationNameExhibitionCentreGlasgow,
+	StationCodeExmouth:                           StationNameExmouth,
+	StationCodeExton:                             StationNameExton,
+	StationCodeEynsford:                          StationNameEynsford,
+	StationCodeFairbourne:                        StationNameFairbourne,
+	StationCodeFairfield:                         StationNameFairfield,
+	StationCodeFairlie:                           StationNameFairlie,
+	StationCodeFairwater:                         StationNameFairwater,
+	StationCodeFalconwood:                        StationNameFalconwood,
+	StationCodeFalkirkGrahamston:                 StationNameFalkirkGrahamston,
+	StationCodeFalkirkHigh:                       StationNameFalkirkHigh,
+	StationCodeFallsofCruachan:                   StationNameFallsofCruachan,
+	StationCodeFalmer:                            StationNameFalmer,
+	StationCodeFalmouthDocks:                     StationNameFalmouthDocks,
+	StationCodeFalmouthTown:                      StationNameFalmouthTown,
+	StationCodeFareham:                           StationNameFareham,
+	StationCodeFarnboroughMain:                   StationNameFarnboroughMain,
+	StationCodeFarnboroughNorth:                  StationNameFarnboroughNorth,
+	StationCodeFarncombe:                         StationNameFarncombe,
+	StationCodeFarnham:                           StationNameFarnham,
+	StationCodeFarninghamRoad:                    StationNameFarninghamRoad,
+	StationCodeFarnworth:                         StationNameFarnworth,
+	StationCodeFarringdon:                        StationNameFarringdon,
+	StationCodeFauldhouse:                        StationNameFauldhouse,
+	StationCodeFaversham:                         StationNameFaversham,
+	StationCodeFaygate:                           StationNameFaygate,
+	StationCodeFazakerley:                        StationNameFazakerley,
+	StationCodeFearn:                             StationNameFearn,
+	StationCodeFeatherstone:                      StationNameFeatherstone,
+	StationCodeFelixstowe:                        StationNameFelixstowe,
+	StationCodeFeltham:                           StationNameFeltham,
+	StationCodeFeniton:                           StationNameFeniton,
+	StationCodeFennyStratford:                    StationNameFennyStratford,
+	StationCodeFernhill:                          StationNameFernhill,
+	StationCodeFerriby:                           StationNameFerriby,
+	StationCodeFerryside:                         StationNameFerryside,
+	StationCodeFfairfach:                         StationNameFfairfach,
+	StationCodeFiley:                             StationNameFiley,
+	StationCodeFiltonAbbeyWood:                   StationNameFiltonAbbeyWood,
+	StationCodeFinchleyRoadAndFrognal:            StationNameFinchleyRoadAndFrognal,
+	StationCodeFinsburyPark:                      StationNameFinsburyPark,
+	StationCodeFinstock:                          StationNameFinstock,
+	StationCodeFishbourneSussex:                  StationNameFishbourneSussex,
+	StationCodeFishersgate:                       StationNameFishersgate,
+	StationCodeFishguardAndGoodwick:              StationNameFishguardAndGoodwick,
+	StationCodeFishguardHarbour:                  StationNameFishguardHarbour,
+	StationCodeFiskerton:                         StationNameFiskerton,
+	StationCodeFitzwilliam:                       StationNameFitzwilliam,
+	StationCodeFiveWays:                          StationNameFiveWays,
+	StationCodeFleet:                             StationNameFleet,
+	StationCodeFlimby:                            StationNameFlimby,
+	StationCodeFlint:                             StationNameFlint,
+	StationCodeFlitwick:                          StationNameFlitwick,
+	StationCodeFlixton:                           StationNameFlixton,
+	StationCodeFloweryField:                      StationNameFloweryField,
+	StationCodeFolkestoneCentral:                 StationNameFolkestoneCentral,
+	StationCodeFolkestoneWest:                    StationNameFolkestoneWest,
+	StationCodeFord:                              StationNameFord,
+	StationCodeForestGate:                        StationNameForestGate,
+	StationCodeForestHill:                        StationNameForestHill,
+	StationCodeFormby:                            StationNameFormby,
+	StationCodeForres:                            StationNameForres,
+	StationCodeForsinard:                         StationNameForsinard,
+	StationCodeFortMatilda:                       StationNameFortMatilda,
+	StationCodeFortWilliam:                       StationNameFortWilliam,
+	StationCodeFourOaks:                          StationNameFourOaks,
+	StationCodeFoxfield:                          StationNameFoxfield,
+	StationCodeFoxton:                            StationNameFoxton,
+	StationCodeFrant:                             StationNameFrant,
+	StationCodeFratton:                           StationNameFratton,
+	StationCodeFreshfield:                        StationNameFreshfield,
+	StationCodeFreshford:                         StationNameFreshford,
+	StationCodeFrimley:                           StationNameFrimley,
+	StationCodeFrintononSea:                      StationNameFrintononSea,
+	StationCodeFrizinghall:                       StationNameFrizinghall,
+	StationCodeFrodsham:                          StationNameFrodsham,
+	StationCodeFrome:                             StationNameFrome,
+	StationCodeFulwell:                           StationNameFulwell,
+	StationCodeFurnessVale:                       StationNameFurnessVale,
+	StationCodeFurzePlatt:                        StationNameFurzePlatt,
+	StationCodeGainsboroughCentral:               StationNameGainsboroughCentral,
+	StationCodeGainsboroughLeaRoad:               StationNameGainsboroughLeaRoad,
+	StationCodeGalashiels:                        StationNameGalashiels,
+	StationCodeGarelochhead:                      StationNameGarelochhead,
+	StationCodeGarforth:                          StationNameGarforth,
+	StationCodeGargrave:                          StationNameGargrave,
+	StationCodeGarrowhill:                        StationNameGarrowhill,
+	StationCodeGarscadden:                        StationNameGarscadden,
+	StationCodeGarsdale:                          StationNameGarsdale,
+	StationCodeGarstonHertfordshire:              StationNameGarstonHertfordshire,
+	StationCodeGarswood:                          StationNameGarswood,
+	StationCodeGartcosh:                          StationNameGartcosh,
+	StationCodeGarthMidGlamorgan:                 StationNameGarthMidGlamorgan,
+	StationCodeGarthPowys:                        StationNameGarthPowys,
+	StationCodeGarve:                             StationNameGarve,
+	StationCodeGathurst:                          StationNameGathurst,
+	StationCodeGatley:                            StationNameGatley,
+	StationCodeGatwickAirport:                    StationNameGatwickAirport,
+	StationCodeGeorgemasJunction:                 StationNameGeorgemasJunction,
+	StationCodeGerrardsCross:                     StationNameGerrardsCross,
+	StationCodeGideaPark:                         StationNameGideaPark,
+	StationCodeGiffnock:                          StationNameGiffnock,
+	StationCodeGiggleswick:                       StationNameGiggleswick,
+	StationCodeGilberdyke:                        StationNameGilberdyke,
+	StationCodeGilfachFargoed:                    StationNameGilfachFargoed,
+	StationCodeGillinghamDorset:                  StationNameGillinghamDorset,
+	StationCodeGillinghamKent:                    StationNameGillinghamKent,
+	StationCodeGilshochill:                       StationNameGilshochill,
+	StationCodeGipsyHill:                         StationNameGipsyHill,
+	StationCodeGirvan:                            StationNameGirvan,
+	StationCodeGlaisdale:                         StationNameGlaisdale,
+	StationCodeGlanConwy:                         StationNameGlanConwy,
+	StationCodeGlasgowCentral:                    StationNameGlasgowCentral,
+	StationCodeGlasgowQueenStreet:                StationNameGlasgowQueenStreet,
+	StationCodeGlasshoughton:                     StationNameGlasshoughton,
+	StationCodeGlazebrook:                        StationNameGlazebrook,
+	StationCodeGleneagles:                        StationNameGleneagles,
+	StationCodeGlenfinnan:                        StationNameGlenfinnan,
+	StationCodeGlengarnock:                       StationNameGlengarnock,
+	StationCodeGlenrotheswithThornton:            StationNameGlenrotheswithThornton,
+	StationCodeGlossop:                           StationNameGlossop,
+	StationCodeGloucester:                        StationNameGloucester,
+	StationCodeGlynde:                            StationNameGlynde,
+	StationCodeGobowen:                           StationNameGobowen,
+	StationCodeGodalming:                         StationNameGodalming,
+	StationCodeGodley:                            StationNameGodley,
+	StationCodeGodstone:                          StationNameGodstone,
+	StationCodeGoldthorpe:                        StationNameGoldthorpe,
+	StationCodeGolfStreet:                        StationNameGolfStreet,
+	StationCodeGolspie:                           StationNameGolspie,
+	StationCodeGomshall:                          StationNameGomshall,
+	StationCodeGoodmayes:                         StationNameGoodmayes,
+	StationCodeGoole:                             StationNameGoole,
+	StationCodeGoostrey:                          StationNameGoostrey,
+	StationCodeGordonHill:                        StationNameGordonHill,
+	StationCodeGorebridge:                        StationNameGorebridge,
+	StationCodeGoringAndStreatley:                StationNameGoringAndStreatley,
+	StationCodeGoringbySea:                       StationNameGoringbySea,
+	StationCodeGorton:                            StationNameGorton,
+	StationCodeGospelOak:                         StationNameGospelOak,
+	StationCodeGourock:                           StationNameGourock,
+	StationCodeGowerton:                          StationNameGowerton,
+	StationCodeGoxhill:                           StationNameGoxhill,
+	StationCodeGrangeOverSands:                   StationNameGrangeOverSands,
+	StationCodeGrangePark:                        StationNameGrangePark,
+	StationCodeGrangetownCardiff:                 StationNameGrangetownCardiff,
+	StationCodeGrantham:                          StationNameGrantham,
+	StationCodeGrateley:                          StationNameGrateley,
+	StationCodeGravellyHill:                      StationNameGravellyHill,
+	StationCodeGravesend:                         StationNameGravesend,
+	StationCodeGrays:                             StationNameGrays,
+	StationCodeGreatAyton:                        StationNameGreatAyton,
+	StationCodeGreatBentley:                      StationNameGreatBentley,
+	StationCodeGreatChesterford:                  StationNameGreatChesterford,
+	StationCodeGreatCoates:                       StationNameGreatCoates,
+	StationCodeGreatMalvern:                      StationNameGreatMalvern,
+	StationCodeGreatMissenden:                    StationNameGreatMissenden,
+	StationCodeGreatYarmouth:                     StationNameGreatYarmouth,
+	StationCodeGreenLane:                         StationNameGreenLane,
+	StationCodeGreenRoad:                         StationNameGreenRoad,
+	StationCodeGreenbank:                         StationNameGreenbank,
+	StationCodeGreenfaulds:                       StationNameGreenfaulds,
+	StationCodeGreenfield:                        StationNameGreenfield,
+	StationCodeGreenford:                         StationNameGreenford,
+	StationCodeGreenhithe:                        StationNameGreenhithe,
+	StationCodeGreenockCentral:                   StationNameGreenockCentral,
+	StationCodeGreenockWest:                      StationNameGreenockWest,
+	StationCodeGreenwich:                         StationNameGreenwich,
+	StationCodeGretnaGreen:                       StationNameGretnaGreen,
+	StationCodeGrimsbyDocks:                      StationNameGrimsbyDocks,
+	StationCodeGrimsbyTown:                       StationNameGrimsbyTown,
+	StationCodeGrindleford:                       StationNameGrindleford,
+	StationCodeGrosmont:                          StationNameGrosmont,
+	StationCodeGrovePark:                         StationNameGrovePark,
+	StationCodeGuideBridge:                       StationNameGuideBridge,
+	StationCodeGuildford:                         StationNameGuildford,
+	StationCodeGuiseley:                          StationNameGuiseley,
+	StationCodeGunnersbury:                       StationNameGunnersbury,
+	StationCodeGunnislake:                        StationNameGunnislake,
+	StationCodeGunton:                            StationNameGunton,
+	StationCodeGwersyllt:                         StationNameGwersyllt,
+	StationCodeGypsyLane:                         StationNameGypsyLane,
+	StationCodeHabrough:                          StationNameHabrough,
+	StationCodeHackbridge:                        StationNameHackbridge,
+	StationCodeHackneyCentral:                    StationNameHackneyCentral,
+	StationCodeHackneyDowns:                      StationNameHackneyDowns,
+	StationCodeHackneyWick:                       StationNameHackneyWick,
+	StationCodeHaddenhamAndThameParkway:          StationNameHaddenhamAndThameParkway,
+	StationCodeHaddiscoe:                         StationNameHaddiscoe,
+	StationCodeHadfield:                          StationNameHadfield,
+	StationCodeHadleyWood:                        StationNameHadleyWood,
+	StationCodeHagFold:                           StationNameHagFold,
+	StationCodeHaggerston:                        StationNameHaggerston,
+	StationCodeHagley:                            StationNameHagley,
+	StationCodeHairmyres:                         StationNameHairmyres,
+	StationCodeHaleManchester:                    StationNameHaleManchester,
+	StationCodeHalesworth:                        StationNameHalesworth,
+	StationCodeHalewood:                          StationNameHalewood,
+	StationCodeHalifax:                           StationNameHalifax,
+	StationCodeHallGreen:                         StationNameHallGreen,
+	StationCodeHallRoad:                          StationNameHallRoad,
+	StationCodeHalling:                           StationNameHalling,
+	StationCodeHallithWood:                       StationNameHallithWood,
+	StationCodeHaltwhistle:                       StationNameHaltwhistle,
+	StationCodeHamStreet:                         StationNameHamStreet,
+	StationCodeHamble:                            StationNameHamble,
+	StationCodeHamiltonCentral:                   StationNameHamiltonCentral,
+	StationCodeHamiltonWest:                      StationNameHamiltonWest,
+	StationCodeHammerton:                         StationNameHammerton,
+	StationCodeHampdenParkSussex:                 StationNameHampdenParkSussex,
+	StationCodeHampsteadHeath:                    StationNameHampsteadHeath,
+	StationCodeHamptonCourt:                      StationNameHamptonCourt,
+	StationCodeHamptonLondon:                     StationNameHamptonLondon,
+	StationCodeHamptonWick:                       StationNameHamptonWick,
+	StationCodeHamptoninArden:                    StationNameHamptoninArden,
+	StationCodeHamsteadBirmingham:                StationNameHamsteadBirmingham,
+	StationCodeHamworthy:                         StationNameHamworthy,
+	StationCodeHanborough:                        StationNameHanborough,
+	StationCodeHandforth:                         StationNameHandforth,
+	StationCodeHanwell:                           StationNameHanwell,
+	StationCodeHapton:                            StationNameHapton,
+	StationCodeHarlech:                           StationNameHarlech,
+	StationCodeHarlesden:                         StationNameHarlesden,
+	StationCodeHarlingRoad:                       StationNameHarlingRoad,
+	StationCodeHarlingtonBeds:                    StationNameHarlingtonBeds,
+	StationCodeHarlowMill:                        StationNameHarlowMill,
+	StationCodeHarlowTown:                        StationNameHarlowTown,
+	StationCodeHaroldWood:                        StationNameHaroldWood,
+	StationCodeHarpenden:                         StationNameHarpenden,
+	StationCodeHarrietsham:                       StationNameHarrietsham,
+	StationCodeHarringay:                         StationNameHarringay,
+	StationCodeHarringayGreenLanes:               StationNameHarringayGreenLanes,
+	StationCodeHarrington:                        StationNameHarrington,
+	StationCodeHarrogate:                         StationNameHarrogate,
+	StationCodeHarrowAndWealdstone:               StationNameHarrowAndWealdstone,
+	StationCodeHarrowontheHill:                   StationNameHarrowontheHill,
+	StationCodeHartfordCheshire:                  StationNameHartfordCheshire,
+	StationCodeHartlebury:                        StationNameHartlebury,
+	StationCodeHartlepool:                        StationNameHartlepool,
+	StationCodeHartwood:                          StationNameHartwood,
+	StationCodeHarwichInternational:              StationNameHarwichInternational,
+	StationCodeHarwichTown:                       StationNameHarwichTown,
+	StationCodeHaslemere:                         StationNameHaslemere,
+	StationCodeHassocks:                          StationNameHassocks,
+	StationCodeHastings:                          StationNameHastings,
+	StationCodeHatchEnd:                          StationNameHatchEnd,
+	StationCodeHatfieldAndStainforth:             StationNameHatfieldAndStainforth,
+	StationCodeHatfieldHerts:                     StationNameHatfieldHerts,
+	StationCodeHatfieldPeverel:                   StationNameHatfieldPeverel,
+	StationCodeHathersage:                        StationNameHathersage,
+	StationCodeHattersley:                        StationNameHattersley,
+	StationCodeHatton:                            StationNameHatton,
+	StationCodeHavant:                            StationNameHavant,
+	StationCodeHavenhouse:                        StationNameHavenhouse,
+	StationCodeHaverfordwest:                     StationNameHaverfordwest,
+	StationCodeHawarden:                          StationNameHawarden,
+	StationCodeHawardenBridge:                    StationNameHawardenBridge,
+	StationCodeHawkhead:                          StationNameHawkhead,
+	StationCodeHaydonBridge:                      StationNameHaydonBridge,
+	StationCodeHaydonsRoad:                       StationNameHaydonsRoad,
+	StationCodeHayesAndHarlington:                StationNameHayesAndHarlington,
+	StationCodeHayesKent:                         StationNameHayesKent,
+	StationCodeHayle:                             StationNameHayle,
+	StationCodeHaymarket:                         StationNameHaymarket,
+	StationCodeHaywardsHeath:                     StationNameHaywardsHeath,
+	StationCodeHazelGrove:                        StationNameHazelGrove,
+	StationCodeHeadcorn:                          StationNameHeadcorn,
+	StationCodeHeadingley:                        StationNameHeadingley,
+	StationCodeHeadstoneLane:                     StationNameHeadstoneLane,
+	StationCodeHealdGreen:                        StationNameHealdGreen,
+	StationCodeHealing:                           StationNameHealing,
+	StationCodeHeathHighLevel:                    StationNameHeathHighLevel,
+	StationCodeHeathLowLevel:                     StationNameHeathLowLevel,
+	StationCodeHeathrowAirportTerminal4:          StationNameHeathrowAirportTerminal4,
+	StationCodeHeathrowAirportTerminal5:          StationNameHeathrowAirportTerminal5,
+	StationCodeHeathrowAirportTerminals12and3:    StationNameHeathrowAirportTerminals12and3,
+	StationCodeHeatonChapel:                      StationNameHeatonChapel,
+	StationCodeHebdenBridge:                      StationNameHebdenBridge,
+	StationCodeHeckington:                        StationNameHeckington,
+	StationCodeHedgeEnd:                          StationNameHedgeEnd,
+	StationCodeHednesford:                        StationNameHednesford,
+	StationCodeHeighington:                       StationNameHeighington,
+	StationCodeHelensburghCentral:                StationNameHelensburghCentral,
+	StationCodeHelensburghUpper:                  StationNameHelensburghUpper,
+	StationCodeHellifield:                        StationNameHellifield,
+	StationCodeHelmsdale:                         StationNameHelmsdale,
+	StationCodeHelsby:                            StationNameHelsby,
+	StationCodeHemelHempstead:                    StationNameHemelHempstead,
+	StationCodeHendon:                            StationNameHendon,
+	StationCodeHengoed:                           StationNameHengoed,
+	StationCodeHenleyinArden:                     StationNameHenleyinArden,
+	StationCodeHenleyonThames:                    StationNameHenleyonThames,
+	StationCodeHensall:                           StationNameHensall,
+	StationCodeHereford:                          StationNameHereford,
+	StationCodeHerneBay:                          StationNameHerneBay,
+	StationCodeHerneHill:                         StationNameHerneHill,
+	StationCodeHersham:                           StationNameHersham,
+	StationCodeHertfordEast:                      StationNameHertfordEast,
+	StationCodeHertfordNorth:                     StationNameHertfordNorth,
+	StationCodeHessle:                            StationNameHessle,
+	StationCodeHeswall:                           StationNameHeswall,
+	StationCodeHever:                             StationNameHever,
+	StationCodeHeworth:                           StationNameHeworth,
+	StationCodeHexham:                            StationNameHexham,
+	StationCodeHeyford:                           StationNameHeyford,
+	StationCodeHeyshamPort:                       StationNameHeyshamPort,
+	StationCodeHighBrooms:                        StationNameHighBrooms,
+	StationCodeHighStreetGlasgow:                 StationNameHighStreetGlasgow,
+	StationCodeHighStreetKensingtonUnderground:   StationNameHighStreetKensingtonUnderground,
+	StationCodeHighWycombe:                       StationNameHighWycombe,
+	StationCodeHighamKent:                        StationNameHighamKent,
+	StationCodeHighamsPark:                       StationNameHighamsPark,
+	StationCodeHighbridgeAndBurnham:              StationNameHighbridgeAndBurnham,
+	StationCodeHighburyAndIslington:              StationNameHighburyAndIslington,
+	StationCodeHightown:                          StationNameHightown,
+	StationCodeHildenborough:                     StationNameHildenborough,
+	StationCodeHillfoot:                          StationNameHillfoot,
+	StationCodeHillingtonEast:                    StationNameHillingtonEast,
+	StationCodeHillingtonWest:                    StationNameHillingtonWest,
+	StationCodeHillside:                          StationNameHillside,
+	StationCodeHilsea:                            StationNameHilsea,
+	StationCodeHinchleyWood:                      StationNameHinchleyWood,
+	StationCodeHinckleyLeics:                     StationNameHinckleyLeics,
+	StationCodeHindley:                           StationNameHindley,
+	StationCodeHintonAdmiral:                     StationNameHintonAdmiral,
+	StationCodeHitchin:                           StationNameHitchin,
+	StationCodeHitherGreen:                       StationNameHitherGreen,
+	StationCodeHockley:                           StationNameHockley,
+	StationCodeHollingbourne:                     StationNameHollingbourne,
+	StationCodeHolmesChapel:                      StationNameHolmesChapel,
+	StationCodeHolmwood:                          StationNameHolmwood,
+	StationCodeHoltonHeath:                       StationNameHoltonHeath,
+	StationCodeHolyhead:                          StationNameHolyhead,
+	StationCodeHolytown:                          StationNameHolytown,
+	StationCodeHomerton:                          StationNameHomerton,
+	StationCodeHoneybourne:                       StationNameHoneybourne,
+	StationCodeHoniton:                           StationNameHoniton,
+	StationCodeHonley:                            StationNameHonley,
+	StationCodeHonorOakPark:                      StationNameHonorOakPark,
+	StationCodeHook:                              StationNameHook,
+	StationCodeHooton:                            StationNameHooton,
+	StationCodeHopeDerbyshire:                    StationNameHopeDerbyshire,
+	StationCodeHopeFlintshire:                    StationNameHopeFlintshire,
+	StationCodeHoptonHeath:                       StationNameHoptonHeath,
+	StationCodeHorley:                            StationNameHorley,
+	StationCodeHornbeamPark:                      StationNameHornbeamPark,
+	StationCodeHornsey:                           StationNameHornsey,
+	StationCodeHorsforth:                         StationNameHorsforth,
+	StationCodeHorsham:                           StationNameHorsham,
+	StationCodeHorsley:                           StationNameHorsley,
+	StationCodeHortoninRibblesdale:               StationNameHortoninRibblesdale,
+	StationCodeHorwichParkway:                    StationNameHorwichParkway,
+	StationCodeHoscar:                            StationNameHoscar,
+	StationCodeHoughGreen:                        StationNameHoughGreen,
+	StationCodeHounslow:                          StationNameHounslow,
+	StationCodeHove:                              StationNameHove,
+	StationCodeHovetonAndWroxham:                 StationNameHovetonAndWroxham,
+	StationCodeHowWoodHerts:                      StationNameHowWoodHerts,
+	StationCodeHowden:                            StationNameHowden,
+	StationCodeHowwoodRenfrewshire:               StationNameHowwoodRenfrewshire,
+	StationCodeHoxton:                            StationNameHoxton,
+	StationCodeHoylake:                           StationNameHoylake,
+	StationCodeHubbertsBridge:                    StationNameHubbertsBridge,
+	StationCodeHucknall:                          StationNameHucknall,
+	StationCodeHuddersfield:                      StationNameHuddersfield,
+	StationCodeHull:                              StationNameHull,
+	StationCodeHumphreyPark:                      StationNameHumphreyPark,
+	StationCodeHuncoat:                           StationNameHuncoat,
+	StationCodeHungerford:                        StationNameHungerford,
+	StationCodeHunmanby:                          StationNameHunmanby,
+	StationCodeHuntingdon:                        StationNameHuntingdon,
+	StationCodeHuntly:                            StationNameHuntly,
+	StationCodeHuntsCross:                        StationNameHuntsCross,
+	StationCodeHurstGreen:                        StationNameHurstGreen,
+	StationCodeHuttonCranswick:                   StationNameHuttonCranswick,
+	StationCodeHuyton:                            StationNameHuyton,
+	StationCodeHydeCentral:                       StationNameHydeCentral,
+	StationCodeHydeNorth:                         StationNameHydeNorth,
+	StationCodeHykeham:                           StationNameHykeham,
+	StationCodeHyndland:                          StationNameHyndland,
+	StationCodeHytheEssex:                        StationNameHytheEssex,
+	StationCodeIBMHalt:                           StationNameIBMHalt,
+	StationCodeIfield:                            StationNameIfield,
+	StationCodeIlford:                            StationNameIlford,
+	StationCodeIlkley:                            StationNameIlkley,
+	StationCodeImperialWharf:                     StationNameImperialWharf,
+	StationCodeInceAndElton:                      StationNameInceAndElton,
+	StationCodeInceManchester:                    StationNameInceManchester,
+	StationCodeIngatestone:                       StationNameIngatestone,
+	StationCodeInsch:                             StationNameInsch,
+	StationCodeInvergordon:                       StationNameInvergordon,
+	StationCodeInvergowrie:                       StationNameInvergowrie,
+	StationCodeInverkeithing:                     StationNameInverkeithing,
+	StationCodeInverkip:                          StationNameInverkip,
+	StationCodeInverness:                         StationNameInverness,
+	StationCodeInvershin:                         StationNameInvershin,
+	StationCodeInverurie:                         StationNameInverurie,
+	StationCodeIpswich:                           StationNameIpswich,
+	StationCodeIrlam:                             StationNameIrlam,
+	StationCodeIrvine:                            StationNameIrvine,
+	StationCodeIsleworth:                         StationNameIsleworth,
+	StationCodeIslip:                             StationNameIslip,
+	StationCodeIver:                              StationNameIver,
+	StationCodeIvybridge:                         StationNameIvybridge,
+	StationCodeJamesCook:                         StationNameJamesCook,
+	StationCodeJewelleryQuarter:                  StationNameJewelleryQuarter,
+	StationCodeJohnstonPembs:                     StationNameJohnstonPembs,
+	StationCodeJohnstoneStrathclyde:              StationNameJohnstoneStrathclyde,
+	StationCodeJordanhill:                        StationNameJordanhill,
+	StationCodeKearsleyManchester:                StationNameKearsleyManchester,
+	StationCodeKearsneyKent:                      StationNameKearsneyKent,
+	StationCodeKeighley:                          StationNameKeighley,
+	StationCodeKeith:                             StationNameKeith,
+	StationCodeKelvedon:                          StationNameKelvedon,
+	StationCodeKelvindale:                        StationNameKelvindale,
+	StationCodeKemble:                            StationNameKemble,
+	StationCodeKempstonHardwick:                  StationNameKempstonHardwick,
+	StationCodeKemptonParkRacecourse:             StationNameKemptonParkRacecourse,
+	StationCodeKemsing:                           StationNameKemsing,
+	StationCodeKemsley:                           StationNameKemsley,
+	StationCodeKendal:                            StationNameKendal,
+	StationCodeKenley:                            StationNameKenley,
+	StationCodeKennett:                           StationNameKennett,
+	StationCodeKennishead:                        StationNameKennishead,
+	StationCodeKensalGreen:                       StationNameKensalGreen,
+	StationCodeKensalRise:                        StationNameKensalRise,
+	StationCodeKensingtonOlympia:                 StationNameKensingtonOlympia,
+	StationCodeKentHouse:                         StationNameKentHouse,
+	StationCodeKentishTown:                       StationNameKentishTown,
+	StationCodeKentishTownWest:                   StationNameKentishTownWest,
+	StationCodeKenton:                            StationNameKenton,
+	StationCodeKentsBank:                         StationNameKentsBank,
+	StationCodeKettering:                         StationNameKettering,
+	StationCodeKewBridge:                         StationNameKewBridge,
+	StationCodeKewGardens:                        StationNameKewGardens,
+	StationCodeKeyham:                            StationNameKeyham,
+	StationCodeKeynsham:                          StationNameKeynsham,
+	StationCodeKidbrooke:                         StationNameKidbrooke,
+	StationCodeKidderminster:                     StationNameKidderminster,
+	StationCodeKidsgrove:                         StationNameKidsgrove,
+	StationCodeKidwelly:                          StationNameKidwelly,
+	StationCodeKilburnHighRoad:                   StationNameKilburnHighRoad,
+	StationCodeKildale:                           StationNameKildale,
+	StationCodeKildonan:                          StationNameKildonan,
+	StationCodeKilgetty:                          StationNameKilgetty,
+	StationCodeKilmarnock:                        StationNameKilmarnock,
+	StationCodeKilmaurs:                          StationNameKilmaurs,
+	StationCodeKilpatrick:                        StationNameKilpatrick,
+	StationCodeKilwinning:                        StationNameKilwinning,
+	StationCodeKinbrace:                          StationNameKinbrace,
+	StationCodeKingham:                           StationNameKingham,
+	StationCodeKinghorn:                          StationNameKinghorn,
+	StationCodeKingsLangley:                      StationNameKingsLangley,
+	StationCodeKingsLynn:                         StationNameKingsLynn,
+	StationCodeKingsNorton:                       StationNameKingsNorton,
+	StationCodeKingsNympton:                      StationNameKingsNympton,
+	StationCodeKingsPark:                         StationNameKingsPark,
+	StationCodeKingsSutton:                       StationNameKingsSutton,
+	StationCodeKingsknowe:                        StationNameKingsknowe,
+	StationCodeKingston:                          StationNameKingston,
+	StationCodeKingswood:                         StationNameKingswood,
+	StationCodeKingussie:                         StationNameKingussie,
+	StationCodeKintbury:                          StationNameKintbury,
+	StationCodeKirbyCross:                        StationNameKirbyCross,
+	StationCodeKirkSandall:                       StationNameKirkSandall,
+	StationCodeKirkbyMerseyside:                  StationNameKirkbyMerseyside,
+	StationCodeKirkbyStephen:                     StationNameKirkbyStephen,
+	StationCodeKirkbyinAshfield:                  StationNameKirkbyinAshfield,
+	StationCodeKirkbyinFurness:                   StationNameKirkbyinFurness,
+	StationCodeKirkcaldy:                         StationNameKirkcaldy,
+	StationCodeKirkconnel:                        StationNameKirkconnel,
+	StationCodeKirkdale:                          StationNameKirkdale,
+	StationCodeKirkhamAndWesham:                  StationNameKirkhamAndWesham,
+	StationCodeKirkhill:                          StationNameKirkhill,
+	StationCodeKirknewton:                        StationNameKirknewton,
+	StationCodeKirkstallForge:                    StationNameKirkstallForge,
+	StationCodeKirkwood:                          StationNameKirkwood,
+	StationCodeKirtonLindsey:                     StationNameKirtonLindsey,
+	StationCodeKivetonBridge:                     StationNameKivetonBridge,
+	StationCodeKivetonPark:                       StationNameKivetonPark,
+	StationCodeKnaresborough:                     StationNameKnaresborough,
+	StationCodeKnebworth:                         StationNameKnebworth,
+	StationCodeKnighton:                          StationNameKnighton,
+	StationCodeKnockholt:                         StationNameKnockholt,
+	StationCodeKnottingley:                       StationNameKnottingley,
+	StationCodeKnucklas:                          StationNameKnucklas,
+	StationCodeKnutsford:                         StationNameKnutsford,
+	StationCodeKyleofLochalsh:                    StationNameKyleofLochalsh,
+	StationCodeLadybank:                          StationNameLadybank,
+	StationCodeLadywell:                          StationNameLadywell,
+	StationCodeLaindon:                           StationNameLaindon,
+	StationCodeLairg:                             StationNameLairg,
+	StationCodeLake:                              StationNameLake,
+	StationCodeLakenheath:                        StationNameLakenheath,
+	StationCodeLamphey:                           StationNameLamphey,
+	StationCodeLanark:                            StationNameLanark,
+	StationCodeLancaster:                         StationNameLancaster,
+	StationCodeLancing:                           StationNameLancing,
+	StationCodeLandywood:                         StationNameLandywood,
+	StationCodeLangbank:                          StationNameLangbank,
+	StationCodeLangho:                            StationNameLangho,
+	StationCodeLangleyBerks:                      StationNameLangleyBerks,
+	StationCodeLangleyGreen:                      StationNameLangleyGreen,
+	StationCodeLangleyMill:                       StationNameLangleyMill,
+	StationCodeLangside:                          StationNameLangside,
+	StationCodeLangwathby:                        StationNameLangwathby,
+	StationCodeLangwithWhaleyThorns:              StationNameLangwithWhaleyThorns,
+	StationCodeLapford:                           StationNameLapford,
+	StationCodeLapworth:                          StationNameLapworth,
+	StationCodeLarbert:                           StationNameLarbert,
+	StationCodeLargs:                             StationNameLargs,
+	StationCodeLarkhall:                          StationNameLarkhall,
+	StationCodeLaurencekirk:                      StationNameLaurencekirk,
+	StationCodeLawrenceHill:                      StationNameLawrenceHill,
+	StationCodeLaytonLancs:                       StationNameLaytonLancs,
+	StationCodeLazonbyAndKirkoswald:              StationNameLazonbyAndKirkoswald,
+	StationCodeLeaBridge:                         StationNameLeaBridge,
+	StationCodeLeaGreen:                          StationNameLeaGreen,
+	StationCodeLeaHall:                           StationNameLeaHall,
+	StationCodeLeagrave:                          StationNameLeagrave,
+	StationCodeLealholm:                          StationNameLealholm,
+	StationCodeLeamingtonSpa:                     StationNameLeamingtonSpa,
+	StationCodeLeasowe:                           StationNameLeasowe,
+	StationCodeLeatherhead:                       StationNameLeatherhead,
+	StationCodeLedbury:                           StationNameLedbury,
+	StationCodeLeeLondon:                         StationNameLeeLondon,
+	StationCodeLeeds:                             StationNameLeeds,
+	StationCodeLeicester:                         StationNameLeicester,
+	StationCodeLeighKent:                         StationNameLeighKent,
+	StationCodeLeighonSea:                        StationNameLeighonSea,
+	StationCodeLeightonBuzzard:                   StationNameLeightonBuzzard,
+	StationCodeLelant:                            StationNameLelant,
+	StationCodeLelantSaltings:                    StationNameLelantSaltings,
+	StationCodeLenham:                            StationNameLenham,
+	StationCodeLenzie:                            StationNameLenzie,
+	StationCodeLeominster:                        StationNameLeominster,
+	StationCodeLetchworthGardenCity:              StationNameLetchworthGardenCity,
+	StationCodeLeucharsforStAndrews:              StationNameLeucharsforStAndrews,
+	StationCodeLevenshulme:                       StationNameLevenshulme,
+	StationCodeLewes:                             StationNameLewes,
+	StationCodeLewisham:                          StationNameLewisham,
+	StationCodeLeyland:                           StationNameLeyland,
+	StationCodeLeytonMidlandRoad:                 StationNameLeytonMidlandRoad,
+	StationCodeLeytonstoneHighRoad:               StationNameLeytonstoneHighRoad,
+	StationCodeLichfieldCity:                     StationNameLichfieldCity,
+	StationCodeLichfieldTrentValley:              StationNameLichfieldTrentValley,
+	StationCodeLidlington:                        StationNameLidlington,
+	StationCodeLimehouse:                         StationNameLimehouse,
+	StationCodeLincolnCentral:                    StationNameLincolnCentral,
+	StationCodeLingfield:                         StationNameLingfield,
+	StationCodeLingwood:                          StationNameLingwood,
+	StationCodeLinlithgow:                        StationNameLinlithgow,
+	StationCodeLiphook:                           StationNameLiphook,
+	StationCodeLiskeard:                          StationNameLiskeard,
+	StationCodeLiss:                              StationNameLiss,
+	StationCodeLisvaneAndThornhill:               StationNameLisvaneAndThornhill,
+	StationCodeLittleKimble:                      StationNameLittleKimble,
+	StationCodeLittleSutton:                      StationNameLittleSutton,
+	StationCodeLittleborough:                     StationNameLittleborough,
+	StationCodeLittlehampton:                     StationNameLittlehampton,
+	StationCodeLittlehaven:                       StationNameLittlehaven,
+	StationCodeLittleport:                        StationNameLittleport,
+	StationCodeLiverpoolCentral:                  StationNameLiverpoolCentral,
+	StationCodeLiverpoolJamesStreet:              StationNameLiverpoolJamesStreet,
+	StationCodeLiverpoolLimeStreet:               StationNameLiverpoolLimeStreet,
+	StationCodeLiverpoolSouthParkway:             StationNameLiverpoolSouthParkway,
+	StationCodeLivingstonNorth:                   StationNameLivingstonNorth,
+	StationCodeLivingstonSouth:                   StationNameLivingstonSouth,
+	StationCodeLlanaber:                          StationNameLlanaber,
+	StationCodeLlanbedr:                          StationNameLlanbedr,
+	StationCodeLlanbisterRoad:                    StationNameLlanbisterRoad,
+	StationCodeLlanbradach:                       StationNameLlanbradach,
+	StationCodeLlandaf:                           StationNameLlandaf,
+	StationCodeLlandanwg:                         StationNameLlandanwg,
+	StationCodeLlandecwyn:                        StationNameLlandecwyn,
+	StationCodeLlandeilo:                         StationNameLlandeilo,
+	StationCodeLlandovery:                        StationNameLlandovery,
+	StationCodeLlandrindod:                       StationNameLlandrindod,
+	StationCodeLlandudno:                         StationNameLlandudno,
+	StationCodeLlandudnoJunction:                 StationNameLlandudnoJunction,
+	StationCodeLlandybie:                         StationNameLlandybie,
+	StationCodeLlanelli:                          StationNameLlanelli,
+	StationCodeLlanfairfechan:                    StationNameLlanfairfechan,
+	StationCodeLlanfairpwll:                      StationNameLlanfairpwll,
+	StationCodeLlangadog:                         StationNameLlangadog,
+	StationCodeLlangammarch:                      StationNameLlangammarch,
+	StationCodeLlangennech:                       StationNameLlangennech,
+	StationCodeLlangynllo:                        StationNameLlangynllo,
+	StationCodeLlanharan:                         StationNameLlanharan,
+	StationCodeLlanhilleth:                       StationNameLlanhilleth,
+	StationCodeLlanishen:                         StationNameLlanishen,
+	StationCodeLlanrwst:                          StationNameLlanrwst,
+	StationCodeLlansamlet:                        StationNameLlansamlet,
+	StationCodeLlantwitMajor:                     StationNameLlantwitMajor,
+	StationCodeLlanwrda:                          StationNameLlanwrda,
+	StationCodeLlanwrtyd:                         StationNameLlanwrtyd,
+	StationCodeLlwyngwril:                        StationNameLlwyngwril,
+	StationCodeLlwynypia:                         StationNameLlwynypia,
+	StationCodeLochAwe:                           StationNameLochAwe,
+	StationCodeLochEilOutwardBound:               StationNameLochEilOutwardBound,
+	StationCodeLochailort:                        StationNameLochailort,
+	StationCodeLocheilside:                       StationNameLocheilside,
+	StationCodeLochgelly:                         StationNameLochgelly,
+	StationCodeLochluichart:                      StationNameLochluichart,
+	StationCodeLochwinnoch:                       StationNameLochwinnoch,
+	StationCodeLockerbie:                         StationNameLockerbie,
+	StationCodeLockwood:                          StationNameLockwood,
+	StationCodeLondonBlackfriars:                 StationNameLondonBlackfriars,
+	StationCodeLondonBridge:                      StationNameLondonBridge,
+	StationCodeLondonCannonStreet:                StationNameLondonCannonStreet,
+	StationCodeLondonCharingCross:                StationNameLondonCharingCross,
+	StationCodeLondonEuston:                      StationNameLondonEuston,
+	StationCodeLondonFenchurchStreet:             StationNameLondonFenchurchStreet,
+	StationCodeLondonFields:                      StationNameLondonFields,
+	StationCodeLondonKingsCross:                  StationNameLondonKingsCross,
+	StationCodeLondonLiverpoolStreet:             StationNameLondonLiverpoolStreet,
+	StationCodeLondonMarylebone:                  StationNameLondonMarylebone,
+	StationCodeLondonPaddington:                  StationNameLondonPaddington,
+	StationCodeLondonRoadBrighton:                StationNameLondonRoadBrighton,
+	StationCodeLondonRoadGuildford:               StationNameLondonRoadGuildford,
+	StationCodeLondonStPancrasInternational:      StationNameLondonStPancrasInternational,
+	StationCodeLondonStPancrasIntl:               StationNameLondonStPancrasIntl,
+	StationCodeLondonVictoria:                    StationNameLondonVictoria,
+	StationCodeLondonWaterloo:                    StationNameLondonWaterloo,
+	StationCodeLondonWaterlooEast:                StationNameLondonWaterlooEast,
+	StationCodeLongBuckby:                        StationNameLongBuckby,
+	StationCodeLongEaton:                         StationNameLongEaton,
+	StationCodeLongPreston:                       StationNameLongPreston,
+	StationCodeLongbeck:                          StationNameLongbeck,
+	StationCodeLongbridge:                        StationNameLongbridge,
+	StationCodeLongcross:                         StationNameLongcross,
+	StationCodeLongfield:                         StationNameLongfield,
+	StationCodeLongniddry:                        StationNameLongniddry,
+	StationCodeLongport:                          StationNameLongport,
+	StationCodeLongton:                           StationNameLongton,
+	StationCodeLooe:                              StationNameLooe,
+	StationCodeLostock:                           StationNameLostock,
+	StationCodeLostockGralam:                     StationNameLostockGralam,
+	StationCodeLostockHall:                       StationNameLostockHall,
+	StationCodeLostwithiel:                       StationNameLostwithiel,
+	StationCodeLoughborough:                      StationNameLoughborough,
+	StationCodeLoughboroughJunction:              StationNameLoughboroughJunction,
+	StationCodeLowdham:                           StationNameLowdham,
+	StationCodeLowerSydenham:                     StationNameLowerSydenham,
+	StationCodeLowestoft:                         StationNameLowestoft,
+	StationCodeLudlow:                            StationNameLudlow,
+	StationCodeLuton:                             StationNameLuton,
+	StationCodeLutonAirportParkway:               StationNameLutonAirportParkway,
+	StationCodeLuxulyan:                          StationNameLuxulyan,
+	StationCodeLydney:                            StationNameLydney,
+	StationCodeLyeWestMidlands:                   StationNameLyeWestMidlands,
+	StationCodeLymingtonPier:                     StationNameLymingtonPier,
+	StationCodeLymingtonTown:                     StationNameLymingtonTown,
+	StationCodeLympstoneCommando:                 StationNameLympstoneCommando,
+	StationCodeLympstoneVillage:                  StationNameLympstoneVillage,
+	StationCodeLytham:                            StationNameLytham,
+	StationCodeMacclesfield:                      StationNameMacclesfield,
+	StationCodeMachynlleth:                       StationNameMachynlleth,
+	StationCodeMaesteg:                           StationNameMaesteg,
+	StationCodeMaestegEwennyRoad:                 StationNameMaestegEwennyRoad,
+	StationCodeMaghull:                           StationNameMaghull,
+	StationCodeMaidenNewton:                      StationNameMaidenNewton,
+	StationCodeMaidenhead:                        StationNameMaidenhead,
+	StationCodeMaidstoneBarracks:                 StationNameMaidstoneBarracks,
+	StationCodeMaidstoneEast:                     StationNameMaidstoneEast,
+	StationCodeMaidstoneWest:                     StationNameMaidstoneWest,
+	StationCodeMaldenManor:                       StationNameMaldenManor,
+	StationCodeMallaig:                           StationNameMallaig,
+	StationCodeMalton:                            StationNameMalton,
+	StationCodeMalvernLink:                       StationNameMalvernLink,
+	StationCodeManchesterAirport:                 StationNameManchesterAirport,
+	StationCodeManchesterOxfordRoad:              StationNameManchesterOxfordRoad,
+	StationCodeManchesterPiccadilly:              StationNameManchesterPiccadilly,
+	StationCodeManchesterUnitedFootballGround:    StationNameManchesterUnitedFootballGround,
+	StationCodeManchesterVictoria:                StationNameManchesterVictoria,
+	StationCodeManea:                             StationNameManea,
+	StationCodeManningtree:                       StationNameManningtree,
+	StationCodeManorPark:                         StationNameManorPark,
+	StationCodeManorRoad:                         StationNameManorRoad,
+	StationCodeManorbier:                         StationNameManorbier,
+	StationCodeManors:                            StationNameManors,
+	StationCodeMansfield:                         StationNameMansfield,
+	StationCodeMansfieldWoodhouse:                StationNameMansfieldWoodhouse,
+	StationCodeMarch:                             StationNameMarch,
+	StationCodeMardenKent:                        StationNameMardenKent,
+	StationCodeMargate:                           StationNameMargate,
+	StationCodeMarketHarborough:                  StationNameMarketHarborough,
+	StationCodeMarketRasen:                       StationNameMarketRasen,
+	StationCodeMarkinch:                          StationNameMarkinch,
+	StationCodeMarksTey:                          StationNameMarksTey,
+	StationCodeMarlow:                            StationNameMarlow,
+	StationCodeMarple:                            StationNameMarple,
+	StationCodeMarsdenYorks:                      StationNameMarsdenYorks,
+	StationCodeMarske:                            StationNameMarske,
+	StationCodeMarstonGreen:                      StationNameMarstonGreen,
+	StationCodeMartinMill:                        StationNameMartinMill,
+	StationCodeMartinsHeron:                      StationNameMartinsHeron,
+	StationCodeMarton:                            StationNameMarton,
+	StationCodeMaryhill:                          StationNameMaryhill,
+	StationCodeMaryland:                          StationNameMaryland,
+	StationCodeMaryport:                          StationNameMaryport,
+	StationCodeMatlock:                           StationNameMatlock,
+	StationCodeMatlockBath:                       StationNameMatlockBath,
+	StationCodeMauldethRoad:                      StationNameMauldethRoad,
+	StationCodeMaxwellPark:                       StationNameMaxwellPark,
+	StationCodeMaybole:                           StationNameMaybole,
+	StationCodeMazeHill:                          StationNameMazeHill,
+	StationCodeMeadowhall:                        StationNameMeadowhall,
+	StationCodeMeldreth:                          StationNameMeldreth,
+	StationCodeMelksham:                          StationNameMelksham,
+	StationCodeMeltonMowbray:                     StationNameMeltonMowbray,
+	StationCodeMeltonSuffolk:                     StationNameMeltonSuffolk,
+	StationCodeMenheniot:                         StationNameMenheniot,
+	StationCodeMenston:                           StationNameMenston,
+	StationCodeMeols:                             StationNameMeols,
+	StationCodeMeolsCop:                          StationNameMeolsCop,
+	StationCodeMeopham:                           StationNameMeopham,
+	StationCodeMerryton:                          StationNameMerryton,
+	StationCodeMerstham:                          StationNameMerstham,
+	StationCodeMerthyrTydfil:                     StationNameMerthyrTydfil,
+	StationCodeMerthyrVale:                       StationNameMerthyrVale,
+	StationCodeMetheringham:                      StationNameMetheringham,
+	StationCodeMetroCentre:                       StationNameMetroCentre,
+	StationCodeMexborough:                        StationNameMexborough,
+	StationCodeMicheldever:                       StationNameMicheldever,
+	StationCodeMicklefield:                       StationNameMicklefield,
+	StationCodeMiddlesbrough:                     StationNameMiddlesbrough,
+	StationCodeMiddlewood:                        StationNameMiddlewood,
+	StationCodeMidgham:                           StationNameMidgham,
+	StationCodeMilfordHaven:                      StationNameMilfordHaven,
+	StationCodeMilfordSurrey:                     StationNameMilfordSurrey,
+	StationCodeMillHillBroadway:                  StationNameMillHillBroadway,
+	StationCodeMillHillLancs:                     StationNameMillHillLancs,
+	StationCodeMillbrookBeds:                     StationNameMillbrookBeds,
+	StationCodeMillbrookHants:                    StationNameMillbrookHants,
+	StationCodeMillikenPark:                      StationNameMillikenPark,
+	StationCodeMillom:                            StationNameMillom,
+	StationCodeMillsHillManchester:               StationNameMillsHillManchester,
+	StationCodeMilngavie:                         StationNameMilngavie,
+	StationCodeMiltonKeynesCentral:               StationNameMiltonKeynesCentral,
+	StationCodeMinffordd:                         StationNameMinffordd,
+	StationCodeMinster:                           StationNameMinster,
+	StationCodeMirfield:                          StationNameMirfield,
+	StationCodeMistley:                           StationNameMistley,
+	StationCodeMitchamEastfields:                 StationNameMitchamEastfields,
+	StationCodeMitchamJunction:                   StationNameMitchamJunction,
+	StationCodeMobberley:                         StationNameMobberley,
+	StationCodeMonifieth:                         StationNameMonifieth,
+	StationCodeMonksRisborough:                   StationNameMonksRisborough,
+	StationCodeMontpelier:                        StationNameMontpelier,
+	StationCodeMontrose:                          StationNameMontrose,
+	StationCodeMoorfields:                        StationNameMoorfields,
+	StationCodeMoorgate:                          StationNameMoorgate,
+	StationCodeMoorside:                          StationNameMoorside,
+	StationCodeMoorthorpe:                        StationNameMoorthorpe,
+	StationCodeMorar:                             StationNameMorar,
+	StationCodeMorchardRoad:                      StationNameMorchardRoad,
+	StationCodeMordenSouth:                       StationNameMordenSouth,
+	StationCodeMorecambe:                         StationNameMorecambe,
+	StationCodeMoretonDorset:                     StationNameMoretonDorset,
+	StationCodeMoretonMerseyside:                 StationNameMoretonMerseyside,
+	StationCodeMoretoninMarsh:                    StationNameMoretoninMarsh,
+	StationCodeMorfaMawddach:                     StationNameMorfaMawddach,
+	StationCodeMorley:                            StationNameMorley,
+	StationCodeMorpeth:                           StationNameMorpeth,
+	StationCodeMortimer:                          StationNameMortimer,
+	StationCodeMortlake:                          StationNameMortlake,
+	StationCodeMosesGate:                         StationNameMosesGate,
+	StationCodeMossSide:                          StationNameMossSide,
+	StationCodeMossleyHill:                       StationNameMossleyHill,
+	StationCodeMossleyManchester:                 StationNameMossleyManchester,
+	StationCodeMosspark:                          StationNameMosspark,
+	StationCodeMoston:                            StationNameMoston,
+	StationCodeMotherwell:                        StationNameMotherwell,
+	StationCodeMotspurPark:                       StationNameMotspurPark,
+	StationCodeMottingham:                        StationNameMottingham,
+	StationCodeMottisfontAndDunbridge:            StationNameMottisfontAndDunbridge,
+	StationCodeMouldsworth:                       StationNameMouldsworth,
+	StationCodeMoulsecoomb:                       StationNameMoulsecoomb,
+	StationCodeMountFlorida:                      StationNameMountFlorida,
+	StationCodeMountVernon:                       StationNameMountVernon,
+	StationCodeMountainAsh:                       StationNameMountainAsh,
+	StationCodeMuirend:                           StationNameMuirend,
+	StationCodeMuirofOrd:                         StationNameMuirofOrd,
+	StationCodeMusselburgh:                       StationNameMusselburgh,
+	StationCodeMytholmroyd:                       StationNameMytholmroyd,
+	StationCodeNafferton:                         StationNameNafferton,
+	StationCodeNailseaAndBackwell:                StationNameNailseaAndBackwell,
+	StationCodeNairn:                             StationNameNairn,
+	StationCodeNantwich:                          StationNameNantwich,
+	StationCodeNarberth:                          StationNameNarberth,
+	StationCodeNarborough:                        StationNameNarborough,
+	StationCodeNavigationRoad:                    StationNameNavigationRoad,
+	StationCodeNeath:                             StationNameNeath,
+	StationCodeNeedhamMarket:                     StationNameNeedhamMarket,
+	StationCodeNeilston:                          StationNameNeilston,
+	StationCodeNelson:                            StationNameNelson,
+	StationCodeNeston:                            StationNameNeston,
+	StationCodeNetherfield:                       StationNameNetherfield,
+	StationCodeNethertown:                        StationNameNethertown,
+	StationCodeNetley:                            StationNameNetley,
+	StationCodeNewBarnet:                         StationNameNewBarnet,
+	StationCodeNewBeckenham:                      StationNameNewBeckenham,
+	StationCodeNewBrighton:                       StationNameNewBrighton,
+	StationCodeNewClee:                           StationNameNewClee,
+	StationCodeNewCross:                          StationNameNewCross,
+	StationCodeNewCrossGate:                      StationNameNewCrossGate,
+	StationCodeNewCumnock:                        StationNameNewCumnock,
+	StationCodeNewEltham:                         StationNameNewEltham,
+	StationCodeNewHolland:                        StationNameNewHolland,
+	StationCodeNewHythe:                          StationNameNewHythe,
+	StationCodeNewLane:                           StationNameNewLane,
+	StationCodeNewMalden:                         StationNameNewMalden,
+	StationCodeNewMillsCentral:                   StationNameNewMillsCentral,
+	StationCodeNewMillsNewtown:                   StationNameNewMillsNewtown,
+	StationCodeNewMilton:                         StationNameNewMilton,
+	StationCodeNewPudsey:                         StationNameNewPudsey,
+	StationCodeNewSouthgate:                      StationNameNewSouthgate,
+	StationCodeNewarkCastle:                      StationNameNewarkCastle,
+	StationCodeNewarkNorthGate:                   StationNameNewarkNorthGate,
+	StationCodeNewbridge:                         StationNameNewbridge,
+	StationCodeNewbury:                           StationNameNewbury,
+	StationCodeNewburyRacecourse:                 StationNameNewburyRacecourse,
+	StationCodeNewcastle:                         StationNameNewcastle,
+	StationCodeNewcourt:                          StationNameNewcourt,
+	StationCodeNewcraighall:                      StationNameNewcraighall,
+	StationCodeNewhavenHarbour:                   StationNameNewhavenHarbour,
+	StationCodeNewhavenTown:                      StationNameNewhavenTown,
+	StationCodeNewington:                         StationNameNewington,
+	StationCodeNewmarket:                         StationNameNewmarket,
+	StationCodeNewportEssex:                      StationNameNewportEssex,
+	StationCodeNewportSouthWales:                 StationNameNewportSouthWales,
+	StationCodeNewquay:                           StationNameNewquay,
+	StationCodeNewstead:                          StationNameNewstead,
+	StationCodeNewtonAbbot:                       StationNameNewtonAbbot,
+	StationCodeNewtonAycliffe:                    StationNameNewtonAycliffe,
+	StationCodeNewtonLanark:                      StationNameNewtonLanark,
+	StationCodeNewtonStCyres:                     StationNameNewtonStCyres,
+	StationCodeNewtonforHyde:                     StationNameNewtonforHyde,
+	StationCodeNewtongrange:                      StationNameNewtongrange,
+	StationCodeNewtonleWillows:                   StationNameNewtonleWillows,
+	StationCodeNewtonmore:                        StationNameNewtonmore,
+	StationCodeNewtononAyr:                       StationNameNewtononAyr,
+	StationCodeNewtownPowys:                      StationNameNewtownPowys,
+	StationCodeNinianPark:                        StationNameNinianPark,
+	StationCodeNitshill:                          StationNameNitshill,
+	StationCodeNorbiton:                          StationNameNorbiton,
+	StationCodeNorbury:                           StationNameNorbury,
+	StationCodeNormansBay:                        StationNameNormansBay,
+	StationCodeNormanton:                         StationNameNormanton,
+	StationCodeNorthBerwick:                      StationNameNorthBerwick,
+	StationCodeNorthCamp:                         StationNameNorthCamp,
+	StationCodeNorthDulwich:                      StationNameNorthDulwich,
+	StationCodeNorthFambridge:                    StationNameNorthFambridge,
+	StationCodeNorthLlanrwst:                     StationNameNorthLlanrwst,
+	StationCodeNorthQueensferry:                  StationNameNorthQueensferry,
+	StationCodeNorthRoadDarlington:               StationNameNorthRoadDarlington,
+	StationCodeNorthSheen:                        StationNameNorthSheen,
+	StationCodeNorthWalsham:                      StationNameNorthWalsham,
+	StationCodeNorthWembley:                      StationNameNorthWembley,
+	StationCodeNorthallerton:                     StationNameNorthallerton,
+	StationCodeNorthampton:                       StationNameNorthampton,
+	StationCodeNorthfield:                        StationNameNorthfield,
+	StationCodeNorthfleet:                        StationNameNorthfleet,
+	StationCodeNortholtPark:                      StationNameNortholtPark,
+	StationCodeNorthumberlandPark:                StationNameNorthumberlandPark,
+	StationCodeNorthwich:                         StationNameNorthwich,
+	StationCodeNortonBridge:                      StationNameNortonBridge,
+	StationCodeNorwich:                           StationNameNorwich,
+	StationCodeNorwoodJunction:                   StationNameNorwoodJunction,
+	StationCodeNottingham:                        StationNameNottingham,
+	StationCodeNuneaton:                          StationNameNuneaton,
+	StationCodeNunhead:                           StationNameNunhead,
+	StationCodeNunthorpe:                         StationNameNunthorpe,
+	StationCodeNutbourne:                         StationNameNutbourne,
+	StationCodeNutfield:                          StationNameNutfield,
+	StationCodeOakengates:                        StationNameOakengates,
+	StationCodeOakham:                            StationNameOakham,
+	StationCodeOakleighPark:                      StationNameOakleighPark,
+	StationCodeOban:                              StationNameOban,
+	StationCodeOckendon:                          StationNameOckendon,
+	StationCodeOckley:                            StationNameOckley,
+	StationCodeOkehampton:                        StationNameOkehampton,
+	StationCodeOldHill:                           StationNameOldHill,
+	StationCodeOldRoan:                           StationNameOldRoan,
+	StationCodeOldStreet:                         StationNameOldStreet,
+	StationCodeOldfieldPark:                      StationNameOldfieldPark,
+	StationCodeOlton:                             StationNameOlton,
+	StationCodeOre:                               StationNameOre,
+	StationCodeOrmskirk:                          StationNameOrmskirk,
+	StationCodeOrpington:                         StationNameOrpington,
+	StationCodeOrrell:                            StationNameOrrell,
+	StationCodeOrrellPark:                        StationNameOrrellPark,
+	StationCodeOtford:                            StationNameOtford,
+	StationCodeOultonBroadNorth:                  StationNameOultonBroadNorth,
+	StationCodeOultonBroadSouth:                  StationNameOultonBroadSouth,
+	StationCodeOutwood:                           StationNameOutwood,
+	StationCodeOverpool:                          StationNameOverpool,
+	StationCodeOverton:                           StationNameOverton,
+	StationCodeOxenholmeLakeDistrict:             StationNameOxenholmeLakeDistrict,
+	StationCodeOxford:                            StationNameOxford,
+	StationCodeOxfordParkway:                     StationNameOxfordParkway,
+	StationCodeOxshott:                           StationNameOxshott,
+	StationCodeOxted:                             StationNameOxted,
+	StationCodePaddockWood:                       StationNamePaddockWood,
+	StationCodePadgate:                           StationNamePadgate,
+	StationCodePaignton:                          StationNamePaignton,
+	StationCodePaisleyCanal:                      StationNamePaisleyCanal,
+	StationCodePaisleyGilmourStreet:              StationNamePaisleyGilmourStreet,
+	StationCodePaisleyStJames:                    StationNamePaisleyStJames,
+	StationCodePalmersGreen:                      StationNamePalmersGreen,
+	StationCodePangbourne:                        StationNamePangbourne,
+	StationCodePannal:                            StationNamePannal,
+	StationCodePantyffynnon:                      StationNamePantyffynnon,
+	StationCodePar:                               StationNamePar,
+	StationCodeParbold:                           StationNameParbold,
+	StationCodeParkStreet:                        StationNameParkStreet,
+	StationCodeParkstoneDorset:                   StationNameParkstoneDorset,
+	StationCodeParsonStreet:                      StationNameParsonStreet,
+	StationCodePartick:                           StationNamePartick,
+	StationCodeParton:                            StationNameParton,
+	StationCodePatchway:                          StationNamePatchway,
+	StationCodePatricroft:                        StationNamePatricroft,
+	StationCodePatterton:                         StationNamePatterton,
+	StationCodePeartree:                          StationNamePeartree,
+	StationCodePeckhamRye:                        StationNamePeckhamRye,
+	StationCodePegswood:                          StationNamePegswood,
+	StationCodePemberton:                         StationNamePemberton,
+	StationCodePembreyAndBurryPort:               StationNamePembreyAndBurryPort,
+	StationCodePembroke:                          StationNamePembroke,
+	StationCodePembrokeDock:                      StationNamePembrokeDock,
+	StationCodePenally:                           StationNamePenally,
+	StationCodePenarth:                           StationNamePenarth,
+	StationCodePencoed:                           StationNamePencoed,
+	StationCodePengam:                            StationNamePengam,
+	StationCodePengeEast:                         StationNamePengeEast,
+	StationCodePengeWest:                         StationNamePengeWest,
+	StationCodePenhelig:                          StationNamePenhelig,
+	StationCodePenistone:                         StationNamePenistone,
+	StationCodePenkridge:                         StationNamePenkridge,
+	StationCodePenmaenmawr:                       StationNamePenmaenmawr,
+	StationCodePenmere:                           StationNamePenmere,
+	StationCodePenrhiwceiber:                     StationNamePenrhiwceiber,
+	StationCodePenrhyndeudraeth:                  StationNamePenrhyndeudraeth,
+	StationCodePenrithNorthLakes:                 StationNamePenrithNorthLakes,
+	StationCodePenrynCornwall:                    StationNamePenrynCornwall,
+	StationCodePensarnGwynedd:                    StationNamePensarnGwynedd,
+	StationCodePenshurst:                         StationNamePenshurst,
+	StationCodePentreBach:                        StationNamePentreBach,
+	StationCodePenyBont:                          StationNamePenyBont,
+	StationCodePenychain:                         StationNamePenychain,
+	StationCodePenyffordd:                        StationNamePenyffordd,
+	StationCodePenzance:                          StationNamePenzance,
+	StationCodePerranwell:                        StationNamePerranwell,
+	StationCodePerryBarr:                         StationNamePerryBarr,
+	StationCodePershore:                          StationNamePershore,
+	StationCodePerth:                             StationNamePerth,
+	StationCodePeterborough:                      StationNamePeterborough,
+	StationCodePetersfield:                       StationNamePetersfield,
+	StationCodePettsWood:                         StationNamePettsWood,
+	StationCodePevenseyAndWestham:                StationNamePevenseyAndWestham,
+	StationCodePevenseyBay:                       StationNamePevenseyBay,
+	StationCodePewsey:                            StationNamePewsey,
+	StationCodePilning:                           StationNamePilning,
+	StationCodePinhoe:                            StationNamePinhoe,
+	StationCodePitlochry:                         StationNamePitlochry,
+	StationCodePitsea:                            StationNamePitsea,
+	StationCodePleasington:                       StationNamePleasington,
+	StationCodePlockton:                          StationNamePlockton,
+	StationCodePluckley:                          StationNamePluckley,
+	StationCodePlumley:                           StationNamePlumley,
+	StationCodePlumpton:                          StationNamePlumpton,
+	StationCodePlumstead:                         StationNamePlumstead,
+	StationCodePlymouth:                          StationNamePlymouth,
+	StationCodePokesdown:                         StationNamePokesdown,
+	StationCodePolegate:                          StationNamePolegate,
+	StationCodePolesworth:                        StationNamePolesworth,
+	StationCodePollokshawsEast:                   StationNamePollokshawsEast,
+	StationCodePollokshawsWest:                   StationNamePollokshawsWest,
+	StationCodePollokshieldsEast:                 StationNamePollokshieldsEast,
+	StationCodePollokshieldsWest:                 StationNamePollokshieldsWest,
+	StationCodePolmont:                           StationNamePolmont,
+	StationCodePolsloeBridge:                     StationNamePolsloeBridge,
+	StationCodePondersEnd:                        StationNamePondersEnd,
+	StationCodePontarddulais:                     StationNamePontarddulais,
+	StationCodePontefractBaghill:                 StationNamePontefractBaghill,
+	StationCodePontefractMonkhill:                StationNamePontefractMonkhill,
+	StationCodePontefractTanshelf:                StationNamePontefractTanshelf,
+	StationCodePontlottyn:                        StationNamePontlottyn,
+	StationCodePontyPant:                         StationNamePontyPant,
+	StationCodePontyclun:                         StationNamePontyclun,
+	StationCodePontypoolAndNewInn:                StationNamePontypoolAndNewInn,
+	StationCodePontypridd:                        StationNamePontypridd,
+	StationCodePoole:                             StationNamePoole,
+	StationCodePoppleton:                         StationNamePoppleton,
+	StationCodePortGlasgow:                       StationNamePortGlasgow,
+	StationCodePortSunlight:                      StationNamePortSunlight,
+	StationCodePortTalbotParkway:                 StationNamePortTalbotParkway,
+	StationCodePortchester:                       StationNamePortchester,
+	StationCodePorth:                             StationNamePorth,
+	StationCodePorthmadog:                        StationNamePorthmadog,
+	StationCodePortlethen:                        StationNamePortlethen,
+	StationCodePortslade:                         StationNamePortslade,
+	StationCodePortsmouthAndSouthsea:             StationNamePortsmouthAndSouthsea,
+	StationCodePortsmouthArms:                    StationNamePortsmouthArms,
+	StationCodePortsmouthHarbour:                 StationNamePortsmouthHarbour,
+	StationCodePossilparkAndParkhouse:            StationNamePossilparkAndParkhouse,
+	StationCodePottersBar:                        StationNamePottersBar,
+	StationCodePoultonleFylde:                    StationNamePoultonleFylde,
+	StationCodePoynton:                           StationNamePoynton,
+	StationCodePrees:                             StationNamePrees,
+	StationCodePrescot:                           StationNamePrescot,
+	StationCodePrestatyn:                         StationNamePrestatyn,
+	StationCodePrestbury:                         StationNamePrestbury,
+	StationCodePrestonLancs:                      StationNamePrestonLancs,
+	StationCodePrestonPark:                       StationNamePrestonPark,
+	StationCodePrestonpans:                       StationNamePrestonpans,
+	StationCodePrestwickInternationalAirport:     StationNamePrestwickInternationalAirport,
+	StationCodePrestwickTown:                     StationNamePrestwickTown,
+	StationCodePriesthillAndDarnley:              StationNamePriesthillAndDarnley,
+	StationCodePrincesRisborough:                 StationNamePrincesRisborough,
+	StationCodePrittlewell:                       StationNamePrittlewell,
+	StationCodePrudhoe:                           StationNamePrudhoe,
+	StationCodePulborough:                        StationNamePulborough,
+	StationCodePurfleet:                          StationNamePurfleet,
+	StationCodePurley:                            StationNamePurley,
+	StationCodePurleyOaks:                        StationNamePurleyOaks,
+	StationCodePutney:                            StationNamePutney,
+	StationCodePwllheli:                          StationNamePwllheli,
+	StationCodePyeCorner:                         StationNamePyeCorner,
+	StationCodePyle:                              StationNamePyle,
+	StationCodeQuakersYard:                       StationNameQuakersYard,
+	StationCodeQueenborough:                      StationNameQueenborough,
+	StationCodeQueensParkGlasgow:                 StationNameQueensParkGlasgow,
+	StationCodeQueensParkLondon:                  StationNameQueensParkLondon,
+	StationCodeQueensRoadPeckham:                 StationNameQueensRoadPeckham,
+	StationCodeQueenstownRoadBattersea:           StationNameQueenstownRoadBattersea,
+	StationCodeQuintrellDowns:                    StationNameQuintrellDowns,
+	StationCodeRadcliffeonTrent:                  StationNameRadcliffeonTrent,
+	StationCodeRadlett:                           StationNameRadlett,
+	StationCodeRadley:                            StationNameRadley,
+	StationCodeRadyr:                             StationNameRadyr,
+	StationCodeRainford:                          StationNameRainford,
+	StationCodeRainhamEssex:                      StationNameRainhamEssex,
+	StationCodeRainhamKent:                       StationNameRainhamKent,
+	StationCodeRainhill:                          StationNameRainhill,
+	StationCodeRamsgate:                          StationNameRamsgate,
+	StationCodeRamsgreaveAndWilpshire:            StationNameRamsgreaveAndWilpshire,
+	StationCodeRannoch:                           StationNameRannoch,
+	StationCodeRauceby:                           StationNameRauceby,
+	StationCodeRavenglassforEskdale:              StationNameRavenglassforEskdale,
+	StationCodeRavensbourne:                      StationNameRavensbourne,
+	StationCodeRavensthorpe:                      StationNameRavensthorpe,
+	StationCodeRawcliffe:                         StationNameRawcliffe,
+	StationCodeRayleigh:                          StationNameRayleigh,
+	StationCodeRaynesPark:                        StationNameRaynesPark,
+	StationCodeReading:                           StationNameReading,
+	StationCodeReadingWest:                       StationNameReadingWest,
+	StationCodeRectoryRoad:                       StationNameRectoryRoad,
+	StationCodeRedbridge:                         StationNameRedbridge,
+	StationCodeRedcarBritishSteel:                StationNameRedcarBritishSteel,
+	StationCodeRedcarCentral:                     StationNameRedcarCentral,
+	StationCodeRedcarEast:                        StationNameRedcarEast,
+	StationCodeReddishNorth:                      StationNameReddishNorth,
+	StationCodeReddishSouth:                      StationNameReddishSouth,
+	StationCodeRedditch:                          StationNameRedditch,
+	StationCodeRedhill:                           StationNameRedhill,
+	StationCodeRedland:                           StationNameRedland,
+	StationCodeRedruth:                           StationNameRedruth,
+	StationCodeReedhamNorfolk:                    StationNameReedhamNorfolk,
+	StationCodeReedhamSurrey:                     StationNameReedhamSurrey,
+	StationCodeReigate:                           StationNameReigate,
+	StationCodeRenton:                            StationNameRenton,
+	StationCodeRetford:                           StationNameRetford,
+	StationCodeRhiwbina:                          StationNameRhiwbina,
+	StationCodeRhooseCardiffInternationalAirport: StationNameRhooseCardiffInternationalAirport,
+	StationCodeRhosneigr:                         StationNameRhosneigr,
+	StationCodeRhyl:                              StationNameRhyl,
+	StationCodeRhymney:                           StationNameRhymney,
+	StationCodeRibblehead:                        StationNameRibblehead,
+	StationCodeRiceLane:                          StationNameRiceLane,
+	StationCodeRichmondLondon:                    StationNameRichmondLondon,
+	StationCodeRickmansworth:                     StationNameRickmansworth,
+	StationCodeRiddlesdown:                       StationNameRiddlesdown,
+	StationCodeRidgmont:                          StationNameRidgmont,
+	StationCodeRidingMill:                        StationNameRidingMill,
+	StationCodeRiscaAndPontymister:               StationNameRiscaAndPontymister,
+	StationCodeRishton:                           StationNameRishton,
+	StationCodeRobertsbridge:                     StationNameRobertsbridge,
+	StationCodeRoby:                              StationNameRoby,
+	StationCodeRochdale:                          StationNameRochdale,
+	StationCodeRoche:                             StationNameRoche,
+	StationCodeRochester:                         StationNameRochester,
+	StationCodeRochford:                          StationNameRochford,
+	StationCodeRockFerry:                         StationNameRockFerry,
+	StationCodeRogart:                            StationNameRogart,
+	StationCodeRogerstone:                        StationNameRogerstone,
+	StationCodeRolleston:                         StationNameRolleston,
+	StationCodeRomanBridge:                       StationNameRomanBridge,
+	StationCodeRomford:                           StationNameRomford,
+	StationCodeRomiley:                           StationNameRomiley,
+	StationCodeRomsey:                            StationNameRomsey,
+	StationCodeRoose:                             StationNameRoose,
+	StationCodeRoseGrove:                         StationNameRoseGrove,
+	StationCodeRoseHillMarple:                    StationNameRoseHillMarple,
+	StationCodeRosyth:                            StationNameRosyth,
+	StationCodeRotherhamCentral:                  StationNameRotherhamCentral,
+	StationCodeRotherhithe:                       StationNameRotherhithe,
+	StationCodeRoughtonRoad:                      StationNameRoughtonRoad,
+	StationCodeRowlandsCastle:                    StationNameRowlandsCastle,
+	StationCodeRowleyRegis:                       StationNameRowleyRegis,
+	StationCodeRoyBridge:                         StationNameRoyBridge,
+	StationCodeRoydon:                            StationNameRoydon,
+	StationCodeRoyston:                           StationNameRoyston,
+	StationCodeRuabon:                            StationNameRuabon,
+	StationCodeRufford:                           StationNameRufford,
+	StationCodeRugby:                             StationNameRugby,
+	StationCodeRugeleyTown:                       StationNameRugeleyTown,
+	StationCodeRugeleyTrentValley:                StationNameRugeleyTrentValley,
+	StationCodeRuncorn:                           StationNameRuncorn,
+	StationCodeRuncornEast:                       StationNameRuncornEast,
+	StationCodeRuskington:                        StationNameRuskington,
+	StationCodeRuswarp:                           StationNameRuswarp,
+	StationCodeRutherglen:                        StationNameRutherglen,
+	StationCodeRydeEsplanade:                     StationNameRydeEsplanade,
+	StationCodeRydePierHead:                      StationNameRydePierHead,
+	StationCodeRydeStJohnsRoad:                   StationNameRydeStJohnsRoad,
+	StationCodeRyderBrow:                         StationNameRyderBrow,
+	StationCodeRyeHouse:                          StationNameRyeHouse,
+	StationCodeRyeSussex:                         StationNameRyeSussex,
+	StationCodeSalfordCentral:                    StationNameSalfordCentral,
+	StationCodeSalfordCrescent:                   StationNameSalfordCrescent,
+	StationCodeSalfordsSurrey:                    StationNameSalfordsSurrey,
+	StationCodeSalhouse:                          StationNameSalhouse,
+	StationCodeSalisbury:                         StationNameSalisbury,
+	StationCodeSaltaire:                          StationNameSaltaire,
+	StationCodeSaltash:                           StationNameSaltash,
+	StationCodeSaltburn:                          StationNameSaltburn,
+	StationCodeSaltcoats:                         StationNameSaltcoats,
+	StationCodeSaltmarshe:                        StationNameSaltmarshe,
+	StationCodeSalwick:                           StationNameSalwick,
+	StationCodeSampfordCourtenay:                 StationNameSampfordCourtenay,
+	StationCodeSandalAndAgbrigg:                  StationNameSandalAndAgbrigg,
+	StationCodeSandbach:                          StationNameSandbach,
+	StationCodeSanderstead:                       StationNameSanderstead,
+	StationCodeSandhills:                         StationNameSandhills,
+	StationCodeSandhurstBerks:                    StationNameSandhurstBerks,
+	StationCodeSandling:                          StationNameSandling,
+	StationCodeSandown:                           StationNameSandown,
+	StationCodeSandplace:                         StationNameSandplace,
+	StationCodeSandwellAndDudley:                 StationNameSandwellAndDudley,
+	StationCodeSandwich:                          StationNameSandwich,
+	StationCodeSandy:                             StationNameSandy,
+	StationCodeSankeyforPenketh:                  StationNameSankeyforPenketh,
+	StationCodeSanquhar:                          StationNameSanquhar,
+	StationCodeSarn:                              StationNameSarn,
+	StationCodeSaundersfoot:                      StationNameSaundersfoot,
+	StationCodeSaunderton:                        StationNameSaunderton,
+	StationCodeSawbridgeworth:                    StationNameSawbridgeworth,
+	StationCodeSaxilby:                           StationNameSaxilby,
+	StationCodeSaxmundham:                        StationNameSaxmundham,
+	StationCodeScarborough:                       StationNameScarborough,
+	StationCodeScotscalder:                       StationNameScotscalder,
+	StationCodeScotstounhill:                     StationNameScotstounhill,
+	StationCodeScunthorpe:                        StationNameScunthorpe,
+	StationCodeSeaMills:                          StationNameSeaMills,
+	StationCodeSeafordSussex:                     StationNameSeafordSussex,
+	StationCodeSeaforthAndLitherland:             StationNameSeaforthAndLitherland,
+	StationCodeSeaham:                            StationNameSeaham,
+	StationCodeSeamer:                            StationNameSeamer,
+	StationCodeSeascale:                          StationNameSeascale,
+	StationCodeSeatonCarew:                       StationNameSeatonCarew,
+	StationCodeSeerGreenAndJordans:               StationNameSeerGreenAndJordans,
+	StationCodeSelby:                             StationNameSelby,
+	StationCodeSelhurst:                          StationNameSelhurst,
+	StationCodeSellafield:                        StationNameSellafield,
+	StationCodeSelling:                           StationNameSelling,
+	StationCodeSellyOak:                          StationNameSellyOak,
+	StationCodeSettle:                            StationNameSettle,
+	StationCodeSevenKings:                        StationNameSevenKings,
+	StationCodeSevenSisters:                      StationNameSevenSisters,
+	StationCodeSevenoaks:                         StationNameSevenoaks,
+	StationCodeSevernBeach:                       StationNameSevernBeach,
+	StationCodeSevernTunnelJunction:              StationNameSevernTunnelJunction,
+	StationCodeShadwell:                          StationNameShadwell,
+	StationCodeShalfordSurrey:                    StationNameShalfordSurrey,
+	StationCodeShanklin:                          StationNameShanklin,
+	StationCodeShawfair:                          StationNameShawfair,
+	StationCodeShawford:                          StationNameShawford,
+	StationCodeShawlands:                         StationNameShawlands,
+	StationCodeSheernessonSea:                    StationNameSheernessonSea,
+	StationCodeSheffield:                         StationNameSheffield,
+	StationCodeShelfordCambs:                     StationNameShelfordCambs,
+	StationCodeShenfield:                         StationNameShenfield,
+	StationCodeShenstone:                         StationNameShenstone,
+	StationCodeShepherdsBush:                     StationNameShepherdsBush,
+	StationCodeShepherdsWell:                     StationNameShepherdsWell,
+	StationCodeShepley:                           StationNameShepley,
+	StationCodeShepperton:                        StationNameShepperton,
+	StationCodeShepreth:                          StationNameShepreth,
+	StationCodeSherborne:                         StationNameSherborne,
+	StationCodeSherburninElmet:                   StationNameSherburninElmet,
+	StationCodeSheringham:                        StationNameSheringham,
+	StationCodeShettleston:                       StationNameShettleston,
+	StationCodeShieldmuir:                        StationNameShieldmuir,
+	StationCodeShifnal:                           StationNameShifnal,
+	StationCodeShildon:                           StationNameShildon,
+	StationCodeShiplake:                          StationNameShiplake,
+	StationCodeShipleyYorks:                      StationNameShipleyYorks,
+	StationCodeShippeaHill:                       StationNameShippeaHill,
+	StationCodeShipton:                           StationNameShipton,
+	StationCodeShirebrook:                        StationNameShirebrook,
+	StationCodeShirehampton:                      StationNameShirehampton,
+	StationCodeShireoaks:                         StationNameShireoaks,
+	StationCodeShirley:                           StationNameShirley,
+	StationCodeShoeburyness:                      StationNameShoeburyness,
+	StationCodeSholing:                           StationNameSholing,
+	StationCodeShoreditchHighStreet:              StationNameShoreditchHighStreet,
+	StationCodeShorehamKent:                      StationNameShorehamKent,
+	StationCodeShorehambySea:                     StationNameShorehambySea,
+	StationCodeShortlands:                        StationNameShortlands,
+	StationCodeShotton:                           StationNameShotton,
+	StationCodeShotts:                            StationNameShotts,
+	StationCodeShrewsbury:                        StationNameShrewsbury,
+	StationCodeSidcup:                            StationNameSidcup,
+	StationCodeSileby:                            StationNameSileby,
+	StationCodeSilecroft:                         StationNameSilecroft,
+	StationCodeSilkstoneCommon:                   StationNameSilkstoneCommon,
+	StationCodeSilverStreet:                      StationNameSilverStreet,
+	StationCodeSilverdale:                        StationNameSilverdale,
+	StationCodeSinger:                            StationNameSinger,
+	StationCodeSittingbourne:                     StationNameSittingbourne,
+	StationCodeSkegness:                          StationNameSkegness,
+	StationCodeSkewen:                            StationNameSkewen,
+	StationCodeSkipton:                           StationNameSkipton,
+	StationCodeSladeGreen:                        StationNameSladeGreen,
+	StationCodeSlaithwaite:                       StationNameSlaithwaite,
+	StationCodeSlateford:                         StationNameSlateford,
+	StationCodeSleaford:                          StationNameSleaford,
+	StationCodeSleights:                          StationNameSleights,
+	StationCodeSlough:                            StationNameSlough,
+	StationCodeSmallHeath:                        StationNameSmallHeath,
+	StationCodeSmallbrookJunction:                StationNameSmallbrookJunction,
+	StationCodeSmethwickGaltonBridge:             StationNameSmethwickGaltonBridge,
+	StationCodeSmethwickRolfeStreet:              StationNameSmethwickRolfeStreet,
+	StationCodeSmithyBridge:                      StationNameSmithyBridge,
+	StationCodeSnaith:                            StationNameSnaith,
+	StationCodeSnodland:                          StationNameSnodland,
+	StationCodeSnowdown:                          StationNameSnowdown,
+	StationCodeSoleStreet:                        StationNameSoleStreet,
+	StationCodeSolihull:                          StationNameSolihull,
+	StationCodeSomerleyton:                       StationNameSomerleyton,
+	StationCodeSouthActon:                        StationNameSouthActon,
+	StationCodeSouthBank:                         StationNameSouthBank,
+	StationCodeSouthBermondsey:                   StationNameSouthBermondsey,
+	StationCodeSouthCroydon:                      StationNameSouthCroydon,
+	StationCodeSouthElmsall:                      StationNameSouthElmsall,
+	StationCodeSouthGreenford:                    StationNameSouthGreenford,
+	StationCodeSouthGyle:                         StationNameSouthGyle,
+	StationCodeSouthHampstead:                    StationNameSouthHampstead,
+	StationCodeSouthKenton:                       StationNameSouthKenton,
+	StationCodeSouthMerton:                       StationNameSouthMerton,
+	StationCodeSouthMilford:                      StationNameSouthMilford,
+	StationCodeSouthRuislip:                      StationNameSouthRuislip,
+	StationCodeSouthTottenham:                    StationNameSouthTottenham,
+	StationCodeSouthWigston:                      StationNameSouthWigston,
+	StationCodeSouthWoodhamFerrers:               StationNameSouthWoodhamFerrers,
+	StationCodeSouthall:                          StationNameSouthall,
+	StationCodeSouthamptonAirportParkway:         StationNameSouthamptonAirportParkway,
+	StationCodeSouthamptonCentral:                StationNameSouthamptonCentral,
+	StationCodeSouthbourne:                       StationNameSouthbourne,
+	StationCodeSouthbury:                         StationNameSouthbury,
+	StationCodeSouthease:                         StationNameSouthease,
+	StationCodeSouthendAirport:                   StationNameSouthendAirport,
+	StationCodeSouthendCentral:                   StationNameSouthendCentral,
+	StationCodeSouthendEast:                      StationNameSouthendEast,
+	StationCodeSouthendVictoria:                  StationNameSouthendVictoria,
+	StationCodeSouthminster:                      StationNameSouthminster,
+	StationCodeSouthport:                         StationNameSouthport,
+	StationCodeSouthwick:                         StationNameSouthwick,
+	StationCodeSowerbyBridge:                     StationNameSowerbyBridge,
+	StationCodeSpalding:                          StationNameSpalding,
+	StationCodeSpeanBridge:                       StationNameSpeanBridge,
+	StationCodeSpital:                            StationNameSpital,
+	StationCodeSpondon:                           StationNameSpondon,
+	StationCodeSpoonerRow:                        StationNameSpoonerRow,
+	StationCodeSpringRoad:                        StationNameSpringRoad,
+	StationCodeSpringburn:                        StationNameSpringburn,
+	StationCodeSpringfield:                       StationNameSpringfield,
+	StationCodeSquiresGate:                       StationNameSquiresGate,
+	StationCodeStAlbansAbbey:                     StationNameStAlbansAbbey,
+	StationCodeStAlbansCity:                      StationNameStAlbansCity,
+	StationCodeStAndrewsRoad:                     StationNameStAndrewsRoad,
+	StationCodeStAnnesonSea:                      StationNameStAnnesonSea,
+	StationCodeStAustell:                         StationNameStAustell,
+	StationCodeStBees:                            StationNameStBees,
+	StationCodeStBudeauxFerryRoad:                StationNameStBudeauxFerryRoad,
+	StationCodeStBudeauxVictoriaRoad:             StationNameStBudeauxVictoriaRoad,
+	StationCodeStColumbRoad:                      StationNameStColumbRoad,
+	StationCodeStDenys:                           StationNameStDenys,
+	StationCodeStErth:                            StationNameStErth,
+	StationCodeStGermans:                         StationNameStGermans,
+	StationCodeStHelensCentral:                   StationNameStHelensCentral,
+	StationCodeStHelensJunction:                  StationNameStHelensJunction,
+	StationCodeStHelierSurrey:                    StationNameStHelierSurrey,
+	StationCodeStIvesCornwall:                    StationNameStIvesCornwall,
+	StationCodeStJamesParkExeter:                 StationNameStJamesParkExeter,
+	StationCodeStJamesStreetWalthamstow:          StationNameStJamesStreetWalthamstow,
+	StationCodeStJohnsLondon:                     StationNameStJohnsLondon,
+	StationCodeStKeyneWishingWellHalt:            StationNameStKeyneWishingWellHalt,
+	StationCodeStLeonardsWarriorSquare:           StationNameStLeonardsWarriorSquare,
+	StationCodeStMargaretsHerts:                  StationNameStMargaretsHerts,
+	StationCodeStMargaretsLondon:                 StationNameStMargaretsLondon,
+	StationCodeStMaryCray:                        StationNameStMaryCray,
+	StationCodeStMichaels:                        StationNameStMichaels,
+	StationCodeStNeots:                           StationNameStNeots,
+	StationCodeStafford:                          StationNameStafford,
+	StationCodeStaines:                           StationNameStaines,
+	StationCodeStallingborough:                   StationNameStallingborough,
+	StationCodeStalybridge:                       StationNameStalybridge,
+	StationCodeStamfordHill:                      StationNameStamfordHill,
+	StationCodeStamfordLincs:                     StationNameStamfordLincs,
+	StationCodeStanfordleHope:                    StationNameStanfordleHope,
+	StationCodeStanlowAndThornton:                StationNameStanlowAndThornton,
+	StationCodeStanstedAirport:                   StationNameStanstedAirport,
+	StationCodeStanstedMountfitchet:              StationNameStanstedMountfitchet,
+	StationCodeStaplehurst:                       StationNameStaplehurst,
+	StationCodeStapletonRoad:                     StationNameStapletonRoad,
+	StationCodeStarbeck:                          StationNameStarbeck,
+	StationCodeStarcross:                         StationNameStarcross,
+	StationCodeStaveleyCumbria:                   StationNameStaveleyCumbria,
+	StationCodeStechford:                         StationNameStechford,
+	StationCodeSteetonAndSilsden:                 StationNameSteetonAndSilsden,
+	StationCodeStepps:                            StationNameStepps,
+	StationCodeStevenage:                         StationNameStevenage,
+	StationCodeStevenston:                        StationNameStevenston,
+	StationCodeStewartby:                         StationNameStewartby,
+	StationCodeStewarton:                         StationNameStewarton,
+	StationCodeStirling:                          StationNameStirling,
+	StationCodeStockport:                         StationNameStockport,
+	StationCodeStocksfield:                       StationNameStocksfield,
+	StationCodeStocksmoor:                        StationNameStocksmoor,
+	StationCodeStockton:                          StationNameStockton,
+	StationCodeStokeMandeville:                   StationNameStokeMandeville,
+	StationCodeStokeNewington:                    StationNameStokeNewington,
+	StationCodeStokeonTrent:                      StationNameStokeonTrent,
+	StationCodeStoneCrossing:                     StationNameStoneCrossing,
+	StationCodeStoneStaffs:                       StationNameStoneStaffs,
+	StationCodeStonebridgePark:                   StationNameStonebridgePark,
+	StationCodeStonegate:                         StationNameStonegate,
+	StationCodeStonehaven:                        StationNameStonehaven,
+	StationCodeStonehouse:                        StationNameStonehouse,
+	StationCodeStoneleigh:                        StationNameStoneleigh,
+	StationCodeStourbridgeJunction:               StationNameStourbridgeJunction,
+	StationCodeStourbridgeTown:                   StationNameStourbridgeTown,
+	StationCodeStow:                              StationNameStow,
+	StationCodeStowmarket:                        StationNameStowmarket,
+	StationCodeStranraer:                         StationNameStranraer,
+	StationCodeStratfordInternational:            StationNameStratfordInternational,
+	StationCodeStratfordLondon:                   StationNameStratfordLondon,
+	StationCodeStratfordUponAvon:                 StationNameStratfordUponAvon,
+	StationCodeStratfordUponAvonParkway:          StationNameStratfordUponAvonParkway,
+	StationCodeStrathcarron:                      StationNameStrathcarron,
+	StationCodeStrawberryHill:                    StationNameStrawberryHill,
+	StationCodeStreathamCommon:                   StationNameStreathamCommon,
+	StationCodeStreathamGreaterLondon:            StationNameStreathamGreaterLondon,
+	StationCodeStreathamHill:                     StationNameStreathamHill,
+	StationCodeStreethouse:                       StationNameStreethouse,
+	StationCodeStrines:                           StationNameStrines,
+	StationCodeStromeferry:                       StationNameStromeferry,
+	StationCodeStroodKent:                        StationNameStroodKent,
+	StationCodeStroudGloucs:                      StationNameStroudGloucs,
+	StationCodeSturry:                            StationNameSturry,
+	StationCodeStyal:                             StationNameStyal,
+	StationCodeSudburyAndHarrowRoad:              StationNameSudburyAndHarrowRoad,
+	StationCodeSudburyHillHarrow:                 StationNameSudburyHillHarrow,
+	StationCodeSudburySuffolk:                    StationNameSudburySuffolk,
+	StationCodeSugarLoaf:                         StationNameSugarLoaf,
+	StationCodeSummerston:                        StationNameSummerston,
+	StationCodeSunbury:                           StationNameSunbury,
+	StationCodeSunderland:                        StationNameSunderland,
+	StationCodeSundridgePark:                     StationNameSundridgePark,
+	StationCodeSunningdale:                       StationNameSunningdale,
+	StationCodeSunnymeads:                        StationNameSunnymeads,
+	StationCodeSurbiton:                          StationNameSurbiton,
+	StationCodeSurreyQuays:                       StationNameSurreyQuays,
+	StationCodeSuttonColdfield:                   StationNameSuttonColdfield,
+	StationCodeSuttonCommon:                      StationNameSuttonCommon,
+	StationCodeSuttonParkway:                     StationNameSuttonParkway,
+	StationCodeSuttonSurrey:                      StationNameSuttonSurrey,
+	StationCodeSwale:                             StationNameSwale,
+	StationCodeSwanley:                           StationNameSwanley,
+	StationCodeSwanscombe:                        StationNameSwanscombe,
+	StationCodeSwansea:                           StationNameSwansea,
+	StationCodeSwanwick:                          StationNameSwanwick,
+	StationCodeSway:                              StationNameSway,
+	StationCodeSwaythling:                        StationNameSwaythling,
+	StationCodeSwinderby:                         StationNameSwinderby,
+	StationCodeSwindonWilts:                      StationNameSwindonWilts,
+	StationCodeSwineshead:                        StationNameSwineshead,
+	StationCodeSwintonManchester:                 StationNameSwintonManchester,
+	StationCodeSwintonSouthYorks:                 StationNameSwintonSouthYorks,
+	StationCodeSydenhamHill:                      StationNameSydenhamHill,
+	StationCodeSydenhamLondon:                    StationNameSydenhamLondon,
+	StationCodeSyonLane:                          StationNameSyonLane,
+	StationCodeSyston:                            StationNameSyston,
+	StationCodeTackley:                           StationNameTackley,
+	StationCodeTadworth:                          StationNameTadworth,
+	StationCodeTaffsWell:                         StationNameTaffsWell,
+	StationCodeTain:                              StationNameTain,
+	StationCodeTalsarnau:                         StationNameTalsarnau,
+	StationCodeTalyCafn:                          StationNameTalyCafn,
+	StationCodeTalybont:                          StationNameTalybont,
+	StationCodeTameBridgeParkway:                 StationNameTameBridgeParkway,
+	StationCodeTamworth:                          StationNameTamworth,
+	StationCodeTaplow:                            StationNameTaplow,
+	StationCodeTattenhamCorner:                   StationNameTattenhamCorner,
+	StationCodeTaunton:                           StationNameTaunton,
+	StationCodeTaynuilt:                          StationNameTaynuilt,
+	StationCodeTeddington:                        StationNameTeddington,
+	StationCodeTeessideAirport:                   StationNameTeessideAirport,
+	StationCodeTeignmouth:                        StationNameTeignmouth,
+	StationCodeTelfordCentral:                    StationNameTelfordCentral,
+	StationCodeTemplecombe:                       StationNameTemplecombe,
+	StationCodeTenby:                             StationNameTenby,
+	StationCodeTeynham:                           StationNameTeynham,
+	StationCodeThamesDitton:                      StationNameThamesDitton,
+	StationCodeThatcham:                          StationNameThatcham,
+	StationCodeThattoHeath:                       StationNameThattoHeath,
+	StationCodeTheHawthorns:                      StationNameTheHawthorns,
+	StationCodeTheLakesWarks:                     StationNameTheLakesWarks,
+	StationCodeTheale:                            StationNameTheale,
+	StationCodeTheobaldsGrove:                    StationNameTheobaldsGrove,
+	StationCodeThetford:                          StationNameThetford,
+	StationCodeThirsk:                            StationNameThirsk,
+	StationCodeThornaby:                          StationNameThornaby,
+	StationCodeThorneNorth:                       StationNameThorneNorth,
+	StationCodeThorneSouth:                       StationNameThorneSouth,
+	StationCodeThornford:                         StationNameThornford,
+	StationCodeThornliebank:                      StationNameThornliebank,
+	StationCodeThorntonAbbey:                     StationNameThorntonAbbey,
+	StationCodeThorntonHeath:                     StationNameThorntonHeath,
+	StationCodeThorntonhall:                      StationNameThorntonhall,
+	StationCodeThorpeBay:                         StationNameThorpeBay,
+	StationCodeThorpeCulvert:                     StationNameThorpeCulvert,
+	StationCodeThorpeleSoken:                     StationNameThorpeleSoken,
+	StationCodeThreeBridges:                      StationNameThreeBridges,
+	StationCodeThreeOaks:                         StationNameThreeOaks,
+	StationCodeThurgarton:                        StationNameThurgarton,
+	StationCodeThurnscoe:                         StationNameThurnscoe,
+	StationCodeThurso:                            StationNameThurso,
+	StationCodeThurston:                          StationNameThurston,
+	StationCodeTilburyTown:                       StationNameTilburyTown,
+	StationCodeTileHill:                          StationNameTileHill,
+	StationCodeTilehurst:                         StationNameTilehurst,
+	StationCodeTipton:                            StationNameTipton,
+	StationCodeTirPhil:                           StationNameTirPhil,
+	StationCodeTisbury:                           StationNameTisbury,
+	StationCodeTivertonParkway:                   StationNameTivertonParkway,
+	StationCodeTodmorden:                         StationNameTodmorden,
+	StationCodeTolworth:                          StationNameTolworth,
+	StationCodeTonPentre:                         StationNameTonPentre,
+	StationCodeTonbridge:                         StationNameTonbridge,
+	StationCodeTondu:                             StationNameTondu,
+	StationCodeTonfanau:                          StationNameTonfanau,
+	StationCodeTonypandy:                         StationNameTonypandy,
+	StationCodeTooting:                           StationNameTooting,
+	StationCodeTopsham:                           StationNameTopsham,
+	StationCodeTorquay:                           StationNameTorquay,
+	StationCodeTorre:                             StationNameTorre,
+	StationCodeTotnes:                            StationNameTotnes,
+	StationCodeTottenhamHale:                     StationNameTottenhamHale,
+	StationCodeTotton:                            StationNameTotton,
+	StationCodeTownGreen:                         StationNameTownGreen,
+	StationCodeTraffordPark:                      StationNameTraffordPark,
+	StationCodeTrefforest:                        StationNameTrefforest,
+	StationCodeTrefforestEstate:                  StationNameTrefforestEstate,
+	StationCodeTrehafod:                          StationNameTrehafod,
+	StationCodeTreherbert:                        StationNameTreherbert,
+	StationCodeTreorchy:                          StationNameTreorchy,
+	StationCodeTrimley:                           StationNameTrimley,
+	StationCodeTring:                             StationNameTring,
+	StationCodeTroedyrhiw:                        StationNameTroedyrhiw,
+	StationCodeTroon:                             StationNameTroon,
+	StationCodeTrowbridge:                        StationNameTrowbridge,
+	StationCodeTruro:                             StationNameTruro,
+	StationCodeTulloch:                           StationNameTulloch,
+	StationCodeTulseHill:                         StationNameTulseHill,
+	StationCodeTunbridgeWells:                    StationNameTunbridgeWells,
+	StationCodeTurkeyStreet:                      StationNameTurkeyStreet,
+	StationCodeTutburyAndHatton:                  StationNameTutburyAndHatton,
+	StationCodeTweedbank:                         StationNameTweedbank,
+	StationCodeTwickenham:                        StationNameTwickenham,
+	StationCodeTwyford:                           StationNameTwyford,
+	StationCodeTyCroes:                           StationNameTyCroes,
+	StationCodeTyGlas:                            StationNameTyGlas,
+	StationCodeTygwyn:                            StationNameTygwyn,
+	StationCodeTyndrumLower:                      StationNameTyndrumLower,
+	StationCodeTyseley:                           StationNameTyseley,
+	StationCodeTywyn:                             StationNameTywyn,
+	StationCodeUckfield:                          StationNameUckfield,
+	StationCodeUddingston:                        StationNameUddingston,
+	StationCodeUlceby:                            StationNameUlceby,
+	StationCodeUlleskelf:                         StationNameUlleskelf,
+	StationCodeUlverston:                         StationNameUlverston,
+	StationCodeUmberleigh:                        StationNameUmberleigh,
+	StationCodeUniversityBirmingham:              StationNameUniversityBirmingham,
+	StationCodeUphall:                            StationNameUphall,
+	StationCodeUpholland:                         StationNameUpholland,
+	StationCodeUpminster:                         StationNameUpminster,
+	StationCodeUpperHalliford:                    StationNameUpperHalliford,
+	StationCodeUpperHolloway:                     StationNameUpperHolloway,
+	StationCodeUpperTyndrum:                      StationNameUpperTyndrum,
+	StationCodeUpperWarlingham:                   StationNameUpperWarlingham,
+	StationCodeUptonMerseyside:                   StationNameUptonMerseyside,
+	StationCodeUpwey:                             StationNameUpwey,
+	StationCodeUrmston:                           StationNameUrmston,
+	StationCodeUttoxeter:                         StationNameUttoxeter,
+	StationCodeValley:                            StationNameValley,
+	StationCodeVauxhall:                          StationNameVauxhall,
+	StationCodeVirginiaWater:                     StationNameVirginiaWater,
+	StationCodeWaddon:                            StationNameWaddon,
+	StationCodeWadhurst:                          StationNameWadhurst,
+	StationCodeWainfleet:                         StationNameWainfleet,
+	StationCodeWakefieldKirkgate:                 StationNameWakefieldKirkgate,
+	StationCodeWakefieldWestgate:                 StationNameWakefieldWestgate,
+	StationCodeWalkden:                           StationNameWalkden,
+	StationCodeWallaseyGroveRoad:                 StationNameWallaseyGroveRoad,
+	StationCodeWallaseyVillage:                   StationNameWallaseyVillage,
+	StationCodeWallington:                        StationNameWallington,
+	StationCodeWallyford:                         StationNameWallyford,
+	StationCodeWalmer:                            StationNameWalmer,
+	StationCodeWalsall:                           StationNameWalsall,
+	StationCodeWalsden:                           StationNameWalsden,
+	StationCodeWalthamCross:                      StationNameWalthamCross,
+	StationCodeWalthamstowCentral:                StationNameWalthamstowCentral,
+	StationCodeWalthamstowQueensRoad:             StationNameWalthamstowQueensRoad,
+	StationCodeWaltonMerseyside:                  StationNameWaltonMerseyside,
+	StationCodeWaltononThames:                    StationNameWaltononThames,
+	StationCodeWaltonontheNaze:                   StationNameWaltonontheNaze,
+	StationCodeWanborough:                        StationNameWanborough,
+	StationCodeWandsworthCommon:                  StationNameWandsworthCommon,
+	StationCodeWandsworthRoad:                    StationNameWandsworthRoad,
+	StationCodeWandsworthTown:                    StationNameWandsworthTown,
+	StationCodeWansteadPark:                      StationNameWansteadPark,
+	StationCodeWapping:                           StationNameWapping,
+	StationCodeWarblington:                       StationNameWarblington,
+	StationCodeWareHerts:                         StationNameWareHerts,
+	StationCodeWarehamDorset:                     StationNameWarehamDorset,
+	StationCodeWargrave:                          StationNameWargrave,
+	StationCodeWarminster:                        StationNameWarminster,
+	StationCodeWarnham:                           StationNameWarnham,
+	StationCodeWarringtonBankQuay:                StationNameWarringtonBankQuay,
+	StationCodeWarringtonCentral:                 StationNameWarringtonCentral,
+	StationCodeWarwick:                           StationNameWarwick,
+	StationCodeWarwickParkway:                    StationNameWarwickParkway,
+	StationCodeWaterOrton:                        StationNameWaterOrton,
+	StationCodeWaterbeach:                        StationNameWaterbeach,
+	StationCodeWateringbury:                      StationNameWateringbury,
+	StationCodeWaterlooMerseyside:                StationNameWaterlooMerseyside,
+	StationCodeWatfordHighStreet:                 StationNameWatfordHighStreet,
+	StationCodeWatfordJunction:                   StationNameWatfordJunction,
+	StationCodeWatfordNorth:                      StationNameWatfordNorth,
+	StationCodeWatlington:                        StationNameWatlington,
+	StationCodeWattonatStone:                     StationNameWattonatStone,
+	StationCodeWaunGronPark:                      StationNameWaunGronPark,
+	StationCodeWavertreeTechnologyPark:           StationNameWavertreeTechnologyPark,
+	StationCodeWedgwood:                          StationNameWedgwood,
+	StationCodeWeeley:                            StationNameWeeley,
+	StationCodeWeeton:                            StationNameWeeton,
+	StationCodeWelhamGreen:                       StationNameWelhamGreen,
+	StationCodeWelling:                           StationNameWelling,
+	StationCodeWellingborough:                    StationNameWellingborough,
+	StationCodeWellingtonShropshire:              StationNameWellingtonShropshire,
+	StationCodeWelshpool:                         StationNameWelshpool,
+	StationCodeWelwynGardenCity:                  StationNameWelwynGardenCity,
+	StationCodeWelwynNorth:                       StationNameWelwynNorth,
+	StationCodeWem:                               StationNameWem,
+	StationCodeWembleyCentral:                    StationNameWembleyCentral,
+	StationCodeWembleyStadium:                    StationNameWembleyStadium,
+	StationCodeWemyssBay:                         StationNameWemyssBay,
+	StationCodeWendover:                          StationNameWendover,
+	StationCodeWennington:                        StationNameWennington,
+	StationCodeWestAllerton:                      StationNameWestAllerton,
+	StationCodeWestBrompton:                      StationNameWestBrompton,
+	StationCodeWestByfleet:                       StationNameWestByfleet,
+	StationCodeWestCalder:                        StationNameWestCalder,
+	StationCodeWestCroydon:                       StationNameWestCroydon,
+	StationCodeWestDrayton:                       StationNameWestDrayton,
+	StationCodeWestDulwich:                       StationNameWestDulwich,
+	StationCodeWestEaling:                        StationNameWestEaling,
+	StationCodeWestHam:                           StationNameWestHam,
+	StationCodeWestHampstead:                     StationNameWestHampstead,
+	StationCodeWestHampsteadThameslink:           StationNameWestHampsteadThameslink,
+	StationCodeWestHorndon:                       StationNameWestHorndon,
+	StationCodeWestKilbride:                      StationNameWestKilbride,
+	StationCodeWestKirby:                         StationNameWestKirby,
+	StationCodeWestMalling:                       StationNameWestMalling,
+	StationCodeWestNorwood:                       StationNameWestNorwood,
+	StationCodeWestRuislip:                       StationNameWestRuislip,
+	StationCodeWestRunton:                        StationNameWestRunton,
+	StationCodeWestStLeonards:                    StationNameWestStLeonards,
+	StationCodeWestSutton:                        StationNameWestSutton,
+	StationCodeWestWickham:                       StationNameWestWickham,
+	StationCodeWestWorthing:                      StationNameWestWorthing,
+	StationCodeWestburyWilts:                     StationNameWestburyWilts,
+	StationCodeWestcliff:                         StationNameWestcliff,
+	StationCodeWestcombePark:                     StationNameWestcombePark,
+	StationCodeWestenhanger:                      StationNameWestenhanger,
+	StationCodeWesterHailes:                      StationNameWesterHailes,
+	StationCodeWesterfield:                       StationNameWesterfield,
+	StationCodeWesterton:                         StationNameWesterton,
+	StationCodeWestgateonSea:                     StationNameWestgateonSea,
+	StationCodeWesthoughton:                      StationNameWesthoughton,
+	StationCodeWestonMilton:                      StationNameWestonMilton,
+	StationCodeWestonsuperMare:                   StationNameWestonsuperMare,
+	StationCodeWetheral:                          StationNameWetheral,
+	StationCodeWeybridge:                         StationNameWeybridge,
+	StationCodeWeymouth:                          StationNameWeymouth,
+	StationCodeWhaleyBridge:                      StationNameWhaleyBridge,
+	StationCodeWhalleyLancs:                      StationNameWhalleyLancs,
+	StationCodeWhatstandwell:                     StationNameWhatstandwell,
+	StationCodeWhifflet:                          StationNameWhifflet,
+	StationCodeWhimple:                           StationNameWhimple,
+	StationCodeWhinhill:                          StationNameWhinhill,
+	StationCodeWhiston:                           StationNameWhiston,
+	StationCodeWhitby:                            StationNameWhitby,
+	StationCodeWhitchurchCardiff:                 StationNameWhitchurchCardiff,
+	StationCodeWhitchurchHants:                   StationNameWhitchurchHants,
+	StationCodeWhitchurchShropshire:              StationNameWhitchurchShropshire,
+	StationCodeWhiteHartLane:                     StationNameWhiteHartLane,
+	StationCodeWhiteNotley:                       StationNameWhiteNotley,
+	StationCodeWhitechapel:                       StationNameWhitechapel,
+	StationCodeWhitecraigs:                       StationNameWhitecraigs,
+	StationCodeWhitehaven:                        StationNameWhitehaven,
+	StationCodeWhitland:                          StationNameWhitland,
+	StationCodeWhitleyBridge:                     StationNameWhitleyBridge,
+	StationCodeWhitlocksEnd:                      StationNameWhitlocksEnd,
+	StationCodeWhitstable:                        StationNameWhitstable,
+	StationCodeWhittlesea:                        StationNameWhittlesea,
+	StationCodeWhittlesfordParkway:               StationNameWhittlesfordParkway,
+	StationCodeWhittonLondon:                     StationNameWhittonLondon,
+	StationCodeWhitwellDerbyshire:                StationNameWhitwellDerbyshire,
+	StationCodeWhyteleafe:                        StationNameWhyteleafe,
+	StationCodeWhyteleafeSouth:                   StationNameWhyteleafeSouth,
+	StationCodeWick:                              StationNameWick,
+	StationCodeWickford:                          StationNameWickford,
+	StationCodeWickhamMarket:                     StationNameWickhamMarket,
+	StationCodeWiddrington:                       StationNameWiddrington,
+	StationCodeWidnes:                            StationNameWidnes,
+	StationCodeWidneyManor:                       StationNameWidneyManor,
+	StationCodeWiganNorthWestern:                 StationNameWiganNorthWestern,
+	StationCodeWiganWallgate:                     StationNameWiganWallgate,
+	StationCodeWigton:                            StationNameWigton,
+	StationCodeWildmill:                          StationNameWildmill,
+	StationCodeWillesdenJunction:                 StationNameWillesdenJunction,
+	StationCodeWilliamwood:                       StationNameWilliamwood,
+	StationCodeWillington:                        StationNameWillington,
+	StationCodeWilmcote:                          StationNameWilmcote,
+	StationCodeWilmslow:                          StationNameWilmslow,
+	StationCodeWilnecoteStaffs:                   StationNameWilnecoteStaffs,
+	StationCodeWimbledon:                         StationNameWimbledon,
+	StationCodeWimbledonChase:                    StationNameWimbledonChase,
+	StationCodeWinchelsea:                        StationNameWinchelsea,
+	StationCodeWinchester:                        StationNameWinchester,
+	StationCodeWinchfield:                        StationNameWinchfield,
+	StationCodeWinchmoreHill:                     StationNameWinchmoreHill,
+	StationCodeWindermere:                        StationNameWindermere,
+	StationCodeWindsorAndEtonCentral:             StationNameWindsorAndEtonCentral,
+	StationCodeWindsorAndEtonRiverside:           StationNameWindsorAndEtonRiverside,
+	StationCodeWinnersh:                          StationNameWinnersh,
+	StationCodeWinnershTriangle:                  StationNameWinnershTriangle,
+	StationCodeWinsford:                          StationNameWinsford,
+	StationCodeWishaw:                            StationNameWishaw,
+	StationCodeWitham:                            StationNameWitham,
+	StationCodeWitley:                            StationNameWitley,
+	StationCodeWittonWestMidlands:                StationNameWittonWestMidlands,
+	StationCodeWivelsfield:                       StationNameWivelsfield,
+	StationCodeWivenhoe:                          StationNameWivenhoe,
+	StationCodeWoburnSands:                       StationNameWoburnSands,
+	StationCodeWoking:                            StationNameWoking,
+	StationCodeWokingham:                         StationNameWokingham,
+	StationCodeWoldingham:                        StationNameWoldingham,
+	StationCodeWolverhampton:                     StationNameWolverhampton,
+	StationCodeWolverton:                         StationNameWolverton,
+	StationCodeWombwell:                          StationNameWombwell,
+	StationCodeWoodEnd:                           StationNameWoodEnd,
+	StationCodeWoodStreet:                        StationNameWoodStreet,
+	StationCodeWoodbridge:                        StationNameWoodbridge,
+	StationCodeWoodgrangePark:                    StationNameWoodgrangePark,
+	StationCodeWoodhall:                          StationNameWoodhall,
+	StationCodeWoodhouse:                         StationNameWoodhouse,
+	StationCodeWoodlesford:                       StationNameWoodlesford,
+	StationCodeWoodley:                           StationNameWoodley,
+	StationCodeWoodmansterne:                     StationNameWoodmansterne,
+	StationCodeWoodsmoor:                         StationNameWoodsmoor,
+	StationCodeWool:                              StationNameWool,
+	StationCodeWoolston:                          StationNameWoolston,
+	StationCodeWoolwichArsenal:                   StationNameWoolwichArsenal,
+	StationCodeWoolwichDockyard:                  StationNameWoolwichDockyard,
+	StationCodeWoottonWawen:                      StationNameWoottonWawen,
+	StationCodeWorcesterForegateStreet:           StationNameWorcesterForegateStreet,
+	StationCodeWorcesterPark:                     StationNameWorcesterPark,
+	StationCodeWorcesterShrubHill:                StationNameWorcesterShrubHill,
+	StationCodeWorkington:                        StationNameWorkington,
+	StationCodeWorksop:                           StationNameWorksop,
+	StationCodeWorle:                             StationNameWorle,
+	StationCodeWorplesdon:                        StationNameWorplesdon,
+	StationCodeWorstead:                          StationNameWorstead,
+	StationCodeWorthing:                          StationNameWorthing,
+	StationCodeWrabness:                          StationNameWrabness,
+	StationCodeWraysbury:                         StationNameWraysbury,
+	StationCodeWrenbury:                          StationNameWrenbury,
+	StationCodeWressle:                           StationNameWressle,
+	StationCodeWrexhamCentral:                    StationNameWrexhamCentral,
+	StationCodeWrexhamGeneral:                    StationNameWrexhamGeneral,
+	StationCodeWye:                               StationNameWye,
+	StationCodeWylam:                             StationNameWylam,
+	StationCodeWyldeGreen:                        StationNameWyldeGreen,
+	StationCodeWymondham:                         StationNameWymondham,
+	StationCodeWythall:                           StationNameWythall,
+	StationCodeYalding:                           StationNameYalding,
+	StationCodeYardleyWood:                       StationNameYardleyWood,
+	StationCodeYarm:                              StationNameYarm,
+	StationCodeYate:                              StationNameYate,
+	StationCodeYatton:                            StationNameYatton,
+	StationCodeYeoford:                           StationNameYeoford,
+	StationCodeYeovilJunction:                    StationNameYeovilJunction,
+	StationCodeYeovilPenMill:                     StationNameYeovilPenMill,
+	StationCodeYetminster:                        StationNameYetminster,
+	StationCodeYnyswen:                           StationNameYnyswen,
+	StationCodeYoker:                             StationNameYoker,
+	StationCodeYork:                              StationNameYork,
+	StationCodeYorton:                            StationNameYorton,
+	StationCodeYstradMynach:                      StationNameYstradMynach,
+	StationCodeYstradRhondda:                     StationNameYstradRhondda,
+}
+
+var StationNameToCodeMap = map[string]CRSCode{
 	StationNameAbbeyWood:                         StationCodeAbbeyWood,
 	StationNameAber:                              StationCodeAber,
 	StationNameAbercynon:                         StationCodeAbercynon,
@@ -5146,2575 +7719,2583 @@ const (
 	StationNameYstradRhondda                     = "Ystrad Rhondda"
 )
 
+// CRSCode Computer Reservation System Code (CRS code) refers to
+// a code used to identify railway stations in the United Kingdom.
+// Each train station in the UK has a unique three-letter CRS code,
+// which is used for ticketing, timetabling, and reservation purposes.
+// For example, the CRS code for London Paddington is PAD. These codes
+// are essential for the efficient operation of the rail network.
+type CRSCode string
+
 const (
-	StationCodeAbbeyWood                         = "ABW"
-	StationCodeAber                              = "ABE"
-	StationCodeAbercynon                         = "ACY"
-	StationCodeAberdare                          = "ABA"
-	StationCodeAberdeen                          = "ABD"
-	StationCodeAberdour                          = "AUR"
-	StationCodeAberdovey                         = "AVY"
-	StationCodeAbererch                          = "ABH"
-	StationCodeAbergavenny                       = "AGV"
-	StationCodeAbergeleAndPensarn                = "AGL"
-	StationCodeAberystwyth                       = "AYW"
-	StationCodeAccrington                        = "ACR"
-	StationCodeAchanalt                          = "AAT"
-	StationCodeAchnasheen                        = "ACN"
-	StationCodeAchnashellach                     = "ACH"
-	StationCodeAcklington                        = "ACK"
-	StationCodeAcle                              = "ACL"
-	StationCodeAcocksGreen                       = "ACG"
-	StationCodeActonBridgeCheshire               = "ACB"
-	StationCodeActonCentral                      = "ACC"
-	StationCodeActonMainLine                     = "AML"
-	StationCodeAdderleyPark                      = "ADD"
-	StationCodeAddiewell                         = "ADW"
-	StationCodeAddlestone                        = "ASN"
-	StationCodeAdisham                           = "ADM"
-	StationCodeAdlingtonCheshire                 = "ADC"
-	StationCodeAdlingtonLancs                    = "ADL"
-	StationCodeAdwick                            = "AWK"
-	StationCodeAigburth                          = "AIG"
-	StationCodeAinsdale                          = "ANS"
-	StationCodeAintree                           = "AIN"
-	StationCodeAirbles                           = "AIR"
-	StationCodeAirdrie                           = "ADR"
-	StationCodeAlbanyPark                        = "AYP"
-	StationCodeAlbrighton                        = "ALB"
-	StationCodeAlderleyEdge                      = "ALD"
-	StationCodeAldermaston                       = "AMT"
-	StationCodeAldershot                         = "AHT"
-	StationCodeAldrington                        = "AGT"
-	StationCodeAlexandraPalace                   = "AAP"
-	StationCodeAlexandraParade                   = "AXP"
-	StationCodeAlexandria                        = "ALX"
-	StationCodeAlfreton                          = "ALF"
-	StationCodeAllensWest                        = "ALW"
-	StationCodeAlloa                             = "ALO"
-	StationCodeAlness                            = "ASS"
-	StationCodeAlnmouth                          = "ALM"
-	StationCodeAlresfordEssex                    = "ALR"
-	StationCodeAlsager                           = "ASG"
-	StationCodeAlthorneEssex                     = "ALN"
-	StationCodeAlthorpe                          = "ALP"
-	StationCodeAltnabreac                        = "ABC"
-	StationCodeAlton                             = "AON"
-	StationCodeAltrincham                        = "ALT"
-	StationCodeAlvechurch                        = "ALV"
-	StationCodeAmbergate                         = "AMB"
-	StationCodeAmberley                          = "AMY"
-	StationCodeAmersham                          = "AMR"
-	StationCodeAmmanford                         = "AMF"
-	StationCodeAncaster                          = "ANC"
-	StationCodeAnderston                         = "AND"
-	StationCodeAndover                           = "ADV"
-	StationCodeAnerley                           = "ANZ"
-	StationCodeAngelRoad                         = "AGR"
-	StationCodeAngmering                         = "ANG"
-	StationCodeAnnan                             = "ANN"
-	StationCodeAnniesland                        = "ANL"
-	StationCodeAnsdellAndFairhaven               = "AFV"
-	StationCodeApperleyBridge                    = "APY"
-	StationCodeAppleby                           = "APP"
-	StationCodeAppledoreKent                     = "APD"
-	StationCodeAppleford                         = "APF"
-	StationCodeAppleyBridge                      = "APB"
-	StationCodeApsley                            = "APS"
-	StationCodeArbroath                          = "ARB"
-	StationCodeArdgay                            = "ARD"
-	StationCodeArdlui                            = "AUI"
-	StationCodeArdrossanHarbour                  = "ADS"
-	StationCodeArdrossanSouthBeach               = "ASB"
-	StationCodeArdrossanTown                     = "ADN"
-	StationCodeArdwick                           = "ADK"
-	StationCodeArgyleStreet                      = "AGS"
-	StationCodeArisaig                           = "ARG"
-	StationCodeArlesey                           = "ARL"
-	StationCodeArmadaleWestLothian               = "ARM"
-	StationCodeArmathwaite                       = "AWT"
-	StationCodeArnside                           = "ARN"
-	StationCodeArram                             = "ARR"
-	StationCodeArrocharAndTarbet                 = "ART"
-	StationCodeArundel                           = "ARU"
-	StationCodeAscotBerks                        = "ACT"
-	StationCodeAscottunderWychwood               = "AUW"
-	StationCodeAsh                               = "ASH"
-	StationCodeAshVale                           = "AHV"
-	StationCodeAshburys                          = "ABY"
-	StationCodeAshchurchforTewkesbury            = "ASC"
-	StationCodeAshfield                          = "ASF"
-	StationCodeAshfordInternational              = "AFK"
-	StationCodeAshfordInternationalEurostar      = "ASI"
-	StationCodeAshfordSurrey                     = "AFS"
-	StationCodeAshley                            = "ASY"
-	StationCodeAshtead                           = "AHD"
-	StationCodeAshtonunderLyne                   = "AHN"
-	StationCodeAshurstKent                       = "AHS"
-	StationCodeAshurstNewForest                  = "ANF"
-	StationCodeAshwellAndMorden                  = "AWM"
-	StationCodeAskam                             = "ASK"
-	StationCodeAslockton                         = "ALK"
-	StationCodeAspatria                          = "ASP"
-	StationCodeAspleyGuise                       = "APG"
-	StationCodeAston                             = "AST"
-	StationCodeAtherstone                        = "ATH"
-	StationCodeAtherton                          = "ATN"
-	StationCodeAttadale                          = "ATT"
-	StationCodeAttenborough                      = "ATB"
-	StationCodeAttleborough                      = "ATL"
-	StationCodeAuchinleck                        = "AUK"
-	StationCodeAudleyEnd                         = "AUD"
-	StationCodeAughtonPark                       = "AUG"
-	StationCodeAviemore                          = "AVM"
-	StationCodeAvoncliff                         = "AVF"
-	StationCodeAvonmouth                         = "AVN"
-	StationCodeAxminster                         = "AXM"
-	StationCodeAylesbury                         = "AYS"
-	StationCodeAylesburyValeParkway              = "AVP"
-	StationCodeAylesford                         = "AYL"
-	StationCodeAylesham                          = "AYH"
-	StationCodeAyr                               = "AYR"
-	StationCodeBache                             = "BAC"
-	StationCodeBaglan                            = "BAJ"
-	StationCodeBagshot                           = "BAG"
-	StationCodeBaildon                           = "BLD"
-	StationCodeBaillieston                       = "BIO"
-	StationCodeBalcombe                          = "BAB"
-	StationCodeBaldock                           = "BDK"
-	StationCodeBalham                            = "BAL"
-	StationCodeBalloch                           = "BHC"
-	StationCodeBalmossie                         = "BSI"
-	StationCodeBamberBridge                      = "BMB"
-	StationCodeBamford                           = "BAM"
-	StationCodeBanavie                           = "BNV"
-	StationCodeBanbury                           = "BAN"
-	StationCodeBangorGwynedd                     = "BNG"
-	StationCodeBankHall                          = "BAH"
-	StationCodeBanstead                          = "BAD"
-	StationCodeBarassie                          = "BSS"
-	StationCodeBarbican                          = "ZBB"
-	StationCodeBardonMill                        = "BLL"
-	StationCodeBareLane                          = "BAR"
-	StationCodeBargeddie                         = "BGI"
-	StationCodeBargoed                           = "BGD"
-	StationCodeBarking                           = "BKG"
-	StationCodeBarlaston                         = "BRT"
-	StationCodeBarming                           = "BMG"
-	StationCodeBarmouth                          = "BRM"
-	StationCodeBarnehurst                        = "BNH"
-	StationCodeBarnes                            = "BNS"
-	StationCodeBarnesBridge                      = "BNI"
-	StationCodeBarnetby                          = "BTB"
-	StationCodeBarnham                           = "BAA"
-	StationCodeBarnhill                          = "BNL"
-	StationCodeBarnsley                          = "BNY"
-	StationCodeBarnstaple                        = "BNP"
-	StationCodeBarntGreen                        = "BTG"
-	StationCodeBarrhead                          = "BRR"
-	StationCodeBarrhill                          = "BRL"
-	StationCodeBarrowHaven                       = "BAV"
-	StationCodeBarrowUponSoar                    = "BWS"
-	StationCodeBarrowinFurness                   = "BIF"
-	StationCodeBarry                             = "BRY"
-	StationCodeBarryDocks                        = "BYD"
-	StationCodeBarryIsland                       = "BYI"
-	StationCodeBarryLinks                        = "BYL"
-	StationCodeBartononHumber                    = "BAU"
-	StationCodeBasildon                          = "BSO"
-	StationCodeBasingstoke                       = "BSK"
-	StationCodeBatAndBall                        = "BBL"
-	StationCodeBathSpa                           = "BTH"
-	StationCodeBathgate                          = "BHG"
-	StationCodeBatley                            = "BTL"
-	StationCodeBattersby                         = "BTT"
-	StationCodeBatterseaPark                     = "BAK"
-	StationCodeBattle                            = "BAT"
-	StationCodeBattlesbridge                     = "BLB"
-	StationCodeBayford                           = "BAY"
-	StationCodeBeaconsfield                      = "BCF"
-	StationCodeBearley                           = "BER"
-	StationCodeBearsden                          = "BRN"
-	StationCodeBearsted                          = "BSD"
-	StationCodeBeasdale                          = "BSL"
-	StationCodeBeaulieuRoad                      = "BEU"
-	StationCodeBeauly                            = "BEL"
-	StationCodeBebington                         = "BEB"
-	StationCodeBeccles                           = "BCC"
-	StationCodeBeckenhamHill                     = "BEC"
-	StationCodeBeckenhamJunction                 = "BKJ"
-	StationCodeBedford                           = "BDM"
-	StationCodeBedfordStJohns                    = "BSJ"
-	StationCodeBedhampton                        = "BDH"
-	StationCodeBedminster                        = "BMT"
-	StationCodeBedworth                          = "BEH"
-	StationCodeBedwyn                            = "BDW"
-	StationCodeBeeston                           = "BEE"
-	StationCodeBekesbourne                       = "BKS"
-	StationCodeBelleVue                          = "BLV"
-	StationCodeBellgrove                         = "BLG"
-	StationCodeBellingham                        = "BGM"
-	StationCodeBellshill                         = "BLH"
-	StationCodeBelmont                           = "BLM"
-	StationCodeBelper                            = "BLP"
-	StationCodeBeltring                          = "BEG"
-	StationCodeBelvedere                         = "BVD"
-	StationCodeBempton                           = "BEM"
-	StationCodeBenRhydding                       = "BEY"
-	StationCodeBenfleet                          = "BEF"
-	StationCodeBentham                           = "BEN"
-	StationCodeBentleyHants                      = "BTY"
-	StationCodeBentleySouthYorks                 = "BYK"
-	StationCodeBereAlston                        = "BAS"
-	StationCodeBereFerrers                       = "BFE"
-	StationCodeBerkhamsted                       = "BKM"
-	StationCodeBerkswell                         = "BKW"
-	StationCodeBermudaPark                       = "BEP"
-	StationCodeBerneyArms                        = "BYA"
-	StationCodeBerryBrow                         = "BBW"
-	StationCodeBerrylands                        = "BRS"
-	StationCodeBerwickSussex                     = "BRK"
-	StationCodeBerwickUponTweed                  = "BWK"
-	StationCodeBescarLane                        = "BES"
-	StationCodeBescotStadium                     = "BSC"
-	StationCodeBetchworth                        = "BTO"
-	StationCodeBethnalGreen                      = "BET"
-	StationCodeBetwsyCoed                        = "BYC"
-	StationCodeBeverley                          = "BEV"
-	StationCodeBexhill                           = "BEX"
-	StationCodeBexley                            = "BXY"
-	StationCodeBexleyheath                       = "BXH"
-	StationCodeBicesterNorth                     = "BCS"
-	StationCodeBicesterVillage                   = "BIT"
-	StationCodeBickley                           = "BKL"
-	StationCodeBidston                           = "BID"
-	StationCodeBiggleswade                       = "BIW"
-	StationCodeBilbrook                          = "BBK"
-	StationCodeBillericay                        = "BIC"
-	StationCodeBillinghamCleveland               = "BIL"
-	StationCodeBillingshurst                     = "BIG"
-	StationCodeBingham                           = "BIN"
-	StationCodeBingley                           = "BIY"
-	StationCodeBirchgrove                        = "BCG"
-	StationCodeBirchingtononsea                  = "BCH"
-	StationCodeBirchwood                         = "BWD"
-	StationCodeBirkbeck                          = "BIK"
-	StationCodeBirkdale                          = "BDL"
-	StationCodeBirkenheadCentral                 = "BKC"
-	StationCodeBirkenheadHamiltonSquare          = "BKQ"
-	StationCodeBirkenheadNorth                   = "BKN"
-	StationCodeBirkenheadPark                    = "BKP"
-	StationCodeBirminghamInternational           = "BHI"
-	StationCodeBirminghamMoorStreet              = "BMO"
-	StationCodeBirminghamNewStreet               = "BHM"
-	StationCodeBirminghamSnowHill                = "BSW"
-	StationCodeBishopAuckland                    = "BIA"
-	StationCodeBishopbriggs                      = "BBG"
-	StationCodeBishopsStortford                  = "BIS"
-	StationCodeBishopstoneSussex                 = "BIP"
-	StationCodeBishoptonStrathclyde              = "BPT"
-	StationCodeBitterne                          = "BTE"
-	StationCodeBlackburn                         = "BBN"
-	StationCodeBlackheath                        = "BKH"
-	StationCodeBlackhorseRoad                    = "BHO"
-	StationCodeBlackpoolNorth                    = "BPN"
-	StationCodeBlackpoolPleasureBeach            = "BPB"
-	StationCodeBlackpoolSouth                    = "BPS"
-	StationCodeBlackridge                        = "BKR"
-	StationCodeBlackrod                          = "BLK"
-	StationCodeBlackwater                        = "BAW"
-	StationCodeBlaenauFfestiniog                 = "BFF"
-	StationCodeBlairAtholl                       = "BLA"
-	StationCodeBlairhill                         = "BAI"
-	StationCodeBlakeStreet                       = "BKT"
-	StationCodeBlakedown                         = "BKD"
-	StationCodeBlantyre                          = "BLT"
-	StationCodeBlaydon                           = "BLO"
-	StationCodeBleasby                           = "BSB"
-	StationCodeBletchley                         = "BLY"
-	StationCodeBloxwich                          = "BLX"
-	StationCodeBloxwichNorth                     = "BWN"
-	StationCodeBlundellsandsAndCrosby            = "BLN"
-	StationCodeBlytheBridge                      = "BYB"
-	StationCodeBodminParkway                     = "BOD"
-	StationCodeBodorgan                          = "BOR"
-	StationCodeBognorRegis                       = "BOG"
-	StationCodeBogston                           = "BGS"
-	StationCodeBolton                            = "BON"
-	StationCodeBoltonUponDearne                  = "BTD"
-	StationCodeBookham                           = "BKA"
-	StationCodeBootleCumbria                     = "BOC"
-	StationCodeBootleNewStrand                   = "BNW"
-	StationCodeBootleOrielRoad                   = "BOT"
-	StationCodeBordesley                         = "BBS"
-	StationCodeBoroughGreenAndWrotham            = "BRG"
-	StationCodeBorth                             = "BRH"
-	StationCodeBosham                            = "BOH"
-	StationCodeBoston                            = "BSN"
-	StationCodeBotley                            = "BOE"
-	StationCodeBottesford                        = "BTF"
-	StationCodeBourneEnd                         = "BNE"
-	StationCodeBournemouth                       = "BMH"
-	StationCodeBournville                        = "BRV"
-	StationCodeBowBrickhill                      = "BWB"
-	StationCodeBowesPark                         = "BOP"
-	StationCodeBowling                           = "BWG"
-	StationCodeBoxHillAndWesthumble              = "BXW"
-	StationCodeBracknell                         = "BCE"
-	StationCodeBradfordForsterSquare             = "BDQ"
-	StationCodeBradfordInterchange               = "BDI"
-	StationCodeBradfordonAvon                    = "BOA"
-	StationCodeBrading                           = "BDN"
-	StationCodeBraintree                         = "BTR"
-	StationCodeBraintreeFreeport                 = "BTP"
-	StationCodeBramhall                          = "BML"
-	StationCodeBramleyHants                      = "BMY"
-	StationCodeBramleyWYorks                     = "BLE"
-	StationCodeBramptonCumbria                   = "BMP"
-	StationCodeBramptonSuffolk                   = "BRP"
-	StationCodeBranchton                         = "BCN"
-	StationCodeBrandon                           = "BND"
-	StationCodeBranksome                         = "BSM"
-	StationCodeBraystonesCumbria                 = "BYS"
-	StationCodeBredbury                          = "BDY"
-	StationCodeBreich                            = "BRC"
-	StationCodeBrentford                         = "BFD"
-	StationCodeBrentwood                         = "BRE"
-	StationCodeBricketWood                       = "BWO"
-	StationCodeBridgend                          = "BGN"
-	StationCodeBridgeofAllan                     = "BEA"
-	StationCodeBridgeofOrchy                     = "BRO"
-	StationCodeBridgeton                         = "BDG"
-	StationCodeBridgwater                        = "BWT"
-	StationCodeBridlington                       = "BDT"
-	StationCodeBrierfield                        = "BRF"
-	StationCodeBrigg                             = "BGG"
-	StationCodeBrighouse                         = "BGH"
-	StationCodeBrightonEastSussex                = "BTN"
-	StationCodeBrimsdown                         = "BMD"
-	StationCodeBrinnington                       = "BNT"
-	StationCodeBristolParkway                    = "BPW"
-	StationCodeBristolTempleMeads                = "BRI"
-	StationCodeBrithdir                          = "BHD"
-	StationCodeBritonFerry                       = "BNF"
-	StationCodeBrixton                           = "BRX"
-	StationCodeBroadGreen                        = "BGE"
-	StationCodeBroadbottom                       = "BDB"
-	StationCodeBroadstairs                       = "BSR"
-	StationCodeBrockenhurst                      = "BCU"
-	StationCodeBrockholes                        = "BHS"
-	StationCodeBrockley                          = "BCY"
-	StationCodeBromborough                       = "BOM"
-	StationCodeBromboroughRake                   = "BMR"
-	StationCodeBromleyCrossLancs                 = "BMC"
-	StationCodeBromleyNorth                      = "BMN"
-	StationCodeBromleySouth                      = "BMS"
-	StationCodeBromsgrove                        = "BMV"
-	StationCodeBrondesbury                       = "BSY"
-	StationCodeBrondesburyPark                   = "BSP"
-	StationCodeBrookmansPark                     = "BPK"
-	StationCodeBrookwood                         = "BKO"
-	StationCodeBroome                            = "BME"
-	StationCodeBroomfleet                        = "BMF"
-	StationCodeBrora                             = "BRA"
-	StationCodeBrough                            = "BUH"
-	StationCodeBroughtyFerry                     = "BYF"
-	StationCodeBroxbourne                        = "BXB"
-	StationCodeBruceGrove                        = "BCV"
-	StationCodeBrundall                          = "BDA"
-	StationCodeBrundallGardens                   = "BGA"
-	StationCodeBrunstane                         = "BSU"
-	StationCodeBrunswick                         = "BRW"
-	StationCodeBruton                            = "BRU"
-	StationCodeBryn                              = "BYN"
-	StationCodeBuckenhamNorfolk                  = "BUC"
-	StationCodeBuckley                           = "BCK"
-	StationCodeBucknell                          = "BUK"
-	StationCodeBuckshawParkway                   = "BSV"
-	StationCodeBugle                             = "BGL"
-	StationCodeBuilthRoad                        = "BHR"
-	StationCodeBulwell                           = "BLW"
-	StationCodeBures                             = "BUE"
-	StationCodeBurgessHill                       = "BUG"
-	StationCodeBurleyPark                        = "BUY"
-	StationCodeBurleyinWharfedale                = "BUW"
-	StationCodeBurnage                           = "BNA"
-	StationCodeBurnesideCumbria                  = "BUD"
-	StationCodeBurnhamBucks                      = "BNM"
-	StationCodeBurnhamonCrouch                   = "BUU"
-	StationCodeBurnleyBarracks                   = "BUB"
-	StationCodeBurnleyCentral                    = "BNC"
-	StationCodeBurnleyManchesterRoad             = "BYM"
-	StationCodeBurnsideStrathclyde               = "BUI"
-	StationCodeBurntisland                       = "BTS"
-	StationCodeBurscoughBridge                   = "BCB"
-	StationCodeBurscoughJunction                 = "BCJ"
-	StationCodeBursledon                         = "BUO"
-	StationCodeBurtonJoyce                       = "BUJ"
-	StationCodeBurtononTrent                     = "BUT"
-	StationCodeBuryStEdmunds                     = "BSE"
-	StationCodeBusby                             = "BUS"
-	StationCodeBushHillPark                      = "BHK"
-	StationCodeBushey                            = "BSH"
-	StationCodeButlersLane                       = "BUL"
-	StationCodeBuxted                            = "BXD"
-	StationCodeBuxton                            = "BUX"
-	StationCodeByfleetAndNewHaw                  = "BFN"
-	StationCodeBynea                             = "BYE"
-	StationCodeCadoxton                          = "CAD"
-	StationCodeCaergwrle                         = "CGW"
-	StationCodeCaerphilly                        = "CPH"
-	StationCodeCaersws                           = "CWS"
-	StationCodeCaldercruix                       = "CAC"
-	StationCodeCaldicot                          = "CDT"
-	StationCodeCaledonianRdAndBarnsbury          = "CIR"
-	StationCodeCalstock                          = "CSK"
-	StationCodeCamAndDursley                     = "CDU"
-	StationCodeCamberley                         = "CAM"
-	StationCodeCamborne                          = "CBN"
-	StationCodeCambridge                         = "CBG"
-	StationCodeCambridgeHeath                    = "CBH"
-	StationCodeCambuslang                        = "CBL"
-	StationCodeCamdenRoad                        = "CMD"
-	StationCodeCamelon                           = "CMO"
-	StationCodeCanadaWater                       = "ZCW"
-	StationCodeCanley                            = "CNL"
-	StationCodeCannock                           = "CAO"
-	StationCodeCanonbury                         = "CNN"
-	StationCodeCanterburyEast                    = "CBE"
-	StationCodeCanterburyWest                    = "CBW"
-	StationCodeCantley                           = "CNY"
-	StationCodeCapenhurst                        = "CPU"
-	StationCodeCarbisBay                         = "CBB"
-	StationCodeCardenden                         = "CDD"
-	StationCodeCardiffBay                        = "CDB"
-	StationCodeCardiffCentral                    = "CDF"
-	StationCodeCardiffQueenStreet                = "CDQ"
-	StationCodeCardonald                         = "CDO"
-	StationCodeCardross                          = "CDR"
-	StationCodeCarfin                            = "CRF"
-	StationCodeCarkAndCartmel                    = "CAK"
-	StationCodeCarlisle                          = "CAR"
-	StationCodeCarlton                           = "CTO"
-	StationCodeCarluke                           = "CLU"
-	StationCodeCarmarthen                        = "CMN"
-	StationCodeCarmyle                           = "CML"
-	StationCodeCarnforth                         = "CNF"
-	StationCodeCarnoustie                        = "CAN"
-	StationCodeCarntyne                          = "CAY"
-	StationCodeCarpendersPark                    = "CPK"
-	StationCodeCarrbridge                        = "CAG"
-	StationCodeCarshalton                        = "CSH"
-	StationCodeCarshaltonBeeches                 = "CSB"
-	StationCodeCarstairs                         = "CRS"
-	StationCodeCartsdyke                         = "CDY"
-	StationCodeCastleBarPark                     = "CBP"
-	StationCodeCastleCary                        = "CLC"
-	StationCodeCastleford                        = "CFD"
-	StationCodeCastletonManchester               = "CAS"
-	StationCodeCastletonMoor                     = "CSM"
-	StationCodeCaterham                          = "CAT"
-	StationCodeCatford                           = "CTF"
-	StationCodeCatfordBridge                     = "CFB"
-	StationCodeCathays                           = "CYS"
-	StationCodeCathcart                          = "CCT"
-	StationCodeCattal                            = "CTL"
-	StationCodeCauseland                         = "CAU"
-	StationCodeCefnyBedd                         = "CYB"
-	StationCodeChadwellHeath                     = "CTH"
-	StationCodeChaffordHundredLakeside           = "CFH"
-	StationCodeChalfontAndLatimer                = "CFO"
-	StationCodeChalkwell                         = "CHW"
-	StationCodeChandlersFord                     = "CFR"
-	StationCodeChapelenleFrith                   = "CEF"
-	StationCodeChapeltonDevon                    = "CPN"
-	StationCodeChapeltownSouthYorks              = "CLN"
-	StationCodeChappelAndWakesColne              = "CWC"
-	StationCodeCharingCrossGlasgow               = "CHC"
-	StationCodeCharingKent                       = "CHG"
-	StationCodeCharlbury                         = "CBY"
-	StationCodeCharlton                          = "CTN"
-	StationCodeChartham                          = "CRT"
-	StationCodeChassenRoad                       = "CSR"
-	StationCodeChatelherault                     = "CTE"
-	StationCodeChatham                           = "CTM"
-	StationCodeChathill                          = "CHT"
-	StationCodeCheadleHulme                      = "CHU"
-	StationCodeCheam                             = "CHE"
-	StationCodeCheddington                       = "CED"
-	StationCodeChelfordCheshire                  = "CEL"
-	StationCodeChelmsford                        = "CHM"
-	StationCodeChelsfield                        = "CLD"
-	StationCodeCheltenhamSpa                     = "CNM"
-	StationCodeChepstow                          = "CPW"
-	StationCodeCherryTree                        = "CYT"
-	StationCodeChertsey                          = "CHY"
-	StationCodeCheshunt                          = "CHN"
-	StationCodeChessingtonNorth                  = "CSN"
-	StationCodeChessingtonSouth                  = "CSS"
-	StationCodeChester                           = "CTR"
-	StationCodeChesterRoad                       = "CRD"
-	StationCodeChesterfield                      = "CHD"
-	StationCodeChesterleStreet                   = "CLS"
-	StationCodeChestfieldAndSwalecliffe          = "CSW"
-	StationCodeChetnole                          = "CNO"
-	StationCodeChichester                        = "CCH"
-	StationCodeChilham                           = "CIL"
-	StationCodeChilworth                         = "CHL"
-	StationCodeChingford                         = "CHI"
-	StationCodeChinley                           = "CLY"
-	StationCodeChippenham                        = "CPM"
-	StationCodeChipstead                         = "CHP"
-	StationCodeChirk                             = "CRK"
-	StationCodeChislehurst                       = "CIT"
-	StationCodeChiswick                          = "CHK"
-	StationCodeCholsey                           = "CHO"
-	StationCodeChorley                           = "CRL"
-	StationCodeChorleywood                       = "CLW"
-	StationCodeChristchurch                      = "CHR"
-	StationCodeChristsHospital                   = "CHH"
-	StationCodeChurchAndOswaldtwistle            = "CTW"
-	StationCodeChurchFenton                      = "CHF"
-	StationCodeChurchStretton                    = "CTT"
-	StationCodeCilmeri                           = "CIM"
-	StationCodeCityThameslink                    = "CTK"
-	StationCodeClactononSea                      = "CLT"
-	StationCodeClandon                           = "CLA"
-	StationCodeClaphamHighStreet                 = "CLP"
-	StationCodeClaphamJunction                   = "CLJ"
-	StationCodeClaphamNorthYorkshire             = "CPY"
-	StationCodeClapton                           = "CPT"
-	StationCodeClarbestonRoad                    = "CLR"
-	StationCodeClarkston                         = "CKS"
-	StationCodeClaverdon                         = "CLV"
-	StationCodeClaygate                          = "CLG"
-	StationCodeCleethorpes                       = "CLE"
-	StationCodeCleland                           = "CEA"
-	StationCodeCliftonDown                       = "CFN"
-	StationCodeCliftonManchester                 = "CLI"
-	StationCodeClitheroe                         = "CLH"
-	StationCodeClockHouse                        = "CLK"
-	StationCodeClunderwen                        = "CUW"
-	StationCodeClydebank                         = "CYK"
-	StationCodeCoatbridgeCentral                 = "CBC"
-	StationCodeCoatbridgeSunnyside               = "CBS"
-	StationCodeCoatdyke                          = "COA"
-	StationCodeCobhamAndStokedAbernon            = "CSD"
-	StationCodeCodsall                           = "CSL"
-	StationCodeCogan                             = "CGN"
-	StationCodeColchester                        = "COL"
-	StationCodeColchesterTown                    = "CET"
-	StationCodeColeshillParkway                  = "CEH"
-	StationCodeCollingham                        = "CLM"
-	StationCodeCollington                        = "CLL"
-	StationCodeColne                             = "CNE"
-	StationCodeColwall                           = "CWL"
-	StationCodeColwynBay                         = "CWB"
-	StationCodeCombeOxon                         = "CME"
-	StationCodeCommondale                        = "COM"
-	StationCodeCongleton                         = "CNG"
-	StationCodeConisbrough                       = "CNS"
-	StationCodeConnelFerry                       = "CON"
-	StationCodeCononBridge                       = "CBD"
-	StationCodeCononley                          = "CEY"
-	StationCodeConwayPark                        = "CNP"
-	StationCodeConwy                             = "CNW"
-	StationCodeCoodenBeach                       = "COB"
-	StationCodeCookham                           = "COO"
-	StationCodeCooksbridge                       = "CBR"
-	StationCodeCoombeJunctionHalt                = "COE"
-	StationCodeCopplestone                       = "COP"
-	StationCodeCorbridge                         = "CRB"
-	StationCodeCorby                             = "COR"
-	StationCodeCorkerhill                        = "CKH"
-	StationCodeCorkickle                         = "CKL"
-	StationCodeCorpach                           = "CPA"
-	StationCodeCorrour                           = "CRR"
-	StationCodeCoryton                           = "COY"
-	StationCodeCoseley                           = "CSY"
-	StationCodeCosford                           = "COS"
-	StationCodeCosham                            = "CSA"
-	StationCodeCottingham                        = "CGM"
-	StationCodeCottingley                        = "COT"
-	StationCodeCoulsdonSouth                     = "CDS"
-	StationCodeCoulsdonTown                      = "CDN"
-	StationCodeCoventry                          = "COV"
-	StationCodeCoventryArena                     = "CAA"
-	StationCodeCowdenKent                        = "CWN"
-	StationCodeCowdenbeath                       = "COW"
-	StationCodeCradleyHeath                      = "CRA"
-	StationCodeCraigendoran                      = "CGD"
-	StationCodeCramlington                       = "CRM"
-	StationCodeCranbrookDevon                    = "CBK"
-	StationCodeCravenArms                        = "CRV"
-	StationCodeCrawley                           = "CRW"
-	StationCodeCrayford                          = "CRY"
-	StationCodeCrediton                          = "CDI"
-	StationCodeCressingEssex                     = "CES"
-	StationCodeCressington                       = "CSG"
-	StationCodeCreswell                          = "CWD"
-	StationCodeCrewe                             = "CRE"
-	StationCodeCrewkerne                         = "CKN"
-	StationCodeCrewsHill                         = "CWH"
-	StationCodeCrianlarich                       = "CNR"
-	StationCodeCriccieth                         = "CCC"
-	StationCodeCricklewood                       = "CRI"
-	StationCodeCroftfoot                         = "CFF"
-	StationCodeCroftonPark                       = "CFT"
-	StationCodeCromer                            = "CMR"
-	StationCodeCromford                          = "CMF"
-	StationCodeCrookston                         = "CKT"
-	StationCodeCrossGates                        = "CRG"
-	StationCodeCrossflatts                       = "CFL"
-	StationCodeCrosshill                         = "COI"
-	StationCodeCrosskeys                         = "CKY"
-	StationCodeCrossmyloof                       = "CMY"
-	StationCodeCroston                           = "CSO"
-	StationCodeCrouchHill                        = "CRH"
-	StationCodeCrowborough                       = "COH"
-	StationCodeCrowhurst                         = "CWU"
-	StationCodeCrowle                            = "CWE"
-	StationCodeCrowthorne                        = "CRN"
-	StationCodeCroy                              = "CRO"
-	StationCodeCrystalPalace                     = "CYP"
-	StationCodeCuddington                        = "CUD"
-	StationCodeCuffley                           = "CUF"
-	StationCodeCulham                            = "CUM"
-	StationCodeCulrain                           = "CUA"
-	StationCodeCumbernauld                       = "CUB"
-	StationCodeCupar                             = "CUP"
-	StationCodeCurriehill                        = "CUH"
-	StationCodeCuxton                            = "CUX"
-	StationCodeCwmbach                           = "CMH"
-	StationCodeCwmbran                           = "CWM"
-	StationCodeCynghordy                         = "CYN"
-	StationCodeDagenhamDock                      = "DDK"
-	StationCodeDaisyHill                         = "DSY"
-	StationCodeDalgetyBay                        = "DAG"
-	StationCodeDalmally                          = "DAL"
-	StationCodeDalmarnock                        = "DAK"
-	StationCodeDalmeny                           = "DAM"
-	StationCodeDalmuir                           = "DMR"
-	StationCodeDalreoch                          = "DLR"
-	StationCodeDalry                             = "DLY"
-	StationCodeDalstonCumbria                    = "DLS"
-	StationCodeDalstonJunction                   = "DLJ"
-	StationCodeDalstonKingsland                  = "DLK"
-	StationCodeDaltonCumbria                     = "DLT"
-	StationCodeDalwhinnie                        = "DLW"
-	StationCodeDanby                             = "DNY"
-	StationCodeDanescourt                        = "DCT"
-	StationCodeDanzey                            = "DZY"
-	StationCodeDarlington                        = "DAR"
-	StationCodeDarnall                           = "DAN"
-	StationCodeDarsham                           = "DSM"
-	StationCodeDartford                          = "DFD"
-	StationCodeDarton                            = "DRT"
-	StationCodeDarwen                            = "DWN"
-	StationCodeDatchet                           = "DAT"
-	StationCodeDavenport                         = "DVN"
-	StationCodeDawlish                           = "DWL"
-	StationCodeDawlishWarren                     = "DWW"
-	StationCodeDeal                              = "DEA"
-	StationCodeDeanWilts                         = "DEN"
-	StationCodeDeansgate                         = "DGT"
-	StationCodeDeganwy                           = "DGY"
-	StationCodeDeighton                          = "DHN"
-	StationCodeDelamere                          = "DLM"
-	StationCodeDenbyDale                         = "DBD"
-	StationCodeDenham                            = "DNM"
-	StationCodeDenhamGolfClub                    = "DGC"
-	StationCodeDenmarkHill                       = "DMK"
-	StationCodeDent                              = "DNT"
-	StationCodeDenton                            = "DTN"
-	StationCodeDeptford                          = "DEP"
-	StationCodeDerby                             = "DBY"
-	StationCodeDerbyRoadIpswich                  = "DBR"
-	StationCodeDevonportDevon                    = "DPT"
-	StationCodeDevonportDockyard                 = "DOC"
-	StationCodeDewsbury                          = "DEW"
-	StationCodeDidcotParkway                     = "DID"
-	StationCodeDigbyAndSowton                    = "DIG"
-	StationCodeDiltonMarsh                       = "DMH"
-	StationCodeDinasPowys                        = "DNS"
-	StationCodeDinasRhondda                      = "DMG"
-	StationCodeDingleRoad                        = "DGL"
-	StationCodeDingwall                          = "DIN"
-	StationCodeDinsdale                          = "DND"
-	StationCodeDinting                           = "DTG"
-	StationCodeDisley                            = "DSL"
-	StationCodeDiss                              = "DIS"
-	StationCodeDodworth                          = "DOD"
-	StationCodeDolau                             = "DOL"
-	StationCodeDoleham                           = "DLH"
-	StationCodeDolgarrog                         = "DLG"
-	StationCodeDolwyddelan                       = "DWD"
-	StationCodeDoncaster                         = "DON"
-	StationCodeDorchesterSouth                   = "DCH"
-	StationCodeDorchesterWest                    = "DCW"
-	StationCodeDoreAndTotley                     = "DOR"
-	StationCodeDorkingDeepdene                   = "DPD"
-	StationCodeDorkingMain                       = "DKG"
-	StationCodeDorkingWest                       = "DKT"
-	StationCodeDormans                           = "DMS"
-	StationCodeDorridge                          = "DDG"
-	StationCodeDoveHoles                         = "DVH"
-	StationCodeDoverPriory                       = "DVP"
-	StationCodeDovercourt                        = "DVC"
-	StationCodeDoveyJunction                     = "DVY"
-	StationCodeDownhamMarket                     = "DOW"
-	StationCodeDraytonGreen                      = "DRG"
-	StationCodeDraytonPark                       = "DYP"
-	StationCodeDrem                              = "DRM"
-	StationCodeDriffield                         = "DRF"
-	StationCodeDrigg                             = "DRI"
-	StationCodeDroitwichSpa                      = "DTW"
-	StationCodeDronfield                         = "DRO"
-	StationCodeDrumchapel                        = "DMC"
-	StationCodeDrumfrochar                       = "DFR"
-	StationCodeDrumgelloch                       = "DRU"
-	StationCodeDrumry                            = "DMY"
-	StationCodeDublinFerryport                   = "DFP"
-	StationCodeDublinPortStena                   = "DPS"
-	StationCodeDuddeston                         = "DUD"
-	StationCodeDudleyPort                        = "DDP"
-	StationCodeDuffield                          = "DFI"
-	StationCodeDuirinish                         = "DRN"
-	StationCodeDukeStreet                        = "DST"
-	StationCodeDullingham                        = "DUL"
-	StationCodeDumbartonCentral                  = "DBC"
-	StationCodeDumbartonEast                     = "DBE"
-	StationCodeDumbreck                          = "DUM"
-	StationCodeDumfries                          = "DMF"
-	StationCodeDumptonPark                       = "DMP"
-	StationCodeDunbar                            = "DUN"
-	StationCodeDunblane                          = "DBL"
-	StationCodeDuncraig                          = "DCG"
-	StationCodeDundee                            = "DEE"
-	StationCodeDunfermlineQueenMargaret          = "DFL"
-	StationCodeDunfermlineTown                   = "DFE"
-	StationCodeDunkeldAndBirnam                  = "DKD"
-	StationCodeDunlop                            = "DNL"
-	StationCodeDunrobinCastle                    = "DNO"
-	StationCodeDunston                           = "DOT"
-	StationCodeDuntonGreen                       = "DNG"
-	StationCodeDurham                            = "DHM"
-	StationCodeDurringtononSea                   = "DUR"
-	StationCodeDyce                              = "DYC"
-	StationCodeDyffrynArdudwy                    = "DYF"
-	StationCodeEaglescliffe                      = "EAG"
-	StationCodeEalingBroadway                    = "EAL"
-	StationCodeEarlestown                        = "ERL"
-	StationCodeEarley                            = "EAR"
-	StationCodeEarlsfield                        = "EAD"
-	StationCodeEarlswoodSurrey                   = "ELD"
-	StationCodeEarlswoodWestMidlands             = "EWD"
-	StationCodeEastCroydon                       = "ECR"
-	StationCodeEastDidsbury                      = "EDY"
-	StationCodeEastDulwich                       = "EDW"
-	StationCodeEastFarleigh                      = "EFL"
-	StationCodeEastGarforth                      = "EGF"
-	StationCodeEastGrinstead                     = "EGR"
-	StationCodeEastKilbride                      = "EKL"
-	StationCodeEastMalling                       = "EML"
-	StationCodeEastMidlandsParkway               = "EMD"
-	StationCodeEastTilbury                       = "ETL"
-	StationCodeEastWorthing                      = "EWR"
-	StationCodeEastbourne                        = "EBN"
-	StationCodeEastbrook                         = "EBK"
-	StationCodeEasterhouse                       = "EST"
-	StationCodeEasthamRake                       = "ERA"
-	StationCodeEastleigh                         = "ESL"
-	StationCodeEastrington                       = "EGN"
-	StationCodeEbbsfleetInternational            = "EBD"
-	StationCodeEbbwValeParkway                   = "EBV"
-	StationCodeEbbwValeTown                      = "EBB"
-	StationCodeEcclesManchester                  = "ECC"
-	StationCodeEcclesRoad                        = "ECS"
-	StationCodeEcclestonPark                     = "ECL"
-	StationCodeEdale                             = "EDL"
-	StationCodeEdenPark                          = "EDN"
-	StationCodeEdenbridge                        = "EBR"
-	StationCodeEdenbridgeTown                    = "EBT"
-	StationCodeEdgeHill                          = "EDG"
-	StationCodeEdinburgh                         = "EDB"
-	StationCodeEdinburghGateway                  = "EGY"
-	StationCodeEdinburghPark                     = "EDP"
-	StationCodeEdmontonGreen                     = "EDR"
-	StationCodeEffinghamJunction                 = "EFF"
-	StationCodeEggesford                         = "EGG"
-	StationCodeEgham                             = "EGH"
-	StationCodeEgton                             = "EGT"
-	StationCodeElephantAndCastle                 = "EPH"
-	StationCodeElephantAndCastleUnderground      = "ZEL"
-	StationCodeElgin                             = "ELG"
-	StationCodeEllesmerePort                     = "ELP"
-	StationCodeElmersEnd                         = "ELE"
-	StationCodeElmsteadWoods                     = "ESD"
-	StationCodeElmswell                          = "ESW"
-	StationCodeElsecar                           = "ELR"
-	StationCodeElsenhamEssex                     = "ESM"
-	StationCodeElstreeAndBorehamwood             = "ELS"
-	StationCodeEltham                            = "ELW"
-	StationCodeEltonAndOrston                    = "ELO"
-	StationCodeEly                               = "ELY"
-	StationCodeEmersonPark                       = "EMP"
-	StationCodeEmsworth                          = "EMS"
-	StationCodeEnerglynAndChurchillPark          = "ECP"
-	StationCodeEnfieldChase                      = "ENC"
-	StationCodeEnfieldLock                       = "ENL"
-	StationCodeEnfieldTown                       = "ENF"
-	StationCodeEntwistle                         = "ENT"
-	StationCodeEpsomDowns                        = "EPD"
-	StationCodeEpsomSurrey                       = "EPS"
-	StationCodeErdington                         = "ERD"
-	StationCodeEridge                            = "ERI"
-	StationCodeErith                             = "ERH"
-	StationCodeEsher                             = "ESH"
-	StationCodeEskbank                           = "EKB"
-	StationCodeEssexRoad                         = "EXR"
-	StationCodeEtchingham                        = "ETC"
-	StationCodeEuxtonBalshawLane                 = "EBA"
-	StationCodeEvesham                           = "EVE"
-	StationCodeEwellEast                         = "EWE"
-	StationCodeEwellWest                         = "EWW"
-	StationCodeExeterCentral                     = "EXC"
-	StationCodeExeterStDavids                    = "EXD"
-	StationCodeExeterStThomas                    = "EXT"
-	StationCodeExhibitionCentreGlasgow           = "EXG"
-	StationCodeExmouth                           = "EXM"
-	StationCodeExton                             = "EXN"
-	StationCodeEynsford                          = "EYN"
-	StationCodeFairbourne                        = "FRB"
-	StationCodeFairfield                         = "FRF"
-	StationCodeFairlie                           = "FRL"
-	StationCodeFairwater                         = "FRW"
-	StationCodeFalconwood                        = "FCN"
-	StationCodeFalkirkGrahamston                 = "FKG"
-	StationCodeFalkirkHigh                       = "FKK"
-	StationCodeFallsofCruachan                   = "FOC"
-	StationCodeFalmer                            = "FMR"
-	StationCodeFalmouthDocks                     = "FAL"
-	StationCodeFalmouthTown                      = "FMT"
-	StationCodeFareham                           = "FRM"
-	StationCodeFarnboroughMain                   = "FNB"
-	StationCodeFarnboroughNorth                  = "FNN"
-	StationCodeFarncombe                         = "FNC"
-	StationCodeFarnham                           = "FNH"
-	StationCodeFarninghamRoad                    = "FNR"
-	StationCodeFarnworth                         = "FNW"
-	StationCodeFarringdon                        = "ZFD"
-	StationCodeFauldhouse                        = "FLD"
-	StationCodeFaversham                         = "FAV"
-	StationCodeFaygate                           = "FGT"
-	StationCodeFazakerley                        = "FAZ"
-	StationCodeFearn                             = "FRN"
-	StationCodeFeatherstone                      = "FEA"
-	StationCodeFelixstowe                        = "FLX"
-	StationCodeFeltham                           = "FEL"
-	StationCodeFeniton                           = "FNT"
-	StationCodeFennyStratford                    = "FEN"
-	StationCodeFernhill                          = "FER"
-	StationCodeFerriby                           = "FRY"
-	StationCodeFerryside                         = "FYS"
-	StationCodeFfairfach                         = "FFA"
-	StationCodeFiley                             = "FIL"
-	StationCodeFiltonAbbeyWood                   = "FIT"
-	StationCodeFinchleyRoadAndFrognal            = "FNY"
-	StationCodeFinsburyPark                      = "FPK"
-	StationCodeFinstock                          = "FIN"
-	StationCodeFishbourneSussex                  = "FSB"
-	StationCodeFishersgate                       = "FSG"
-	StationCodeFishguardAndGoodwick              = "FGW"
-	StationCodeFishguardHarbour                  = "FGH"
-	StationCodeFiskerton                         = "FSK"
-	StationCodeFitzwilliam                       = "FZW"
-	StationCodeFiveWays                          = "FWY"
-	StationCodeFleet                             = "FLE"
-	StationCodeFlimby                            = "FLM"
-	StationCodeFlint                             = "FLN"
-	StationCodeFlitwick                          = "FLT"
-	StationCodeFlixton                           = "FLI"
-	StationCodeFloweryField                      = "FLF"
-	StationCodeFolkestoneCentral                 = "FKC"
-	StationCodeFolkestoneWest                    = "FKW"
-	StationCodeFord                              = "FOD"
-	StationCodeForestGate                        = "FOG"
-	StationCodeForestHill                        = "FOH"
-	StationCodeFormby                            = "FBY"
-	StationCodeForres                            = "FOR"
-	StationCodeForsinard                         = "FRS"
-	StationCodeFortMatilda                       = "FTM"
-	StationCodeFortWilliam                       = "FTW"
-	StationCodeFourOaks                          = "FOK"
-	StationCodeFoxfield                          = "FOX"
-	StationCodeFoxton                            = "FXN"
-	StationCodeFrant                             = "FRT"
-	StationCodeFratton                           = "FTN"
-	StationCodeFreshfield                        = "FRE"
-	StationCodeFreshford                         = "FFD"
-	StationCodeFrimley                           = "FML"
-	StationCodeFrintononSea                      = "FRI"
-	StationCodeFrizinghall                       = "FZH"
-	StationCodeFrodsham                          = "FRD"
-	StationCodeFrome                             = "FRO"
-	StationCodeFulwell                           = "FLW"
-	StationCodeFurnessVale                       = "FNV"
-	StationCodeFurzePlatt                        = "FZP"
-	StationCodeGainsboroughCentral               = "GNB"
-	StationCodeGainsboroughLeaRoad               = "GBL"
-	StationCodeGalashiels                        = "GAL"
-	StationCodeGarelochhead                      = "GCH"
-	StationCodeGarforth                          = "GRF"
-	StationCodeGargrave                          = "GGV"
-	StationCodeGarrowhill                        = "GAR"
-	StationCodeGarscadden                        = "GRS"
-	StationCodeGarsdale                          = "GSD"
-	StationCodeGarstonHertfordshire              = "GSN"
-	StationCodeGarswood                          = "GSW"
-	StationCodeGartcosh                          = "GRH"
-	StationCodeGarthMidGlamorgan                 = "GMG"
-	StationCodeGarthPowys                        = "GTH"
-	StationCodeGarve                             = "GVE"
-	StationCodeGathurst                          = "GST"
-	StationCodeGatley                            = "GTY"
-	StationCodeGatwickAirport                    = "GTW"
-	StationCodeGeorgemasJunction                 = "GGJ"
-	StationCodeGerrardsCross                     = "GER"
-	StationCodeGideaPark                         = "GDP"
-	StationCodeGiffnock                          = "GFN"
-	StationCodeGiggleswick                       = "GIG"
-	StationCodeGilberdyke                        = "GBD"
-	StationCodeGilfachFargoed                    = "GFF"
-	StationCodeGillinghamDorset                  = "GIL"
-	StationCodeGillinghamKent                    = "GLM"
-	StationCodeGilshochill                       = "GSC"
-	StationCodeGipsyHill                         = "GIP"
-	StationCodeGirvan                            = "GIR"
-	StationCodeGlaisdale                         = "GLS"
-	StationCodeGlanConwy                         = "GCW"
-	StationCodeGlasgowCentral                    = "GLC"
-	StationCodeGlasgowQueenStreet                = "GLQ"
-	StationCodeGlasshoughton                     = "GLH"
-	StationCodeGlazebrook                        = "GLZ"
-	StationCodeGleneagles                        = "GLE"
-	StationCodeGlenfinnan                        = "GLF"
-	StationCodeGlengarnock                       = "GLG"
-	StationCodeGlenrotheswithThornton            = "GLT"
-	StationCodeGlossop                           = "GLO"
-	StationCodeGloucester                        = "GCR"
-	StationCodeGlynde                            = "GLY"
-	StationCodeGobowen                           = "GOB"
-	StationCodeGodalming                         = "GOD"
-	StationCodeGodley                            = "GDL"
-	StationCodeGodstone                          = "GDN"
-	StationCodeGoldthorpe                        = "GOE"
-	StationCodeGolfStreet                        = "GOF"
-	StationCodeGolspie                           = "GOL"
-	StationCodeGomshall                          = "GOM"
-	StationCodeGoodmayes                         = "GMY"
-	StationCodeGoole                             = "GOO"
-	StationCodeGoostrey                          = "GTR"
-	StationCodeGordonHill                        = "GDH"
-	StationCodeGorebridge                        = "GBG"
-	StationCodeGoringAndStreatley                = "GOR"
-	StationCodeGoringbySea                       = "GBS"
-	StationCodeGorton                            = "GTO"
-	StationCodeGospelOak                         = "GPO"
-	StationCodeGourock                           = "GRK"
-	StationCodeGowerton                          = "GWN"
-	StationCodeGoxhill                           = "GOX"
-	StationCodeGrangeOverSands                   = "GOS"
-	StationCodeGrangePark                        = "GPK"
-	StationCodeGrangetownCardiff                 = "GTN"
-	StationCodeGrantham                          = "GRA"
-	StationCodeGrateley                          = "GRT"
-	StationCodeGravellyHill                      = "GVH"
-	StationCodeGravesend                         = "GRV"
-	StationCodeGrays                             = "GRY"
-	StationCodeGreatAyton                        = "GTA"
-	StationCodeGreatBentley                      = "GRB"
-	StationCodeGreatChesterford                  = "GRC"
-	StationCodeGreatCoates                       = "GCT"
-	StationCodeGreatMalvern                      = "GMV"
-	StationCodeGreatMissenden                    = "GMN"
-	StationCodeGreatYarmouth                     = "GYM"
-	StationCodeGreenLane                         = "GNL"
-	StationCodeGreenRoad                         = "GNR"
-	StationCodeGreenbank                         = "GBK"
-	StationCodeGreenfaulds                       = "GRL"
-	StationCodeGreenfield                        = "GNF"
-	StationCodeGreenford                         = "GFD"
-	StationCodeGreenhithe                        = "GNH"
-	StationCodeGreenockCentral                   = "GKC"
-	StationCodeGreenockWest                      = "GKW"
-	StationCodeGreenwich                         = "GNW"
-	StationCodeGretnaGreen                       = "GEA"
-	StationCodeGrimsbyDocks                      = "GMD"
-	StationCodeGrimsbyTown                       = "GMB"
-	StationCodeGrindleford                       = "GRN"
-	StationCodeGrosmont                          = "GMT"
-	StationCodeGrovePark                         = "GRP"
-	StationCodeGuideBridge                       = "GUI"
-	StationCodeGuildford                         = "GLD"
-	StationCodeGuiseley                          = "GSY"
-	StationCodeGunnersbury                       = "GUN"
-	StationCodeGunnislake                        = "GSL"
-	StationCodeGunton                            = "GNT"
-	StationCodeGwersyllt                         = "GWE"
-	StationCodeGypsyLane                         = "GYP"
-	StationCodeHabrough                          = "HAB"
-	StationCodeHackbridge                        = "HCB"
-	StationCodeHackneyCentral                    = "HKC"
-	StationCodeHackneyDowns                      = "HAC"
-	StationCodeHackneyWick                       = "HKW"
-	StationCodeHaddenhamAndThameParkway          = "HDM"
-	StationCodeHaddiscoe                         = "HAD"
-	StationCodeHadfield                          = "HDF"
-	StationCodeHadleyWood                        = "HDW"
-	StationCodeHagFold                           = "HGF"
-	StationCodeHaggerston                        = "HGG"
-	StationCodeHagley                            = "HAG"
-	StationCodeHairmyres                         = "HMY"
-	StationCodeHaleManchester                    = "HAL"
-	StationCodeHalesworth                        = "HAS"
-	StationCodeHalewood                          = "HED"
-	StationCodeHalifax                           = "HFX"
-	StationCodeHallGreen                         = "HLG"
-	StationCodeHallRoad                          = "HLR"
-	StationCodeHalling                           = "HAI"
-	StationCodeHallithWood                       = "HID"
-	StationCodeHaltwhistle                       = "HWH"
-	StationCodeHamStreet                         = "HMT"
-	StationCodeHamble                            = "HME"
-	StationCodeHamiltonCentral                   = "HNC"
-	StationCodeHamiltonWest                      = "HNW"
-	StationCodeHammerton                         = "HMM"
-	StationCodeHampdenParkSussex                 = "HMD"
-	StationCodeHampsteadHeath                    = "HDH"
-	StationCodeHamptonCourt                      = "HMC"
-	StationCodeHamptonLondon                     = "HMP"
-	StationCodeHamptonWick                       = "HMW"
-	StationCodeHamptoninArden                    = "HIA"
-	StationCodeHamsteadBirmingham                = "HSD"
-	StationCodeHamworthy                         = "HAM"
-	StationCodeHanborough                        = "HND"
-	StationCodeHandforth                         = "HTH"
-	StationCodeHanwell                           = "HAN"
-	StationCodeHapton                            = "HPN"
-	StationCodeHarlech                           = "HRL"
-	StationCodeHarlesden                         = "HDN"
-	StationCodeHarlingRoad                       = "HRD"
-	StationCodeHarlingtonBeds                    = "HLN"
-	StationCodeHarlowMill                        = "HWM"
-	StationCodeHarlowTown                        = "HWN"
-	StationCodeHaroldWood                        = "HRO"
-	StationCodeHarpenden                         = "HPD"
-	StationCodeHarrietsham                       = "HRM"
-	StationCodeHarringay                         = "HGY"
-	StationCodeHarringayGreenLanes               = "HRY"
-	StationCodeHarrington                        = "HRR"
-	StationCodeHarrogate                         = "HGT"
-	StationCodeHarrowAndWealdstone               = "HRW"
-	StationCodeHarrowontheHill                   = "HOH"
-	StationCodeHartfordCheshire                  = "HTF"
-	StationCodeHartlebury                        = "HBY"
-	StationCodeHartlepool                        = "HPL"
-	StationCodeHartwood                          = "HTW"
-	StationCodeHarwichInternational              = "HPQ"
-	StationCodeHarwichTown                       = "HWC"
-	StationCodeHaslemere                         = "HSL"
-	StationCodeHassocks                          = "HSK"
-	StationCodeHastings                          = "HGS"
-	StationCodeHatchEnd                          = "HTE"
-	StationCodeHatfieldAndStainforth             = "HFS"
-	StationCodeHatfieldHerts                     = "HAT"
-	StationCodeHatfieldPeverel                   = "HAP"
-	StationCodeHathersage                        = "HSG"
-	StationCodeHattersley                        = "HTY"
-	StationCodeHatton                            = "HTN"
-	StationCodeHavant                            = "HAV"
-	StationCodeHavenhouse                        = "HVN"
-	StationCodeHaverfordwest                     = "HVF"
-	StationCodeHawarden                          = "HWD"
-	StationCodeHawardenBridge                    = "HWB"
-	StationCodeHawkhead                          = "HKH"
-	StationCodeHaydonBridge                      = "HDB"
-	StationCodeHaydonsRoad                       = "HYR"
-	StationCodeHayesAndHarlington                = "HAY"
-	StationCodeHayesKent                         = "HYS"
-	StationCodeHayle                             = "HYL"
-	StationCodeHaymarket                         = "HYM"
-	StationCodeHaywardsHeath                     = "HHE"
-	StationCodeHazelGrove                        = "HAZ"
-	StationCodeHeadcorn                          = "HCN"
-	StationCodeHeadingley                        = "HDY"
-	StationCodeHeadstoneLane                     = "HDL"
-	StationCodeHealdGreen                        = "HDG"
-	StationCodeHealing                           = "HLI"
-	StationCodeHeathHighLevel                    = "HHL"
-	StationCodeHeathLowLevel                     = "HLL"
-	StationCodeHeathrowAirportTerminal4          = "HAF"
-	StationCodeHeathrowAirportTerminal5          = "HWV"
-	StationCodeHeathrowAirportTerminals12and3    = "HXX"
-	StationCodeHeatonChapel                      = "HTC"
-	StationCodeHebdenBridge                      = "HBD"
-	StationCodeHeckington                        = "HEC"
-	StationCodeHedgeEnd                          = "HDE"
-	StationCodeHednesford                        = "HNF"
-	StationCodeHeighington                       = "HEI"
-	StationCodeHelensburghCentral                = "HLC"
-	StationCodeHelensburghUpper                  = "HLU"
-	StationCodeHellifield                        = "HLD"
-	StationCodeHelmsdale                         = "HMS"
-	StationCodeHelsby                            = "HSB"
-	StationCodeHemelHempstead                    = "HML"
-	StationCodeHendon                            = "HEN"
-	StationCodeHengoed                           = "HNG"
-	StationCodeHenleyinArden                     = "HNL"
-	StationCodeHenleyonThames                    = "HOT"
-	StationCodeHensall                           = "HEL"
-	StationCodeHereford                          = "HFD"
-	StationCodeHerneBay                          = "HNB"
-	StationCodeHerneHill                         = "HNH"
-	StationCodeHersham                           = "HER"
-	StationCodeHertfordEast                      = "HFE"
-	StationCodeHertfordNorth                     = "HFN"
-	StationCodeHessle                            = "HES"
-	StationCodeHeswall                           = "HSW"
-	StationCodeHever                             = "HEV"
-	StationCodeHeworth                           = "HEW"
-	StationCodeHexham                            = "HEX"
-	StationCodeHeyford                           = "HYD"
-	StationCodeHeyshamPort                       = "HHB"
-	StationCodeHighBrooms                        = "HIB"
-	StationCodeHighStreetGlasgow                 = "HST"
-	StationCodeHighStreetKensingtonUnderground   = "ZHS"
-	StationCodeHighWycombe                       = "HWY"
-	StationCodeHighamKent                        = "HGM"
-	StationCodeHighamsPark                       = "HIP"
-	StationCodeHighbridgeAndBurnham              = "HIG"
-	StationCodeHighburyAndIslington              = "HHY"
-	StationCodeHightown                          = "HTO"
-	StationCodeHildenborough                     = "HLB"
-	StationCodeHillfoot                          = "HLF"
-	StationCodeHillingtonEast                    = "HLE"
-	StationCodeHillingtonWest                    = "HLW"
-	StationCodeHillside                          = "HIL"
-	StationCodeHilsea                            = "HLS"
-	StationCodeHinchleyWood                      = "HYW"
-	StationCodeHinckleyLeics                     = "HNK"
-	StationCodeHindley                           = "HIN"
-	StationCodeHintonAdmiral                     = "HNA"
-	StationCodeHitchin                           = "HIT"
-	StationCodeHitherGreen                       = "HGR"
-	StationCodeHockley                           = "HOC"
-	StationCodeHollingbourne                     = "HBN"
-	StationCodeHolmesChapel                      = "HCH"
-	StationCodeHolmwood                          = "HLM"
-	StationCodeHoltonHeath                       = "HOL"
-	StationCodeHolyhead                          = "HHD"
-	StationCodeHolytown                          = "HLY"
-	StationCodeHomerton                          = "HMN"
-	StationCodeHoneybourne                       = "HYB"
-	StationCodeHoniton                           = "HON"
-	StationCodeHonley                            = "HOY"
-	StationCodeHonorOakPark                      = "HPA"
-	StationCodeHook                              = "HOK"
-	StationCodeHooton                            = "HOO"
-	StationCodeHopeDerbyshire                    = "HOP"
-	StationCodeHopeFlintshire                    = "HPE"
-	StationCodeHoptonHeath                       = "HPT"
-	StationCodeHorley                            = "HOR"
-	StationCodeHornbeamPark                      = "HBP"
-	StationCodeHornsey                           = "HRN"
-	StationCodeHorsforth                         = "HRS"
-	StationCodeHorsham                           = "HRH"
-	StationCodeHorsley                           = "HSY"
-	StationCodeHortoninRibblesdale               = "HIR"
-	StationCodeHorwichParkway                    = "HWI"
-	StationCodeHoscar                            = "HSC"
-	StationCodeHoughGreen                        = "HGN"
-	StationCodeHounslow                          = "HOU"
-	StationCodeHove                              = "HOV"
-	StationCodeHovetonAndWroxham                 = "HXM"
-	StationCodeHowWoodHerts                      = "HWW"
-	StationCodeHowden                            = "HOW"
-	StationCodeHowwoodRenfrewshire               = "HOZ"
-	StationCodeHoxton                            = "HOX"
-	StationCodeHoylake                           = "HYK"
-	StationCodeHubbertsBridge                    = "HBB"
-	StationCodeHucknall                          = "HKN"
-	StationCodeHuddersfield                      = "HUD"
-	StationCodeHull                              = "HUL"
-	StationCodeHumphreyPark                      = "HUP"
-	StationCodeHuncoat                           = "HCT"
-	StationCodeHungerford                        = "HGD"
-	StationCodeHunmanby                          = "HUB"
-	StationCodeHuntingdon                        = "HUN"
-	StationCodeHuntly                            = "HNT"
-	StationCodeHuntsCross                        = "HNX"
-	StationCodeHurstGreen                        = "HUR"
-	StationCodeHuttonCranswick                   = "HUT"
-	StationCodeHuyton                            = "HUY"
-	StationCodeHydeCentral                       = "HYC"
-	StationCodeHydeNorth                         = "HYT"
-	StationCodeHykeham                           = "HKM"
-	StationCodeHyndland                          = "HYN"
-	StationCodeHytheEssex                        = "HYH"
-	StationCodeIBMHalt                           = "IBM"
-	StationCodeIfield                            = "IFI"
-	StationCodeIlford                            = "IFD"
-	StationCodeIlkley                            = "ILK"
-	StationCodeImperialWharf                     = "IMW"
-	StationCodeInceAndElton                      = "INE"
-	StationCodeInceManchester                    = "INC"
-	StationCodeIngatestone                       = "INT"
-	StationCodeInsch                             = "INS"
-	StationCodeInvergordon                       = "IGD"
-	StationCodeInvergowrie                       = "ING"
-	StationCodeInverkeithing                     = "INK"
-	StationCodeInverkip                          = "INP"
-	StationCodeInverness                         = "INV"
-	StationCodeInvershin                         = "INH"
-	StationCodeInverurie                         = "INR"
-	StationCodeIpswich                           = "IPS"
-	StationCodeIrlam                             = "IRL"
-	StationCodeIrvine                            = "IRV"
-	StationCodeIsleworth                         = "ISL"
-	StationCodeIslip                             = "ISP"
-	StationCodeIver                              = "IVR"
-	StationCodeIvybridge                         = "IVY"
-	StationCodeJamesCook                         = "JCH"
-	StationCodeJewelleryQuarter                  = "JEQ"
-	StationCodeJohnstonPembs                     = "JOH"
-	StationCodeJohnstoneStrathclyde              = "JHN"
-	StationCodeJordanhill                        = "JOR"
-	StationCodeKearsleyManchester                = "KSL"
-	StationCodeKearsneyKent                      = "KSN"
-	StationCodeKeighley                          = "KEI"
-	StationCodeKeith                             = "KEH"
-	StationCodeKelvedon                          = "KEL"
-	StationCodeKelvindale                        = "KVD"
-	StationCodeKemble                            = "KEM"
-	StationCodeKempstonHardwick                  = "KMH"
-	StationCodeKemptonParkRacecourse             = "KMP"
-	StationCodeKemsing                           = "KMS"
-	StationCodeKemsley                           = "KML"
-	StationCodeKendal                            = "KEN"
-	StationCodeKenley                            = "KLY"
-	StationCodeKennett                           = "KNE"
-	StationCodeKennishead                        = "KNS"
-	StationCodeKensalGreen                       = "KNL"
-	StationCodeKensalRise                        = "KNR"
-	StationCodeKensingtonOlympia                 = "KPA"
-	StationCodeKentHouse                         = "KTH"
-	StationCodeKentishTown                       = "KTN"
-	StationCodeKentishTownWest                   = "KTW"
-	StationCodeKenton                            = "KNT"
-	StationCodeKentsBank                         = "KBK"
-	StationCodeKettering                         = "KET"
-	StationCodeKewBridge                         = "KWB"
-	StationCodeKewGardens                        = "KWG"
-	StationCodeKeyham                            = "KEY"
-	StationCodeKeynsham                          = "KYN"
-	StationCodeKidbrooke                         = "KDB"
-	StationCodeKidderminster                     = "KID"
-	StationCodeKidsgrove                         = "KDG"
-	StationCodeKidwelly                          = "KWL"
-	StationCodeKilburnHighRoad                   = "KBN"
-	StationCodeKildale                           = "KLD"
-	StationCodeKildonan                          = "KIL"
-	StationCodeKilgetty                          = "KGT"
-	StationCodeKilmarnock                        = "KMK"
-	StationCodeKilmaurs                          = "KLM"
-	StationCodeKilpatrick                        = "KPT"
-	StationCodeKilwinning                        = "KWN"
-	StationCodeKinbrace                          = "KBC"
-	StationCodeKingham                           = "KGM"
-	StationCodeKinghorn                          = "KGH"
-	StationCodeKingsLangley                      = "KGL"
-	StationCodeKingsLynn                         = "KLN"
-	StationCodeKingsNorton                       = "KNN"
-	StationCodeKingsNympton                      = "KGN"
-	StationCodeKingsPark                         = "KGP"
-	StationCodeKingsSutton                       = "KGS"
-	StationCodeKingsknowe                        = "KGE"
-	StationCodeKingston                          = "KNG"
-	StationCodeKingswood                         = "KND"
-	StationCodeKingussie                         = "KIN"
-	StationCodeKintbury                          = "KIT"
-	StationCodeKirbyCross                        = "KBX"
-	StationCodeKirkSandall                       = "KKS"
-	StationCodeKirkbyMerseyside                  = "KIR"
-	StationCodeKirkbyStephen                     = "KSW"
-	StationCodeKirkbyinAshfield                  = "KKB"
-	StationCodeKirkbyinFurness                   = "KBF"
-	StationCodeKirkcaldy                         = "KDY"
-	StationCodeKirkconnel                        = "KRK"
-	StationCodeKirkdale                          = "KKD"
-	StationCodeKirkhamAndWesham                  = "KKM"
-	StationCodeKirkhill                          = "KKH"
-	StationCodeKirknewton                        = "KKN"
-	StationCodeKirkstallForge                    = "KLF"
-	StationCodeKirkwood                          = "KWD"
-	StationCodeKirtonLindsey                     = "KTL"
-	StationCodeKivetonBridge                     = "KIV"
-	StationCodeKivetonPark                       = "KVP"
-	StationCodeKnaresborough                     = "KNA"
-	StationCodeKnebworth                         = "KBW"
-	StationCodeKnighton                          = "KNI"
-	StationCodeKnockholt                         = "KCK"
-	StationCodeKnottingley                       = "KNO"
-	StationCodeKnucklas                          = "KNU"
-	StationCodeKnutsford                         = "KNF"
-	StationCodeKyleofLochalsh                    = "KYL"
-	StationCodeLadybank                          = "LDY"
-	StationCodeLadywell                          = "LAD"
-	StationCodeLaindon                           = "LAI"
-	StationCodeLairg                             = "LRG"
-	StationCodeLake                              = "LKE"
-	StationCodeLakenheath                        = "LAK"
-	StationCodeLamphey                           = "LAM"
-	StationCodeLanark                            = "LNK"
-	StationCodeLancaster                         = "LAN"
-	StationCodeLancing                           = "LAC"
-	StationCodeLandywood                         = "LAW"
-	StationCodeLangbank                          = "LGB"
-	StationCodeLangho                            = "LHO"
-	StationCodeLangleyBerks                      = "LNY"
-	StationCodeLangleyGreen                      = "LGG"
-	StationCodeLangleyMill                       = "LGM"
-	StationCodeLangside                          = "LGS"
-	StationCodeLangwathby                        = "LGW"
-	StationCodeLangwithWhaleyThorns              = "LAG"
-	StationCodeLapford                           = "LAP"
-	StationCodeLapworth                          = "LPW"
-	StationCodeLarbert                           = "LBT"
-	StationCodeLargs                             = "LAR"
-	StationCodeLarkhall                          = "LRH"
-	StationCodeLaurencekirk                      = "LAU"
-	StationCodeLawrenceHill                      = "LWH"
-	StationCodeLaytonLancs                       = "LAY"
-	StationCodeLazonbyAndKirkoswald              = "LZB"
-	StationCodeLeaBridge                         = "LEB"
-	StationCodeLeaGreen                          = "LEG"
-	StationCodeLeaHall                           = "LEH"
-	StationCodeLeagrave                          = "LEA"
-	StationCodeLealholm                          = "LHM"
-	StationCodeLeamingtonSpa                     = "LMS"
-	StationCodeLeasowe                           = "LSW"
-	StationCodeLeatherhead                       = "LHD"
-	StationCodeLedbury                           = "LED"
-	StationCodeLeeLondon                         = "LEE"
-	StationCodeLeeds                             = "LDS"
-	StationCodeLeicester                         = "LEI"
-	StationCodeLeighKent                         = "LIH"
-	StationCodeLeighonSea                        = "LES"
-	StationCodeLeightonBuzzard                   = "LBZ"
-	StationCodeLelant                            = "LEL"
-	StationCodeLelantSaltings                    = "LTS"
-	StationCodeLenham                            = "LEN"
-	StationCodeLenzie                            = "LNZ"
-	StationCodeLeominster                        = "LEO"
-	StationCodeLetchworthGardenCity              = "LET"
-	StationCodeLeucharsforStAndrews              = "LEU"
-	StationCodeLevenshulme                       = "LVM"
-	StationCodeLewes                             = "LWS"
-	StationCodeLewisham                          = "LEW"
-	StationCodeLeyland                           = "LEY"
-	StationCodeLeytonMidlandRoad                 = "LEM"
-	StationCodeLeytonstoneHighRoad               = "LER"
-	StationCodeLichfieldCity                     = "LIC"
-	StationCodeLichfieldTrentValley              = "LTV"
-	StationCodeLidlington                        = "LID"
-	StationCodeLimehouse                         = "LHS"
-	StationCodeLincolnCentral                    = "LCN"
-	StationCodeLingfield                         = "LFD"
-	StationCodeLingwood                          = "LGD"
-	StationCodeLinlithgow                        = "LIN"
-	StationCodeLiphook                           = "LIP"
-	StationCodeLiskeard                          = "LSK"
-	StationCodeLiss                              = "LIS"
-	StationCodeLisvaneAndThornhill               = "LVT"
-	StationCodeLittleKimble                      = "LTK"
-	StationCodeLittleSutton                      = "LTT"
-	StationCodeLittleborough                     = "LTL"
-	StationCodeLittlehampton                     = "LIT"
-	StationCodeLittlehaven                       = "LVN"
-	StationCodeLittleport                        = "LTP"
-	StationCodeLiverpoolCentral                  = "LVC"
-	StationCodeLiverpoolJamesStreet              = "LVJ"
-	StationCodeLiverpoolLimeStreet               = "LIV"
-	StationCodeLiverpoolSouthParkway             = "LPY"
-	StationCodeLivingstonNorth                   = "LSN"
-	StationCodeLivingstonSouth                   = "LVG"
-	StationCodeLlanaber                          = "LLA"
-	StationCodeLlanbedr                          = "LBR"
-	StationCodeLlanbisterRoad                    = "LLT"
-	StationCodeLlanbradach                       = "LNB"
-	StationCodeLlandaf                           = "LLN"
-	StationCodeLlandanwg                         = "LDN"
-	StationCodeLlandecwyn                        = "LLC"
-	StationCodeLlandeilo                         = "LLL"
-	StationCodeLlandovery                        = "LLV"
-	StationCodeLlandrindod                       = "LLO"
-	StationCodeLlandudno                         = "LLD"
-	StationCodeLlandudnoJunction                 = "LLJ"
-	StationCodeLlandybie                         = "LLI"
-	StationCodeLlanelli                          = "LLE"
-	StationCodeLlanfairfechan                    = "LLF"
-	StationCodeLlanfairpwll                      = "LPG"
-	StationCodeLlangadog                         = "LLG"
-	StationCodeLlangammarch                      = "LLM"
-	StationCodeLlangennech                       = "LLH"
-	StationCodeLlangynllo                        = "LGO"
-	StationCodeLlanharan                         = "LLR"
-	StationCodeLlanhilleth                       = "LTH"
-	StationCodeLlanishen                         = "LLS"
-	StationCodeLlanrwst                          = "LWR"
-	StationCodeLlansamlet                        = "LAS"
-	StationCodeLlantwitMajor                     = "LWM"
-	StationCodeLlanwrda                          = "LNR"
-	StationCodeLlanwrtyd                         = "LNW"
-	StationCodeLlwyngwril                        = "LLW"
-	StationCodeLlwynypia                         = "LLY"
-	StationCodeLochAwe                           = "LHA"
-	StationCodeLochEilOutwardBound               = "LHE"
-	StationCodeLochailort                        = "LCL"
-	StationCodeLocheilside                       = "LCS"
-	StationCodeLochgelly                         = "LCG"
-	StationCodeLochluichart                      = "LCC"
-	StationCodeLochwinnoch                       = "LHW"
-	StationCodeLockerbie                         = "LOC"
-	StationCodeLockwood                          = "LCK"
-	StationCodeLondonBlackfriars                 = "BFR"
-	StationCodeLondonBridge                      = "LBG"
-	StationCodeLondonCannonStreet                = "CST"
-	StationCodeLondonCharingCross                = "CHX"
-	StationCodeLondonEuston                      = "EUS"
-	StationCodeLondonFenchurchStreet             = "FST"
-	StationCodeLondonFields                      = "LOF"
-	StationCodeLondonKingsCross                  = "KGX"
-	StationCodeLondonLiverpoolStreet             = "LST"
-	StationCodeLondonMarylebone                  = "MYB"
-	StationCodeLondonPaddington                  = "PAD"
-	StationCodeLondonRoadBrighton                = "LRB"
-	StationCodeLondonRoadGuildford               = "LRD"
-	StationCodeLondonStPancrasInternational      = "STP"
-	StationCodeLondonStPancrasIntl               = "SPX"
-	StationCodeLondonVictoria                    = "VIC"
-	StationCodeLondonWaterloo                    = "WAT"
-	StationCodeLondonWaterlooEast                = "WAE"
-	StationCodeLongBuckby                        = "LBK"
-	StationCodeLongEaton                         = "LGE"
-	StationCodeLongPreston                       = "LPR"
-	StationCodeLongbeck                          = "LGK"
-	StationCodeLongbridge                        = "LOB"
-	StationCodeLongcross                         = "LNG"
-	StationCodeLongfield                         = "LGF"
-	StationCodeLongniddry                        = "LND"
-	StationCodeLongport                          = "LPT"
-	StationCodeLongton                           = "LGN"
-	StationCodeLooe                              = "LOO"
-	StationCodeLostock                           = "LOT"
-	StationCodeLostockGralam                     = "LTG"
-	StationCodeLostockHall                       = "LOH"
-	StationCodeLostwithiel                       = "LOS"
-	StationCodeLoughborough                      = "LBO"
-	StationCodeLoughboroughJunction              = "LGJ"
-	StationCodeLowdham                           = "LOW"
-	StationCodeLowerSydenham                     = "LSY"
-	StationCodeLowestoft                         = "LWT"
-	StationCodeLudlow                            = "LUD"
-	StationCodeLuton                             = "LUT"
-	StationCodeLutonAirportParkway               = "LTN"
-	StationCodeLuxulyan                          = "LUX"
-	StationCodeLydney                            = "LYD"
-	StationCodeLyeWestMidlands                   = "LYE"
-	StationCodeLymingtonPier                     = "LYP"
-	StationCodeLymingtonTown                     = "LYT"
-	StationCodeLympstoneCommando                 = "LYC"
-	StationCodeLympstoneVillage                  = "LYM"
-	StationCodeLytham                            = "LTM"
-	StationCodeMacclesfield                      = "MAC"
-	StationCodeMachynlleth                       = "MCN"
-	StationCodeMaesteg                           = "MST"
-	StationCodeMaestegEwennyRoad                 = "MEW"
-	StationCodeMaghull                           = "MAG"
-	StationCodeMaidenNewton                      = "MDN"
-	StationCodeMaidenhead                        = "MAI"
-	StationCodeMaidstoneBarracks                 = "MDB"
-	StationCodeMaidstoneEast                     = "MDE"
-	StationCodeMaidstoneWest                     = "MDW"
-	StationCodeMaldenManor                       = "MAL"
-	StationCodeMallaig                           = "MLG"
-	StationCodeMalton                            = "MLT"
-	StationCodeMalvernLink                       = "MVL"
-	StationCodeManchesterAirport                 = "MIA"
-	StationCodeManchesterOxfordRoad              = "MCO"
-	StationCodeManchesterPiccadilly              = "MAN"
-	StationCodeManchesterUnitedFootballGround    = "MUF"
-	StationCodeManchesterVictoria                = "MCV"
-	StationCodeManea                             = "MNE"
-	StationCodeManningtree                       = "MNG"
-	StationCodeManorPark                         = "MNP"
-	StationCodeManorRoad                         = "MNR"
-	StationCodeManorbier                         = "MRB"
-	StationCodeManors                            = "MAS"
-	StationCodeMansfield                         = "MFT"
-	StationCodeMansfieldWoodhouse                = "MSW"
-	StationCodeMarch                             = "MCH"
-	StationCodeMardenKent                        = "MRN"
-	StationCodeMargate                           = "MAR"
-	StationCodeMarketHarborough                  = "MHR"
-	StationCodeMarketRasen                       = "MKR"
-	StationCodeMarkinch                          = "MNC"
-	StationCodeMarksTey                          = "MKT"
-	StationCodeMarlow                            = "MLW"
-	StationCodeMarple                            = "MPL"
-	StationCodeMarsdenYorks                      = "MSN"
-	StationCodeMarske                            = "MSK"
-	StationCodeMarstonGreen                      = "MGN"
-	StationCodeMartinMill                        = "MTM"
-	StationCodeMartinsHeron                      = "MAO"
-	StationCodeMarton                            = "MTO"
-	StationCodeMaryhill                          = "MYH"
-	StationCodeMaryland                          = "MYL"
-	StationCodeMaryport                          = "MRY"
-	StationCodeMatlock                           = "MAT"
-	StationCodeMatlockBath                       = "MTB"
-	StationCodeMauldethRoad                      = "MAU"
-	StationCodeMaxwellPark                       = "MAX"
-	StationCodeMaybole                           = "MAY"
-	StationCodeMazeHill                          = "MZH"
-	StationCodeMeadowhall                        = "MHS"
-	StationCodeMeldreth                          = "MEL"
-	StationCodeMelksham                          = "MKM"
-	StationCodeMeltonMowbray                     = "MMO"
-	StationCodeMeltonSuffolk                     = "MES"
-	StationCodeMenheniot                         = "MEN"
-	StationCodeMenston                           = "MNN"
-	StationCodeMeols                             = "MEO"
-	StationCodeMeolsCop                          = "MEC"
-	StationCodeMeopham                           = "MEP"
-	StationCodeMerryton                          = "MEY"
-	StationCodeMerstham                          = "MHM"
-	StationCodeMerthyrTydfil                     = "MER"
-	StationCodeMerthyrVale                       = "MEV"
-	StationCodeMetheringham                      = "MGM"
-	StationCodeMetroCentre                       = "MCE"
-	StationCodeMexborough                        = "MEX"
-	StationCodeMicheldever                       = "MIC"
-	StationCodeMicklefield                       = "MIK"
-	StationCodeMiddlesbrough                     = "MBR"
-	StationCodeMiddlewood                        = "MDL"
-	StationCodeMidgham                           = "MDG"
-	StationCodeMilfordHaven                      = "MFH"
-	StationCodeMilfordSurrey                     = "MLF"
-	StationCodeMillHillBroadway                  = "MIL"
-	StationCodeMillHillLancs                     = "MLH"
-	StationCodeMillbrookBeds                     = "MLB"
-	StationCodeMillbrookHants                    = "MBK"
-	StationCodeMillikenPark                      = "MIN"
-	StationCodeMillom                            = "MLM"
-	StationCodeMillsHillManchester               = "MIH"
-	StationCodeMilngavie                         = "MLN"
-	StationCodeMiltonKeynesCentral               = "MKC"
-	StationCodeMinffordd                         = "MFF"
-	StationCodeMinster                           = "MSR"
-	StationCodeMirfield                          = "MIR"
-	StationCodeMistley                           = "MIS"
-	StationCodeMitchamEastfields                 = "MTC"
-	StationCodeMitchamJunction                   = "MIJ"
-	StationCodeMobberley                         = "MOB"
-	StationCodeMonifieth                         = "MON"
-	StationCodeMonksRisborough                   = "MRS"
-	StationCodeMontpelier                        = "MTP"
-	StationCodeMontrose                          = "MTS"
-	StationCodeMoorfields                        = "MRF"
-	StationCodeMoorgate                          = "MOG"
-	StationCodeMoorside                          = "MSD"
-	StationCodeMoorthorpe                        = "MRP"
-	StationCodeMorar                             = "MRR"
-	StationCodeMorchardRoad                      = "MRD"
-	StationCodeMordenSouth                       = "MDS"
-	StationCodeMorecambe                         = "MCM"
-	StationCodeMoretonDorset                     = "MTN"
-	StationCodeMoretonMerseyside                 = "MRT"
-	StationCodeMoretoninMarsh                    = "MIM"
-	StationCodeMorfaMawddach                     = "MFA"
-	StationCodeMorley                            = "MLY"
-	StationCodeMorpeth                           = "MPT"
-	StationCodeMortimer                          = "MOR"
-	StationCodeMortlake                          = "MTL"
-	StationCodeMosesGate                         = "MSS"
-	StationCodeMossSide                          = "MOS"
-	StationCodeMossleyHill                       = "MSH"
-	StationCodeMossleyManchester                 = "MSL"
-	StationCodeMosspark                          = "MPK"
-	StationCodeMoston                            = "MSO"
-	StationCodeMotherwell                        = "MTH"
-	StationCodeMotspurPark                       = "MOT"
-	StationCodeMottingham                        = "MTG"
-	StationCodeMottisfontAndDunbridge            = "DBG"
-	StationCodeMouldsworth                       = "MLD"
-	StationCodeMoulsecoomb                       = "MCB"
-	StationCodeMountFlorida                      = "MFL"
-	StationCodeMountVernon                       = "MTV"
-	StationCodeMountainAsh                       = "MTA"
-	StationCodeMuirend                           = "MUI"
-	StationCodeMuirofOrd                         = "MOO"
-	StationCodeMusselburgh                       = "MUB"
-	StationCodeMytholmroyd                       = "MYT"
-	StationCodeNafferton                         = "NFN"
-	StationCodeNailseaAndBackwell                = "NLS"
-	StationCodeNairn                             = "NRN"
-	StationCodeNantwich                          = "NAN"
-	StationCodeNarberth                          = "NAR"
-	StationCodeNarborough                        = "NBR"
-	StationCodeNavigationRoad                    = "NVR"
-	StationCodeNeath                             = "NTH"
-	StationCodeNeedhamMarket                     = "NMT"
-	StationCodeNeilston                          = "NEI"
-	StationCodeNelson                            = "NEL"
-	StationCodeNeston                            = "NES"
-	StationCodeNetherfield                       = "NET"
-	StationCodeNethertown                        = "NRT"
-	StationCodeNetley                            = "NTL"
-	StationCodeNewBarnet                         = "NBA"
-	StationCodeNewBeckenham                      = "NBC"
-	StationCodeNewBrighton                       = "NBN"
-	StationCodeNewClee                           = "NCE"
-	StationCodeNewCross                          = "NWX"
-	StationCodeNewCrossGate                      = "NXG"
-	StationCodeNewCumnock                        = "NCK"
-	StationCodeNewEltham                         = "NEH"
-	StationCodeNewHolland                        = "NHL"
-	StationCodeNewHythe                          = "NHE"
-	StationCodeNewLane                           = "NLN"
-	StationCodeNewMalden                         = "NEM"
-	StationCodeNewMillsCentral                   = "NMC"
-	StationCodeNewMillsNewtown                   = "NMN"
-	StationCodeNewMilton                         = "NWM"
-	StationCodeNewPudsey                         = "NPD"
-	StationCodeNewSouthgate                      = "NSG"
-	StationCodeNewarkCastle                      = "NCT"
-	StationCodeNewarkNorthGate                   = "NNG"
-	StationCodeNewbridge                         = "NBE"
-	StationCodeNewbury                           = "NBY"
-	StationCodeNewburyRacecourse                 = "NRC"
-	StationCodeNewcastle                         = "NCL"
-	StationCodeNewcourt                          = "NCO"
-	StationCodeNewcraighall                      = "NEW"
-	StationCodeNewhavenHarbour                   = "NVH"
-	StationCodeNewhavenTown                      = "NVN"
-	StationCodeNewington                         = "NGT"
-	StationCodeNewmarket                         = "NMK"
-	StationCodeNewportEssex                      = "NWE"
-	StationCodeNewportSouthWales                 = "NWP"
-	StationCodeNewquay                           = "NQY"
-	StationCodeNewstead                          = "NSD"
-	StationCodeNewtonAbbot                       = "NTA"
-	StationCodeNewtonAycliffe                    = "NAY"
-	StationCodeNewtonLanark                      = "NTN"
-	StationCodeNewtonStCyres                     = "NTC"
-	StationCodeNewtonforHyde                     = "NWN"
-	StationCodeNewtongrange                      = "NEG"
-	StationCodeNewtonleWillows                   = "NLW"
-	StationCodeNewtonmore                        = "NWR"
-	StationCodeNewtononAyr                       = "NOA"
-	StationCodeNewtownPowys                      = "NWT"
-	StationCodeNinianPark                        = "NNP"
-	StationCodeNitshill                          = "NIT"
-	StationCodeNorbiton                          = "NBT"
-	StationCodeNorbury                           = "NRB"
-	StationCodeNormansBay                        = "NSB"
-	StationCodeNormanton                         = "NOR"
-	StationCodeNorthBerwick                      = "NBW"
-	StationCodeNorthCamp                         = "NCM"
-	StationCodeNorthDulwich                      = "NDL"
-	StationCodeNorthFambridge                    = "NFA"
-	StationCodeNorthLlanrwst                     = "NLR"
-	StationCodeNorthQueensferry                  = "NQU"
-	StationCodeNorthRoadDarlington               = "NRD"
-	StationCodeNorthSheen                        = "NSH"
-	StationCodeNorthWalsham                      = "NWA"
-	StationCodeNorthWembley                      = "NWB"
-	StationCodeNorthallerton                     = "NTR"
-	StationCodeNorthampton                       = "NMP"
-	StationCodeNorthfield                        = "NFD"
-	StationCodeNorthfleet                        = "NFL"
-	StationCodeNortholtPark                      = "NLT"
-	StationCodeNorthumberlandPark                = "NUM"
-	StationCodeNorthwich                         = "NWI"
-	StationCodeNortonBridge                      = "NTB"
-	StationCodeNorwich                           = "NRW"
-	StationCodeNorwoodJunction                   = "NWD"
-	StationCodeNottingham                        = "NOT"
-	StationCodeNuneaton                          = "NUN"
-	StationCodeNunhead                           = "NHD"
-	StationCodeNunthorpe                         = "NNT"
-	StationCodeNutbourne                         = "NUT"
-	StationCodeNutfield                          = "NUF"
-	StationCodeOakengates                        = "OKN"
-	StationCodeOakham                            = "OKM"
-	StationCodeOakleighPark                      = "OKL"
-	StationCodeOban                              = "OBN"
-	StationCodeOckendon                          = "OCK"
-	StationCodeOckley                            = "OLY"
-	StationCodeOkehampton                        = "OKE"
-	StationCodeOldHill                           = "OHL"
-	StationCodeOldRoan                           = "ORN"
-	StationCodeOldStreet                         = "OLD"
-	StationCodeOldfieldPark                      = "OLF"
-	StationCodeOlton                             = "OLT"
-	StationCodeOre                               = "ORE"
-	StationCodeOrmskirk                          = "OMS"
-	StationCodeOrpington                         = "ORP"
-	StationCodeOrrell                            = "ORR"
-	StationCodeOrrellPark                        = "OPK"
-	StationCodeOtford                            = "OTF"
-	StationCodeOultonBroadNorth                  = "OUN"
-	StationCodeOultonBroadSouth                  = "OUS"
-	StationCodeOutwood                           = "OUT"
-	StationCodeOverpool                          = "OVE"
-	StationCodeOverton                           = "OVR"
-	StationCodeOxenholmeLakeDistrict             = "OXN"
-	StationCodeOxford                            = "OXF"
-	StationCodeOxfordParkway                     = "OXP"
-	StationCodeOxshott                           = "OXS"
-	StationCodeOxted                             = "OXT"
-	StationCodePaddockWood                       = "PDW"
-	StationCodePadgate                           = "PDG"
-	StationCodePaignton                          = "PGN"
-	StationCodePaisleyCanal                      = "PCN"
-	StationCodePaisleyGilmourStreet              = "PYG"
-	StationCodePaisleyStJames                    = "PYJ"
-	StationCodePalmersGreen                      = "PAL"
-	StationCodePangbourne                        = "PAN"
-	StationCodePannal                            = "PNL"
-	StationCodePantyffynnon                      = "PTF"
-	StationCodePar                               = "PAR"
-	StationCodeParbold                           = "PBL"
-	StationCodeParkStreet                        = "PKT"
-	StationCodeParkstoneDorset                   = "PKS"
-	StationCodeParsonStreet                      = "PSN"
-	StationCodePartick                           = "PTK"
-	StationCodeParton                            = "PRN"
-	StationCodePatchway                          = "PWY"
-	StationCodePatricroft                        = "PAT"
-	StationCodePatterton                         = "PTT"
-	StationCodePeartree                          = "PEA"
-	StationCodePeckhamRye                        = "PMR"
-	StationCodePegswood                          = "PEG"
-	StationCodePemberton                         = "PEM"
-	StationCodePembreyAndBurryPort               = "PBY"
-	StationCodePembroke                          = "PMB"
-	StationCodePembrokeDock                      = "PMD"
-	StationCodePenally                           = "PNA"
-	StationCodePenarth                           = "PEN"
-	StationCodePencoed                           = "PCD"
-	StationCodePengam                            = "PGM"
-	StationCodePengeEast                         = "PNE"
-	StationCodePengeWest                         = "PNW"
-	StationCodePenhelig                          = "PHG"
-	StationCodePenistone                         = "PNS"
-	StationCodePenkridge                         = "PKG"
-	StationCodePenmaenmawr                       = "PMW"
-	StationCodePenmere                           = "PNM"
-	StationCodePenrhiwceiber                     = "PER"
-	StationCodePenrhyndeudraeth                  = "PRH"
-	StationCodePenrithNorthLakes                 = "PNR"
-	StationCodePenrynCornwall                    = "PYN"
-	StationCodePensarnGwynedd                    = "PES"
-	StationCodePenshurst                         = "PHR"
-	StationCodePentreBach                        = "PTB"
-	StationCodePenyBont                          = "PNY"
-	StationCodePenychain                         = "PNC"
-	StationCodePenyffordd                        = "PNF"
-	StationCodePenzance                          = "PNZ"
-	StationCodePerranwell                        = "PRW"
-	StationCodePerryBarr                         = "PRY"
-	StationCodePershore                          = "PSH"
-	StationCodePerth                             = "PTH"
-	StationCodePeterborough                      = "PBO"
-	StationCodePetersfield                       = "PTR"
-	StationCodePettsWood                         = "PET"
-	StationCodePevenseyAndWestham                = "PEV"
-	StationCodePevenseyBay                       = "PEB"
-	StationCodePewsey                            = "PEW"
-	StationCodePilning                           = "PIL"
-	StationCodePinhoe                            = "PIN"
-	StationCodePitlochry                         = "PIT"
-	StationCodePitsea                            = "PSE"
-	StationCodePleasington                       = "PLS"
-	StationCodePlockton                          = "PLK"
-	StationCodePluckley                          = "PLC"
-	StationCodePlumley                           = "PLM"
-	StationCodePlumpton                          = "PMP"
-	StationCodePlumstead                         = "PLU"
-	StationCodePlymouth                          = "PLY"
-	StationCodePokesdown                         = "POK"
-	StationCodePolegate                          = "PLG"
-	StationCodePolesworth                        = "PSW"
-	StationCodePollokshawsEast                   = "PWE"
-	StationCodePollokshawsWest                   = "PWW"
-	StationCodePollokshieldsEast                 = "PLE"
-	StationCodePollokshieldsWest                 = "PLW"
-	StationCodePolmont                           = "PMT"
-	StationCodePolsloeBridge                     = "POL"
-	StationCodePondersEnd                        = "PON"
-	StationCodePontarddulais                     = "PTD"
-	StationCodePontefractBaghill                 = "PFR"
-	StationCodePontefractMonkhill                = "PFM"
-	StationCodePontefractTanshelf                = "POT"
-	StationCodePontlottyn                        = "PLT"
-	StationCodePontyPant                         = "PYP"
-	StationCodePontyclun                         = "PYC"
-	StationCodePontypoolAndNewInn                = "PPL"
-	StationCodePontypridd                        = "PPD"
-	StationCodePoole                             = "POO"
-	StationCodePoppleton                         = "POP"
-	StationCodePortGlasgow                       = "PTG"
-	StationCodePortSunlight                      = "PSL"
-	StationCodePortTalbotParkway                 = "PTA"
-	StationCodePortchester                       = "PTC"
-	StationCodePorth                             = "POR"
-	StationCodePorthmadog                        = "PTM"
-	StationCodePortlethen                        = "PLN"
-	StationCodePortslade                         = "PLD"
-	StationCodePortsmouthAndSouthsea             = "PMS"
-	StationCodePortsmouthArms                    = "PMA"
-	StationCodePortsmouthHarbour                 = "PMH"
-	StationCodePossilparkAndParkhouse            = "PPK"
-	StationCodePottersBar                        = "PBR"
-	StationCodePoultonleFylde                    = "PFY"
-	StationCodePoynton                           = "PYT"
-	StationCodePrees                             = "PRS"
-	StationCodePrescot                           = "PSC"
-	StationCodePrestatyn                         = "PRT"
-	StationCodePrestbury                         = "PRB"
-	StationCodePrestonLancs                      = "PRE"
-	StationCodePrestonPark                       = "PRP"
-	StationCodePrestonpans                       = "PST"
-	StationCodePrestwickInternationalAirport     = "PRA"
-	StationCodePrestwickTown                     = "PTW"
-	StationCodePriesthillAndDarnley              = "PTL"
-	StationCodePrincesRisborough                 = "PRR"
-	StationCodePrittlewell                       = "PRL"
-	StationCodePrudhoe                           = "PRU"
-	StationCodePulborough                        = "PUL"
-	StationCodePurfleet                          = "PFL"
-	StationCodePurley                            = "PUR"
-	StationCodePurleyOaks                        = "PUO"
-	StationCodePutney                            = "PUT"
-	StationCodePwllheli                          = "PWL"
-	StationCodePyeCorner                         = "PYE"
-	StationCodePyle                              = "PYL"
-	StationCodeQuakersYard                       = "QYD"
-	StationCodeQueenborough                      = "QBR"
-	StationCodeQueensParkGlasgow                 = "QPK"
-	StationCodeQueensParkLondon                  = "QPW"
-	StationCodeQueensRoadPeckham                 = "QRP"
-	StationCodeQueenstownRoadBattersea           = "QRB"
-	StationCodeQuintrellDowns                    = "QUI"
-	StationCodeRadcliffeonTrent                  = "RDF"
-	StationCodeRadlett                           = "RDT"
-	StationCodeRadley                            = "RAD"
-	StationCodeRadyr                             = "RDR"
-	StationCodeRainford                          = "RNF"
-	StationCodeRainhamEssex                      = "RNM"
-	StationCodeRainhamKent                       = "RAI"
-	StationCodeRainhill                          = "RNH"
-	StationCodeRamsgate                          = "RAM"
-	StationCodeRamsgreaveAndWilpshire            = "RGW"
-	StationCodeRannoch                           = "RAN"
-	StationCodeRauceby                           = "RAU"
-	StationCodeRavenglassforEskdale              = "RAV"
-	StationCodeRavensbourne                      = "RVB"
-	StationCodeRavensthorpe                      = "RVN"
-	StationCodeRawcliffe                         = "RWC"
-	StationCodeRayleigh                          = "RLG"
-	StationCodeRaynesPark                        = "RAY"
-	StationCodeReading                           = "RDG"
-	StationCodeReadingWest                       = "RDW"
-	StationCodeRectoryRoad                       = "REC"
-	StationCodeRedbridge                         = "RDB"
-	StationCodeRedcarBritishSteel                = "RBS"
-	StationCodeRedcarCentral                     = "RCC"
-	StationCodeRedcarEast                        = "RCE"
-	StationCodeReddishNorth                      = "RDN"
-	StationCodeReddishSouth                      = "RDS"
-	StationCodeRedditch                          = "RDC"
-	StationCodeRedhill                           = "RDH"
-	StationCodeRedland                           = "RDA"
-	StationCodeRedruth                           = "RED"
-	StationCodeReedhamNorfolk                    = "REE"
-	StationCodeReedhamSurrey                     = "RHM"
-	StationCodeReigate                           = "REI"
-	StationCodeRenton                            = "RTN"
-	StationCodeRetford                           = "RET"
-	StationCodeRhiwbina                          = "RHI"
-	StationCodeRhooseCardiffInternationalAirport = "RIA"
-	StationCodeRhosneigr                         = "RHO"
-	StationCodeRhyl                              = "RHL"
-	StationCodeRhymney                           = "RHY"
-	StationCodeRibblehead                        = "RHD"
-	StationCodeRiceLane                          = "RIL"
-	StationCodeRichmondLondon                    = "RMD"
-	StationCodeRickmansworth                     = "RIC"
-	StationCodeRiddlesdown                       = "RDD"
-	StationCodeRidgmont                          = "RID"
-	StationCodeRidingMill                        = "RDM"
-	StationCodeRiscaAndPontymister               = "RCA"
-	StationCodeRishton                           = "RIS"
-	StationCodeRobertsbridge                     = "RBR"
-	StationCodeRoby                              = "ROB"
-	StationCodeRochdale                          = "RCD"
-	StationCodeRoche                             = "ROC"
-	StationCodeRochester                         = "RTR"
-	StationCodeRochford                          = "RFD"
-	StationCodeRockFerry                         = "RFY"
-	StationCodeRogart                            = "ROG"
-	StationCodeRogerstone                        = "ROR"
-	StationCodeRolleston                         = "ROL"
-	StationCodeRomanBridge                       = "RMB"
-	StationCodeRomford                           = "RMF"
-	StationCodeRomiley                           = "RML"
-	StationCodeRomsey                            = "ROM"
-	StationCodeRoose                             = "ROO"
-	StationCodeRoseGrove                         = "RSG"
-	StationCodeRoseHillMarple                    = "RSH"
-	StationCodeRosyth                            = "ROS"
-	StationCodeRotherhamCentral                  = "RMC"
-	StationCodeRotherhithe                       = "ROE"
-	StationCodeRoughtonRoad                      = "RNR"
-	StationCodeRowlandsCastle                    = "RLN"
-	StationCodeRowleyRegis                       = "ROW"
-	StationCodeRoyBridge                         = "RYB"
-	StationCodeRoydon                            = "RYN"
-	StationCodeRoyston                           = "RYS"
-	StationCodeRuabon                            = "RUA"
-	StationCodeRufford                           = "RUF"
-	StationCodeRugby                             = "RUG"
-	StationCodeRugeleyTown                       = "RGT"
-	StationCodeRugeleyTrentValley                = "RGL"
-	StationCodeRuncorn                           = "RUN"
-	StationCodeRuncornEast                       = "RUE"
-	StationCodeRuskington                        = "RKT"
-	StationCodeRuswarp                           = "RUS"
-	StationCodeRutherglen                        = "RUT"
-	StationCodeRydeEsplanade                     = "RYD"
-	StationCodeRydePierHead                      = "RYP"
-	StationCodeRydeStJohnsRoad                   = "RYR"
-	StationCodeRyderBrow                         = "RRB"
-	StationCodeRyeHouse                          = "RYH"
-	StationCodeRyeSussex                         = "RYE"
-	StationCodeSalfordCentral                    = "SFD"
-	StationCodeSalfordCrescent                   = "SLD"
-	StationCodeSalfordsSurrey                    = "SAF"
-	StationCodeSalhouse                          = "SAH"
-	StationCodeSalisbury                         = "SAL"
-	StationCodeSaltaire                          = "SAE"
-	StationCodeSaltash                           = "STS"
-	StationCodeSaltburn                          = "SLB"
-	StationCodeSaltcoats                         = "SLT"
-	StationCodeSaltmarshe                        = "SAM"
-	StationCodeSalwick                           = "SLW"
-	StationCodeSampfordCourtenay                 = "SMC"
-	StationCodeSandalAndAgbrigg                  = "SNA"
-	StationCodeSandbach                          = "SDB"
-	StationCodeSanderstead                       = "SNR"
-	StationCodeSandhills                         = "SDL"
-	StationCodeSandhurstBerks                    = "SND"
-	StationCodeSandling                          = "SDG"
-	StationCodeSandown                           = "SAN"
-	StationCodeSandplace                         = "SDP"
-	StationCodeSandwellAndDudley                 = "SAD"
-	StationCodeSandwich                          = "SDW"
-	StationCodeSandy                             = "SDY"
-	StationCodeSankeyforPenketh                  = "SNK"
-	StationCodeSanquhar                          = "SQH"
-	StationCodeSarn                              = "SRR"
-	StationCodeSaundersfoot                      = "SDF"
-	StationCodeSaunderton                        = "SDR"
-	StationCodeSawbridgeworth                    = "SAW"
-	StationCodeSaxilby                           = "SXY"
-	StationCodeSaxmundham                        = "SAX"
-	StationCodeScarborough                       = "SCA"
-	StationCodeScotscalder                       = "SCT"
-	StationCodeScotstounhill                     = "SCH"
-	StationCodeScunthorpe                        = "SCU"
-	StationCodeSeaMills                          = "SML"
-	StationCodeSeafordSussex                     = "SEF"
-	StationCodeSeaforthAndLitherland             = "SFL"
-	StationCodeSeaham                            = "SEA"
-	StationCodeSeamer                            = "SEM"
-	StationCodeSeascale                          = "SSC"
-	StationCodeSeatonCarew                       = "SEC"
-	StationCodeSeerGreenAndJordans               = "SRG"
-	StationCodeSelby                             = "SBY"
-	StationCodeSelhurst                          = "SRS"
-	StationCodeSellafield                        = "SEL"
-	StationCodeSelling                           = "SEG"
-	StationCodeSellyOak                          = "SLY"
-	StationCodeSettle                            = "SET"
-	StationCodeSevenKings                        = "SVK"
-	StationCodeSevenSisters                      = "SVS"
-	StationCodeSevenoaks                         = "SEV"
-	StationCodeSevernBeach                       = "SVB"
-	StationCodeSevernTunnelJunction              = "STJ"
-	StationCodeShadwell                          = "SDE"
-	StationCodeShalfordSurrey                    = "SFR"
-	StationCodeShanklin                          = "SHN"
-	StationCodeShawfair                          = "SFI"
-	StationCodeShawford                          = "SHW"
-	StationCodeShawlands                         = "SHL"
-	StationCodeSheernessonSea                    = "SSS"
-	StationCodeSheffield                         = "SHF"
-	StationCodeShelfordCambs                     = "SED"
-	StationCodeShenfield                         = "SNF"
-	StationCodeShenstone                         = "SEN"
-	StationCodeShepherdsBush                     = "SPB"
-	StationCodeShepherdsWell                     = "SPH"
-	StationCodeShepley                           = "SPY"
-	StationCodeShepperton                        = "SHP"
-	StationCodeShepreth                          = "STH"
-	StationCodeSherborne                         = "SHE"
-	StationCodeSherburninElmet                   = "SIE"
-	StationCodeSheringham                        = "SHM"
-	StationCodeShettleston                       = "SLS"
-	StationCodeShieldmuir                        = "SDM"
-	StationCodeShifnal                           = "SFN"
-	StationCodeShildon                           = "SHD"
-	StationCodeShiplake                          = "SHI"
-	StationCodeShipleyYorks                      = "SHY"
-	StationCodeShippeaHill                       = "SPP"
-	StationCodeShipton                           = "SIP"
-	StationCodeShirebrook                        = "SHB"
-	StationCodeShirehampton                      = "SHH"
-	StationCodeShireoaks                         = "SRO"
-	StationCodeShirley                           = "SRL"
-	StationCodeShoeburyness                      = "SRY"
-	StationCodeSholing                           = "SHO"
-	StationCodeShoreditchHighStreet              = "SDC"
-	StationCodeShorehamKent                      = "SEH"
-	StationCodeShorehambySea                     = "SSE"
-	StationCodeShortlands                        = "SRT"
-	StationCodeShotton                           = "SHT"
-	StationCodeShotts                            = "SHS"
-	StationCodeShrewsbury                        = "SHR"
-	StationCodeSidcup                            = "SID"
-	StationCodeSileby                            = "SIL"
-	StationCodeSilecroft                         = "SIC"
-	StationCodeSilkstoneCommon                   = "SLK"
-	StationCodeSilverStreet                      = "SLV"
-	StationCodeSilverdale                        = "SVR"
-	StationCodeSinger                            = "SIN"
-	StationCodeSittingbourne                     = "SIT"
-	StationCodeSkegness                          = "SKG"
-	StationCodeSkewen                            = "SKE"
-	StationCodeSkipton                           = "SKI"
-	StationCodeSladeGreen                        = "SGR"
-	StationCodeSlaithwaite                       = "SWT"
-	StationCodeSlateford                         = "SLA"
-	StationCodeSleaford                          = "SLR"
-	StationCodeSleights                          = "SLH"
-	StationCodeSlough                            = "SLO"
-	StationCodeSmallHeath                        = "SMA"
-	StationCodeSmallbrookJunction                = "SAB"
-	StationCodeSmethwickGaltonBridge             = "SGB"
-	StationCodeSmethwickRolfeStreet              = "SMR"
-	StationCodeSmithyBridge                      = "SMB"
-	StationCodeSnaith                            = "SNI"
-	StationCodeSnodland                          = "SDA"
-	StationCodeSnowdown                          = "SWO"
-	StationCodeSoleStreet                        = "SOR"
-	StationCodeSolihull                          = "SOL"
-	StationCodeSomerleyton                       = "SYT"
-	StationCodeSouthActon                        = "SAT"
-	StationCodeSouthBank                         = "SBK"
-	StationCodeSouthBermondsey                   = "SBM"
-	StationCodeSouthCroydon                      = "SCY"
-	StationCodeSouthElmsall                      = "SES"
-	StationCodeSouthGreenford                    = "SGN"
-	StationCodeSouthGyle                         = "SGL"
-	StationCodeSouthHampstead                    = "SOH"
-	StationCodeSouthKenton                       = "SOK"
-	StationCodeSouthMerton                       = "SMO"
-	StationCodeSouthMilford                      = "SOM"
-	StationCodeSouthRuislip                      = "SRU"
-	StationCodeSouthTottenham                    = "STO"
-	StationCodeSouthWigston                      = "SWS"
-	StationCodeSouthWoodhamFerrers               = "SOF"
-	StationCodeSouthall                          = "STL"
-	StationCodeSouthamptonAirportParkway         = "SOA"
-	StationCodeSouthamptonCentral                = "SOU"
-	StationCodeSouthbourne                       = "SOB"
-	StationCodeSouthbury                         = "SBU"
-	StationCodeSouthease                         = "SEE"
-	StationCodeSouthendAirport                   = "SIA"
-	StationCodeSouthendCentral                   = "SOC"
-	StationCodeSouthendEast                      = "SOE"
-	StationCodeSouthendVictoria                  = "SOV"
-	StationCodeSouthminster                      = "SMN"
-	StationCodeSouthport                         = "SOP"
-	StationCodeSouthwick                         = "SWK"
-	StationCodeSowerbyBridge                     = "SOW"
-	StationCodeSpalding                          = "SPA"
-	StationCodeSpeanBridge                       = "SBR"
-	StationCodeSpital                            = "SPI"
-	StationCodeSpondon                           = "SPO"
-	StationCodeSpoonerRow                        = "SPN"
-	StationCodeSpringRoad                        = "SRI"
-	StationCodeSpringburn                        = "SPR"
-	StationCodeSpringfield                       = "SPF"
-	StationCodeSquiresGate                       = "SQU"
-	StationCodeStAlbansAbbey                     = "SAA"
-	StationCodeStAlbansCity                      = "SAC"
-	StationCodeStAndrewsRoad                     = "SAR"
-	StationCodeStAnnesonSea                      = "SAS"
-	StationCodeStAustell                         = "SAU"
-	StationCodeStBees                            = "SBS"
-	StationCodeStBudeauxFerryRoad                = "SBF"
-	StationCodeStBudeauxVictoriaRoad             = "SBV"
-	StationCodeStColumbRoad                      = "SCR"
-	StationCodeStDenys                           = "SDN"
-	StationCodeStErth                            = "SER"
-	StationCodeStGermans                         = "SGM"
-	StationCodeStHelensCentral                   = "SNH"
-	StationCodeStHelensJunction                  = "SHJ"
-	StationCodeStHelierSurrey                    = "SIH"
-	StationCodeStIvesCornwall                    = "SIV"
-	StationCodeStJamesParkExeter                 = "SJP"
-	StationCodeStJamesStreetWalthamstow          = "SJS"
-	StationCodeStJohnsLondon                     = "SAJ"
-	StationCodeStKeyneWishingWellHalt            = "SKN"
-	StationCodeStLeonardsWarriorSquare           = "SLQ"
-	StationCodeStMargaretsHerts                  = "SMT"
-	StationCodeStMargaretsLondon                 = "SMG"
-	StationCodeStMaryCray                        = "SMY"
-	StationCodeStMichaels                        = "STM"
-	StationCodeStNeots                           = "SNO"
-	StationCodeStafford                          = "STA"
-	StationCodeStaines                           = "SNS"
-	StationCodeStallingborough                   = "SLL"
-	StationCodeStalybridge                       = "SYB"
-	StationCodeStamfordHill                      = "SMH"
-	StationCodeStamfordLincs                     = "SMD"
-	StationCodeStanfordleHope                    = "SFO"
-	StationCodeStanlowAndThornton                = "SNT"
-	StationCodeStanstedAirport                   = "SSD"
-	StationCodeStanstedMountfitchet              = "SST"
-	StationCodeStaplehurst                       = "SPU"
-	StationCodeStapletonRoad                     = "SRD"
-	StationCodeStarbeck                          = "SBE"
-	StationCodeStarcross                         = "SCS"
-	StationCodeStaveleyCumbria                   = "SVL"
-	StationCodeStechford                         = "SCF"
-	StationCodeSteetonAndSilsden                 = "SON"
-	StationCodeStepps                            = "SPS"
-	StationCodeStevenage                         = "SVG"
-	StationCodeStevenston                        = "STV"
-	StationCodeStewartby                         = "SWR"
-	StationCodeStewarton                         = "STT"
-	StationCodeStirling                          = "STG"
-	StationCodeStockport                         = "SPT"
-	StationCodeStocksfield                       = "SKS"
-	StationCodeStocksmoor                        = "SSM"
-	StationCodeStockton                          = "STK"
-	StationCodeStokeMandeville                   = "SKM"
-	StationCodeStokeNewington                    = "SKW"
-	StationCodeStokeonTrent                      = "SOT"
-	StationCodeStoneCrossing                     = "SCG"
-	StationCodeStoneStaffs                       = "SNE"
-	StationCodeStonebridgePark                   = "SBP"
-	StationCodeStonegate                         = "SOG"
-	StationCodeStonehaven                        = "STN"
-	StationCodeStonehouse                        = "SHU"
-	StationCodeStoneleigh                        = "SNL"
-	StationCodeStourbridgeJunction               = "SBJ"
-	StationCodeStourbridgeTown                   = "SBT"
-	StationCodeStow                              = "SOI"
-	StationCodeStowmarket                        = "SMK"
-	StationCodeStranraer                         = "STR"
-	StationCodeStratfordInternational            = "SFA"
-	StationCodeStratfordLondon                   = "SRA"
-	StationCodeStratfordUponAvon                 = "SAV"
-	StationCodeStratfordUponAvonParkway          = "STY"
-	StationCodeStrathcarron                      = "STC"
-	StationCodeStrawberryHill                    = "STW"
-	StationCodeStreathamCommon                   = "SRC"
-	StationCodeStreathamGreaterLondon            = "STE"
-	StationCodeStreathamHill                     = "SRH"
-	StationCodeStreethouse                       = "SHC"
-	StationCodeStrines                           = "SRN"
-	StationCodeStromeferry                       = "STF"
-	StationCodeStroodKent                        = "SOO"
-	StationCodeStroudGloucs                      = "STD"
-	StationCodeSturry                            = "STU"
-	StationCodeStyal                             = "SYA"
-	StationCodeSudburyAndHarrowRoad              = "SUD"
-	StationCodeSudburyHillHarrow                 = "SDH"
-	StationCodeSudburySuffolk                    = "SUY"
-	StationCodeSugarLoaf                         = "SUG"
-	StationCodeSummerston                        = "SUM"
-	StationCodeSunbury                           = "SUU"
-	StationCodeSunderland                        = "SUN"
-	StationCodeSundridgePark                     = "SUP"
-	StationCodeSunningdale                       = "SNG"
-	StationCodeSunnymeads                        = "SNY"
-	StationCodeSurbiton                          = "SUR"
-	StationCodeSurreyQuays                       = "SQE"
-	StationCodeSuttonColdfield                   = "SUT"
-	StationCodeSuttonCommon                      = "SUC"
-	StationCodeSuttonParkway                     = "SPK"
-	StationCodeSuttonSurrey                      = "SUO"
-	StationCodeSwale                             = "SWL"
-	StationCodeSwanley                           = "SAY"
-	StationCodeSwanscombe                        = "SWM"
-	StationCodeSwansea                           = "SWA"
-	StationCodeSwanwick                          = "SNW"
-	StationCodeSway                              = "SWY"
-	StationCodeSwaythling                        = "SWG"
-	StationCodeSwinderby                         = "SWD"
-	StationCodeSwindonWilts                      = "SWI"
-	StationCodeSwineshead                        = "SWE"
-	StationCodeSwintonManchester                 = "SNN"
-	StationCodeSwintonSouthYorks                 = "SWN"
-	StationCodeSydenhamHill                      = "SYH"
-	StationCodeSydenhamLondon                    = "SYD"
-	StationCodeSyonLane                          = "SYL"
-	StationCodeSyston                            = "SYS"
-	StationCodeTackley                           = "TAC"
-	StationCodeTadworth                          = "TAD"
-	StationCodeTaffsWell                         = "TAF"
-	StationCodeTain                              = "TAI"
-	StationCodeTalsarnau                         = "TAL"
-	StationCodeTalyCafn                          = "TLC"
-	StationCodeTalybont                          = "TLB"
-	StationCodeTameBridgeParkway                 = "TAB"
-	StationCodeTamworth                          = "TAM"
-	StationCodeTaplow                            = "TAP"
-	StationCodeTattenhamCorner                   = "TAT"
-	StationCodeTaunton                           = "TAU"
-	StationCodeTaynuilt                          = "TAY"
-	StationCodeTeddington                        = "TED"
-	StationCodeTeessideAirport                   = "TEA"
-	StationCodeTeignmouth                        = "TGM"
-	StationCodeTelfordCentral                    = "TFC"
-	StationCodeTemplecombe                       = "TMC"
-	StationCodeTenby                             = "TEN"
-	StationCodeTeynham                           = "TEY"
-	StationCodeThamesDitton                      = "THD"
-	StationCodeThatcham                          = "THA"
-	StationCodeThattoHeath                       = "THH"
-	StationCodeTheHawthorns                      = "THW"
-	StationCodeTheLakesWarks                     = "TLK"
-	StationCodeTheale                            = "THE"
-	StationCodeTheobaldsGrove                    = "TEO"
-	StationCodeThetford                          = "TTF"
-	StationCodeThirsk                            = "THI"
-	StationCodeThornaby                          = "TBY"
-	StationCodeThorneNorth                       = "TNN"
-	StationCodeThorneSouth                       = "TNS"
-	StationCodeThornford                         = "THO"
-	StationCodeThornliebank                      = "THB"
-	StationCodeThorntonAbbey                     = "TNA"
-	StationCodeThorntonHeath                     = "TTH"
-	StationCodeThorntonhall                      = "THT"
-	StationCodeThorpeBay                         = "TPB"
-	StationCodeThorpeCulvert                     = "TPC"
-	StationCodeThorpeleSoken                     = "TLS"
-	StationCodeThreeBridges                      = "TBD"
-	StationCodeThreeOaks                         = "TOK"
-	StationCodeThurgarton                        = "THU"
-	StationCodeThurnscoe                         = "THC"
-	StationCodeThurso                            = "THS"
-	StationCodeThurston                          = "TRS"
-	StationCodeTilburyTown                       = "TIL"
-	StationCodeTileHill                          = "THL"
-	StationCodeTilehurst                         = "TLH"
-	StationCodeTipton                            = "TIP"
-	StationCodeTirPhil                           = "TIR"
-	StationCodeTisbury                           = "TIS"
-	StationCodeTivertonParkway                   = "TVP"
-	StationCodeTodmorden                         = "TOD"
-	StationCodeTolworth                          = "TOL"
-	StationCodeTonPentre                         = "TPN"
-	StationCodeTonbridge                         = "TON"
-	StationCodeTondu                             = "TDU"
-	StationCodeTonfanau                          = "TNF"
-	StationCodeTonypandy                         = "TNP"
-	StationCodeTooting                           = "TOO"
-	StationCodeTopsham                           = "TOP"
-	StationCodeTorquay                           = "TQY"
-	StationCodeTorre                             = "TRR"
-	StationCodeTotnes                            = "TOT"
-	StationCodeTottenhamHale                     = "TOM"
-	StationCodeTotton                            = "TTN"
-	StationCodeTownGreen                         = "TWN"
-	StationCodeTraffordPark                      = "TRA"
-	StationCodeTrefforest                        = "TRF"
-	StationCodeTrefforestEstate                  = "TRE"
-	StationCodeTrehafod                          = "TRH"
-	StationCodeTreherbert                        = "TRB"
-	StationCodeTreorchy                          = "TRY"
-	StationCodeTrimley                           = "TRM"
-	StationCodeTring                             = "TRI"
-	StationCodeTroedyrhiw                        = "TRD"
-	StationCodeTroon                             = "TRN"
-	StationCodeTrowbridge                        = "TRO"
-	StationCodeTruro                             = "TRU"
-	StationCodeTulloch                           = "TUL"
-	StationCodeTulseHill                         = "TUH"
-	StationCodeTunbridgeWells                    = "TBW"
-	StationCodeTurkeyStreet                      = "TUR"
-	StationCodeTutburyAndHatton                  = "TUT"
-	StationCodeTweedbank                         = "TWB"
-	StationCodeTwickenham                        = "TWI"
-	StationCodeTwyford                           = "TWY"
-	StationCodeTyCroes                           = "TYC"
-	StationCodeTyGlas                            = "TGS"
-	StationCodeTygwyn                            = "TYG"
-	StationCodeTyndrumLower                      = "TYL"
-	StationCodeTyseley                           = "TYS"
-	StationCodeTywyn                             = "TYW"
-	StationCodeUckfield                          = "UCK"
-	StationCodeUddingston                        = "UDD"
-	StationCodeUlceby                            = "ULC"
-	StationCodeUlleskelf                         = "ULL"
-	StationCodeUlverston                         = "ULV"
-	StationCodeUmberleigh                        = "UMB"
-	StationCodeUniversityBirmingham              = "UNI"
-	StationCodeUphall                            = "UHA"
-	StationCodeUpholland                         = "UPL"
-	StationCodeUpminster                         = "UPM"
-	StationCodeUpperHalliford                    = "UPH"
-	StationCodeUpperHolloway                     = "UHL"
-	StationCodeUpperTyndrum                      = "UTY"
-	StationCodeUpperWarlingham                   = "UWL"
-	StationCodeUptonMerseyside                   = "UPT"
-	StationCodeUpwey                             = "UPW"
-	StationCodeUrmston                           = "URM"
-	StationCodeUttoxeter                         = "UTT"
-	StationCodeValley                            = "VAL"
-	StationCodeVauxhall                          = "VXH"
-	StationCodeVirginiaWater                     = "VIR"
-	StationCodeWaddon                            = "WDO"
-	StationCodeWadhurst                          = "WAD"
-	StationCodeWainfleet                         = "WFL"
-	StationCodeWakefieldKirkgate                 = "WKK"
-	StationCodeWakefieldWestgate                 = "WKF"
-	StationCodeWalkden                           = "WKD"
-	StationCodeWallaseyGroveRoad                 = "WLG"
-	StationCodeWallaseyVillage                   = "WLV"
-	StationCodeWallington                        = "WLT"
-	StationCodeWallyford                         = "WAF"
-	StationCodeWalmer                            = "WAM"
-	StationCodeWalsall                           = "WSL"
-	StationCodeWalsden                           = "WDN"
-	StationCodeWalthamCross                      = "WLC"
-	StationCodeWalthamstowCentral                = "WHC"
-	StationCodeWalthamstowQueensRoad             = "WMW"
-	StationCodeWaltonMerseyside                  = "WAO"
-	StationCodeWaltononThames                    = "WAL"
-	StationCodeWaltonontheNaze                   = "WON"
-	StationCodeWanborough                        = "WAN"
-	StationCodeWandsworthCommon                  = "WSW"
-	StationCodeWandsworthRoad                    = "WWR"
-	StationCodeWandsworthTown                    = "WNT"
-	StationCodeWansteadPark                      = "WNP"
-	StationCodeWapping                           = "WPE"
-	StationCodeWarblington                       = "WBL"
-	StationCodeWareHerts                         = "WAR"
-	StationCodeWarehamDorset                     = "WRM"
-	StationCodeWargrave                          = "WGV"
-	StationCodeWarminster                        = "WMN"
-	StationCodeWarnham                           = "WNH"
-	StationCodeWarringtonBankQuay                = "WBQ"
-	StationCodeWarringtonCentral                 = "WAC"
-	StationCodeWarwick                           = "WRW"
-	StationCodeWarwickParkway                    = "WRP"
-	StationCodeWaterOrton                        = "WTO"
-	StationCodeWaterbeach                        = "WBC"
-	StationCodeWateringbury                      = "WTR"
-	StationCodeWaterlooMerseyside                = "WLO"
-	StationCodeWatfordHighStreet                 = "WFH"
-	StationCodeWatfordJunction                   = "WFJ"
-	StationCodeWatfordNorth                      = "WFN"
-	StationCodeWatlington                        = "WTG"
-	StationCodeWattonatStone                     = "WAS"
-	StationCodeWaunGronPark                      = "WNG"
-	StationCodeWavertreeTechnologyPark           = "WAV"
-	StationCodeWedgwood                          = "WED"
-	StationCodeWeeley                            = "WEE"
-	StationCodeWeeton                            = "WET"
-	StationCodeWelhamGreen                       = "WMG"
-	StationCodeWelling                           = "WLI"
-	StationCodeWellingborough                    = "WEL"
-	StationCodeWellingtonShropshire              = "WLN"
-	StationCodeWelshpool                         = "WLP"
-	StationCodeWelwynGardenCity                  = "WGC"
-	StationCodeWelwynNorth                       = "WLW"
-	StationCodeWem                               = "WEM"
-	StationCodeWembleyCentral                    = "WMB"
-	StationCodeWembleyStadium                    = "WCX"
-	StationCodeWemyssBay                         = "WMS"
-	StationCodeWendover                          = "WND"
-	StationCodeWennington                        = "WNN"
-	StationCodeWestAllerton                      = "WSA"
-	StationCodeWestBrompton                      = "WBP"
-	StationCodeWestByfleet                       = "WBY"
-	StationCodeWestCalder                        = "WCL"
-	StationCodeWestCroydon                       = "WCY"
-	StationCodeWestDrayton                       = "WDT"
-	StationCodeWestDulwich                       = "WDU"
-	StationCodeWestEaling                        = "WEA"
-	StationCodeWestHam                           = "WEH"
-	StationCodeWestHampstead                     = "WHD"
-	StationCodeWestHampsteadThameslink           = "WHP"
-	StationCodeWestHorndon                       = "WHR"
-	StationCodeWestKilbride                      = "WKB"
-	StationCodeWestKirby                         = "WKI"
-	StationCodeWestMalling                       = "WMA"
-	StationCodeWestNorwood                       = "WNW"
-	StationCodeWestRuislip                       = "WRU"
-	StationCodeWestRunton                        = "WRN"
-	StationCodeWestStLeonards                    = "WLD"
-	StationCodeWestSutton                        = "WSU"
-	StationCodeWestWickham                       = "WWI"
-	StationCodeWestWorthing                      = "WWO"
-	StationCodeWestburyWilts                     = "WSB"
-	StationCodeWestcliff                         = "WCF"
-	StationCodeWestcombePark                     = "WCB"
-	StationCodeWestenhanger                      = "WHA"
-	StationCodeWesterHailes                      = "WTA"
-	StationCodeWesterfield                       = "WFI"
-	StationCodeWesterton                         = "WES"
-	StationCodeWestgateonSea                     = "WGA"
-	StationCodeWesthoughton                      = "WHG"
-	StationCodeWestonMilton                      = "WNM"
-	StationCodeWestonsuperMare                   = "WSM"
-	StationCodeWetheral                          = "WRL"
-	StationCodeWeybridge                         = "WYB"
-	StationCodeWeymouth                          = "WEY"
-	StationCodeWhaleyBridge                      = "WBR"
-	StationCodeWhalleyLancs                      = "WHE"
-	StationCodeWhatstandwell                     = "WTS"
-	StationCodeWhifflet                          = "WFF"
-	StationCodeWhimple                           = "WHM"
-	StationCodeWhinhill                          = "WNL"
-	StationCodeWhiston                           = "WHN"
-	StationCodeWhitby                            = "WTB"
-	StationCodeWhitchurchCardiff                 = "WHT"
-	StationCodeWhitchurchHants                   = "WCH"
-	StationCodeWhitchurchShropshire              = "WTC"
-	StationCodeWhiteHartLane                     = "WHL"
-	StationCodeWhiteNotley                       = "WNY"
-	StationCodeWhitechapel                       = "ZLW"
-	StationCodeWhitecraigs                       = "WCR"
-	StationCodeWhitehaven                        = "WTH"
-	StationCodeWhitland                          = "WTL"
-	StationCodeWhitleyBridge                     = "WBD"
-	StationCodeWhitlocksEnd                      = "WTE"
-	StationCodeWhitstable                        = "WHI"
-	StationCodeWhittlesea                        = "WLE"
-	StationCodeWhittlesfordParkway               = "WLF"
-	StationCodeWhittonLondon                     = "WTN"
-	StationCodeWhitwellDerbyshire                = "WWL"
-	StationCodeWhyteleafe                        = "WHY"
-	StationCodeWhyteleafeSouth                   = "WHS"
-	StationCodeWick                              = "WCK"
-	StationCodeWickford                          = "WIC"
-	StationCodeWickhamMarket                     = "WCM"
-	StationCodeWiddrington                       = "WDD"
-	StationCodeWidnes                            = "WID"
-	StationCodeWidneyManor                       = "WMR"
-	StationCodeWiganNorthWestern                 = "WGN"
-	StationCodeWiganWallgate                     = "WGW"
-	StationCodeWigton                            = "WGT"
-	StationCodeWildmill                          = "WMI"
-	StationCodeWillesdenJunction                 = "WIJ"
-	StationCodeWilliamwood                       = "WLM"
-	StationCodeWillington                        = "WIL"
-	StationCodeWilmcote                          = "WMC"
-	StationCodeWilmslow                          = "WML"
-	StationCodeWilnecoteStaffs                   = "WNE"
-	StationCodeWimbledon                         = "WIM"
-	StationCodeWimbledonChase                    = "WBO"
-	StationCodeWinchelsea                        = "WSE"
-	StationCodeWinchester                        = "WIN"
-	StationCodeWinchfield                        = "WNF"
-	StationCodeWinchmoreHill                     = "WIH"
-	StationCodeWindermere                        = "WDM"
-	StationCodeWindsorAndEtonCentral             = "WNC"
-	StationCodeWindsorAndEtonRiverside           = "WNR"
-	StationCodeWinnersh                          = "WNS"
-	StationCodeWinnershTriangle                  = "WTI"
-	StationCodeWinsford                          = "WSF"
-	StationCodeWishaw                            = "WSH"
-	StationCodeWitham                            = "WTM"
-	StationCodeWitley                            = "WTY"
-	StationCodeWittonWestMidlands                = "WTT"
-	StationCodeWivelsfield                       = "WVF"
-	StationCodeWivenhoe                          = "WIV"
-	StationCodeWoburnSands                       = "WOB"
-	StationCodeWoking                            = "WOK"
-	StationCodeWokingham                         = "WKM"
-	StationCodeWoldingham                        = "WOH"
-	StationCodeWolverhampton                     = "WVH"
-	StationCodeWolverton                         = "WOL"
-	StationCodeWombwell                          = "WOM"
-	StationCodeWoodEnd                           = "WDE"
-	StationCodeWoodStreet                        = "WST"
-	StationCodeWoodbridge                        = "WDB"
-	StationCodeWoodgrangePark                    = "WGR"
-	StationCodeWoodhall                          = "WDL"
-	StationCodeWoodhouse                         = "WDH"
-	StationCodeWoodlesford                       = "WDS"
-	StationCodeWoodley                           = "WLY"
-	StationCodeWoodmansterne                     = "WME"
-	StationCodeWoodsmoor                         = "WSR"
-	StationCodeWool                              = "WOO"
-	StationCodeWoolston                          = "WLS"
-	StationCodeWoolwichArsenal                   = "WWA"
-	StationCodeWoolwichDockyard                  = "WWD"
-	StationCodeWoottonWawen                      = "WWW"
-	StationCodeWorcesterForegateStreet           = "WOF"
-	StationCodeWorcesterPark                     = "WCP"
-	StationCodeWorcesterShrubHill                = "WOS"
-	StationCodeWorkington                        = "WKG"
-	StationCodeWorksop                           = "WRK"
-	StationCodeWorle                             = "WOR"
-	StationCodeWorplesdon                        = "WPL"
-	StationCodeWorstead                          = "WRT"
-	StationCodeWorthing                          = "WRH"
-	StationCodeWrabness                          = "WRB"
-	StationCodeWraysbury                         = "WRY"
-	StationCodeWrenbury                          = "WRE"
-	StationCodeWressle                           = "WRS"
-	StationCodeWrexhamCentral                    = "WXC"
-	StationCodeWrexhamGeneral                    = "WRX"
-	StationCodeWye                               = "WYE"
-	StationCodeWylam                             = "WYM"
-	StationCodeWyldeGreen                        = "WYL"
-	StationCodeWymondham                         = "WMD"
-	StationCodeWythall                           = "WYT"
-	StationCodeYalding                           = "YAL"
-	StationCodeYardleyWood                       = "YRD"
-	StationCodeYarm                              = "YRM"
-	StationCodeYate                              = "YAE"
-	StationCodeYatton                            = "YAT"
-	StationCodeYeoford                           = "YEO"
-	StationCodeYeovilJunction                    = "YVJ"
-	StationCodeYeovilPenMill                     = "YVP"
-	StationCodeYetminster                        = "YET"
-	StationCodeYnyswen                           = "YNW"
-	StationCodeYoker                             = "YOK"
-	StationCodeYork                              = "YRK"
-	StationCodeYorton                            = "YRT"
-	StationCodeYstradMynach                      = "YSM"
-	StationCodeYstradRhondda                     = "YSR"
+	StationCodeAbbeyWood                         CRSCode = "ABW"
+	StationCodeAber                              CRSCode = "ABE"
+	StationCodeAbercynon                         CRSCode = "ACY"
+	StationCodeAberdare                          CRSCode = "ABA"
+	StationCodeAberdeen                          CRSCode = "ABD"
+	StationCodeAberdour                          CRSCode = "AUR"
+	StationCodeAberdovey                         CRSCode = "AVY"
+	StationCodeAbererch                          CRSCode = "ABH"
+	StationCodeAbergavenny                       CRSCode = "AGV"
+	StationCodeAbergeleAndPensarn                CRSCode = "AGL"
+	StationCodeAberystwyth                       CRSCode = "AYW"
+	StationCodeAccrington                        CRSCode = "ACR"
+	StationCodeAchanalt                          CRSCode = "AAT"
+	StationCodeAchnasheen                        CRSCode = "ACN"
+	StationCodeAchnashellach                     CRSCode = "ACH"
+	StationCodeAcklington                        CRSCode = "ACK"
+	StationCodeAcle                              CRSCode = "ACL"
+	StationCodeAcocksGreen                       CRSCode = "ACG"
+	StationCodeActonBridgeCheshire               CRSCode = "ACB"
+	StationCodeActonCentral                      CRSCode = "ACC"
+	StationCodeActonMainLine                     CRSCode = "AML"
+	StationCodeAdderleyPark                      CRSCode = "ADD"
+	StationCodeAddiewell                         CRSCode = "ADW"
+	StationCodeAddlestone                        CRSCode = "ASN"
+	StationCodeAdisham                           CRSCode = "ADM"
+	StationCodeAdlingtonCheshire                 CRSCode = "ADC"
+	StationCodeAdlingtonLancs                    CRSCode = "ADL"
+	StationCodeAdwick                            CRSCode = "AWK"
+	StationCodeAigburth                          CRSCode = "AIG"
+	StationCodeAinsdale                          CRSCode = "ANS"
+	StationCodeAintree                           CRSCode = "AIN"
+	StationCodeAirbles                           CRSCode = "AIR"
+	StationCodeAirdrie                           CRSCode = "ADR"
+	StationCodeAlbanyPark                        CRSCode = "AYP"
+	StationCodeAlbrighton                        CRSCode = "ALB"
+	StationCodeAlderleyEdge                      CRSCode = "ALD"
+	StationCodeAldermaston                       CRSCode = "AMT"
+	StationCodeAldershot                         CRSCode = "AHT"
+	StationCodeAldrington                        CRSCode = "AGT"
+	StationCodeAlexandraPalace                   CRSCode = "AAP"
+	StationCodeAlexandraParade                   CRSCode = "AXP"
+	StationCodeAlexandria                        CRSCode = "ALX"
+	StationCodeAlfreton                          CRSCode = "ALF"
+	StationCodeAllensWest                        CRSCode = "ALW"
+	StationCodeAlloa                             CRSCode = "ALO"
+	StationCodeAlness                            CRSCode = "ASS"
+	StationCodeAlnmouth                          CRSCode = "ALM"
+	StationCodeAlresfordEssex                    CRSCode = "ALR"
+	StationCodeAlsager                           CRSCode = "ASG"
+	StationCodeAlthorneEssex                     CRSCode = "ALN"
+	StationCodeAlthorpe                          CRSCode = "ALP"
+	StationCodeAltnabreac                        CRSCode = "ABC"
+	StationCodeAlton                             CRSCode = "AON"
+	StationCodeAltrincham                        CRSCode = "ALT"
+	StationCodeAlvechurch                        CRSCode = "ALV"
+	StationCodeAmbergate                         CRSCode = "AMB"
+	StationCodeAmberley                          CRSCode = "AMY"
+	StationCodeAmersham                          CRSCode = "AMR"
+	StationCodeAmmanford                         CRSCode = "AMF"
+	StationCodeAncaster                          CRSCode = "ANC"
+	StationCodeAnderston                         CRSCode = "AND"
+	StationCodeAndover                           CRSCode = "ADV"
+	StationCodeAnerley                           CRSCode = "ANZ"
+	StationCodeAngelRoad                         CRSCode = "AGR"
+	StationCodeAngmering                         CRSCode = "ANG"
+	StationCodeAnnan                             CRSCode = "ANN"
+	StationCodeAnniesland                        CRSCode = "ANL"
+	StationCodeAnsdellAndFairhaven               CRSCode = "AFV"
+	StationCodeApperleyBridge                    CRSCode = "APY"
+	StationCodeAppleby                           CRSCode = "APP"
+	StationCodeAppledoreKent                     CRSCode = "APD"
+	StationCodeAppleford                         CRSCode = "APF"
+	StationCodeAppleyBridge                      CRSCode = "APB"
+	StationCodeApsley                            CRSCode = "APS"
+	StationCodeArbroath                          CRSCode = "ARB"
+	StationCodeArdgay                            CRSCode = "ARD"
+	StationCodeArdlui                            CRSCode = "AUI"
+	StationCodeArdrossanHarbour                  CRSCode = "ADS"
+	StationCodeArdrossanSouthBeach               CRSCode = "ASB"
+	StationCodeArdrossanTown                     CRSCode = "ADN"
+	StationCodeArdwick                           CRSCode = "ADK"
+	StationCodeArgyleStreet                      CRSCode = "AGS"
+	StationCodeArisaig                           CRSCode = "ARG"
+	StationCodeArlesey                           CRSCode = "ARL"
+	StationCodeArmadaleWestLothian               CRSCode = "ARM"
+	StationCodeArmathwaite                       CRSCode = "AWT"
+	StationCodeArnside                           CRSCode = "ARN"
+	StationCodeArram                             CRSCode = "ARR"
+	StationCodeArrocharAndTarbet                 CRSCode = "ART"
+	StationCodeArundel                           CRSCode = "ARU"
+	StationCodeAscotBerks                        CRSCode = "ACT"
+	StationCodeAscottunderWychwood               CRSCode = "AUW"
+	StationCodeAsh                               CRSCode = "ASH"
+	StationCodeAshVale                           CRSCode = "AHV"
+	StationCodeAshburys                          CRSCode = "ABY"
+	StationCodeAshchurchforTewkesbury            CRSCode = "ASC"
+	StationCodeAshfield                          CRSCode = "ASF"
+	StationCodeAshfordInternational              CRSCode = "AFK"
+	StationCodeAshfordInternationalEurostar      CRSCode = "ASI"
+	StationCodeAshfordSurrey                     CRSCode = "AFS"
+	StationCodeAshley                            CRSCode = "ASY"
+	StationCodeAshtead                           CRSCode = "AHD"
+	StationCodeAshtonunderLyne                   CRSCode = "AHN"
+	StationCodeAshurstKent                       CRSCode = "AHS"
+	StationCodeAshurstNewForest                  CRSCode = "ANF"
+	StationCodeAshwellAndMorden                  CRSCode = "AWM"
+	StationCodeAskam                             CRSCode = "ASK"
+	StationCodeAslockton                         CRSCode = "ALK"
+	StationCodeAspatria                          CRSCode = "ASP"
+	StationCodeAspleyGuise                       CRSCode = "APG"
+	StationCodeAston                             CRSCode = "AST"
+	StationCodeAtherstone                        CRSCode = "ATH"
+	StationCodeAtherton                          CRSCode = "ATN"
+	StationCodeAttadale                          CRSCode = "ATT"
+	StationCodeAttenborough                      CRSCode = "ATB"
+	StationCodeAttleborough                      CRSCode = "ATL"
+	StationCodeAuchinleck                        CRSCode = "AUK"
+	StationCodeAudleyEnd                         CRSCode = "AUD"
+	StationCodeAughtonPark                       CRSCode = "AUG"
+	StationCodeAviemore                          CRSCode = "AVM"
+	StationCodeAvoncliff                         CRSCode = "AVF"
+	StationCodeAvonmouth                         CRSCode = "AVN"
+	StationCodeAxminster                         CRSCode = "AXM"
+	StationCodeAylesbury                         CRSCode = "AYS"
+	StationCodeAylesburyValeParkway              CRSCode = "AVP"
+	StationCodeAylesford                         CRSCode = "AYL"
+	StationCodeAylesham                          CRSCode = "AYH"
+	StationCodeAyr                               CRSCode = "AYR"
+	StationCodeBache                             CRSCode = "BAC"
+	StationCodeBaglan                            CRSCode = "BAJ"
+	StationCodeBagshot                           CRSCode = "BAG"
+	StationCodeBaildon                           CRSCode = "BLD"
+	StationCodeBaillieston                       CRSCode = "BIO"
+	StationCodeBalcombe                          CRSCode = "BAB"
+	StationCodeBaldock                           CRSCode = "BDK"
+	StationCodeBalham                            CRSCode = "BAL"
+	StationCodeBalloch                           CRSCode = "BHC"
+	StationCodeBalmossie                         CRSCode = "BSI"
+	StationCodeBamberBridge                      CRSCode = "BMB"
+	StationCodeBamford                           CRSCode = "BAM"
+	StationCodeBanavie                           CRSCode = "BNV"
+	StationCodeBanbury                           CRSCode = "BAN"
+	StationCodeBangorGwynedd                     CRSCode = "BNG"
+	StationCodeBankHall                          CRSCode = "BAH"
+	StationCodeBanstead                          CRSCode = "BAD"
+	StationCodeBarassie                          CRSCode = "BSS"
+	StationCodeBarbican                          CRSCode = "ZBB"
+	StationCodeBardonMill                        CRSCode = "BLL"
+	StationCodeBareLane                          CRSCode = "BAR"
+	StationCodeBargeddie                         CRSCode = "BGI"
+	StationCodeBargoed                           CRSCode = "BGD"
+	StationCodeBarking                           CRSCode = "BKG"
+	StationCodeBarlaston                         CRSCode = "BRT"
+	StationCodeBarming                           CRSCode = "BMG"
+	StationCodeBarmouth                          CRSCode = "BRM"
+	StationCodeBarnehurst                        CRSCode = "BNH"
+	StationCodeBarnes                            CRSCode = "BNS"
+	StationCodeBarnesBridge                      CRSCode = "BNI"
+	StationCodeBarnetby                          CRSCode = "BTB"
+	StationCodeBarnham                           CRSCode = "BAA"
+	StationCodeBarnhill                          CRSCode = "BNL"
+	StationCodeBarnsley                          CRSCode = "BNY"
+	StationCodeBarnstaple                        CRSCode = "BNP"
+	StationCodeBarntGreen                        CRSCode = "BTG"
+	StationCodeBarrhead                          CRSCode = "BRR"
+	StationCodeBarrhill                          CRSCode = "BRL"
+	StationCodeBarrowHaven                       CRSCode = "BAV"
+	StationCodeBarrowUponSoar                    CRSCode = "BWS"
+	StationCodeBarrowinFurness                   CRSCode = "BIF"
+	StationCodeBarry                             CRSCode = "BRY"
+	StationCodeBarryDocks                        CRSCode = "BYD"
+	StationCodeBarryIsland                       CRSCode = "BYI"
+	StationCodeBarryLinks                        CRSCode = "BYL"
+	StationCodeBartononHumber                    CRSCode = "BAU"
+	StationCodeBasildon                          CRSCode = "BSO"
+	StationCodeBasingstoke                       CRSCode = "BSK"
+	StationCodeBatAndBall                        CRSCode = "BBL"
+	StationCodeBathSpa                           CRSCode = "BTH"
+	StationCodeBathgate                          CRSCode = "BHG"
+	StationCodeBatley                            CRSCode = "BTL"
+	StationCodeBattersby                         CRSCode = "BTT"
+	StationCodeBatterseaPark                     CRSCode = "BAK"
+	StationCodeBattle                            CRSCode = "BAT"
+	StationCodeBattlesbridge                     CRSCode = "BLB"
+	StationCodeBayford                           CRSCode = "BAY"
+	StationCodeBeaconsfield                      CRSCode = "BCF"
+	StationCodeBearley                           CRSCode = "BER"
+	StationCodeBearsden                          CRSCode = "BRN"
+	StationCodeBearsted                          CRSCode = "BSD"
+	StationCodeBeasdale                          CRSCode = "BSL"
+	StationCodeBeaulieuRoad                      CRSCode = "BEU"
+	StationCodeBeauly                            CRSCode = "BEL"
+	StationCodeBebington                         CRSCode = "BEB"
+	StationCodeBeccles                           CRSCode = "BCC"
+	StationCodeBeckenhamHill                     CRSCode = "BEC"
+	StationCodeBeckenhamJunction                 CRSCode = "BKJ"
+	StationCodeBedford                           CRSCode = "BDM"
+	StationCodeBedfordStJohns                    CRSCode = "BSJ"
+	StationCodeBedhampton                        CRSCode = "BDH"
+	StationCodeBedminster                        CRSCode = "BMT"
+	StationCodeBedworth                          CRSCode = "BEH"
+	StationCodeBedwyn                            CRSCode = "BDW"
+	StationCodeBeeston                           CRSCode = "BEE"
+	StationCodeBekesbourne                       CRSCode = "BKS"
+	StationCodeBelleVue                          CRSCode = "BLV"
+	StationCodeBellgrove                         CRSCode = "BLG"
+	StationCodeBellingham                        CRSCode = "BGM"
+	StationCodeBellshill                         CRSCode = "BLH"
+	StationCodeBelmont                           CRSCode = "BLM"
+	StationCodeBelper                            CRSCode = "BLP"
+	StationCodeBeltring                          CRSCode = "BEG"
+	StationCodeBelvedere                         CRSCode = "BVD"
+	StationCodeBempton                           CRSCode = "BEM"
+	StationCodeBenRhydding                       CRSCode = "BEY"
+	StationCodeBenfleet                          CRSCode = "BEF"
+	StationCodeBentham                           CRSCode = "BEN"
+	StationCodeBentleyHants                      CRSCode = "BTY"
+	StationCodeBentleySouthYorks                 CRSCode = "BYK"
+	StationCodeBereAlston                        CRSCode = "BAS"
+	StationCodeBereFerrers                       CRSCode = "BFE"
+	StationCodeBerkhamsted                       CRSCode = "BKM"
+	StationCodeBerkswell                         CRSCode = "BKW"
+	StationCodeBermudaPark                       CRSCode = "BEP"
+	StationCodeBerneyArms                        CRSCode = "BYA"
+	StationCodeBerryBrow                         CRSCode = "BBW"
+	StationCodeBerrylands                        CRSCode = "BRS"
+	StationCodeBerwickSussex                     CRSCode = "BRK"
+	StationCodeBerwickUponTweed                  CRSCode = "BWK"
+	StationCodeBescarLane                        CRSCode = "BES"
+	StationCodeBescotStadium                     CRSCode = "BSC"
+	StationCodeBetchworth                        CRSCode = "BTO"
+	StationCodeBethnalGreen                      CRSCode = "BET"
+	StationCodeBetwsyCoed                        CRSCode = "BYC"
+	StationCodeBeverley                          CRSCode = "BEV"
+	StationCodeBexhill                           CRSCode = "BEX"
+	StationCodeBexley                            CRSCode = "BXY"
+	StationCodeBexleyheath                       CRSCode = "BXH"
+	StationCodeBicesterNorth                     CRSCode = "BCS"
+	StationCodeBicesterVillage                   CRSCode = "BIT"
+	StationCodeBickley                           CRSCode = "BKL"
+	StationCodeBidston                           CRSCode = "BID"
+	StationCodeBiggleswade                       CRSCode = "BIW"
+	StationCodeBilbrook                          CRSCode = "BBK"
+	StationCodeBillericay                        CRSCode = "BIC"
+	StationCodeBillinghamCleveland               CRSCode = "BIL"
+	StationCodeBillingshurst                     CRSCode = "BIG"
+	StationCodeBingham                           CRSCode = "BIN"
+	StationCodeBingley                           CRSCode = "BIY"
+	StationCodeBirchgrove                        CRSCode = "BCG"
+	StationCodeBirchingtononsea                  CRSCode = "BCH"
+	StationCodeBirchwood                         CRSCode = "BWD"
+	StationCodeBirkbeck                          CRSCode = "BIK"
+	StationCodeBirkdale                          CRSCode = "BDL"
+	StationCodeBirkenheadCentral                 CRSCode = "BKC"
+	StationCodeBirkenheadHamiltonSquare          CRSCode = "BKQ"
+	StationCodeBirkenheadNorth                   CRSCode = "BKN"
+	StationCodeBirkenheadPark                    CRSCode = "BKP"
+	StationCodeBirminghamInternational           CRSCode = "BHI"
+	StationCodeBirminghamMoorStreet              CRSCode = "BMO"
+	StationCodeBirminghamNewStreet               CRSCode = "BHM"
+	StationCodeBirminghamSnowHill                CRSCode = "BSW"
+	StationCodeBishopAuckland                    CRSCode = "BIA"
+	StationCodeBishopbriggs                      CRSCode = "BBG"
+	StationCodeBishopsStortford                  CRSCode = "BIS"
+	StationCodeBishopstoneSussex                 CRSCode = "BIP"
+	StationCodeBishoptonStrathclyde              CRSCode = "BPT"
+	StationCodeBitterne                          CRSCode = "BTE"
+	StationCodeBlackburn                         CRSCode = "BBN"
+	StationCodeBlackheath                        CRSCode = "BKH"
+	StationCodeBlackhorseRoad                    CRSCode = "BHO"
+	StationCodeBlackpoolNorth                    CRSCode = "BPN"
+	StationCodeBlackpoolPleasureBeach            CRSCode = "BPB"
+	StationCodeBlackpoolSouth                    CRSCode = "BPS"
+	StationCodeBlackridge                        CRSCode = "BKR"
+	StationCodeBlackrod                          CRSCode = "BLK"
+	StationCodeBlackwater                        CRSCode = "BAW"
+	StationCodeBlaenauFfestiniog                 CRSCode = "BFF"
+	StationCodeBlairAtholl                       CRSCode = "BLA"
+	StationCodeBlairhill                         CRSCode = "BAI"
+	StationCodeBlakeStreet                       CRSCode = "BKT"
+	StationCodeBlakedown                         CRSCode = "BKD"
+	StationCodeBlantyre                          CRSCode = "BLT"
+	StationCodeBlaydon                           CRSCode = "BLO"
+	StationCodeBleasby                           CRSCode = "BSB"
+	StationCodeBletchley                         CRSCode = "BLY"
+	StationCodeBloxwich                          CRSCode = "BLX"
+	StationCodeBloxwichNorth                     CRSCode = "BWN"
+	StationCodeBlundellsandsAndCrosby            CRSCode = "BLN"
+	StationCodeBlytheBridge                      CRSCode = "BYB"
+	StationCodeBodminParkway                     CRSCode = "BOD"
+	StationCodeBodorgan                          CRSCode = "BOR"
+	StationCodeBognorRegis                       CRSCode = "BOG"
+	StationCodeBogston                           CRSCode = "BGS"
+	StationCodeBolton                            CRSCode = "BON"
+	StationCodeBoltonUponDearne                  CRSCode = "BTD"
+	StationCodeBookham                           CRSCode = "BKA"
+	StationCodeBootleCumbria                     CRSCode = "BOC"
+	StationCodeBootleNewStrand                   CRSCode = "BNW"
+	StationCodeBootleOrielRoad                   CRSCode = "BOT"
+	StationCodeBordesley                         CRSCode = "BBS"
+	StationCodeBoroughGreenAndWrotham            CRSCode = "BRG"
+	StationCodeBorth                             CRSCode = "BRH"
+	StationCodeBosham                            CRSCode = "BOH"
+	StationCodeBoston                            CRSCode = "BSN"
+	StationCodeBotley                            CRSCode = "BOE"
+	StationCodeBottesford                        CRSCode = "BTF"
+	StationCodeBourneEnd                         CRSCode = "BNE"
+	StationCodeBournemouth                       CRSCode = "BMH"
+	StationCodeBournville                        CRSCode = "BRV"
+	StationCodeBowBrickhill                      CRSCode = "BWB"
+	StationCodeBowesPark                         CRSCode = "BOP"
+	StationCodeBowling                           CRSCode = "BWG"
+	StationCodeBoxHillAndWesthumble              CRSCode = "BXW"
+	StationCodeBracknell                         CRSCode = "BCE"
+	StationCodeBradfordForsterSquare             CRSCode = "BDQ"
+	StationCodeBradfordInterchange               CRSCode = "BDI"
+	StationCodeBradfordonAvon                    CRSCode = "BOA"
+	StationCodeBrading                           CRSCode = "BDN"
+	StationCodeBraintree                         CRSCode = "BTR"
+	StationCodeBraintreeFreeport                 CRSCode = "BTP"
+	StationCodeBramhall                          CRSCode = "BML"
+	StationCodeBramleyHants                      CRSCode = "BMY"
+	StationCodeBramleyWYorks                     CRSCode = "BLE"
+	StationCodeBramptonCumbria                   CRSCode = "BMP"
+	StationCodeBramptonSuffolk                   CRSCode = "BRP"
+	StationCodeBranchton                         CRSCode = "BCN"
+	StationCodeBrandon                           CRSCode = "BND"
+	StationCodeBranksome                         CRSCode = "BSM"
+	StationCodeBraystonesCumbria                 CRSCode = "BYS"
+	StationCodeBredbury                          CRSCode = "BDY"
+	StationCodeBreich                            CRSCode = "BRC"
+	StationCodeBrentford                         CRSCode = "BFD"
+	StationCodeBrentwood                         CRSCode = "BRE"
+	StationCodeBricketWood                       CRSCode = "BWO"
+	StationCodeBridgend                          CRSCode = "BGN"
+	StationCodeBridgeofAllan                     CRSCode = "BEA"
+	StationCodeBridgeofOrchy                     CRSCode = "BRO"
+	StationCodeBridgeton                         CRSCode = "BDG"
+	StationCodeBridgwater                        CRSCode = "BWT"
+	StationCodeBridlington                       CRSCode = "BDT"
+	StationCodeBrierfield                        CRSCode = "BRF"
+	StationCodeBrigg                             CRSCode = "BGG"
+	StationCodeBrighouse                         CRSCode = "BGH"
+	StationCodeBrightonEastSussex                CRSCode = "BTN"
+	StationCodeBrimsdown                         CRSCode = "BMD"
+	StationCodeBrinnington                       CRSCode = "BNT"
+	StationCodeBristolParkway                    CRSCode = "BPW"
+	StationCodeBristolTempleMeads                CRSCode = "BRI"
+	StationCodeBrithdir                          CRSCode = "BHD"
+	StationCodeBritonFerry                       CRSCode = "BNF"
+	StationCodeBrixton                           CRSCode = "BRX"
+	StationCodeBroadGreen                        CRSCode = "BGE"
+	StationCodeBroadbottom                       CRSCode = "BDB"
+	StationCodeBroadstairs                       CRSCode = "BSR"
+	StationCodeBrockenhurst                      CRSCode = "BCU"
+	StationCodeBrockholes                        CRSCode = "BHS"
+	StationCodeBrockley                          CRSCode = "BCY"
+	StationCodeBromborough                       CRSCode = "BOM"
+	StationCodeBromboroughRake                   CRSCode = "BMR"
+	StationCodeBromleyCrossLancs                 CRSCode = "BMC"
+	StationCodeBromleyNorth                      CRSCode = "BMN"
+	StationCodeBromleySouth                      CRSCode = "BMS"
+	StationCodeBromsgrove                        CRSCode = "BMV"
+	StationCodeBrondesbury                       CRSCode = "BSY"
+	StationCodeBrondesburyPark                   CRSCode = "BSP"
+	StationCodeBrookmansPark                     CRSCode = "BPK"
+	StationCodeBrookwood                         CRSCode = "BKO"
+	StationCodeBroome                            CRSCode = "BME"
+	StationCodeBroomfleet                        CRSCode = "BMF"
+	StationCodeBrora                             CRSCode = "BRA"
+	StationCodeBrough                            CRSCode = "BUH"
+	StationCodeBroughtyFerry                     CRSCode = "BYF"
+	StationCodeBroxbourne                        CRSCode = "BXB"
+	StationCodeBruceGrove                        CRSCode = "BCV"
+	StationCodeBrundall                          CRSCode = "BDA"
+	StationCodeBrundallGardens                   CRSCode = "BGA"
+	StationCodeBrunstane                         CRSCode = "BSU"
+	StationCodeBrunswick                         CRSCode = "BRW"
+	StationCodeBruton                            CRSCode = "BRU"
+	StationCodeBryn                              CRSCode = "BYN"
+	StationCodeBuckenhamNorfolk                  CRSCode = "BUC"
+	StationCodeBuckley                           CRSCode = "BCK"
+	StationCodeBucknell                          CRSCode = "BUK"
+	StationCodeBuckshawParkway                   CRSCode = "BSV"
+	StationCodeBugle                             CRSCode = "BGL"
+	StationCodeBuilthRoad                        CRSCode = "BHR"
+	StationCodeBulwell                           CRSCode = "BLW"
+	StationCodeBures                             CRSCode = "BUE"
+	StationCodeBurgessHill                       CRSCode = "BUG"
+	StationCodeBurleyPark                        CRSCode = "BUY"
+	StationCodeBurleyinWharfedale                CRSCode = "BUW"
+	StationCodeBurnage                           CRSCode = "BNA"
+	StationCodeBurnesideCumbria                  CRSCode = "BUD"
+	StationCodeBurnhamBucks                      CRSCode = "BNM"
+	StationCodeBurnhamonCrouch                   CRSCode = "BUU"
+	StationCodeBurnleyBarracks                   CRSCode = "BUB"
+	StationCodeBurnleyCentral                    CRSCode = "BNC"
+	StationCodeBurnleyManchesterRoad             CRSCode = "BYM"
+	StationCodeBurnsideStrathclyde               CRSCode = "BUI"
+	StationCodeBurntisland                       CRSCode = "BTS"
+	StationCodeBurscoughBridge                   CRSCode = "BCB"
+	StationCodeBurscoughJunction                 CRSCode = "BCJ"
+	StationCodeBursledon                         CRSCode = "BUO"
+	StationCodeBurtonJoyce                       CRSCode = "BUJ"
+	StationCodeBurtononTrent                     CRSCode = "BUT"
+	StationCodeBuryStEdmunds                     CRSCode = "BSE"
+	StationCodeBusby                             CRSCode = "BUS"
+	StationCodeBushHillPark                      CRSCode = "BHK"
+	StationCodeBushey                            CRSCode = "BSH"
+	StationCodeButlersLane                       CRSCode = "BUL"
+	StationCodeBuxted                            CRSCode = "BXD"
+	StationCodeBuxton                            CRSCode = "BUX"
+	StationCodeByfleetAndNewHaw                  CRSCode = "BFN"
+	StationCodeBynea                             CRSCode = "BYE"
+	StationCodeCadoxton                          CRSCode = "CAD"
+	StationCodeCaergwrle                         CRSCode = "CGW"
+	StationCodeCaerphilly                        CRSCode = "CPH"
+	StationCodeCaersws                           CRSCode = "CWS"
+	StationCodeCaldercruix                       CRSCode = "CAC"
+	StationCodeCaldicot                          CRSCode = "CDT"
+	StationCodeCaledonianRdAndBarnsbury          CRSCode = "CIR"
+	StationCodeCalstock                          CRSCode = "CSK"
+	StationCodeCamAndDursley                     CRSCode = "CDU"
+	StationCodeCamberley                         CRSCode = "CAM"
+	StationCodeCamborne                          CRSCode = "CBN"
+	StationCodeCambridge                         CRSCode = "CBG"
+	StationCodeCambridgeHeath                    CRSCode = "CBH"
+	StationCodeCambuslang                        CRSCode = "CBL"
+	StationCodeCamdenRoad                        CRSCode = "CMD"
+	StationCodeCamelon                           CRSCode = "CMO"
+	StationCodeCanadaWater                       CRSCode = "ZCW"
+	StationCodeCanley                            CRSCode = "CNL"
+	StationCodeCannock                           CRSCode = "CAO"
+	StationCodeCanonbury                         CRSCode = "CNN"
+	StationCodeCanterburyEast                    CRSCode = "CBE"
+	StationCodeCanterburyWest                    CRSCode = "CBW"
+	StationCodeCantley                           CRSCode = "CNY"
+	StationCodeCapenhurst                        CRSCode = "CPU"
+	StationCodeCarbisBay                         CRSCode = "CBB"
+	StationCodeCardenden                         CRSCode = "CDD"
+	StationCodeCardiffBay                        CRSCode = "CDB"
+	StationCodeCardiffCentral                    CRSCode = "CDF"
+	StationCodeCardiffQueenStreet                CRSCode = "CDQ"
+	StationCodeCardonald                         CRSCode = "CDO"
+	StationCodeCardross                          CRSCode = "CDR"
+	StationCodeCarfin                            CRSCode = "CRF"
+	StationCodeCarkAndCartmel                    CRSCode = "CAK"
+	StationCodeCarlisle                          CRSCode = "CAR"
+	StationCodeCarlton                           CRSCode = "CTO"
+	StationCodeCarluke                           CRSCode = "CLU"
+	StationCodeCarmarthen                        CRSCode = "CMN"
+	StationCodeCarmyle                           CRSCode = "CML"
+	StationCodeCarnforth                         CRSCode = "CNF"
+	StationCodeCarnoustie                        CRSCode = "CAN"
+	StationCodeCarntyne                          CRSCode = "CAY"
+	StationCodeCarpendersPark                    CRSCode = "CPK"
+	StationCodeCarrbridge                        CRSCode = "CAG"
+	StationCodeCarshalton                        CRSCode = "CSH"
+	StationCodeCarshaltonBeeches                 CRSCode = "CSB"
+	StationCodeCarstairs                         CRSCode = "CRS"
+	StationCodeCartsdyke                         CRSCode = "CDY"
+	StationCodeCastleBarPark                     CRSCode = "CBP"
+	StationCodeCastleCary                        CRSCode = "CLC"
+	StationCodeCastleford                        CRSCode = "CFD"
+	StationCodeCastletonManchester               CRSCode = "CAS"
+	StationCodeCastletonMoor                     CRSCode = "CSM"
+	StationCodeCaterham                          CRSCode = "CAT"
+	StationCodeCatford                           CRSCode = "CTF"
+	StationCodeCatfordBridge                     CRSCode = "CFB"
+	StationCodeCathays                           CRSCode = "CYS"
+	StationCodeCathcart                          CRSCode = "CCT"
+	StationCodeCattal                            CRSCode = "CTL"
+	StationCodeCauseland                         CRSCode = "CAU"
+	StationCodeCefnyBedd                         CRSCode = "CYB"
+	StationCodeChadwellHeath                     CRSCode = "CTH"
+	StationCodeChaffordHundredLakeside           CRSCode = "CFH"
+	StationCodeChalfontAndLatimer                CRSCode = "CFO"
+	StationCodeChalkwell                         CRSCode = "CHW"
+	StationCodeChandlersFord                     CRSCode = "CFR"
+	StationCodeChapelenleFrith                   CRSCode = "CEF"
+	StationCodeChapeltonDevon                    CRSCode = "CPN"
+	StationCodeChapeltownSouthYorks              CRSCode = "CLN"
+	StationCodeChappelAndWakesColne              CRSCode = "CWC"
+	StationCodeCharingCrossGlasgow               CRSCode = "CHC"
+	StationCodeCharingKent                       CRSCode = "CHG"
+	StationCodeCharlbury                         CRSCode = "CBY"
+	StationCodeCharlton                          CRSCode = "CTN"
+	StationCodeChartham                          CRSCode = "CRT"
+	StationCodeChassenRoad                       CRSCode = "CSR"
+	StationCodeChatelherault                     CRSCode = "CTE"
+	StationCodeChatham                           CRSCode = "CTM"
+	StationCodeChathill                          CRSCode = "CHT"
+	StationCodeCheadleHulme                      CRSCode = "CHU"
+	StationCodeCheam                             CRSCode = "CHE"
+	StationCodeCheddington                       CRSCode = "CED"
+	StationCodeChelfordCheshire                  CRSCode = "CEL"
+	StationCodeChelmsford                        CRSCode = "CHM"
+	StationCodeChelsfield                        CRSCode = "CLD"
+	StationCodeCheltenhamSpa                     CRSCode = "CNM"
+	StationCodeChepstow                          CRSCode = "CPW"
+	StationCodeCherryTree                        CRSCode = "CYT"
+	StationCodeChertsey                          CRSCode = "CHY"
+	StationCodeCheshunt                          CRSCode = "CHN"
+	StationCodeChessingtonNorth                  CRSCode = "CSN"
+	StationCodeChessingtonSouth                  CRSCode = "CSS"
+	StationCodeChester                           CRSCode = "CTR"
+	StationCodeChesterRoad                       CRSCode = "CRD"
+	StationCodeChesterfield                      CRSCode = "CHD"
+	StationCodeChesterleStreet                   CRSCode = "CLS"
+	StationCodeChestfieldAndSwalecliffe          CRSCode = "CSW"
+	StationCodeChetnole                          CRSCode = "CNO"
+	StationCodeChichester                        CRSCode = "CCH"
+	StationCodeChilham                           CRSCode = "CIL"
+	StationCodeChilworth                         CRSCode = "CHL"
+	StationCodeChingford                         CRSCode = "CHI"
+	StationCodeChinley                           CRSCode = "CLY"
+	StationCodeChippenham                        CRSCode = "CPM"
+	StationCodeChipstead                         CRSCode = "CHP"
+	StationCodeChirk                             CRSCode = "CRK"
+	StationCodeChislehurst                       CRSCode = "CIT"
+	StationCodeChiswick                          CRSCode = "CHK"
+	StationCodeCholsey                           CRSCode = "CHO"
+	StationCodeChorley                           CRSCode = "CRL"
+	StationCodeChorleywood                       CRSCode = "CLW"
+	StationCodeChristchurch                      CRSCode = "CHR"
+	StationCodeChristsHospital                   CRSCode = "CHH"
+	StationCodeChurchAndOswaldtwistle            CRSCode = "CTW"
+	StationCodeChurchFenton                      CRSCode = "CHF"
+	StationCodeChurchStretton                    CRSCode = "CTT"
+	StationCodeCilmeri                           CRSCode = "CIM"
+	StationCodeCityThameslink                    CRSCode = "CTK"
+	StationCodeClactononSea                      CRSCode = "CLT"
+	StationCodeClandon                           CRSCode = "CLA"
+	StationCodeClaphamHighStreet                 CRSCode = "CLP"
+	StationCodeClaphamJunction                   CRSCode = "CLJ"
+	StationCodeClaphamNorthYorkshire             CRSCode = "CPY"
+	StationCodeClapton                           CRSCode = "CPT"
+	StationCodeClarbestonRoad                    CRSCode = "CLR"
+	StationCodeClarkston                         CRSCode = "CKS"
+	StationCodeClaverdon                         CRSCode = "CLV"
+	StationCodeClaygate                          CRSCode = "CLG"
+	StationCodeCleethorpes                       CRSCode = "CLE"
+	StationCodeCleland                           CRSCode = "CEA"
+	StationCodeCliftonDown                       CRSCode = "CFN"
+	StationCodeCliftonManchester                 CRSCode = "CLI"
+	StationCodeClitheroe                         CRSCode = "CLH"
+	StationCodeClockHouse                        CRSCode = "CLK"
+	StationCodeClunderwen                        CRSCode = "CUW"
+	StationCodeClydebank                         CRSCode = "CYK"
+	StationCodeCoatbridgeCentral                 CRSCode = "CBC"
+	StationCodeCoatbridgeSunnyside               CRSCode = "CBS"
+	StationCodeCoatdyke                          CRSCode = "COA"
+	StationCodeCobhamAndStokedAbernon            CRSCode = "CSD"
+	StationCodeCodsall                           CRSCode = "CSL"
+	StationCodeCogan                             CRSCode = "CGN"
+	StationCodeColchester                        CRSCode = "COL"
+	StationCodeColchesterTown                    CRSCode = "CET"
+	StationCodeColeshillParkway                  CRSCode = "CEH"
+	StationCodeCollingham                        CRSCode = "CLM"
+	StationCodeCollington                        CRSCode = "CLL"
+	StationCodeColne                             CRSCode = "CNE"
+	StationCodeColwall                           CRSCode = "CWL"
+	StationCodeColwynBay                         CRSCode = "CWB"
+	StationCodeCombeOxon                         CRSCode = "CME"
+	StationCodeCommondale                        CRSCode = "COM"
+	StationCodeCongleton                         CRSCode = "CNG"
+	StationCodeConisbrough                       CRSCode = "CNS"
+	StationCodeConnelFerry                       CRSCode = "CON"
+	StationCodeCononBridge                       CRSCode = "CBD"
+	StationCodeCononley                          CRSCode = "CEY"
+	StationCodeConwayPark                        CRSCode = "CNP"
+	StationCodeConwy                             CRSCode = "CNW"
+	StationCodeCoodenBeach                       CRSCode = "COB"
+	StationCodeCookham                           CRSCode = "COO"
+	StationCodeCooksbridge                       CRSCode = "CBR"
+	StationCodeCoombeJunctionHalt                CRSCode = "COE"
+	StationCodeCopplestone                       CRSCode = "COP"
+	StationCodeCorbridge                         CRSCode = "CRB"
+	StationCodeCorby                             CRSCode = "COR"
+	StationCodeCorkerhill                        CRSCode = "CKH"
+	StationCodeCorkickle                         CRSCode = "CKL"
+	StationCodeCorpach                           CRSCode = "CPA"
+	StationCodeCorrour                           CRSCode = "CRR"
+	StationCodeCoryton                           CRSCode = "COY"
+	StationCodeCoseley                           CRSCode = "CSY"
+	StationCodeCosford                           CRSCode = "COS"
+	StationCodeCosham                            CRSCode = "CSA"
+	StationCodeCottingham                        CRSCode = "CGM"
+	StationCodeCottingley                        CRSCode = "COT"
+	StationCodeCoulsdonSouth                     CRSCode = "CDS"
+	StationCodeCoulsdonTown                      CRSCode = "CDN"
+	StationCodeCoventry                          CRSCode = "COV"
+	StationCodeCoventryArena                     CRSCode = "CAA"
+	StationCodeCowdenKent                        CRSCode = "CWN"
+	StationCodeCowdenbeath                       CRSCode = "COW"
+	StationCodeCradleyHeath                      CRSCode = "CRA"
+	StationCodeCraigendoran                      CRSCode = "CGD"
+	StationCodeCramlington                       CRSCode = "CRM"
+	StationCodeCranbrookDevon                    CRSCode = "CBK"
+	StationCodeCravenArms                        CRSCode = "CRV"
+	StationCodeCrawley                           CRSCode = "CRW"
+	StationCodeCrayford                          CRSCode = "CRY"
+	StationCodeCrediton                          CRSCode = "CDI"
+	StationCodeCressingEssex                     CRSCode = "CES"
+	StationCodeCressington                       CRSCode = "CSG"
+	StationCodeCreswell                          CRSCode = "CWD"
+	StationCodeCrewe                             CRSCode = "CRE"
+	StationCodeCrewkerne                         CRSCode = "CKN"
+	StationCodeCrewsHill                         CRSCode = "CWH"
+	StationCodeCrianlarich                       CRSCode = "CNR"
+	StationCodeCriccieth                         CRSCode = "CCC"
+	StationCodeCricklewood                       CRSCode = "CRI"
+	StationCodeCroftfoot                         CRSCode = "CFF"
+	StationCodeCroftonPark                       CRSCode = "CFT"
+	StationCodeCromer                            CRSCode = "CMR"
+	StationCodeCromford                          CRSCode = "CMF"
+	StationCodeCrookston                         CRSCode = "CKT"
+	StationCodeCrossGates                        CRSCode = "CRG"
+	StationCodeCrossflatts                       CRSCode = "CFL"
+	StationCodeCrosshill                         CRSCode = "COI"
+	StationCodeCrosskeys                         CRSCode = "CKY"
+	StationCodeCrossmyloof                       CRSCode = "CMY"
+	StationCodeCroston                           CRSCode = "CSO"
+	StationCodeCrouchHill                        CRSCode = "CRH"
+	StationCodeCrowborough                       CRSCode = "COH"
+	StationCodeCrowhurst                         CRSCode = "CWU"
+	StationCodeCrowle                            CRSCode = "CWE"
+	StationCodeCrowthorne                        CRSCode = "CRN"
+	StationCodeCroy                              CRSCode = "CRO"
+	StationCodeCrystalPalace                     CRSCode = "CYP"
+	StationCodeCuddington                        CRSCode = "CUD"
+	StationCodeCuffley                           CRSCode = "CUF"
+	StationCodeCulham                            CRSCode = "CUM"
+	StationCodeCulrain                           CRSCode = "CUA"
+	StationCodeCumbernauld                       CRSCode = "CUB"
+	StationCodeCupar                             CRSCode = "CUP"
+	StationCodeCurriehill                        CRSCode = "CUH"
+	StationCodeCuxton                            CRSCode = "CUX"
+	StationCodeCwmbach                           CRSCode = "CMH"
+	StationCodeCwmbran                           CRSCode = "CWM"
+	StationCodeCynghordy                         CRSCode = "CYN"
+	StationCodeDagenhamDock                      CRSCode = "DDK"
+	StationCodeDaisyHill                         CRSCode = "DSY"
+	StationCodeDalgetyBay                        CRSCode = "DAG"
+	StationCodeDalmally                          CRSCode = "DAL"
+	StationCodeDalmarnock                        CRSCode = "DAK"
+	StationCodeDalmeny                           CRSCode = "DAM"
+	StationCodeDalmuir                           CRSCode = "DMR"
+	StationCodeDalreoch                          CRSCode = "DLR"
+	StationCodeDalry                             CRSCode = "DLY"
+	StationCodeDalstonCumbria                    CRSCode = "DLS"
+	StationCodeDalstonJunction                   CRSCode = "DLJ"
+	StationCodeDalstonKingsland                  CRSCode = "DLK"
+	StationCodeDaltonCumbria                     CRSCode = "DLT"
+	StationCodeDalwhinnie                        CRSCode = "DLW"
+	StationCodeDanby                             CRSCode = "DNY"
+	StationCodeDanescourt                        CRSCode = "DCT"
+	StationCodeDanzey                            CRSCode = "DZY"
+	StationCodeDarlington                        CRSCode = "DAR"
+	StationCodeDarnall                           CRSCode = "DAN"
+	StationCodeDarsham                           CRSCode = "DSM"
+	StationCodeDartford                          CRSCode = "DFD"
+	StationCodeDarton                            CRSCode = "DRT"
+	StationCodeDarwen                            CRSCode = "DWN"
+	StationCodeDatchet                           CRSCode = "DAT"
+	StationCodeDavenport                         CRSCode = "DVN"
+	StationCodeDawlish                           CRSCode = "DWL"
+	StationCodeDawlishWarren                     CRSCode = "DWW"
+	StationCodeDeal                              CRSCode = "DEA"
+	StationCodeDeanWilts                         CRSCode = "DEN"
+	StationCodeDeansgate                         CRSCode = "DGT"
+	StationCodeDeganwy                           CRSCode = "DGY"
+	StationCodeDeighton                          CRSCode = "DHN"
+	StationCodeDelamere                          CRSCode = "DLM"
+	StationCodeDenbyDale                         CRSCode = "DBD"
+	StationCodeDenham                            CRSCode = "DNM"
+	StationCodeDenhamGolfClub                    CRSCode = "DGC"
+	StationCodeDenmarkHill                       CRSCode = "DMK"
+	StationCodeDent                              CRSCode = "DNT"
+	StationCodeDenton                            CRSCode = "DTN"
+	StationCodeDeptford                          CRSCode = "DEP"
+	StationCodeDerby                             CRSCode = "DBY"
+	StationCodeDerbyRoadIpswich                  CRSCode = "DBR"
+	StationCodeDevonportDevon                    CRSCode = "DPT"
+	StationCodeDevonportDockyard                 CRSCode = "DOC"
+	StationCodeDewsbury                          CRSCode = "DEW"
+	StationCodeDidcotParkway                     CRSCode = "DID"
+	StationCodeDigbyAndSowton                    CRSCode = "DIG"
+	StationCodeDiltonMarsh                       CRSCode = "DMH"
+	StationCodeDinasPowys                        CRSCode = "DNS"
+	StationCodeDinasRhondda                      CRSCode = "DMG"
+	StationCodeDingleRoad                        CRSCode = "DGL"
+	StationCodeDingwall                          CRSCode = "DIN"
+	StationCodeDinsdale                          CRSCode = "DND"
+	StationCodeDinting                           CRSCode = "DTG"
+	StationCodeDisley                            CRSCode = "DSL"
+	StationCodeDiss                              CRSCode = "DIS"
+	StationCodeDodworth                          CRSCode = "DOD"
+	StationCodeDolau                             CRSCode = "DOL"
+	StationCodeDoleham                           CRSCode = "DLH"
+	StationCodeDolgarrog                         CRSCode = "DLG"
+	StationCodeDolwyddelan                       CRSCode = "DWD"
+	StationCodeDoncaster                         CRSCode = "DON"
+	StationCodeDorchesterSouth                   CRSCode = "DCH"
+	StationCodeDorchesterWest                    CRSCode = "DCW"
+	StationCodeDoreAndTotley                     CRSCode = "DOR"
+	StationCodeDorkingDeepdene                   CRSCode = "DPD"
+	StationCodeDorkingMain                       CRSCode = "DKG"
+	StationCodeDorkingWest                       CRSCode = "DKT"
+	StationCodeDormans                           CRSCode = "DMS"
+	StationCodeDorridge                          CRSCode = "DDG"
+	StationCodeDoveHoles                         CRSCode = "DVH"
+	StationCodeDoverPriory                       CRSCode = "DVP"
+	StationCodeDovercourt                        CRSCode = "DVC"
+	StationCodeDoveyJunction                     CRSCode = "DVY"
+	StationCodeDownhamMarket                     CRSCode = "DOW"
+	StationCodeDraytonGreen                      CRSCode = "DRG"
+	StationCodeDraytonPark                       CRSCode = "DYP"
+	StationCodeDrem                              CRSCode = "DRM"
+	StationCodeDriffield                         CRSCode = "DRF"
+	StationCodeDrigg                             CRSCode = "DRI"
+	StationCodeDroitwichSpa                      CRSCode = "DTW"
+	StationCodeDronfield                         CRSCode = "DRO"
+	StationCodeDrumchapel                        CRSCode = "DMC"
+	StationCodeDrumfrochar                       CRSCode = "DFR"
+	StationCodeDrumgelloch                       CRSCode = "DRU"
+	StationCodeDrumry                            CRSCode = "DMY"
+	StationCodeDublinFerryport                   CRSCode = "DFP"
+	StationCodeDublinPortStena                   CRSCode = "DPS"
+	StationCodeDuddeston                         CRSCode = "DUD"
+	StationCodeDudleyPort                        CRSCode = "DDP"
+	StationCodeDuffield                          CRSCode = "DFI"
+	StationCodeDuirinish                         CRSCode = "DRN"
+	StationCodeDukeStreet                        CRSCode = "DST"
+	StationCodeDullingham                        CRSCode = "DUL"
+	StationCodeDumbartonCentral                  CRSCode = "DBC"
+	StationCodeDumbartonEast                     CRSCode = "DBE"
+	StationCodeDumbreck                          CRSCode = "DUM"
+	StationCodeDumfries                          CRSCode = "DMF"
+	StationCodeDumptonPark                       CRSCode = "DMP"
+	StationCodeDunbar                            CRSCode = "DUN"
+	StationCodeDunblane                          CRSCode = "DBL"
+	StationCodeDuncraig                          CRSCode = "DCG"
+	StationCodeDundee                            CRSCode = "DEE"
+	StationCodeDunfermlineQueenMargaret          CRSCode = "DFL"
+	StationCodeDunfermlineTown                   CRSCode = "DFE"
+	StationCodeDunkeldAndBirnam                  CRSCode = "DKD"
+	StationCodeDunlop                            CRSCode = "DNL"
+	StationCodeDunrobinCastle                    CRSCode = "DNO"
+	StationCodeDunston                           CRSCode = "DOT"
+	StationCodeDuntonGreen                       CRSCode = "DNG"
+	StationCodeDurham                            CRSCode = "DHM"
+	StationCodeDurringtononSea                   CRSCode = "DUR"
+	StationCodeDyce                              CRSCode = "DYC"
+	StationCodeDyffrynArdudwy                    CRSCode = "DYF"
+	StationCodeEaglescliffe                      CRSCode = "EAG"
+	StationCodeEalingBroadway                    CRSCode = "EAL"
+	StationCodeEarlestown                        CRSCode = "ERL"
+	StationCodeEarley                            CRSCode = "EAR"
+	StationCodeEarlsfield                        CRSCode = "EAD"
+	StationCodeEarlswoodSurrey                   CRSCode = "ELD"
+	StationCodeEarlswoodWestMidlands             CRSCode = "EWD"
+	StationCodeEastCroydon                       CRSCode = "ECR"
+	StationCodeEastDidsbury                      CRSCode = "EDY"
+	StationCodeEastDulwich                       CRSCode = "EDW"
+	StationCodeEastFarleigh                      CRSCode = "EFL"
+	StationCodeEastGarforth                      CRSCode = "EGF"
+	StationCodeEastGrinstead                     CRSCode = "EGR"
+	StationCodeEastKilbride                      CRSCode = "EKL"
+	StationCodeEastMalling                       CRSCode = "EML"
+	StationCodeEastMidlandsParkway               CRSCode = "EMD"
+	StationCodeEastTilbury                       CRSCode = "ETL"
+	StationCodeEastWorthing                      CRSCode = "EWR"
+	StationCodeEastbourne                        CRSCode = "EBN"
+	StationCodeEastbrook                         CRSCode = "EBK"
+	StationCodeEasterhouse                       CRSCode = "EST"
+	StationCodeEasthamRake                       CRSCode = "ERA"
+	StationCodeEastleigh                         CRSCode = "ESL"
+	StationCodeEastrington                       CRSCode = "EGN"
+	StationCodeEbbsfleetInternational            CRSCode = "EBD"
+	StationCodeEbbwValeParkway                   CRSCode = "EBV"
+	StationCodeEbbwValeTown                      CRSCode = "EBB"
+	StationCodeEcclesManchester                  CRSCode = "ECC"
+	StationCodeEcclesRoad                        CRSCode = "ECS"
+	StationCodeEcclestonPark                     CRSCode = "ECL"
+	StationCodeEdale                             CRSCode = "EDL"
+	StationCodeEdenPark                          CRSCode = "EDN"
+	StationCodeEdenbridge                        CRSCode = "EBR"
+	StationCodeEdenbridgeTown                    CRSCode = "EBT"
+	StationCodeEdgeHill                          CRSCode = "EDG"
+	StationCodeEdinburgh                         CRSCode = "EDB"
+	StationCodeEdinburghGateway                  CRSCode = "EGY"
+	StationCodeEdinburghPark                     CRSCode = "EDP"
+	StationCodeEdmontonGreen                     CRSCode = "EDR"
+	StationCodeEffinghamJunction                 CRSCode = "EFF"
+	StationCodeEggesford                         CRSCode = "EGG"
+	StationCodeEgham                             CRSCode = "EGH"
+	StationCodeEgton                             CRSCode = "EGT"
+	StationCodeElephantAndCastle                 CRSCode = "EPH"
+	StationCodeElephantAndCastleUnderground      CRSCode = "ZEL"
+	StationCodeElgin                             CRSCode = "ELG"
+	StationCodeEllesmerePort                     CRSCode = "ELP"
+	StationCodeElmersEnd                         CRSCode = "ELE"
+	StationCodeElmsteadWoods                     CRSCode = "ESD"
+	StationCodeElmswell                          CRSCode = "ESW"
+	StationCodeElsecar                           CRSCode = "ELR"
+	StationCodeElsenhamEssex                     CRSCode = "ESM"
+	StationCodeElstreeAndBorehamwood             CRSCode = "ELS"
+	StationCodeEltham                            CRSCode = "ELW"
+	StationCodeEltonAndOrston                    CRSCode = "ELO"
+	StationCodeEly                               CRSCode = "ELY"
+	StationCodeEmersonPark                       CRSCode = "EMP"
+	StationCodeEmsworth                          CRSCode = "EMS"
+	StationCodeEnerglynAndChurchillPark          CRSCode = "ECP"
+	StationCodeEnfieldChase                      CRSCode = "ENC"
+	StationCodeEnfieldLock                       CRSCode = "ENL"
+	StationCodeEnfieldTown                       CRSCode = "ENF"
+	StationCodeEntwistle                         CRSCode = "ENT"
+	StationCodeEpsomDowns                        CRSCode = "EPD"
+	StationCodeEpsomSurrey                       CRSCode = "EPS"
+	StationCodeErdington                         CRSCode = "ERD"
+	StationCodeEridge                            CRSCode = "ERI"
+	StationCodeErith                             CRSCode = "ERH"
+	StationCodeEsher                             CRSCode = "ESH"
+	StationCodeEskbank                           CRSCode = "EKB"
+	StationCodeEssexRoad                         CRSCode = "EXR"
+	StationCodeEtchingham                        CRSCode = "ETC"
+	StationCodeEuxtonBalshawLane                 CRSCode = "EBA"
+	StationCodeEvesham                           CRSCode = "EVE"
+	StationCodeEwellEast                         CRSCode = "EWE"
+	StationCodeEwellWest                         CRSCode = "EWW"
+	StationCodeExeterCentral                     CRSCode = "EXC"
+	StationCodeExeterStDavids                    CRSCode = "EXD"
+	StationCodeExeterStThomas                    CRSCode = "EXT"
+	StationCodeExhibitionCentreGlasgow           CRSCode = "EXG"
+	StationCodeExmouth                           CRSCode = "EXM"
+	StationCodeExton                             CRSCode = "EXN"
+	StationCodeEynsford                          CRSCode = "EYN"
+	StationCodeFairbourne                        CRSCode = "FRB"
+	StationCodeFairfield                         CRSCode = "FRF"
+	StationCodeFairlie                           CRSCode = "FRL"
+	StationCodeFairwater                         CRSCode = "FRW"
+	StationCodeFalconwood                        CRSCode = "FCN"
+	StationCodeFalkirkGrahamston                 CRSCode = "FKG"
+	StationCodeFalkirkHigh                       CRSCode = "FKK"
+	StationCodeFallsofCruachan                   CRSCode = "FOC"
+	StationCodeFalmer                            CRSCode = "FMR"
+	StationCodeFalmouthDocks                     CRSCode = "FAL"
+	StationCodeFalmouthTown                      CRSCode = "FMT"
+	StationCodeFareham                           CRSCode = "FRM"
+	StationCodeFarnboroughMain                   CRSCode = "FNB"
+	StationCodeFarnboroughNorth                  CRSCode = "FNN"
+	StationCodeFarncombe                         CRSCode = "FNC"
+	StationCodeFarnham                           CRSCode = "FNH"
+	StationCodeFarninghamRoad                    CRSCode = "FNR"
+	StationCodeFarnworth                         CRSCode = "FNW"
+	StationCodeFarringdon                        CRSCode = "ZFD"
+	StationCodeFauldhouse                        CRSCode = "FLD"
+	StationCodeFaversham                         CRSCode = "FAV"
+	StationCodeFaygate                           CRSCode = "FGT"
+	StationCodeFazakerley                        CRSCode = "FAZ"
+	StationCodeFearn                             CRSCode = "FRN"
+	StationCodeFeatherstone                      CRSCode = "FEA"
+	StationCodeFelixstowe                        CRSCode = "FLX"
+	StationCodeFeltham                           CRSCode = "FEL"
+	StationCodeFeniton                           CRSCode = "FNT"
+	StationCodeFennyStratford                    CRSCode = "FEN"
+	StationCodeFernhill                          CRSCode = "FER"
+	StationCodeFerriby                           CRSCode = "FRY"
+	StationCodeFerryside                         CRSCode = "FYS"
+	StationCodeFfairfach                         CRSCode = "FFA"
+	StationCodeFiley                             CRSCode = "FIL"
+	StationCodeFiltonAbbeyWood                   CRSCode = "FIT"
+	StationCodeFinchleyRoadAndFrognal            CRSCode = "FNY"
+	StationCodeFinsburyPark                      CRSCode = "FPK"
+	StationCodeFinstock                          CRSCode = "FIN"
+	StationCodeFishbourneSussex                  CRSCode = "FSB"
+	StationCodeFishersgate                       CRSCode = "FSG"
+	StationCodeFishguardAndGoodwick              CRSCode = "FGW"
+	StationCodeFishguardHarbour                  CRSCode = "FGH"
+	StationCodeFiskerton                         CRSCode = "FSK"
+	StationCodeFitzwilliam                       CRSCode = "FZW"
+	StationCodeFiveWays                          CRSCode = "FWY"
+	StationCodeFleet                             CRSCode = "FLE"
+	StationCodeFlimby                            CRSCode = "FLM"
+	StationCodeFlint                             CRSCode = "FLN"
+	StationCodeFlitwick                          CRSCode = "FLT"
+	StationCodeFlixton                           CRSCode = "FLI"
+	StationCodeFloweryField                      CRSCode = "FLF"
+	StationCodeFolkestoneCentral                 CRSCode = "FKC"
+	StationCodeFolkestoneWest                    CRSCode = "FKW"
+	StationCodeFord                              CRSCode = "FOD"
+	StationCodeForestGate                        CRSCode = "FOG"
+	StationCodeForestHill                        CRSCode = "FOH"
+	StationCodeFormby                            CRSCode = "FBY"
+	StationCodeForres                            CRSCode = "FOR"
+	StationCodeForsinard                         CRSCode = "FRS"
+	StationCodeFortMatilda                       CRSCode = "FTM"
+	StationCodeFortWilliam                       CRSCode = "FTW"
+	StationCodeFourOaks                          CRSCode = "FOK"
+	StationCodeFoxfield                          CRSCode = "FOX"
+	StationCodeFoxton                            CRSCode = "FXN"
+	StationCodeFrant                             CRSCode = "FRT"
+	StationCodeFratton                           CRSCode = "FTN"
+	StationCodeFreshfield                        CRSCode = "FRE"
+	StationCodeFreshford                         CRSCode = "FFD"
+	StationCodeFrimley                           CRSCode = "FML"
+	StationCodeFrintononSea                      CRSCode = "FRI"
+	StationCodeFrizinghall                       CRSCode = "FZH"
+	StationCodeFrodsham                          CRSCode = "FRD"
+	StationCodeFrome                             CRSCode = "FRO"
+	StationCodeFulwell                           CRSCode = "FLW"
+	StationCodeFurnessVale                       CRSCode = "FNV"
+	StationCodeFurzePlatt                        CRSCode = "FZP"
+	StationCodeGainsboroughCentral               CRSCode = "GNB"
+	StationCodeGainsboroughLeaRoad               CRSCode = "GBL"
+	StationCodeGalashiels                        CRSCode = "GAL"
+	StationCodeGarelochhead                      CRSCode = "GCH"
+	StationCodeGarforth                          CRSCode = "GRF"
+	StationCodeGargrave                          CRSCode = "GGV"
+	StationCodeGarrowhill                        CRSCode = "GAR"
+	StationCodeGarscadden                        CRSCode = "GRS"
+	StationCodeGarsdale                          CRSCode = "GSD"
+	StationCodeGarstonHertfordshire              CRSCode = "GSN"
+	StationCodeGarswood                          CRSCode = "GSW"
+	StationCodeGartcosh                          CRSCode = "GRH"
+	StationCodeGarthMidGlamorgan                 CRSCode = "GMG"
+	StationCodeGarthPowys                        CRSCode = "GTH"
+	StationCodeGarve                             CRSCode = "GVE"
+	StationCodeGathurst                          CRSCode = "GST"
+	StationCodeGatley                            CRSCode = "GTY"
+	StationCodeGatwickAirport                    CRSCode = "GTW"
+	StationCodeGeorgemasJunction                 CRSCode = "GGJ"
+	StationCodeGerrardsCross                     CRSCode = "GER"
+	StationCodeGideaPark                         CRSCode = "GDP"
+	StationCodeGiffnock                          CRSCode = "GFN"
+	StationCodeGiggleswick                       CRSCode = "GIG"
+	StationCodeGilberdyke                        CRSCode = "GBD"
+	StationCodeGilfachFargoed                    CRSCode = "GFF"
+	StationCodeGillinghamDorset                  CRSCode = "GIL"
+	StationCodeGillinghamKent                    CRSCode = "GLM"
+	StationCodeGilshochill                       CRSCode = "GSC"
+	StationCodeGipsyHill                         CRSCode = "GIP"
+	StationCodeGirvan                            CRSCode = "GIR"
+	StationCodeGlaisdale                         CRSCode = "GLS"
+	StationCodeGlanConwy                         CRSCode = "GCW"
+	StationCodeGlasgowCentral                    CRSCode = "GLC"
+	StationCodeGlasgowQueenStreet                CRSCode = "GLQ"
+	StationCodeGlasshoughton                     CRSCode = "GLH"
+	StationCodeGlazebrook                        CRSCode = "GLZ"
+	StationCodeGleneagles                        CRSCode = "GLE"
+	StationCodeGlenfinnan                        CRSCode = "GLF"
+	StationCodeGlengarnock                       CRSCode = "GLG"
+	StationCodeGlenrotheswithThornton            CRSCode = "GLT"
+	StationCodeGlossop                           CRSCode = "GLO"
+	StationCodeGloucester                        CRSCode = "GCR"
+	StationCodeGlynde                            CRSCode = "GLY"
+	StationCodeGobowen                           CRSCode = "GOB"
+	StationCodeGodalming                         CRSCode = "GOD"
+	StationCodeGodley                            CRSCode = "GDL"
+	StationCodeGodstone                          CRSCode = "GDN"
+	StationCodeGoldthorpe                        CRSCode = "GOE"
+	StationCodeGolfStreet                        CRSCode = "GOF"
+	StationCodeGolspie                           CRSCode = "GOL"
+	StationCodeGomshall                          CRSCode = "GOM"
+	StationCodeGoodmayes                         CRSCode = "GMY"
+	StationCodeGoole                             CRSCode = "GOO"
+	StationCodeGoostrey                          CRSCode = "GTR"
+	StationCodeGordonHill                        CRSCode = "GDH"
+	StationCodeGorebridge                        CRSCode = "GBG"
+	StationCodeGoringAndStreatley                CRSCode = "GOR"
+	StationCodeGoringbySea                       CRSCode = "GBS"
+	StationCodeGorton                            CRSCode = "GTO"
+	StationCodeGospelOak                         CRSCode = "GPO"
+	StationCodeGourock                           CRSCode = "GRK"
+	StationCodeGowerton                          CRSCode = "GWN"
+	StationCodeGoxhill                           CRSCode = "GOX"
+	StationCodeGrangeOverSands                   CRSCode = "GOS"
+	StationCodeGrangePark                        CRSCode = "GPK"
+	StationCodeGrangetownCardiff                 CRSCode = "GTN"
+	StationCodeGrantham                          CRSCode = "GRA"
+	StationCodeGrateley                          CRSCode = "GRT"
+	StationCodeGravellyHill                      CRSCode = "GVH"
+	StationCodeGravesend                         CRSCode = "GRV"
+	StationCodeGrays                             CRSCode = "GRY"
+	StationCodeGreatAyton                        CRSCode = "GTA"
+	StationCodeGreatBentley                      CRSCode = "GRB"
+	StationCodeGreatChesterford                  CRSCode = "GRC"
+	StationCodeGreatCoates                       CRSCode = "GCT"
+	StationCodeGreatMalvern                      CRSCode = "GMV"
+	StationCodeGreatMissenden                    CRSCode = "GMN"
+	StationCodeGreatYarmouth                     CRSCode = "GYM"
+	StationCodeGreenLane                         CRSCode = "GNL"
+	StationCodeGreenRoad                         CRSCode = "GNR"
+	StationCodeGreenbank                         CRSCode = "GBK"
+	StationCodeGreenfaulds                       CRSCode = "GRL"
+	StationCodeGreenfield                        CRSCode = "GNF"
+	StationCodeGreenford                         CRSCode = "GFD"
+	StationCodeGreenhithe                        CRSCode = "GNH"
+	StationCodeGreenockCentral                   CRSCode = "GKC"
+	StationCodeGreenockWest                      CRSCode = "GKW"
+	StationCodeGreenwich                         CRSCode = "GNW"
+	StationCodeGretnaGreen                       CRSCode = "GEA"
+	StationCodeGrimsbyDocks                      CRSCode = "GMD"
+	StationCodeGrimsbyTown                       CRSCode = "GMB"
+	StationCodeGrindleford                       CRSCode = "GRN"
+	StationCodeGrosmont                          CRSCode = "GMT"
+	StationCodeGrovePark                         CRSCode = "GRP"
+	StationCodeGuideBridge                       CRSCode = "GUI"
+	StationCodeGuildford                         CRSCode = "GLD"
+	StationCodeGuiseley                          CRSCode = "GSY"
+	StationCodeGunnersbury                       CRSCode = "GUN"
+	StationCodeGunnislake                        CRSCode = "GSL"
+	StationCodeGunton                            CRSCode = "GNT"
+	StationCodeGwersyllt                         CRSCode = "GWE"
+	StationCodeGypsyLane                         CRSCode = "GYP"
+	StationCodeHabrough                          CRSCode = "HAB"
+	StationCodeHackbridge                        CRSCode = "HCB"
+	StationCodeHackneyCentral                    CRSCode = "HKC"
+	StationCodeHackneyDowns                      CRSCode = "HAC"
+	StationCodeHackneyWick                       CRSCode = "HKW"
+	StationCodeHaddenhamAndThameParkway          CRSCode = "HDM"
+	StationCodeHaddiscoe                         CRSCode = "HAD"
+	StationCodeHadfield                          CRSCode = "HDF"
+	StationCodeHadleyWood                        CRSCode = "HDW"
+	StationCodeHagFold                           CRSCode = "HGF"
+	StationCodeHaggerston                        CRSCode = "HGG"
+	StationCodeHagley                            CRSCode = "HAG"
+	StationCodeHairmyres                         CRSCode = "HMY"
+	StationCodeHaleManchester                    CRSCode = "HAL"
+	StationCodeHalesworth                        CRSCode = "HAS"
+	StationCodeHalewood                          CRSCode = "HED"
+	StationCodeHalifax                           CRSCode = "HFX"
+	StationCodeHallGreen                         CRSCode = "HLG"
+	StationCodeHallRoad                          CRSCode = "HLR"
+	StationCodeHalling                           CRSCode = "HAI"
+	StationCodeHallithWood                       CRSCode = "HID"
+	StationCodeHaltwhistle                       CRSCode = "HWH"
+	StationCodeHamStreet                         CRSCode = "HMT"
+	StationCodeHamble                            CRSCode = "HME"
+	StationCodeHamiltonCentral                   CRSCode = "HNC"
+	StationCodeHamiltonWest                      CRSCode = "HNW"
+	StationCodeHammerton                         CRSCode = "HMM"
+	StationCodeHampdenParkSussex                 CRSCode = "HMD"
+	StationCodeHampsteadHeath                    CRSCode = "HDH"
+	StationCodeHamptonCourt                      CRSCode = "HMC"
+	StationCodeHamptonLondon                     CRSCode = "HMP"
+	StationCodeHamptonWick                       CRSCode = "HMW"
+	StationCodeHamptoninArden                    CRSCode = "HIA"
+	StationCodeHamsteadBirmingham                CRSCode = "HSD"
+	StationCodeHamworthy                         CRSCode = "HAM"
+	StationCodeHanborough                        CRSCode = "HND"
+	StationCodeHandforth                         CRSCode = "HTH"
+	StationCodeHanwell                           CRSCode = "HAN"
+	StationCodeHapton                            CRSCode = "HPN"
+	StationCodeHarlech                           CRSCode = "HRL"
+	StationCodeHarlesden                         CRSCode = "HDN"
+	StationCodeHarlingRoad                       CRSCode = "HRD"
+	StationCodeHarlingtonBeds                    CRSCode = "HLN"
+	StationCodeHarlowMill                        CRSCode = "HWM"
+	StationCodeHarlowTown                        CRSCode = "HWN"
+	StationCodeHaroldWood                        CRSCode = "HRO"
+	StationCodeHarpenden                         CRSCode = "HPD"
+	StationCodeHarrietsham                       CRSCode = "HRM"
+	StationCodeHarringay                         CRSCode = "HGY"
+	StationCodeHarringayGreenLanes               CRSCode = "HRY"
+	StationCodeHarrington                        CRSCode = "HRR"
+	StationCodeHarrogate                         CRSCode = "HGT"
+	StationCodeHarrowAndWealdstone               CRSCode = "HRW"
+	StationCodeHarrowontheHill                   CRSCode = "HOH"
+	StationCodeHartfordCheshire                  CRSCode = "HTF"
+	StationCodeHartlebury                        CRSCode = "HBY"
+	StationCodeHartlepool                        CRSCode = "HPL"
+	StationCodeHartwood                          CRSCode = "HTW"
+	StationCodeHarwichInternational              CRSCode = "HPQ"
+	StationCodeHarwichTown                       CRSCode = "HWC"
+	StationCodeHaslemere                         CRSCode = "HSL"
+	StationCodeHassocks                          CRSCode = "HSK"
+	StationCodeHastings                          CRSCode = "HGS"
+	StationCodeHatchEnd                          CRSCode = "HTE"
+	StationCodeHatfieldAndStainforth             CRSCode = "HFS"
+	StationCodeHatfieldHerts                     CRSCode = "HAT"
+	StationCodeHatfieldPeverel                   CRSCode = "HAP"
+	StationCodeHathersage                        CRSCode = "HSG"
+	StationCodeHattersley                        CRSCode = "HTY"
+	StationCodeHatton                            CRSCode = "HTN"
+	StationCodeHavant                            CRSCode = "HAV"
+	StationCodeHavenhouse                        CRSCode = "HVN"
+	StationCodeHaverfordwest                     CRSCode = "HVF"
+	StationCodeHawarden                          CRSCode = "HWD"
+	StationCodeHawardenBridge                    CRSCode = "HWB"
+	StationCodeHawkhead                          CRSCode = "HKH"
+	StationCodeHaydonBridge                      CRSCode = "HDB"
+	StationCodeHaydonsRoad                       CRSCode = "HYR"
+	StationCodeHayesAndHarlington                CRSCode = "HAY"
+	StationCodeHayesKent                         CRSCode = "HYS"
+	StationCodeHayle                             CRSCode = "HYL"
+	StationCodeHaymarket                         CRSCode = "HYM"
+	StationCodeHaywardsHeath                     CRSCode = "HHE"
+	StationCodeHazelGrove                        CRSCode = "HAZ"
+	StationCodeHeadcorn                          CRSCode = "HCN"
+	StationCodeHeadingley                        CRSCode = "HDY"
+	StationCodeHeadstoneLane                     CRSCode = "HDL"
+	StationCodeHealdGreen                        CRSCode = "HDG"
+	StationCodeHealing                           CRSCode = "HLI"
+	StationCodeHeathHighLevel                    CRSCode = "HHL"
+	StationCodeHeathLowLevel                     CRSCode = "HLL"
+	StationCodeHeathrowAirportTerminal4          CRSCode = "HAF"
+	StationCodeHeathrowAirportTerminal5          CRSCode = "HWV"
+	StationCodeHeathrowAirportTerminals12and3    CRSCode = "HXX"
+	StationCodeHeatonChapel                      CRSCode = "HTC"
+	StationCodeHebdenBridge                      CRSCode = "HBD"
+	StationCodeHeckington                        CRSCode = "HEC"
+	StationCodeHedgeEnd                          CRSCode = "HDE"
+	StationCodeHednesford                        CRSCode = "HNF"
+	StationCodeHeighington                       CRSCode = "HEI"
+	StationCodeHelensburghCentral                CRSCode = "HLC"
+	StationCodeHelensburghUpper                  CRSCode = "HLU"
+	StationCodeHellifield                        CRSCode = "HLD"
+	StationCodeHelmsdale                         CRSCode = "HMS"
+	StationCodeHelsby                            CRSCode = "HSB"
+	StationCodeHemelHempstead                    CRSCode = "HML"
+	StationCodeHendon                            CRSCode = "HEN"
+	StationCodeHengoed                           CRSCode = "HNG"
+	StationCodeHenleyinArden                     CRSCode = "HNL"
+	StationCodeHenleyonThames                    CRSCode = "HOT"
+	StationCodeHensall                           CRSCode = "HEL"
+	StationCodeHereford                          CRSCode = "HFD"
+	StationCodeHerneBay                          CRSCode = "HNB"
+	StationCodeHerneHill                         CRSCode = "HNH"
+	StationCodeHersham                           CRSCode = "HER"
+	StationCodeHertfordEast                      CRSCode = "HFE"
+	StationCodeHertfordNorth                     CRSCode = "HFN"
+	StationCodeHessle                            CRSCode = "HES"
+	StationCodeHeswall                           CRSCode = "HSW"
+	StationCodeHever                             CRSCode = "HEV"
+	StationCodeHeworth                           CRSCode = "HEW"
+	StationCodeHexham                            CRSCode = "HEX"
+	StationCodeHeyford                           CRSCode = "HYD"
+	StationCodeHeyshamPort                       CRSCode = "HHB"
+	StationCodeHighBrooms                        CRSCode = "HIB"
+	StationCodeHighStreetGlasgow                 CRSCode = "HST"
+	StationCodeHighStreetKensingtonUnderground   CRSCode = "ZHS"
+	StationCodeHighWycombe                       CRSCode = "HWY"
+	StationCodeHighamKent                        CRSCode = "HGM"
+	StationCodeHighamsPark                       CRSCode = "HIP"
+	StationCodeHighbridgeAndBurnham              CRSCode = "HIG"
+	StationCodeHighburyAndIslington              CRSCode = "HHY"
+	StationCodeHightown                          CRSCode = "HTO"
+	StationCodeHildenborough                     CRSCode = "HLB"
+	StationCodeHillfoot                          CRSCode = "HLF"
+	StationCodeHillingtonEast                    CRSCode = "HLE"
+	StationCodeHillingtonWest                    CRSCode = "HLW"
+	StationCodeHillside                          CRSCode = "HIL"
+	StationCodeHilsea                            CRSCode = "HLS"
+	StationCodeHinchleyWood                      CRSCode = "HYW"
+	StationCodeHinckleyLeics                     CRSCode = "HNK"
+	StationCodeHindley                           CRSCode = "HIN"
+	StationCodeHintonAdmiral                     CRSCode = "HNA"
+	StationCodeHitchin                           CRSCode = "HIT"
+	StationCodeHitherGreen                       CRSCode = "HGR"
+	StationCodeHockley                           CRSCode = "HOC"
+	StationCodeHollingbourne                     CRSCode = "HBN"
+	StationCodeHolmesChapel                      CRSCode = "HCH"
+	StationCodeHolmwood                          CRSCode = "HLM"
+	StationCodeHoltonHeath                       CRSCode = "HOL"
+	StationCodeHolyhead                          CRSCode = "HHD"
+	StationCodeHolytown                          CRSCode = "HLY"
+	StationCodeHomerton                          CRSCode = "HMN"
+	StationCodeHoneybourne                       CRSCode = "HYB"
+	StationCodeHoniton                           CRSCode = "HON"
+	StationCodeHonley                            CRSCode = "HOY"
+	StationCodeHonorOakPark                      CRSCode = "HPA"
+	StationCodeHook                              CRSCode = "HOK"
+	StationCodeHooton                            CRSCode = "HOO"
+	StationCodeHopeDerbyshire                    CRSCode = "HOP"
+	StationCodeHopeFlintshire                    CRSCode = "HPE"
+	StationCodeHoptonHeath                       CRSCode = "HPT"
+	StationCodeHorley                            CRSCode = "HOR"
+	StationCodeHornbeamPark                      CRSCode = "HBP"
+	StationCodeHornsey                           CRSCode = "HRN"
+	StationCodeHorsforth                         CRSCode = "HRS"
+	StationCodeHorsham                           CRSCode = "HRH"
+	StationCodeHorsley                           CRSCode = "HSY"
+	StationCodeHortoninRibblesdale               CRSCode = "HIR"
+	StationCodeHorwichParkway                    CRSCode = "HWI"
+	StationCodeHoscar                            CRSCode = "HSC"
+	StationCodeHoughGreen                        CRSCode = "HGN"
+	StationCodeHounslow                          CRSCode = "HOU"
+	StationCodeHove                              CRSCode = "HOV"
+	StationCodeHovetonAndWroxham                 CRSCode = "HXM"
+	StationCodeHowWoodHerts                      CRSCode = "HWW"
+	StationCodeHowden                            CRSCode = "HOW"
+	StationCodeHowwoodRenfrewshire               CRSCode = "HOZ"
+	StationCodeHoxton                            CRSCode = "HOX"
+	StationCodeHoylake                           CRSCode = "HYK"
+	StationCodeHubbertsBridge                    CRSCode = "HBB"
+	StationCodeHucknall                          CRSCode = "HKN"
+	StationCodeHuddersfield                      CRSCode = "HUD"
+	StationCodeHull                              CRSCode = "HUL"
+	StationCodeHumphreyPark                      CRSCode = "HUP"
+	StationCodeHuncoat                           CRSCode = "HCT"
+	StationCodeHungerford                        CRSCode = "HGD"
+	StationCodeHunmanby                          CRSCode = "HUB"
+	StationCodeHuntingdon                        CRSCode = "HUN"
+	StationCodeHuntly                            CRSCode = "HNT"
+	StationCodeHuntsCross                        CRSCode = "HNX"
+	StationCodeHurstGreen                        CRSCode = "HUR"
+	StationCodeHuttonCranswick                   CRSCode = "HUT"
+	StationCodeHuyton                            CRSCode = "HUY"
+	StationCodeHydeCentral                       CRSCode = "HYC"
+	StationCodeHydeNorth                         CRSCode = "HYT"
+	StationCodeHykeham                           CRSCode = "HKM"
+	StationCodeHyndland                          CRSCode = "HYN"
+	StationCodeHytheEssex                        CRSCode = "HYH"
+	StationCodeIBMHalt                           CRSCode = "IBM"
+	StationCodeIfield                            CRSCode = "IFI"
+	StationCodeIlford                            CRSCode = "IFD"
+	StationCodeIlkley                            CRSCode = "ILK"
+	StationCodeImperialWharf                     CRSCode = "IMW"
+	StationCodeInceAndElton                      CRSCode = "INE"
+	StationCodeInceManchester                    CRSCode = "INC"
+	StationCodeIngatestone                       CRSCode = "INT"
+	StationCodeInsch                             CRSCode = "INS"
+	StationCodeInvergordon                       CRSCode = "IGD"
+	StationCodeInvergowrie                       CRSCode = "ING"
+	StationCodeInverkeithing                     CRSCode = "INK"
+	StationCodeInverkip                          CRSCode = "INP"
+	StationCodeInverness                         CRSCode = "INV"
+	StationCodeInvershin                         CRSCode = "INH"
+	StationCodeInverurie                         CRSCode = "INR"
+	StationCodeIpswich                           CRSCode = "IPS"
+	StationCodeIrlam                             CRSCode = "IRL"
+	StationCodeIrvine                            CRSCode = "IRV"
+	StationCodeIsleworth                         CRSCode = "ISL"
+	StationCodeIslip                             CRSCode = "ISP"
+	StationCodeIver                              CRSCode = "IVR"
+	StationCodeIvybridge                         CRSCode = "IVY"
+	StationCodeJamesCook                         CRSCode = "JCH"
+	StationCodeJewelleryQuarter                  CRSCode = "JEQ"
+	StationCodeJohnstonPembs                     CRSCode = "JOH"
+	StationCodeJohnstoneStrathclyde              CRSCode = "JHN"
+	StationCodeJordanhill                        CRSCode = "JOR"
+	StationCodeKearsleyManchester                CRSCode = "KSL"
+	StationCodeKearsneyKent                      CRSCode = "KSN"
+	StationCodeKeighley                          CRSCode = "KEI"
+	StationCodeKeith                             CRSCode = "KEH"
+	StationCodeKelvedon                          CRSCode = "KEL"
+	StationCodeKelvindale                        CRSCode = "KVD"
+	StationCodeKemble                            CRSCode = "KEM"
+	StationCodeKempstonHardwick                  CRSCode = "KMH"
+	StationCodeKemptonParkRacecourse             CRSCode = "KMP"
+	StationCodeKemsing                           CRSCode = "KMS"
+	StationCodeKemsley                           CRSCode = "KML"
+	StationCodeKendal                            CRSCode = "KEN"
+	StationCodeKenley                            CRSCode = "KLY"
+	StationCodeKennett                           CRSCode = "KNE"
+	StationCodeKennishead                        CRSCode = "KNS"
+	StationCodeKensalGreen                       CRSCode = "KNL"
+	StationCodeKensalRise                        CRSCode = "KNR"
+	StationCodeKensingtonOlympia                 CRSCode = "KPA"
+	StationCodeKentHouse                         CRSCode = "KTH"
+	StationCodeKentishTown                       CRSCode = "KTN"
+	StationCodeKentishTownWest                   CRSCode = "KTW"
+	StationCodeKenton                            CRSCode = "KNT"
+	StationCodeKentsBank                         CRSCode = "KBK"
+	StationCodeKettering                         CRSCode = "KET"
+	StationCodeKewBridge                         CRSCode = "KWB"
+	StationCodeKewGardens                        CRSCode = "KWG"
+	StationCodeKeyham                            CRSCode = "KEY"
+	StationCodeKeynsham                          CRSCode = "KYN"
+	StationCodeKidbrooke                         CRSCode = "KDB"
+	StationCodeKidderminster                     CRSCode = "KID"
+	StationCodeKidsgrove                         CRSCode = "KDG"
+	StationCodeKidwelly                          CRSCode = "KWL"
+	StationCodeKilburnHighRoad                   CRSCode = "KBN"
+	StationCodeKildale                           CRSCode = "KLD"
+	StationCodeKildonan                          CRSCode = "KIL"
+	StationCodeKilgetty                          CRSCode = "KGT"
+	StationCodeKilmarnock                        CRSCode = "KMK"
+	StationCodeKilmaurs                          CRSCode = "KLM"
+	StationCodeKilpatrick                        CRSCode = "KPT"
+	StationCodeKilwinning                        CRSCode = "KWN"
+	StationCodeKinbrace                          CRSCode = "KBC"
+	StationCodeKingham                           CRSCode = "KGM"
+	StationCodeKinghorn                          CRSCode = "KGH"
+	StationCodeKingsLangley                      CRSCode = "KGL"
+	StationCodeKingsLynn                         CRSCode = "KLN"
+	StationCodeKingsNorton                       CRSCode = "KNN"
+	StationCodeKingsNympton                      CRSCode = "KGN"
+	StationCodeKingsPark                         CRSCode = "KGP"
+	StationCodeKingsSutton                       CRSCode = "KGS"
+	StationCodeKingsknowe                        CRSCode = "KGE"
+	StationCodeKingston                          CRSCode = "KNG"
+	StationCodeKingswood                         CRSCode = "KND"
+	StationCodeKingussie                         CRSCode = "KIN"
+	StationCodeKintbury                          CRSCode = "KIT"
+	StationCodeKirbyCross                        CRSCode = "KBX"
+	StationCodeKirkSandall                       CRSCode = "KKS"
+	StationCodeKirkbyMerseyside                  CRSCode = "KIR"
+	StationCodeKirkbyStephen                     CRSCode = "KSW"
+	StationCodeKirkbyinAshfield                  CRSCode = "KKB"
+	StationCodeKirkbyinFurness                   CRSCode = "KBF"
+	StationCodeKirkcaldy                         CRSCode = "KDY"
+	StationCodeKirkconnel                        CRSCode = "KRK"
+	StationCodeKirkdale                          CRSCode = "KKD"
+	StationCodeKirkhamAndWesham                  CRSCode = "KKM"
+	StationCodeKirkhill                          CRSCode = "KKH"
+	StationCodeKirknewton                        CRSCode = "KKN"
+	StationCodeKirkstallForge                    CRSCode = "KLF"
+	StationCodeKirkwood                          CRSCode = "KWD"
+	StationCodeKirtonLindsey                     CRSCode = "KTL"
+	StationCodeKivetonBridge                     CRSCode = "KIV"
+	StationCodeKivetonPark                       CRSCode = "KVP"
+	StationCodeKnaresborough                     CRSCode = "KNA"
+	StationCodeKnebworth                         CRSCode = "KBW"
+	StationCodeKnighton                          CRSCode = "KNI"
+	StationCodeKnockholt                         CRSCode = "KCK"
+	StationCodeKnottingley                       CRSCode = "KNO"
+	StationCodeKnucklas                          CRSCode = "KNU"
+	StationCodeKnutsford                         CRSCode = "KNF"
+	StationCodeKyleofLochalsh                    CRSCode = "KYL"
+	StationCodeLadybank                          CRSCode = "LDY"
+	StationCodeLadywell                          CRSCode = "LAD"
+	StationCodeLaindon                           CRSCode = "LAI"
+	StationCodeLairg                             CRSCode = "LRG"
+	StationCodeLake                              CRSCode = "LKE"
+	StationCodeLakenheath                        CRSCode = "LAK"
+	StationCodeLamphey                           CRSCode = "LAM"
+	StationCodeLanark                            CRSCode = "LNK"
+	StationCodeLancaster                         CRSCode = "LAN"
+	StationCodeLancing                           CRSCode = "LAC"
+	StationCodeLandywood                         CRSCode = "LAW"
+	StationCodeLangbank                          CRSCode = "LGB"
+	StationCodeLangho                            CRSCode = "LHO"
+	StationCodeLangleyBerks                      CRSCode = "LNY"
+	StationCodeLangleyGreen                      CRSCode = "LGG"
+	StationCodeLangleyMill                       CRSCode = "LGM"
+	StationCodeLangside                          CRSCode = "LGS"
+	StationCodeLangwathby                        CRSCode = "LGW"
+	StationCodeLangwithWhaleyThorns              CRSCode = "LAG"
+	StationCodeLapford                           CRSCode = "LAP"
+	StationCodeLapworth                          CRSCode = "LPW"
+	StationCodeLarbert                           CRSCode = "LBT"
+	StationCodeLargs                             CRSCode = "LAR"
+	StationCodeLarkhall                          CRSCode = "LRH"
+	StationCodeLaurencekirk                      CRSCode = "LAU"
+	StationCodeLawrenceHill                      CRSCode = "LWH"
+	StationCodeLaytonLancs                       CRSCode = "LAY"
+	StationCodeLazonbyAndKirkoswald              CRSCode = "LZB"
+	StationCodeLeaBridge                         CRSCode = "LEB"
+	StationCodeLeaGreen                          CRSCode = "LEG"
+	StationCodeLeaHall                           CRSCode = "LEH"
+	StationCodeLeagrave                          CRSCode = "LEA"
+	StationCodeLealholm                          CRSCode = "LHM"
+	StationCodeLeamingtonSpa                     CRSCode = "LMS"
+	StationCodeLeasowe                           CRSCode = "LSW"
+	StationCodeLeatherhead                       CRSCode = "LHD"
+	StationCodeLedbury                           CRSCode = "LED"
+	StationCodeLeeLondon                         CRSCode = "LEE"
+	StationCodeLeeds                             CRSCode = "LDS"
+	StationCodeLeicester                         CRSCode = "LEI"
+	StationCodeLeighKent                         CRSCode = "LIH"
+	StationCodeLeighonSea                        CRSCode = "LES"
+	StationCodeLeightonBuzzard                   CRSCode = "LBZ"
+	StationCodeLelant                            CRSCode = "LEL"
+	StationCodeLelantSaltings                    CRSCode = "LTS"
+	StationCodeLenham                            CRSCode = "LEN"
+	StationCodeLenzie                            CRSCode = "LNZ"
+	StationCodeLeominster                        CRSCode = "LEO"
+	StationCodeLetchworthGardenCity              CRSCode = "LET"
+	StationCodeLeucharsforStAndrews              CRSCode = "LEU"
+	StationCodeLevenshulme                       CRSCode = "LVM"
+	StationCodeLewes                             CRSCode = "LWS"
+	StationCodeLewisham                          CRSCode = "LEW"
+	StationCodeLeyland                           CRSCode = "LEY"
+	StationCodeLeytonMidlandRoad                 CRSCode = "LEM"
+	StationCodeLeytonstoneHighRoad               CRSCode = "LER"
+	StationCodeLichfieldCity                     CRSCode = "LIC"
+	StationCodeLichfieldTrentValley              CRSCode = "LTV"
+	StationCodeLidlington                        CRSCode = "LID"
+	StationCodeLimehouse                         CRSCode = "LHS"
+	StationCodeLincolnCentral                    CRSCode = "LCN"
+	StationCodeLingfield                         CRSCode = "LFD"
+	StationCodeLingwood                          CRSCode = "LGD"
+	StationCodeLinlithgow                        CRSCode = "LIN"
+	StationCodeLiphook                           CRSCode = "LIP"
+	StationCodeLiskeard                          CRSCode = "LSK"
+	StationCodeLiss                              CRSCode = "LIS"
+	StationCodeLisvaneAndThornhill               CRSCode = "LVT"
+	StationCodeLittleKimble                      CRSCode = "LTK"
+	StationCodeLittleSutton                      CRSCode = "LTT"
+	StationCodeLittleborough                     CRSCode = "LTL"
+	StationCodeLittlehampton                     CRSCode = "LIT"
+	StationCodeLittlehaven                       CRSCode = "LVN"
+	StationCodeLittleport                        CRSCode = "LTP"
+	StationCodeLiverpoolCentral                  CRSCode = "LVC"
+	StationCodeLiverpoolJamesStreet              CRSCode = "LVJ"
+	StationCodeLiverpoolLimeStreet               CRSCode = "LIV"
+	StationCodeLiverpoolSouthParkway             CRSCode = "LPY"
+	StationCodeLivingstonNorth                   CRSCode = "LSN"
+	StationCodeLivingstonSouth                   CRSCode = "LVG"
+	StationCodeLlanaber                          CRSCode = "LLA"
+	StationCodeLlanbedr                          CRSCode = "LBR"
+	StationCodeLlanbisterRoad                    CRSCode = "LLT"
+	StationCodeLlanbradach                       CRSCode = "LNB"
+	StationCodeLlandaf                           CRSCode = "LLN"
+	StationCodeLlandanwg                         CRSCode = "LDN"
+	StationCodeLlandecwyn                        CRSCode = "LLC"
+	StationCodeLlandeilo                         CRSCode = "LLL"
+	StationCodeLlandovery                        CRSCode = "LLV"
+	StationCodeLlandrindod                       CRSCode = "LLO"
+	StationCodeLlandudno                         CRSCode = "LLD"
+	StationCodeLlandudnoJunction                 CRSCode = "LLJ"
+	StationCodeLlandybie                         CRSCode = "LLI"
+	StationCodeLlanelli                          CRSCode = "LLE"
+	StationCodeLlanfairfechan                    CRSCode = "LLF"
+	StationCodeLlanfairpwll                      CRSCode = "LPG"
+	StationCodeLlangadog                         CRSCode = "LLG"
+	StationCodeLlangammarch                      CRSCode = "LLM"
+	StationCodeLlangennech                       CRSCode = "LLH"
+	StationCodeLlangynllo                        CRSCode = "LGO"
+	StationCodeLlanharan                         CRSCode = "LLR"
+	StationCodeLlanhilleth                       CRSCode = "LTH"
+	StationCodeLlanishen                         CRSCode = "LLS"
+	StationCodeLlanrwst                          CRSCode = "LWR"
+	StationCodeLlansamlet                        CRSCode = "LAS"
+	StationCodeLlantwitMajor                     CRSCode = "LWM"
+	StationCodeLlanwrda                          CRSCode = "LNR"
+	StationCodeLlanwrtyd                         CRSCode = "LNW"
+	StationCodeLlwyngwril                        CRSCode = "LLW"
+	StationCodeLlwynypia                         CRSCode = "LLY"
+	StationCodeLochAwe                           CRSCode = "LHA"
+	StationCodeLochEilOutwardBound               CRSCode = "LHE"
+	StationCodeLochailort                        CRSCode = "LCL"
+	StationCodeLocheilside                       CRSCode = "LCS"
+	StationCodeLochgelly                         CRSCode = "LCG"
+	StationCodeLochluichart                      CRSCode = "LCC"
+	StationCodeLochwinnoch                       CRSCode = "LHW"
+	StationCodeLockerbie                         CRSCode = "LOC"
+	StationCodeLockwood                          CRSCode = "LCK"
+	StationCodeLondonBlackfriars                 CRSCode = "BFR"
+	StationCodeLondonBridge                      CRSCode = "LBG"
+	StationCodeLondonCannonStreet                CRSCode = "CST"
+	StationCodeLondonCharingCross                CRSCode = "CHX"
+	StationCodeLondonEuston                      CRSCode = "EUS"
+	StationCodeLondonFenchurchStreet             CRSCode = "FST"
+	StationCodeLondonFields                      CRSCode = "LOF"
+	StationCodeLondonKingsCross                  CRSCode = "KGX"
+	StationCodeLondonLiverpoolStreet             CRSCode = "LST"
+	StationCodeLondonMarylebone                  CRSCode = "MYB"
+	StationCodeLondonPaddington                  CRSCode = "PAD"
+	StationCodeLondonRoadBrighton                CRSCode = "LRB"
+	StationCodeLondonRoadGuildford               CRSCode = "LRD"
+	StationCodeLondonStPancrasInternational      CRSCode = "STP"
+	StationCodeLondonStPancrasIntl               CRSCode = "SPX"
+	StationCodeLondonVictoria                    CRSCode = "VIC"
+	StationCodeLondonWaterloo                    CRSCode = "WAT"
+	StationCodeLondonWaterlooEast                CRSCode = "WAE"
+	StationCodeLongBuckby                        CRSCode = "LBK"
+	StationCodeLongEaton                         CRSCode = "LGE"
+	StationCodeLongPreston                       CRSCode = "LPR"
+	StationCodeLongbeck                          CRSCode = "LGK"
+	StationCodeLongbridge                        CRSCode = "LOB"
+	StationCodeLongcross                         CRSCode = "LNG"
+	StationCodeLongfield                         CRSCode = "LGF"
+	StationCodeLongniddry                        CRSCode = "LND"
+	StationCodeLongport                          CRSCode = "LPT"
+	StationCodeLongton                           CRSCode = "LGN"
+	StationCodeLooe                              CRSCode = "LOO"
+	StationCodeLostock                           CRSCode = "LOT"
+	StationCodeLostockGralam                     CRSCode = "LTG"
+	StationCodeLostockHall                       CRSCode = "LOH"
+	StationCodeLostwithiel                       CRSCode = "LOS"
+	StationCodeLoughborough                      CRSCode = "LBO"
+	StationCodeLoughboroughJunction              CRSCode = "LGJ"
+	StationCodeLowdham                           CRSCode = "LOW"
+	StationCodeLowerSydenham                     CRSCode = "LSY"
+	StationCodeLowestoft                         CRSCode = "LWT"
+	StationCodeLudlow                            CRSCode = "LUD"
+	StationCodeLuton                             CRSCode = "LUT"
+	StationCodeLutonAirportParkway               CRSCode = "LTN"
+	StationCodeLuxulyan                          CRSCode = "LUX"
+	StationCodeLydney                            CRSCode = "LYD"
+	StationCodeLyeWestMidlands                   CRSCode = "LYE"
+	StationCodeLymingtonPier                     CRSCode = "LYP"
+	StationCodeLymingtonTown                     CRSCode = "LYT"
+	StationCodeLympstoneCommando                 CRSCode = "LYC"
+	StationCodeLympstoneVillage                  CRSCode = "LYM"
+	StationCodeLytham                            CRSCode = "LTM"
+	StationCodeMacclesfield                      CRSCode = "MAC"
+	StationCodeMachynlleth                       CRSCode = "MCN"
+	StationCodeMaesteg                           CRSCode = "MST"
+	StationCodeMaestegEwennyRoad                 CRSCode = "MEW"
+	StationCodeMaghull                           CRSCode = "MAG"
+	StationCodeMaidenNewton                      CRSCode = "MDN"
+	StationCodeMaidenhead                        CRSCode = "MAI"
+	StationCodeMaidstoneBarracks                 CRSCode = "MDB"
+	StationCodeMaidstoneEast                     CRSCode = "MDE"
+	StationCodeMaidstoneWest                     CRSCode = "MDW"
+	StationCodeMaldenManor                       CRSCode = "MAL"
+	StationCodeMallaig                           CRSCode = "MLG"
+	StationCodeMalton                            CRSCode = "MLT"
+	StationCodeMalvernLink                       CRSCode = "MVL"
+	StationCodeManchesterAirport                 CRSCode = "MIA"
+	StationCodeManchesterOxfordRoad              CRSCode = "MCO"
+	StationCodeManchesterPiccadilly              CRSCode = "MAN"
+	StationCodeManchesterUnitedFootballGround    CRSCode = "MUF"
+	StationCodeManchesterVictoria                CRSCode = "MCV"
+	StationCodeManea                             CRSCode = "MNE"
+	StationCodeManningtree                       CRSCode = "MNG"
+	StationCodeManorPark                         CRSCode = "MNP"
+	StationCodeManorRoad                         CRSCode = "MNR"
+	StationCodeManorbier                         CRSCode = "MRB"
+	StationCodeManors                            CRSCode = "MAS"
+	StationCodeMansfield                         CRSCode = "MFT"
+	StationCodeMansfieldWoodhouse                CRSCode = "MSW"
+	StationCodeMarch                             CRSCode = "MCH"
+	StationCodeMardenKent                        CRSCode = "MRN"
+	StationCodeMargate                           CRSCode = "MAR"
+	StationCodeMarketHarborough                  CRSCode = "MHR"
+	StationCodeMarketRasen                       CRSCode = "MKR"
+	StationCodeMarkinch                          CRSCode = "MNC"
+	StationCodeMarksTey                          CRSCode = "MKT"
+	StationCodeMarlow                            CRSCode = "MLW"
+	StationCodeMarple                            CRSCode = "MPL"
+	StationCodeMarsdenYorks                      CRSCode = "MSN"
+	StationCodeMarske                            CRSCode = "MSK"
+	StationCodeMarstonGreen                      CRSCode = "MGN"
+	StationCodeMartinMill                        CRSCode = "MTM"
+	StationCodeMartinsHeron                      CRSCode = "MAO"
+	StationCodeMarton                            CRSCode = "MTO"
+	StationCodeMaryhill                          CRSCode = "MYH"
+	StationCodeMaryland                          CRSCode = "MYL"
+	StationCodeMaryport                          CRSCode = "MRY"
+	StationCodeMatlock                           CRSCode = "MAT"
+	StationCodeMatlockBath                       CRSCode = "MTB"
+	StationCodeMauldethRoad                      CRSCode = "MAU"
+	StationCodeMaxwellPark                       CRSCode = "MAX"
+	StationCodeMaybole                           CRSCode = "MAY"
+	StationCodeMazeHill                          CRSCode = "MZH"
+	StationCodeMeadowhall                        CRSCode = "MHS"
+	StationCodeMeldreth                          CRSCode = "MEL"
+	StationCodeMelksham                          CRSCode = "MKM"
+	StationCodeMeltonMowbray                     CRSCode = "MMO"
+	StationCodeMeltonSuffolk                     CRSCode = "MES"
+	StationCodeMenheniot                         CRSCode = "MEN"
+	StationCodeMenston                           CRSCode = "MNN"
+	StationCodeMeols                             CRSCode = "MEO"
+	StationCodeMeolsCop                          CRSCode = "MEC"
+	StationCodeMeopham                           CRSCode = "MEP"
+	StationCodeMerryton                          CRSCode = "MEY"
+	StationCodeMerstham                          CRSCode = "MHM"
+	StationCodeMerthyrTydfil                     CRSCode = "MER"
+	StationCodeMerthyrVale                       CRSCode = "MEV"
+	StationCodeMetheringham                      CRSCode = "MGM"
+	StationCodeMetroCentre                       CRSCode = "MCE"
+	StationCodeMexborough                        CRSCode = "MEX"
+	StationCodeMicheldever                       CRSCode = "MIC"
+	StationCodeMicklefield                       CRSCode = "MIK"
+	StationCodeMiddlesbrough                     CRSCode = "MBR"
+	StationCodeMiddlewood                        CRSCode = "MDL"
+	StationCodeMidgham                           CRSCode = "MDG"
+	StationCodeMilfordHaven                      CRSCode = "MFH"
+	StationCodeMilfordSurrey                     CRSCode = "MLF"
+	StationCodeMillHillBroadway                  CRSCode = "MIL"
+	StationCodeMillHillLancs                     CRSCode = "MLH"
+	StationCodeMillbrookBeds                     CRSCode = "MLB"
+	StationCodeMillbrookHants                    CRSCode = "MBK"
+	StationCodeMillikenPark                      CRSCode = "MIN"
+	StationCodeMillom                            CRSCode = "MLM"
+	StationCodeMillsHillManchester               CRSCode = "MIH"
+	StationCodeMilngavie                         CRSCode = "MLN"
+	StationCodeMiltonKeynesCentral               CRSCode = "MKC"
+	StationCodeMinffordd                         CRSCode = "MFF"
+	StationCodeMinster                           CRSCode = "MSR"
+	StationCodeMirfield                          CRSCode = "MIR"
+	StationCodeMistley                           CRSCode = "MIS"
+	StationCodeMitchamEastfields                 CRSCode = "MTC"
+	StationCodeMitchamJunction                   CRSCode = "MIJ"
+	StationCodeMobberley                         CRSCode = "MOB"
+	StationCodeMonifieth                         CRSCode = "MON"
+	StationCodeMonksRisborough                   CRSCode = "MRS"
+	StationCodeMontpelier                        CRSCode = "MTP"
+	StationCodeMontrose                          CRSCode = "MTS"
+	StationCodeMoorfields                        CRSCode = "MRF"
+	StationCodeMoorgate                          CRSCode = "MOG"
+	StationCodeMoorside                          CRSCode = "MSD"
+	StationCodeMoorthorpe                        CRSCode = "MRP"
+	StationCodeMorar                             CRSCode = "MRR"
+	StationCodeMorchardRoad                      CRSCode = "MRD"
+	StationCodeMordenSouth                       CRSCode = "MDS"
+	StationCodeMorecambe                         CRSCode = "MCM"
+	StationCodeMoretonDorset                     CRSCode = "MTN"
+	StationCodeMoretonMerseyside                 CRSCode = "MRT"
+	StationCodeMoretoninMarsh                    CRSCode = "MIM"
+	StationCodeMorfaMawddach                     CRSCode = "MFA"
+	StationCodeMorley                            CRSCode = "MLY"
+	StationCodeMorpeth                           CRSCode = "MPT"
+	StationCodeMortimer                          CRSCode = "MOR"
+	StationCodeMortlake                          CRSCode = "MTL"
+	StationCodeMosesGate                         CRSCode = "MSS"
+	StationCodeMossSide                          CRSCode = "MOS"
+	StationCodeMossleyHill                       CRSCode = "MSH"
+	StationCodeMossleyManchester                 CRSCode = "MSL"
+	StationCodeMosspark                          CRSCode = "MPK"
+	StationCodeMoston                            CRSCode = "MSO"
+	StationCodeMotherwell                        CRSCode = "MTH"
+	StationCodeMotspurPark                       CRSCode = "MOT"
+	StationCodeMottingham                        CRSCode = "MTG"
+	StationCodeMottisfontAndDunbridge            CRSCode = "DBG"
+	StationCodeMouldsworth                       CRSCode = "MLD"
+	StationCodeMoulsecoomb                       CRSCode = "MCB"
+	StationCodeMountFlorida                      CRSCode = "MFL"
+	StationCodeMountVernon                       CRSCode = "MTV"
+	StationCodeMountainAsh                       CRSCode = "MTA"
+	StationCodeMuirend                           CRSCode = "MUI"
+	StationCodeMuirofOrd                         CRSCode = "MOO"
+	StationCodeMusselburgh                       CRSCode = "MUB"
+	StationCodeMytholmroyd                       CRSCode = "MYT"
+	StationCodeNafferton                         CRSCode = "NFN"
+	StationCodeNailseaAndBackwell                CRSCode = "NLS"
+	StationCodeNairn                             CRSCode = "NRN"
+	StationCodeNantwich                          CRSCode = "NAN"
+	StationCodeNarberth                          CRSCode = "NAR"
+	StationCodeNarborough                        CRSCode = "NBR"
+	StationCodeNavigationRoad                    CRSCode = "NVR"
+	StationCodeNeath                             CRSCode = "NTH"
+	StationCodeNeedhamMarket                     CRSCode = "NMT"
+	StationCodeNeilston                          CRSCode = "NEI"
+	StationCodeNelson                            CRSCode = "NEL"
+	StationCodeNeston                            CRSCode = "NES"
+	StationCodeNetherfield                       CRSCode = "NET"
+	StationCodeNethertown                        CRSCode = "NRT"
+	StationCodeNetley                            CRSCode = "NTL"
+	StationCodeNewBarnet                         CRSCode = "NBA"
+	StationCodeNewBeckenham                      CRSCode = "NBC"
+	StationCodeNewBrighton                       CRSCode = "NBN"
+	StationCodeNewClee                           CRSCode = "NCE"
+	StationCodeNewCross                          CRSCode = "NWX"
+	StationCodeNewCrossGate                      CRSCode = "NXG"
+	StationCodeNewCumnock                        CRSCode = "NCK"
+	StationCodeNewEltham                         CRSCode = "NEH"
+	StationCodeNewHolland                        CRSCode = "NHL"
+	StationCodeNewHythe                          CRSCode = "NHE"
+	StationCodeNewLane                           CRSCode = "NLN"
+	StationCodeNewMalden                         CRSCode = "NEM"
+	StationCodeNewMillsCentral                   CRSCode = "NMC"
+	StationCodeNewMillsNewtown                   CRSCode = "NMN"
+	StationCodeNewMilton                         CRSCode = "NWM"
+	StationCodeNewPudsey                         CRSCode = "NPD"
+	StationCodeNewSouthgate                      CRSCode = "NSG"
+	StationCodeNewarkCastle                      CRSCode = "NCT"
+	StationCodeNewarkNorthGate                   CRSCode = "NNG"
+	StationCodeNewbridge                         CRSCode = "NBE"
+	StationCodeNewbury                           CRSCode = "NBY"
+	StationCodeNewburyRacecourse                 CRSCode = "NRC"
+	StationCodeNewcastle                         CRSCode = "NCL"
+	StationCodeNewcourt                          CRSCode = "NCO"
+	StationCodeNewcraighall                      CRSCode = "NEW"
+	StationCodeNewhavenHarbour                   CRSCode = "NVH"
+	StationCodeNewhavenTown                      CRSCode = "NVN"
+	StationCodeNewington                         CRSCode = "NGT"
+	StationCodeNewmarket                         CRSCode = "NMK"
+	StationCodeNewportEssex                      CRSCode = "NWE"
+	StationCodeNewportSouthWales                 CRSCode = "NWP"
+	StationCodeNewquay                           CRSCode = "NQY"
+	StationCodeNewstead                          CRSCode = "NSD"
+	StationCodeNewtonAbbot                       CRSCode = "NTA"
+	StationCodeNewtonAycliffe                    CRSCode = "NAY"
+	StationCodeNewtonLanark                      CRSCode = "NTN"
+	StationCodeNewtonStCyres                     CRSCode = "NTC"
+	StationCodeNewtonforHyde                     CRSCode = "NWN"
+	StationCodeNewtongrange                      CRSCode = "NEG"
+	StationCodeNewtonleWillows                   CRSCode = "NLW"
+	StationCodeNewtonmore                        CRSCode = "NWR"
+	StationCodeNewtononAyr                       CRSCode = "NOA"
+	StationCodeNewtownPowys                      CRSCode = "NWT"
+	StationCodeNinianPark                        CRSCode = "NNP"
+	StationCodeNitshill                          CRSCode = "NIT"
+	StationCodeNorbiton                          CRSCode = "NBT"
+	StationCodeNorbury                           CRSCode = "NRB"
+	StationCodeNormansBay                        CRSCode = "NSB"
+	StationCodeNormanton                         CRSCode = "NOR"
+	StationCodeNorthBerwick                      CRSCode = "NBW"
+	StationCodeNorthCamp                         CRSCode = "NCM"
+	StationCodeNorthDulwich                      CRSCode = "NDL"
+	StationCodeNorthFambridge                    CRSCode = "NFA"
+	StationCodeNorthLlanrwst                     CRSCode = "NLR"
+	StationCodeNorthQueensferry                  CRSCode = "NQU"
+	StationCodeNorthRoadDarlington               CRSCode = "NRD"
+	StationCodeNorthSheen                        CRSCode = "NSH"
+	StationCodeNorthWalsham                      CRSCode = "NWA"
+	StationCodeNorthWembley                      CRSCode = "NWB"
+	StationCodeNorthallerton                     CRSCode = "NTR"
+	StationCodeNorthampton                       CRSCode = "NMP"
+	StationCodeNorthfield                        CRSCode = "NFD"
+	StationCodeNorthfleet                        CRSCode = "NFL"
+	StationCodeNortholtPark                      CRSCode = "NLT"
+	StationCodeNorthumberlandPark                CRSCode = "NUM"
+	StationCodeNorthwich                         CRSCode = "NWI"
+	StationCodeNortonBridge                      CRSCode = "NTB"
+	StationCodeNorwich                           CRSCode = "NRW"
+	StationCodeNorwoodJunction                   CRSCode = "NWD"
+	StationCodeNottingham                        CRSCode = "NOT"
+	StationCodeNuneaton                          CRSCode = "NUN"
+	StationCodeNunhead                           CRSCode = "NHD"
+	StationCodeNunthorpe                         CRSCode = "NNT"
+	StationCodeNutbourne                         CRSCode = "NUT"
+	StationCodeNutfield                          CRSCode = "NUF"
+	StationCodeOakengates                        CRSCode = "OKN"
+	StationCodeOakham                            CRSCode = "OKM"
+	StationCodeOakleighPark                      CRSCode = "OKL"
+	StationCodeOban                              CRSCode = "OBN"
+	StationCodeOckendon                          CRSCode = "OCK"
+	StationCodeOckley                            CRSCode = "OLY"
+	StationCodeOkehampton                        CRSCode = "OKE"
+	StationCodeOldHill                           CRSCode = "OHL"
+	StationCodeOldRoan                           CRSCode = "ORN"
+	StationCodeOldStreet                         CRSCode = "OLD"
+	StationCodeOldfieldPark                      CRSCode = "OLF"
+	StationCodeOlton                             CRSCode = "OLT"
+	StationCodeOre                               CRSCode = "ORE"
+	StationCodeOrmskirk                          CRSCode = "OMS"
+	StationCodeOrpington                         CRSCode = "ORP"
+	StationCodeOrrell                            CRSCode = "ORR"
+	StationCodeOrrellPark                        CRSCode = "OPK"
+	StationCodeOtford                            CRSCode = "OTF"
+	StationCodeOultonBroadNorth                  CRSCode = "OUN"
+	StationCodeOultonBroadSouth                  CRSCode = "OUS"
+	StationCodeOutwood                           CRSCode = "OUT"
+	StationCodeOverpool                          CRSCode = "OVE"
+	StationCodeOverton                           CRSCode = "OVR"
+	StationCodeOxenholmeLakeDistrict             CRSCode = "OXN"
+	StationCodeOxford                            CRSCode = "OXF"
+	StationCodeOxfordParkway                     CRSCode = "OXP"
+	StationCodeOxshott                           CRSCode = "OXS"
+	StationCodeOxted                             CRSCode = "OXT"
+	StationCodePaddockWood                       CRSCode = "PDW"
+	StationCodePadgate                           CRSCode = "PDG"
+	StationCodePaignton                          CRSCode = "PGN"
+	StationCodePaisleyCanal                      CRSCode = "PCN"
+	StationCodePaisleyGilmourStreet              CRSCode = "PYG"
+	StationCodePaisleyStJames                    CRSCode = "PYJ"
+	StationCodePalmersGreen                      CRSCode = "PAL"
+	StationCodePangbourne                        CRSCode = "PAN"
+	StationCodePannal                            CRSCode = "PNL"
+	StationCodePantyffynnon                      CRSCode = "PTF"
+	StationCodePar                               CRSCode = "PAR"
+	StationCodeParbold                           CRSCode = "PBL"
+	StationCodeParkStreet                        CRSCode = "PKT"
+	StationCodeParkstoneDorset                   CRSCode = "PKS"
+	StationCodeParsonStreet                      CRSCode = "PSN"
+	StationCodePartick                           CRSCode = "PTK"
+	StationCodeParton                            CRSCode = "PRN"
+	StationCodePatchway                          CRSCode = "PWY"
+	StationCodePatricroft                        CRSCode = "PAT"
+	StationCodePatterton                         CRSCode = "PTT"
+	StationCodePeartree                          CRSCode = "PEA"
+	StationCodePeckhamRye                        CRSCode = "PMR"
+	StationCodePegswood                          CRSCode = "PEG"
+	StationCodePemberton                         CRSCode = "PEM"
+	StationCodePembreyAndBurryPort               CRSCode = "PBY"
+	StationCodePembroke                          CRSCode = "PMB"
+	StationCodePembrokeDock                      CRSCode = "PMD"
+	StationCodePenally                           CRSCode = "PNA"
+	StationCodePenarth                           CRSCode = "PEN"
+	StationCodePencoed                           CRSCode = "PCD"
+	StationCodePengam                            CRSCode = "PGM"
+	StationCodePengeEast                         CRSCode = "PNE"
+	StationCodePengeWest                         CRSCode = "PNW"
+	StationCodePenhelig                          CRSCode = "PHG"
+	StationCodePenistone                         CRSCode = "PNS"
+	StationCodePenkridge                         CRSCode = "PKG"
+	StationCodePenmaenmawr                       CRSCode = "PMW"
+	StationCodePenmere                           CRSCode = "PNM"
+	StationCodePenrhiwceiber                     CRSCode = "PER"
+	StationCodePenrhyndeudraeth                  CRSCode = "PRH"
+	StationCodePenrithNorthLakes                 CRSCode = "PNR"
+	StationCodePenrynCornwall                    CRSCode = "PYN"
+	StationCodePensarnGwynedd                    CRSCode = "PES"
+	StationCodePenshurst                         CRSCode = "PHR"
+	StationCodePentreBach                        CRSCode = "PTB"
+	StationCodePenyBont                          CRSCode = "PNY"
+	StationCodePenychain                         CRSCode = "PNC"
+	StationCodePenyffordd                        CRSCode = "PNF"
+	StationCodePenzance                          CRSCode = "PNZ"
+	StationCodePerranwell                        CRSCode = "PRW"
+	StationCodePerryBarr                         CRSCode = "PRY"
+	StationCodePershore                          CRSCode = "PSH"
+	StationCodePerth                             CRSCode = "PTH"
+	StationCodePeterborough                      CRSCode = "PBO"
+	StationCodePetersfield                       CRSCode = "PTR"
+	StationCodePettsWood                         CRSCode = "PET"
+	StationCodePevenseyAndWestham                CRSCode = "PEV"
+	StationCodePevenseyBay                       CRSCode = "PEB"
+	StationCodePewsey                            CRSCode = "PEW"
+	StationCodePilning                           CRSCode = "PIL"
+	StationCodePinhoe                            CRSCode = "PIN"
+	StationCodePitlochry                         CRSCode = "PIT"
+	StationCodePitsea                            CRSCode = "PSE"
+	StationCodePleasington                       CRSCode = "PLS"
+	StationCodePlockton                          CRSCode = "PLK"
+	StationCodePluckley                          CRSCode = "PLC"
+	StationCodePlumley                           CRSCode = "PLM"
+	StationCodePlumpton                          CRSCode = "PMP"
+	StationCodePlumstead                         CRSCode = "PLU"
+	StationCodePlymouth                          CRSCode = "PLY"
+	StationCodePokesdown                         CRSCode = "POK"
+	StationCodePolegate                          CRSCode = "PLG"
+	StationCodePolesworth                        CRSCode = "PSW"
+	StationCodePollokshawsEast                   CRSCode = "PWE"
+	StationCodePollokshawsWest                   CRSCode = "PWW"
+	StationCodePollokshieldsEast                 CRSCode = "PLE"
+	StationCodePollokshieldsWest                 CRSCode = "PLW"
+	StationCodePolmont                           CRSCode = "PMT"
+	StationCodePolsloeBridge                     CRSCode = "POL"
+	StationCodePondersEnd                        CRSCode = "PON"
+	StationCodePontarddulais                     CRSCode = "PTD"
+	StationCodePontefractBaghill                 CRSCode = "PFR"
+	StationCodePontefractMonkhill                CRSCode = "PFM"
+	StationCodePontefractTanshelf                CRSCode = "POT"
+	StationCodePontlottyn                        CRSCode = "PLT"
+	StationCodePontyPant                         CRSCode = "PYP"
+	StationCodePontyclun                         CRSCode = "PYC"
+	StationCodePontypoolAndNewInn                CRSCode = "PPL"
+	StationCodePontypridd                        CRSCode = "PPD"
+	StationCodePoole                             CRSCode = "POO"
+	StationCodePoppleton                         CRSCode = "POP"
+	StationCodePortGlasgow                       CRSCode = "PTG"
+	StationCodePortSunlight                      CRSCode = "PSL"
+	StationCodePortTalbotParkway                 CRSCode = "PTA"
+	StationCodePortchester                       CRSCode = "PTC"
+	StationCodePorth                             CRSCode = "POR"
+	StationCodePorthmadog                        CRSCode = "PTM"
+	StationCodePortlethen                        CRSCode = "PLN"
+	StationCodePortslade                         CRSCode = "PLD"
+	StationCodePortsmouthAndSouthsea             CRSCode = "PMS"
+	StationCodePortsmouthArms                    CRSCode = "PMA"
+	StationCodePortsmouthHarbour                 CRSCode = "PMH"
+	StationCodePossilparkAndParkhouse            CRSCode = "PPK"
+	StationCodePottersBar                        CRSCode = "PBR"
+	StationCodePoultonleFylde                    CRSCode = "PFY"
+	StationCodePoynton                           CRSCode = "PYT"
+	StationCodePrees                             CRSCode = "PRS"
+	StationCodePrescot                           CRSCode = "PSC"
+	StationCodePrestatyn                         CRSCode = "PRT"
+	StationCodePrestbury                         CRSCode = "PRB"
+	StationCodePrestonLancs                      CRSCode = "PRE"
+	StationCodePrestonPark                       CRSCode = "PRP"
+	StationCodePrestonpans                       CRSCode = "PST"
+	StationCodePrestwickInternationalAirport     CRSCode = "PRA"
+	StationCodePrestwickTown                     CRSCode = "PTW"
+	StationCodePriesthillAndDarnley              CRSCode = "PTL"
+	StationCodePrincesRisborough                 CRSCode = "PRR"
+	StationCodePrittlewell                       CRSCode = "PRL"
+	StationCodePrudhoe                           CRSCode = "PRU"
+	StationCodePulborough                        CRSCode = "PUL"
+	StationCodePurfleet                          CRSCode = "PFL"
+	StationCodePurley                            CRSCode = "PUR"
+	StationCodePurleyOaks                        CRSCode = "PUO"
+	StationCodePutney                            CRSCode = "PUT"
+	StationCodePwllheli                          CRSCode = "PWL"
+	StationCodePyeCorner                         CRSCode = "PYE"
+	StationCodePyle                              CRSCode = "PYL"
+	StationCodeQuakersYard                       CRSCode = "QYD"
+	StationCodeQueenborough                      CRSCode = "QBR"
+	StationCodeQueensParkGlasgow                 CRSCode = "QPK"
+	StationCodeQueensParkLondon                  CRSCode = "QPW"
+	StationCodeQueensRoadPeckham                 CRSCode = "QRP"
+	StationCodeQueenstownRoadBattersea           CRSCode = "QRB"
+	StationCodeQuintrellDowns                    CRSCode = "QUI"
+	StationCodeRadcliffeonTrent                  CRSCode = "RDF"
+	StationCodeRadlett                           CRSCode = "RDT"
+	StationCodeRadley                            CRSCode = "RAD"
+	StationCodeRadyr                             CRSCode = "RDR"
+	StationCodeRainford                          CRSCode = "RNF"
+	StationCodeRainhamEssex                      CRSCode = "RNM"
+	StationCodeRainhamKent                       CRSCode = "RAI"
+	StationCodeRainhill                          CRSCode = "RNH"
+	StationCodeRamsgate                          CRSCode = "RAM"
+	StationCodeRamsgreaveAndWilpshire            CRSCode = "RGW"
+	StationCodeRannoch                           CRSCode = "RAN"
+	StationCodeRauceby                           CRSCode = "RAU"
+	StationCodeRavenglassforEskdale              CRSCode = "RAV"
+	StationCodeRavensbourne                      CRSCode = "RVB"
+	StationCodeRavensthorpe                      CRSCode = "RVN"
+	StationCodeRawcliffe                         CRSCode = "RWC"
+	StationCodeRayleigh                          CRSCode = "RLG"
+	StationCodeRaynesPark                        CRSCode = "RAY"
+	StationCodeReading                           CRSCode = "RDG"
+	StationCodeReadingWest                       CRSCode = "RDW"
+	StationCodeRectoryRoad                       CRSCode = "REC"
+	StationCodeRedbridge                         CRSCode = "RDB"
+	StationCodeRedcarBritishSteel                CRSCode = "RBS"
+	StationCodeRedcarCentral                     CRSCode = "RCC"
+	StationCodeRedcarEast                        CRSCode = "RCE"
+	StationCodeReddishNorth                      CRSCode = "RDN"
+	StationCodeReddishSouth                      CRSCode = "RDS"
+	StationCodeRedditch                          CRSCode = "RDC"
+	StationCodeRedhill                           CRSCode = "RDH"
+	StationCodeRedland                           CRSCode = "RDA"
+	StationCodeRedruth                           CRSCode = "RED"
+	StationCodeReedhamNorfolk                    CRSCode = "REE"
+	StationCodeReedhamSurrey                     CRSCode = "RHM"
+	StationCodeReigate                           CRSCode = "REI"
+	StationCodeRenton                            CRSCode = "RTN"
+	StationCodeRetford                           CRSCode = "RET"
+	StationCodeRhiwbina                          CRSCode = "RHI"
+	StationCodeRhooseCardiffInternationalAirport CRSCode = "RIA"
+	StationCodeRhosneigr                         CRSCode = "RHO"
+	StationCodeRhyl                              CRSCode = "RHL"
+	StationCodeRhymney                           CRSCode = "RHY"
+	StationCodeRibblehead                        CRSCode = "RHD"
+	StationCodeRiceLane                          CRSCode = "RIL"
+	StationCodeRichmondLondon                    CRSCode = "RMD"
+	StationCodeRickmansworth                     CRSCode = "RIC"
+	StationCodeRiddlesdown                       CRSCode = "RDD"
+	StationCodeRidgmont                          CRSCode = "RID"
+	StationCodeRidingMill                        CRSCode = "RDM"
+	StationCodeRiscaAndPontymister               CRSCode = "RCA"
+	StationCodeRishton                           CRSCode = "RIS"
+	StationCodeRobertsbridge                     CRSCode = "RBR"
+	StationCodeRoby                              CRSCode = "ROB"
+	StationCodeRochdale                          CRSCode = "RCD"
+	StationCodeRoche                             CRSCode = "ROC"
+	StationCodeRochester                         CRSCode = "RTR"
+	StationCodeRochford                          CRSCode = "RFD"
+	StationCodeRockFerry                         CRSCode = "RFY"
+	StationCodeRogart                            CRSCode = "ROG"
+	StationCodeRogerstone                        CRSCode = "ROR"
+	StationCodeRolleston                         CRSCode = "ROL"
+	StationCodeRomanBridge                       CRSCode = "RMB"
+	StationCodeRomford                           CRSCode = "RMF"
+	StationCodeRomiley                           CRSCode = "RML"
+	StationCodeRomsey                            CRSCode = "ROM"
+	StationCodeRoose                             CRSCode = "ROO"
+	StationCodeRoseGrove                         CRSCode = "RSG"
+	StationCodeRoseHillMarple                    CRSCode = "RSH"
+	StationCodeRosyth                            CRSCode = "ROS"
+	StationCodeRotherhamCentral                  CRSCode = "RMC"
+	StationCodeRotherhithe                       CRSCode = "ROE"
+	StationCodeRoughtonRoad                      CRSCode = "RNR"
+	StationCodeRowlandsCastle                    CRSCode = "RLN"
+	StationCodeRowleyRegis                       CRSCode = "ROW"
+	StationCodeRoyBridge                         CRSCode = "RYB"
+	StationCodeRoydon                            CRSCode = "RYN"
+	StationCodeRoyston                           CRSCode = "RYS"
+	StationCodeRuabon                            CRSCode = "RUA"
+	StationCodeRufford                           CRSCode = "RUF"
+	StationCodeRugby                             CRSCode = "RUG"
+	StationCodeRugeleyTown                       CRSCode = "RGT"
+	StationCodeRugeleyTrentValley                CRSCode = "RGL"
+	StationCodeRuncorn                           CRSCode = "RUN"
+	StationCodeRuncornEast                       CRSCode = "RUE"
+	StationCodeRuskington                        CRSCode = "RKT"
+	StationCodeRuswarp                           CRSCode = "RUS"
+	StationCodeRutherglen                        CRSCode = "RUT"
+	StationCodeRydeEsplanade                     CRSCode = "RYD"
+	StationCodeRydePierHead                      CRSCode = "RYP"
+	StationCodeRydeStJohnsRoad                   CRSCode = "RYR"
+	StationCodeRyderBrow                         CRSCode = "RRB"
+	StationCodeRyeHouse                          CRSCode = "RYH"
+	StationCodeRyeSussex                         CRSCode = "RYE"
+	StationCodeSalfordCentral                    CRSCode = "SFD"
+	StationCodeSalfordCrescent                   CRSCode = "SLD"
+	StationCodeSalfordsSurrey                    CRSCode = "SAF"
+	StationCodeSalhouse                          CRSCode = "SAH"
+	StationCodeSalisbury                         CRSCode = "SAL"
+	StationCodeSaltaire                          CRSCode = "SAE"
+	StationCodeSaltash                           CRSCode = "STS"
+	StationCodeSaltburn                          CRSCode = "SLB"
+	StationCodeSaltcoats                         CRSCode = "SLT"
+	StationCodeSaltmarshe                        CRSCode = "SAM"
+	StationCodeSalwick                           CRSCode = "SLW"
+	StationCodeSampfordCourtenay                 CRSCode = "SMC"
+	StationCodeSandalAndAgbrigg                  CRSCode = "SNA"
+	StationCodeSandbach                          CRSCode = "SDB"
+	StationCodeSanderstead                       CRSCode = "SNR"
+	StationCodeSandhills                         CRSCode = "SDL"
+	StationCodeSandhurstBerks                    CRSCode = "SND"
+	StationCodeSandling                          CRSCode = "SDG"
+	StationCodeSandown                           CRSCode = "SAN"
+	StationCodeSandplace                         CRSCode = "SDP"
+	StationCodeSandwellAndDudley                 CRSCode = "SAD"
+	StationCodeSandwich                          CRSCode = "SDW"
+	StationCodeSandy                             CRSCode = "SDY"
+	StationCodeSankeyforPenketh                  CRSCode = "SNK"
+	StationCodeSanquhar                          CRSCode = "SQH"
+	StationCodeSarn                              CRSCode = "SRR"
+	StationCodeSaundersfoot                      CRSCode = "SDF"
+	StationCodeSaunderton                        CRSCode = "SDR"
+	StationCodeSawbridgeworth                    CRSCode = "SAW"
+	StationCodeSaxilby                           CRSCode = "SXY"
+	StationCodeSaxmundham                        CRSCode = "SAX"
+	StationCodeScarborough                       CRSCode = "SCA"
+	StationCodeScotscalder                       CRSCode = "SCT"
+	StationCodeScotstounhill                     CRSCode = "SCH"
+	StationCodeScunthorpe                        CRSCode = "SCU"
+	StationCodeSeaMills                          CRSCode = "SML"
+	StationCodeSeafordSussex                     CRSCode = "SEF"
+	StationCodeSeaforthAndLitherland             CRSCode = "SFL"
+	StationCodeSeaham                            CRSCode = "SEA"
+	StationCodeSeamer                            CRSCode = "SEM"
+	StationCodeSeascale                          CRSCode = "SSC"
+	StationCodeSeatonCarew                       CRSCode = "SEC"
+	StationCodeSeerGreenAndJordans               CRSCode = "SRG"
+	StationCodeSelby                             CRSCode = "SBY"
+	StationCodeSelhurst                          CRSCode = "SRS"
+	StationCodeSellafield                        CRSCode = "SEL"
+	StationCodeSelling                           CRSCode = "SEG"
+	StationCodeSellyOak                          CRSCode = "SLY"
+	StationCodeSettle                            CRSCode = "SET"
+	StationCodeSevenKings                        CRSCode = "SVK"
+	StationCodeSevenSisters                      CRSCode = "SVS"
+	StationCodeSevenoaks                         CRSCode = "SEV"
+	StationCodeSevernBeach                       CRSCode = "SVB"
+	StationCodeSevernTunnelJunction              CRSCode = "STJ"
+	StationCodeShadwell                          CRSCode = "SDE"
+	StationCodeShalfordSurrey                    CRSCode = "SFR"
+	StationCodeShanklin                          CRSCode = "SHN"
+	StationCodeShawfair                          CRSCode = "SFI"
+	StationCodeShawford                          CRSCode = "SHW"
+	StationCodeShawlands                         CRSCode = "SHL"
+	StationCodeSheernessonSea                    CRSCode = "SSS"
+	StationCodeSheffield                         CRSCode = "SHF"
+	StationCodeShelfordCambs                     CRSCode = "SED"
+	StationCodeShenfield                         CRSCode = "SNF"
+	StationCodeShenstone                         CRSCode = "SEN"
+	StationCodeShepherdsBush                     CRSCode = "SPB"
+	StationCodeShepherdsWell                     CRSCode = "SPH"
+	StationCodeShepley                           CRSCode = "SPY"
+	StationCodeShepperton                        CRSCode = "SHP"
+	StationCodeShepreth                          CRSCode = "STH"
+	StationCodeSherborne                         CRSCode = "SHE"
+	StationCodeSherburninElmet                   CRSCode = "SIE"
+	StationCodeSheringham                        CRSCode = "SHM"
+	StationCodeShettleston                       CRSCode = "SLS"
+	StationCodeShieldmuir                        CRSCode = "SDM"
+	StationCodeShifnal                           CRSCode = "SFN"
+	StationCodeShildon                           CRSCode = "SHD"
+	StationCodeShiplake                          CRSCode = "SHI"
+	StationCodeShipleyYorks                      CRSCode = "SHY"
+	StationCodeShippeaHill                       CRSCode = "SPP"
+	StationCodeShipton                           CRSCode = "SIP"
+	StationCodeShirebrook                        CRSCode = "SHB"
+	StationCodeShirehampton                      CRSCode = "SHH"
+	StationCodeShireoaks                         CRSCode = "SRO"
+	StationCodeShirley                           CRSCode = "SRL"
+	StationCodeShoeburyness                      CRSCode = "SRY"
+	StationCodeSholing                           CRSCode = "SHO"
+	StationCodeShoreditchHighStreet              CRSCode = "SDC"
+	StationCodeShorehamKent                      CRSCode = "SEH"
+	StationCodeShorehambySea                     CRSCode = "SSE"
+	StationCodeShortlands                        CRSCode = "SRT"
+	StationCodeShotton                           CRSCode = "SHT"
+	StationCodeShotts                            CRSCode = "SHS"
+	StationCodeShrewsbury                        CRSCode = "SHR"
+	StationCodeSidcup                            CRSCode = "SID"
+	StationCodeSileby                            CRSCode = "SIL"
+	StationCodeSilecroft                         CRSCode = "SIC"
+	StationCodeSilkstoneCommon                   CRSCode = "SLK"
+	StationCodeSilverStreet                      CRSCode = "SLV"
+	StationCodeSilverdale                        CRSCode = "SVR"
+	StationCodeSinger                            CRSCode = "SIN"
+	StationCodeSittingbourne                     CRSCode = "SIT"
+	StationCodeSkegness                          CRSCode = "SKG"
+	StationCodeSkewen                            CRSCode = "SKE"
+	StationCodeSkipton                           CRSCode = "SKI"
+	StationCodeSladeGreen                        CRSCode = "SGR"
+	StationCodeSlaithwaite                       CRSCode = "SWT"
+	StationCodeSlateford                         CRSCode = "SLA"
+	StationCodeSleaford                          CRSCode = "SLR"
+	StationCodeSleights                          CRSCode = "SLH"
+	StationCodeSlough                            CRSCode = "SLO"
+	StationCodeSmallHeath                        CRSCode = "SMA"
+	StationCodeSmallbrookJunction                CRSCode = "SAB"
+	StationCodeSmethwickGaltonBridge             CRSCode = "SGB"
+	StationCodeSmethwickRolfeStreet              CRSCode = "SMR"
+	StationCodeSmithyBridge                      CRSCode = "SMB"
+	StationCodeSnaith                            CRSCode = "SNI"
+	StationCodeSnodland                          CRSCode = "SDA"
+	StationCodeSnowdown                          CRSCode = "SWO"
+	StationCodeSoleStreet                        CRSCode = "SOR"
+	StationCodeSolihull                          CRSCode = "SOL"
+	StationCodeSomerleyton                       CRSCode = "SYT"
+	StationCodeSouthActon                        CRSCode = "SAT"
+	StationCodeSouthBank                         CRSCode = "SBK"
+	StationCodeSouthBermondsey                   CRSCode = "SBM"
+	StationCodeSouthCroydon                      CRSCode = "SCY"
+	StationCodeSouthElmsall                      CRSCode = "SES"
+	StationCodeSouthGreenford                    CRSCode = "SGN"
+	StationCodeSouthGyle                         CRSCode = "SGL"
+	StationCodeSouthHampstead                    CRSCode = "SOH"
+	StationCodeSouthKenton                       CRSCode = "SOK"
+	StationCodeSouthMerton                       CRSCode = "SMO"
+	StationCodeSouthMilford                      CRSCode = "SOM"
+	StationCodeSouthRuislip                      CRSCode = "SRU"
+	StationCodeSouthTottenham                    CRSCode = "STO"
+	StationCodeSouthWigston                      CRSCode = "SWS"
+	StationCodeSouthWoodhamFerrers               CRSCode = "SOF"
+	StationCodeSouthall                          CRSCode = "STL"
+	StationCodeSouthamptonAirportParkway         CRSCode = "SOA"
+	StationCodeSouthamptonCentral                CRSCode = "SOU"
+	StationCodeSouthbourne                       CRSCode = "SOB"
+	StationCodeSouthbury                         CRSCode = "SBU"
+	StationCodeSouthease                         CRSCode = "SEE"
+	StationCodeSouthendAirport                   CRSCode = "SIA"
+	StationCodeSouthendCentral                   CRSCode = "SOC"
+	StationCodeSouthendEast                      CRSCode = "SOE"
+	StationCodeSouthendVictoria                  CRSCode = "SOV"
+	StationCodeSouthminster                      CRSCode = "SMN"
+	StationCodeSouthport                         CRSCode = "SOP"
+	StationCodeSouthwick                         CRSCode = "SWK"
+	StationCodeSowerbyBridge                     CRSCode = "SOW"
+	StationCodeSpalding                          CRSCode = "SPA"
+	StationCodeSpeanBridge                       CRSCode = "SBR"
+	StationCodeSpital                            CRSCode = "SPI"
+	StationCodeSpondon                           CRSCode = "SPO"
+	StationCodeSpoonerRow                        CRSCode = "SPN"
+	StationCodeSpringRoad                        CRSCode = "SRI"
+	StationCodeSpringburn                        CRSCode = "SPR"
+	StationCodeSpringfield                       CRSCode = "SPF"
+	StationCodeSquiresGate                       CRSCode = "SQU"
+	StationCodeStAlbansAbbey                     CRSCode = "SAA"
+	StationCodeStAlbansCity                      CRSCode = "SAC"
+	StationCodeStAndrewsRoad                     CRSCode = "SAR"
+	StationCodeStAnnesonSea                      CRSCode = "SAS"
+	StationCodeStAustell                         CRSCode = "SAU"
+	StationCodeStBees                            CRSCode = "SBS"
+	StationCodeStBudeauxFerryRoad                CRSCode = "SBF"
+	StationCodeStBudeauxVictoriaRoad             CRSCode = "SBV"
+	StationCodeStColumbRoad                      CRSCode = "SCR"
+	StationCodeStDenys                           CRSCode = "SDN"
+	StationCodeStErth                            CRSCode = "SER"
+	StationCodeStGermans                         CRSCode = "SGM"
+	StationCodeStHelensCentral                   CRSCode = "SNH"
+	StationCodeStHelensJunction                  CRSCode = "SHJ"
+	StationCodeStHelierSurrey                    CRSCode = "SIH"
+	StationCodeStIvesCornwall                    CRSCode = "SIV"
+	StationCodeStJamesParkExeter                 CRSCode = "SJP"
+	StationCodeStJamesStreetWalthamstow          CRSCode = "SJS"
+	StationCodeStJohnsLondon                     CRSCode = "SAJ"
+	StationCodeStKeyneWishingWellHalt            CRSCode = "SKN"
+	StationCodeStLeonardsWarriorSquare           CRSCode = "SLQ"
+	StationCodeStMargaretsHerts                  CRSCode = "SMT"
+	StationCodeStMargaretsLondon                 CRSCode = "SMG"
+	StationCodeStMaryCray                        CRSCode = "SMY"
+	StationCodeStMichaels                        CRSCode = "STM"
+	StationCodeStNeots                           CRSCode = "SNO"
+	StationCodeStafford                          CRSCode = "STA"
+	StationCodeStaines                           CRSCode = "SNS"
+	StationCodeStallingborough                   CRSCode = "SLL"
+	StationCodeStalybridge                       CRSCode = "SYB"
+	StationCodeStamfordHill                      CRSCode = "SMH"
+	StationCodeStamfordLincs                     CRSCode = "SMD"
+	StationCodeStanfordleHope                    CRSCode = "SFO"
+	StationCodeStanlowAndThornton                CRSCode = "SNT"
+	StationCodeStanstedAirport                   CRSCode = "SSD"
+	StationCodeStanstedMountfitchet              CRSCode = "SST"
+	StationCodeStaplehurst                       CRSCode = "SPU"
+	StationCodeStapletonRoad                     CRSCode = "SRD"
+	StationCodeStarbeck                          CRSCode = "SBE"
+	StationCodeStarcross                         CRSCode = "SCS"
+	StationCodeStaveleyCumbria                   CRSCode = "SVL"
+	StationCodeStechford                         CRSCode = "SCF"
+	StationCodeSteetonAndSilsden                 CRSCode = "SON"
+	StationCodeStepps                            CRSCode = "SPS"
+	StationCodeStevenage                         CRSCode = "SVG"
+	StationCodeStevenston                        CRSCode = "STV"
+	StationCodeStewartby                         CRSCode = "SWR"
+	StationCodeStewarton                         CRSCode = "STT"
+	StationCodeStirling                          CRSCode = "STG"
+	StationCodeStockport                         CRSCode = "SPT"
+	StationCodeStocksfield                       CRSCode = "SKS"
+	StationCodeStocksmoor                        CRSCode = "SSM"
+	StationCodeStockton                          CRSCode = "STK"
+	StationCodeStokeMandeville                   CRSCode = "SKM"
+	StationCodeStokeNewington                    CRSCode = "SKW"
+	StationCodeStokeonTrent                      CRSCode = "SOT"
+	StationCodeStoneCrossing                     CRSCode = "SCG"
+	StationCodeStoneStaffs                       CRSCode = "SNE"
+	StationCodeStonebridgePark                   CRSCode = "SBP"
+	StationCodeStonegate                         CRSCode = "SOG"
+	StationCodeStonehaven                        CRSCode = "STN"
+	StationCodeStonehouse                        CRSCode = "SHU"
+	StationCodeStoneleigh                        CRSCode = "SNL"
+	StationCodeStourbridgeJunction               CRSCode = "SBJ"
+	StationCodeStourbridgeTown                   CRSCode = "SBT"
+	StationCodeStow                              CRSCode = "SOI"
+	StationCodeStowmarket                        CRSCode = "SMK"
+	StationCodeStranraer                         CRSCode = "STR"
+	StationCodeStratfordInternational            CRSCode = "SFA"
+	StationCodeStratfordLondon                   CRSCode = "SRA"
+	StationCodeStratfordUponAvon                 CRSCode = "SAV"
+	StationCodeStratfordUponAvonParkway          CRSCode = "STY"
+	StationCodeStrathcarron                      CRSCode = "STC"
+	StationCodeStrawberryHill                    CRSCode = "STW"
+	StationCodeStreathamCommon                   CRSCode = "SRC"
+	StationCodeStreathamGreaterLondon            CRSCode = "STE"
+	StationCodeStreathamHill                     CRSCode = "SRH"
+	StationCodeStreethouse                       CRSCode = "SHC"
+	StationCodeStrines                           CRSCode = "SRN"
+	StationCodeStromeferry                       CRSCode = "STF"
+	StationCodeStroodKent                        CRSCode = "SOO"
+	StationCodeStroudGloucs                      CRSCode = "STD"
+	StationCodeSturry                            CRSCode = "STU"
+	StationCodeStyal                             CRSCode = "SYA"
+	StationCodeSudburyAndHarrowRoad              CRSCode = "SUD"
+	StationCodeSudburyHillHarrow                 CRSCode = "SDH"
+	StationCodeSudburySuffolk                    CRSCode = "SUY"
+	StationCodeSugarLoaf                         CRSCode = "SUG"
+	StationCodeSummerston                        CRSCode = "SUM"
+	StationCodeSunbury                           CRSCode = "SUU"
+	StationCodeSunderland                        CRSCode = "SUN"
+	StationCodeSundridgePark                     CRSCode = "SUP"
+	StationCodeSunningdale                       CRSCode = "SNG"
+	StationCodeSunnymeads                        CRSCode = "SNY"
+	StationCodeSurbiton                          CRSCode = "SUR"
+	StationCodeSurreyQuays                       CRSCode = "SQE"
+	StationCodeSuttonColdfield                   CRSCode = "SUT"
+	StationCodeSuttonCommon                      CRSCode = "SUC"
+	StationCodeSuttonParkway                     CRSCode = "SPK"
+	StationCodeSuttonSurrey                      CRSCode = "SUO"
+	StationCodeSwale                             CRSCode = "SWL"
+	StationCodeSwanley                           CRSCode = "SAY"
+	StationCodeSwanscombe                        CRSCode = "SWM"
+	StationCodeSwansea                           CRSCode = "SWA"
+	StationCodeSwanwick                          CRSCode = "SNW"
+	StationCodeSway                              CRSCode = "SWY"
+	StationCodeSwaythling                        CRSCode = "SWG"
+	StationCodeSwinderby                         CRSCode = "SWD"
+	StationCodeSwindonWilts                      CRSCode = "SWI"
+	StationCodeSwineshead                        CRSCode = "SWE"
+	StationCodeSwintonManchester                 CRSCode = "SNN"
+	StationCodeSwintonSouthYorks                 CRSCode = "SWN"
+	StationCodeSydenhamHill                      CRSCode = "SYH"
+	StationCodeSydenhamLondon                    CRSCode = "SYD"
+	StationCodeSyonLane                          CRSCode = "SYL"
+	StationCodeSyston                            CRSCode = "SYS"
+	StationCodeTackley                           CRSCode = "TAC"
+	StationCodeTadworth                          CRSCode = "TAD"
+	StationCodeTaffsWell                         CRSCode = "TAF"
+	StationCodeTain                              CRSCode = "TAI"
+	StationCodeTalsarnau                         CRSCode = "TAL"
+	StationCodeTalyCafn                          CRSCode = "TLC"
+	StationCodeTalybont                          CRSCode = "TLB"
+	StationCodeTameBridgeParkway                 CRSCode = "TAB"
+	StationCodeTamworth                          CRSCode = "TAM"
+	StationCodeTaplow                            CRSCode = "TAP"
+	StationCodeTattenhamCorner                   CRSCode = "TAT"
+	StationCodeTaunton                           CRSCode = "TAU"
+	StationCodeTaynuilt                          CRSCode = "TAY"
+	StationCodeTeddington                        CRSCode = "TED"
+	StationCodeTeessideAirport                   CRSCode = "TEA"
+	StationCodeTeignmouth                        CRSCode = "TGM"
+	StationCodeTelfordCentral                    CRSCode = "TFC"
+	StationCodeTemplecombe                       CRSCode = "TMC"
+	StationCodeTenby                             CRSCode = "TEN"
+	StationCodeTeynham                           CRSCode = "TEY"
+	StationCodeThamesDitton                      CRSCode = "THD"
+	StationCodeThatcham                          CRSCode = "THA"
+	StationCodeThattoHeath                       CRSCode = "THH"
+	StationCodeTheHawthorns                      CRSCode = "THW"
+	StationCodeTheLakesWarks                     CRSCode = "TLK"
+	StationCodeTheale                            CRSCode = "THE"
+	StationCodeTheobaldsGrove                    CRSCode = "TEO"
+	StationCodeThetford                          CRSCode = "TTF"
+	StationCodeThirsk                            CRSCode = "THI"
+	StationCodeThornaby                          CRSCode = "TBY"
+	StationCodeThorneNorth                       CRSCode = "TNN"
+	StationCodeThorneSouth                       CRSCode = "TNS"
+	StationCodeThornford                         CRSCode = "THO"
+	StationCodeThornliebank                      CRSCode = "THB"
+	StationCodeThorntonAbbey                     CRSCode = "TNA"
+	StationCodeThorntonHeath                     CRSCode = "TTH"
+	StationCodeThorntonhall                      CRSCode = "THT"
+	StationCodeThorpeBay                         CRSCode = "TPB"
+	StationCodeThorpeCulvert                     CRSCode = "TPC"
+	StationCodeThorpeleSoken                     CRSCode = "TLS"
+	StationCodeThreeBridges                      CRSCode = "TBD"
+	StationCodeThreeOaks                         CRSCode = "TOK"
+	StationCodeThurgarton                        CRSCode = "THU"
+	StationCodeThurnscoe                         CRSCode = "THC"
+	StationCodeThurso                            CRSCode = "THS"
+	StationCodeThurston                          CRSCode = "TRS"
+	StationCodeTilburyTown                       CRSCode = "TIL"
+	StationCodeTileHill                          CRSCode = "THL"
+	StationCodeTilehurst                         CRSCode = "TLH"
+	StationCodeTipton                            CRSCode = "TIP"
+	StationCodeTirPhil                           CRSCode = "TIR"
+	StationCodeTisbury                           CRSCode = "TIS"
+	StationCodeTivertonParkway                   CRSCode = "TVP"
+	StationCodeTodmorden                         CRSCode = "TOD"
+	StationCodeTolworth                          CRSCode = "TOL"
+	StationCodeTonPentre                         CRSCode = "TPN"
+	StationCodeTonbridge                         CRSCode = "TON"
+	StationCodeTondu                             CRSCode = "TDU"
+	StationCodeTonfanau                          CRSCode = "TNF"
+	StationCodeTonypandy                         CRSCode = "TNP"
+	StationCodeTooting                           CRSCode = "TOO"
+	StationCodeTopsham                           CRSCode = "TOP"
+	StationCodeTorquay                           CRSCode = "TQY"
+	StationCodeTorre                             CRSCode = "TRR"
+	StationCodeTotnes                            CRSCode = "TOT"
+	StationCodeTottenhamHale                     CRSCode = "TOM"
+	StationCodeTotton                            CRSCode = "TTN"
+	StationCodeTownGreen                         CRSCode = "TWN"
+	StationCodeTraffordPark                      CRSCode = "TRA"
+	StationCodeTrefforest                        CRSCode = "TRF"
+	StationCodeTrefforestEstate                  CRSCode = "TRE"
+	StationCodeTrehafod                          CRSCode = "TRH"
+	StationCodeTreherbert                        CRSCode = "TRB"
+	StationCodeTreorchy                          CRSCode = "TRY"
+	StationCodeTrimley                           CRSCode = "TRM"
+	StationCodeTring                             CRSCode = "TRI"
+	StationCodeTroedyrhiw                        CRSCode = "TRD"
+	StationCodeTroon                             CRSCode = "TRN"
+	StationCodeTrowbridge                        CRSCode = "TRO"
+	StationCodeTruro                             CRSCode = "TRU"
+	StationCodeTulloch                           CRSCode = "TUL"
+	StationCodeTulseHill                         CRSCode = "TUH"
+	StationCodeTunbridgeWells                    CRSCode = "TBW"
+	StationCodeTurkeyStreet                      CRSCode = "TUR"
+	StationCodeTutburyAndHatton                  CRSCode = "TUT"
+	StationCodeTweedbank                         CRSCode = "TWB"
+	StationCodeTwickenham                        CRSCode = "TWI"
+	StationCodeTwyford                           CRSCode = "TWY"
+	StationCodeTyCroes                           CRSCode = "TYC"
+	StationCodeTyGlas                            CRSCode = "TGS"
+	StationCodeTygwyn                            CRSCode = "TYG"
+	StationCodeTyndrumLower                      CRSCode = "TYL"
+	StationCodeTyseley                           CRSCode = "TYS"
+	StationCodeTywyn                             CRSCode = "TYW"
+	StationCodeUckfield                          CRSCode = "UCK"
+	StationCodeUddingston                        CRSCode = "UDD"
+	StationCodeUlceby                            CRSCode = "ULC"
+	StationCodeUlleskelf                         CRSCode = "ULL"
+	StationCodeUlverston                         CRSCode = "ULV"
+	StationCodeUmberleigh                        CRSCode = "UMB"
+	StationCodeUniversityBirmingham              CRSCode = "UNI"
+	StationCodeUphall                            CRSCode = "UHA"
+	StationCodeUpholland                         CRSCode = "UPL"
+	StationCodeUpminster                         CRSCode = "UPM"
+	StationCodeUpperHalliford                    CRSCode = "UPH"
+	StationCodeUpperHolloway                     CRSCode = "UHL"
+	StationCodeUpperTyndrum                      CRSCode = "UTY"
+	StationCodeUpperWarlingham                   CRSCode = "UWL"
+	StationCodeUptonMerseyside                   CRSCode = "UPT"
+	StationCodeUpwey                             CRSCode = "UPW"
+	StationCodeUrmston                           CRSCode = "URM"
+	StationCodeUttoxeter                         CRSCode = "UTT"
+	StationCodeValley                            CRSCode = "VAL"
+	StationCodeVauxhall                          CRSCode = "VXH"
+	StationCodeVirginiaWater                     CRSCode = "VIR"
+	StationCodeWaddon                            CRSCode = "WDO"
+	StationCodeWadhurst                          CRSCode = "WAD"
+	StationCodeWainfleet                         CRSCode = "WFL"
+	StationCodeWakefieldKirkgate                 CRSCode = "WKK"
+	StationCodeWakefieldWestgate                 CRSCode = "WKF"
+	StationCodeWalkden                           CRSCode = "WKD"
+	StationCodeWallaseyGroveRoad                 CRSCode = "WLG"
+	StationCodeWallaseyVillage                   CRSCode = "WLV"
+	StationCodeWallington                        CRSCode = "WLT"
+	StationCodeWallyford                         CRSCode = "WAF"
+	StationCodeWalmer                            CRSCode = "WAM"
+	StationCodeWalsall                           CRSCode = "WSL"
+	StationCodeWalsden                           CRSCode = "WDN"
+	StationCodeWalthamCross                      CRSCode = "WLC"
+	StationCodeWalthamstowCentral                CRSCode = "WHC"
+	StationCodeWalthamstowQueensRoad             CRSCode = "WMW"
+	StationCodeWaltonMerseyside                  CRSCode = "WAO"
+	StationCodeWaltononThames                    CRSCode = "WAL"
+	StationCodeWaltonontheNaze                   CRSCode = "WON"
+	StationCodeWanborough                        CRSCode = "WAN"
+	StationCodeWandsworthCommon                  CRSCode = "WSW"
+	StationCodeWandsworthRoad                    CRSCode = "WWR"
+	StationCodeWandsworthTown                    CRSCode = "WNT"
+	StationCodeWansteadPark                      CRSCode = "WNP"
+	StationCodeWapping                           CRSCode = "WPE"
+	StationCodeWarblington                       CRSCode = "WBL"
+	StationCodeWareHerts                         CRSCode = "WAR"
+	StationCodeWarehamDorset                     CRSCode = "WRM"
+	StationCodeWargrave                          CRSCode = "WGV"
+	StationCodeWarminster                        CRSCode = "WMN"
+	StationCodeWarnham                           CRSCode = "WNH"
+	StationCodeWarringtonBankQuay                CRSCode = "WBQ"
+	StationCodeWarringtonCentral                 CRSCode = "WAC"
+	StationCodeWarwick                           CRSCode = "WRW"
+	StationCodeWarwickParkway                    CRSCode = "WRP"
+	StationCodeWaterOrton                        CRSCode = "WTO"
+	StationCodeWaterbeach                        CRSCode = "WBC"
+	StationCodeWateringbury                      CRSCode = "WTR"
+	StationCodeWaterlooMerseyside                CRSCode = "WLO"
+	StationCodeWatfordHighStreet                 CRSCode = "WFH"
+	StationCodeWatfordJunction                   CRSCode = "WFJ"
+	StationCodeWatfordNorth                      CRSCode = "WFN"
+	StationCodeWatlington                        CRSCode = "WTG"
+	StationCodeWattonatStone                     CRSCode = "WAS"
+	StationCodeWaunGronPark                      CRSCode = "WNG"
+	StationCodeWavertreeTechnologyPark           CRSCode = "WAV"
+	StationCodeWedgwood                          CRSCode = "WED"
+	StationCodeWeeley                            CRSCode = "WEE"
+	StationCodeWeeton                            CRSCode = "WET"
+	StationCodeWelhamGreen                       CRSCode = "WMG"
+	StationCodeWelling                           CRSCode = "WLI"
+	StationCodeWellingborough                    CRSCode = "WEL"
+	StationCodeWellingtonShropshire              CRSCode = "WLN"
+	StationCodeWelshpool                         CRSCode = "WLP"
+	StationCodeWelwynGardenCity                  CRSCode = "WGC"
+	StationCodeWelwynNorth                       CRSCode = "WLW"
+	StationCodeWem                               CRSCode = "WEM"
+	StationCodeWembleyCentral                    CRSCode = "WMB"
+	StationCodeWembleyStadium                    CRSCode = "WCX"
+	StationCodeWemyssBay                         CRSCode = "WMS"
+	StationCodeWendover                          CRSCode = "WND"
+	StationCodeWennington                        CRSCode = "WNN"
+	StationCodeWestAllerton                      CRSCode = "WSA"
+	StationCodeWestBrompton                      CRSCode = "WBP"
+	StationCodeWestByfleet                       CRSCode = "WBY"
+	StationCodeWestCalder                        CRSCode = "WCL"
+	StationCodeWestCroydon                       CRSCode = "WCY"
+	StationCodeWestDrayton                       CRSCode = "WDT"
+	StationCodeWestDulwich                       CRSCode = "WDU"
+	StationCodeWestEaling                        CRSCode = "WEA"
+	StationCodeWestHam                           CRSCode = "WEH"
+	StationCodeWestHampstead                     CRSCode = "WHD"
+	StationCodeWestHampsteadThameslink           CRSCode = "WHP"
+	StationCodeWestHorndon                       CRSCode = "WHR"
+	StationCodeWestKilbride                      CRSCode = "WKB"
+	StationCodeWestKirby                         CRSCode = "WKI"
+	StationCodeWestMalling                       CRSCode = "WMA"
+	StationCodeWestNorwood                       CRSCode = "WNW"
+	StationCodeWestRuislip                       CRSCode = "WRU"
+	StationCodeWestRunton                        CRSCode = "WRN"
+	StationCodeWestStLeonards                    CRSCode = "WLD"
+	StationCodeWestSutton                        CRSCode = "WSU"
+	StationCodeWestWickham                       CRSCode = "WWI"
+	StationCodeWestWorthing                      CRSCode = "WWO"
+	StationCodeWestburyWilts                     CRSCode = "WSB"
+	StationCodeWestcliff                         CRSCode = "WCF"
+	StationCodeWestcombePark                     CRSCode = "WCB"
+	StationCodeWestenhanger                      CRSCode = "WHA"
+	StationCodeWesterHailes                      CRSCode = "WTA"
+	StationCodeWesterfield                       CRSCode = "WFI"
+	StationCodeWesterton                         CRSCode = "WES"
+	StationCodeWestgateonSea                     CRSCode = "WGA"
+	StationCodeWesthoughton                      CRSCode = "WHG"
+	StationCodeWestonMilton                      CRSCode = "WNM"
+	StationCodeWestonsuperMare                   CRSCode = "WSM"
+	StationCodeWetheral                          CRSCode = "WRL"
+	StationCodeWeybridge                         CRSCode = "WYB"
+	StationCodeWeymouth                          CRSCode = "WEY"
+	StationCodeWhaleyBridge                      CRSCode = "WBR"
+	StationCodeWhalleyLancs                      CRSCode = "WHE"
+	StationCodeWhatstandwell                     CRSCode = "WTS"
+	StationCodeWhifflet                          CRSCode = "WFF"
+	StationCodeWhimple                           CRSCode = "WHM"
+	StationCodeWhinhill                          CRSCode = "WNL"
+	StationCodeWhiston                           CRSCode = "WHN"
+	StationCodeWhitby                            CRSCode = "WTB"
+	StationCodeWhitchurchCardiff                 CRSCode = "WHT"
+	StationCodeWhitchurchHants                   CRSCode = "WCH"
+	StationCodeWhitchurchShropshire              CRSCode = "WTC"
+	StationCodeWhiteHartLane                     CRSCode = "WHL"
+	StationCodeWhiteNotley                       CRSCode = "WNY"
+	StationCodeWhitechapel                       CRSCode = "ZLW"
+	StationCodeWhitecraigs                       CRSCode = "WCR"
+	StationCodeWhitehaven                        CRSCode = "WTH"
+	StationCodeWhitland                          CRSCode = "WTL"
+	StationCodeWhitleyBridge                     CRSCode = "WBD"
+	StationCodeWhitlocksEnd                      CRSCode = "WTE"
+	StationCodeWhitstable                        CRSCode = "WHI"
+	StationCodeWhittlesea                        CRSCode = "WLE"
+	StationCodeWhittlesfordParkway               CRSCode = "WLF"
+	StationCodeWhittonLondon                     CRSCode = "WTN"
+	StationCodeWhitwellDerbyshire                CRSCode = "WWL"
+	StationCodeWhyteleafe                        CRSCode = "WHY"
+	StationCodeWhyteleafeSouth                   CRSCode = "WHS"
+	StationCodeWick                              CRSCode = "WCK"
+	StationCodeWickford                          CRSCode = "WIC"
+	StationCodeWickhamMarket                     CRSCode = "WCM"
+	StationCodeWiddrington                       CRSCode = "WDD"
+	StationCodeWidnes                            CRSCode = "WID"
+	StationCodeWidneyManor                       CRSCode = "WMR"
+	StationCodeWiganNorthWestern                 CRSCode = "WGN"
+	StationCodeWiganWallgate                     CRSCode = "WGW"
+	StationCodeWigton                            CRSCode = "WGT"
+	StationCodeWildmill                          CRSCode = "WMI"
+	StationCodeWillesdenJunction                 CRSCode = "WIJ"
+	StationCodeWilliamwood                       CRSCode = "WLM"
+	StationCodeWillington                        CRSCode = "WIL"
+	StationCodeWilmcote                          CRSCode = "WMC"
+	StationCodeWilmslow                          CRSCode = "WML"
+	StationCodeWilnecoteStaffs                   CRSCode = "WNE"
+	StationCodeWimbledon                         CRSCode = "WIM"
+	StationCodeWimbledonChase                    CRSCode = "WBO"
+	StationCodeWinchelsea                        CRSCode = "WSE"
+	StationCodeWinchester                        CRSCode = "WIN"
+	StationCodeWinchfield                        CRSCode = "WNF"
+	StationCodeWinchmoreHill                     CRSCode = "WIH"
+	StationCodeWindermere                        CRSCode = "WDM"
+	StationCodeWindsorAndEtonCentral             CRSCode = "WNC"
+	StationCodeWindsorAndEtonRiverside           CRSCode = "WNR"
+	StationCodeWinnersh                          CRSCode = "WNS"
+	StationCodeWinnershTriangle                  CRSCode = "WTI"
+	StationCodeWinsford                          CRSCode = "WSF"
+	StationCodeWishaw                            CRSCode = "WSH"
+	StationCodeWitham                            CRSCode = "WTM"
+	StationCodeWitley                            CRSCode = "WTY"
+	StationCodeWittonWestMidlands                CRSCode = "WTT"
+	StationCodeWivelsfield                       CRSCode = "WVF"
+	StationCodeWivenhoe                          CRSCode = "WIV"
+	StationCodeWoburnSands                       CRSCode = "WOB"
+	StationCodeWoking                            CRSCode = "WOK"
+	StationCodeWokingham                         CRSCode = "WKM"
+	StationCodeWoldingham                        CRSCode = "WOH"
+	StationCodeWolverhampton                     CRSCode = "WVH"
+	StationCodeWolverton                         CRSCode = "WOL"
+	StationCodeWombwell                          CRSCode = "WOM"
+	StationCodeWoodEnd                           CRSCode = "WDE"
+	StationCodeWoodStreet                        CRSCode = "WST"
+	StationCodeWoodbridge                        CRSCode = "WDB"
+	StationCodeWoodgrangePark                    CRSCode = "WGR"
+	StationCodeWoodhall                          CRSCode = "WDL"
+	StationCodeWoodhouse                         CRSCode = "WDH"
+	StationCodeWoodlesford                       CRSCode = "WDS"
+	StationCodeWoodley                           CRSCode = "WLY"
+	StationCodeWoodmansterne                     CRSCode = "WME"
+	StationCodeWoodsmoor                         CRSCode = "WSR"
+	StationCodeWool                              CRSCode = "WOO"
+	StationCodeWoolston                          CRSCode = "WLS"
+	StationCodeWoolwichArsenal                   CRSCode = "WWA"
+	StationCodeWoolwichDockyard                  CRSCode = "WWD"
+	StationCodeWoottonWawen                      CRSCode = "WWW"
+	StationCodeWorcesterForegateStreet           CRSCode = "WOF"
+	StationCodeWorcesterPark                     CRSCode = "WCP"
+	StationCodeWorcesterShrubHill                CRSCode = "WOS"
+	StationCodeWorkington                        CRSCode = "WKG"
+	StationCodeWorksop                           CRSCode = "WRK"
+	StationCodeWorle                             CRSCode = "WOR"
+	StationCodeWorplesdon                        CRSCode = "WPL"
+	StationCodeWorstead                          CRSCode = "WRT"
+	StationCodeWorthing                          CRSCode = "WRH"
+	StationCodeWrabness                          CRSCode = "WRB"
+	StationCodeWraysbury                         CRSCode = "WRY"
+	StationCodeWrenbury                          CRSCode = "WRE"
+	StationCodeWressle                           CRSCode = "WRS"
+	StationCodeWrexhamCentral                    CRSCode = "WXC"
+	StationCodeWrexhamGeneral                    CRSCode = "WRX"
+	StationCodeWye                               CRSCode = "WYE"
+	StationCodeWylam                             CRSCode = "WYM"
+	StationCodeWyldeGreen                        CRSCode = "WYL"
+	StationCodeWymondham                         CRSCode = "WMD"
+	StationCodeWythall                           CRSCode = "WYT"
+	StationCodeYalding                           CRSCode = "YAL"
+	StationCodeYardleyWood                       CRSCode = "YRD"
+	StationCodeYarm                              CRSCode = "YRM"
+	StationCodeYate                              CRSCode = "YAE"
+	StationCodeYatton                            CRSCode = "YAT"
+	StationCodeYeoford                           CRSCode = "YEO"
+	StationCodeYeovilJunction                    CRSCode = "YVJ"
+	StationCodeYeovilPenMill                     CRSCode = "YVP"
+	StationCodeYetminster                        CRSCode = "YET"
+	StationCodeYnyswen                           CRSCode = "YNW"
+	StationCodeYoker                             CRSCode = "YOK"
+	StationCodeYork                              CRSCode = "YRK"
+	StationCodeYorton                            CRSCode = "YRT"
+	StationCodeYstradMynach                      CRSCode = "YSM"
+	StationCodeYstradRhondda                     CRSCode = "YSR"
 )

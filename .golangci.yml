@@ -52,6 +52,9 @@ linters:
 
 issues:
   exclude-rules:
+    - path: "nationalrail/client.go"
+      linters:
+        - dupl
     - path: "nationalrail/stations.go"
       linters:
         - dupl

@@ -107,7 +107,7 @@ func CreateGetArrBoardWithDetailsRequest(token string, req *StationBoardRequest)
 	))
 }
 
-func CreateGetArrDepBoardWithDetailsRequest(token string, req StationBoardRequest) *strings.Reader {
+func CreateGetArrDepBoardWithDetailsRequest(token string, req *StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -122,7 +122,7 @@ func CreateGetArrDepBoardWithDetailsRequest(token string, req StationBoardReques
 	))
 }
 
-func CreateGetArrivalBoardRequest(token string, req StationBoardRequest) *strings.Reader {
+func CreateGetArrivalBoardRequest(token string, req *StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -137,7 +137,7 @@ func CreateGetArrivalBoardRequest(token string, req StationBoardRequest) *string
 	))
 }
 
-func CreateGetArrivalDepartureBoardRequest(token string, req StationBoardRequest) *strings.Reader {
+func CreateGetArrivalDepartureBoardRequest(token string, req *StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -152,7 +152,7 @@ func CreateGetArrivalDepartureBoardRequest(token string, req StationBoardRequest
 	))
 }
 
-func CreateGetDepartureBoardRequest(token string, req StationBoardRequest) *strings.Reader {
+func CreateGetDepartureBoardRequest(token string, req *StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -167,7 +167,7 @@ func CreateGetDepartureBoardRequest(token string, req StationBoardRequest) *stri
 	))
 }
 
-func CreateGetDepBoardWithDetailsRequest(token string, req StationBoardRequest) *strings.Reader {
+func CreateGetDepBoardWithDetailsRequest(token string, req *StationBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(req.FilterCRS, req.FilterType, req.TimeOffset, req.TimeWindow)
 
 	return strings.NewReader(fmt.Sprintf(
@@ -182,7 +182,7 @@ func CreateGetDepBoardWithDetailsRequest(token string, req StationBoardRequest) 
 	))
 }
 
-func CreateGetFastestDeparturesRequest(token string, req DeparturesBoardRequest) *strings.Reader {
+func CreateGetFastestDeparturesRequest(token string, req *DeparturesBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
 	filterListProperties := getFilterListProperties(req.FilterList)
 
@@ -198,7 +198,7 @@ func CreateGetFastestDeparturesRequest(token string, req DeparturesBoardRequest)
 	))
 }
 
-func CreateGetFastestDeparturesWithDetailsRequest(token string, req DeparturesBoardRequest) *strings.Reader {
+func CreateGetFastestDeparturesWithDetailsRequest(token string, req *DeparturesBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
 	filterListProperties := getFilterListProperties(req.FilterList)
 
@@ -214,7 +214,7 @@ func CreateGetFastestDeparturesWithDetailsRequest(token string, req DeparturesBo
 	))
 }
 
-func CreateGetNextDeparturesRequest(token string, req DeparturesBoardRequest) *strings.Reader {
+func CreateGetNextDeparturesRequest(token string, req *DeparturesBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
 	filterListProperties := getFilterListProperties(req.FilterList)
 
@@ -230,7 +230,7 @@ func CreateGetNextDeparturesRequest(token string, req DeparturesBoardRequest) *s
 	))
 }
 
-func CreateGetNextDeparturesWithDetailsRequest(token string, req DeparturesBoardRequest) *strings.Reader {
+func CreateGetNextDeparturesWithDetailsRequest(token string, req *DeparturesBoardRequest) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
 	filterListProperties := getFilterListProperties(req.FilterList)
 
