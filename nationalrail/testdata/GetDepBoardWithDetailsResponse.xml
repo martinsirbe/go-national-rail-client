@@ -1,0 +1,14 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <GetDepBoardWithDetailsResponse xmlns="http://thalesgroup.com/RTTI/2021-11-01/ldb/">
+            <GetStationBoardResult xmlns:lt="http://thalesgroup.com/RTTI/2012-01-13/ldb/types" xmlns:lt8="http://thalesgroup.com/RTTI/2021-11-01/ldb/types" xmlns:lt6="http://thalesgroup.com/RTTI/2017-02-02/ldb/types" xmlns:lt7="http://thalesgroup.com/RTTI/2017-10-01/ldb/types" xmlns:lt4="http://thalesgroup.com/RTTI/2015-11-27/ldb/types" xmlns:lt5="http://thalesgroup.com/RTTI/2016-02-16/ldb/types" xmlns:lt2="http://thalesgroup.com/RTTI/2014-02-20/ldb/types" xmlns:lt3="http://thalesgroup.com/RTTI/2015-05-14/ldb/types">
+                <lt4:generatedAt>2024-01-03T22:27:22.5995898+00:00</lt4:generatedAt>
+                <lt4:locationName>London Bridge</lt4:locationName>
+                <lt4:crs>LBG</lt4:crs>
+                <lt4:filterLocationName>Gillingham (Kent)</lt4:filterLocationName>
+                <lt4:filtercrs>GLM</lt4:filtercrs>
+                <lt4:platformAvailable>true</lt4:platformAvailable>
+            </GetStationBoardResult>
+        </GetDepBoardWithDetailsResponse>
+    </soap:Body>
+</soap:Envelope>

@@ -70,3 +70,4 @@ issues:
     - path: _test\.go
       linters:
         - lll
+        - dupl

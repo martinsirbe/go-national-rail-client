@@ -250,7 +250,7 @@ var StationCodeToNameMap = map[CRSCode]string{
 	StationCodeBingham:                           StationNameBingham,
 	StationCodeBingley:                           StationNameBingley,
 	StationCodeBirchgrove:                        StationNameBirchgrove,
-	StationCodeBirchingtononsea:                  StationNameBirchingtononsea,
+	StationCodeBirchingtonOnSea:                  StationNameBirchingtonOnSea,
 	StationCodeBirchwood:                         StationNameBirchwood,
 	StationCodeBirkbeck:                          StationNameBirkbeck,
 	StationCodeBirkdale:                          StationNameBirkdale,
@@ -999,7 +999,7 @@ var StationCodeToNameMap = map[CRSCode]string{
 	StationCodeGreenfaulds:                       StationNameGreenfaulds,
 	StationCodeGreenfield:                        StationNameGreenfield,
 	StationCodeGreenford:                         StationNameGreenford,
-	StationCodeGreenhithe:                        StationNameGreenhithe,
+	StationCodeGreenhitheForBluewater:            StationNameGreenhitheForBluewater,
 	StationCodeGreenockCentral:                   StationNameGreenockCentral,
 	StationCodeGreenockWest:                      StationNameGreenockWest,
 	StationCodeGreenwich:                         StationNameGreenwich,
@@ -1145,7 +1145,7 @@ var StationCodeToNameMap = map[CRSCode]string{
 	StationCodeHighStreetGlasgow:                 StationNameHighStreetGlasgow,
 	StationCodeHighStreetKensingtonUnderground:   StationNameHighStreetKensingtonUnderground,
 	StationCodeHighWycombe:                       StationNameHighWycombe,
-	StationCodeHighamKent:                        StationNameHighamKent,
+	StationCodeHigham:                            StationNameHigham,
 	StationCodeHighamsPark:                       StationNameHighamsPark,
 	StationCodeHighbridgeAndBurnham:              StationNameHighbridgeAndBurnham,
 	StationCodeHighburyAndIslington:              StationNameHighburyAndIslington,
@@ -1245,7 +1245,7 @@ var StationCodeToNameMap = map[CRSCode]string{
 	StationCodeJohnstoneStrathclyde:              StationNameJohnstoneStrathclyde,
 	StationCodeJordanhill:                        StationNameJordanhill,
 	StationCodeKearsleyManchester:                StationNameKearsleyManchester,
-	StationCodeKearsneyKent:                      StationNameKearsneyKent,
+	StationCodeKearsney:                          StationNameKearsney,
 	StationCodeKeighley:                          StationNameKeighley,
 	StationCodeKeith:                             StationNameKeith,
 	StationCodeKelvedon:                          StationNameKelvedon,
@@ -1455,7 +1455,6 @@ var StationCodeToNameMap = map[CRSCode]string{
 	StationCodeLondonPaddington:                  StationNameLondonPaddington,
 	StationCodeLondonRoadBrighton:                StationNameLondonRoadBrighton,
 	StationCodeLondonRoadGuildford:               StationNameLondonRoadGuildford,
-	StationCodeLondonStPancrasInternational:      StationNameLondonStPancrasInternational,
 	StationCodeLondonStPancrasIntl:               StationNameLondonStPancrasIntl,
 	StationCodeLondonVictoria:                    StationNameLondonVictoria,
 	StationCodeLondonWaterloo:                    StationNameLondonWaterloo,
@@ -2205,7 +2204,7 @@ var StationCodeToNameMap = map[CRSCode]string{
 	StationCodeStreethouse:                       StationNameStreethouse,
 	StationCodeStrines:                           StationNameStrines,
 	StationCodeStromeferry:                       StationNameStromeferry,
-	StationCodeStroodKent:                        StationNameStroodKent,
+	StationCodeStrood:                            StationNameStrood,
 	StationCodeStroudGloucs:                      StationNameStroudGloucs,
 	StationCodeSturry:                            StationNameSturry,
 	StationCodeStyal:                             StationNameStyal,
@@ -2447,7 +2446,7 @@ var StationCodeToNameMap = map[CRSCode]string{
 	StationCodeWesterHailes:                      StationNameWesterHailes,
 	StationCodeWesterfield:                       StationNameWesterfield,
 	StationCodeWesterton:                         StationNameWesterton,
-	StationCodeWestgateonSea:                     StationNameWestgateonSea,
+	StationCodeWestgateOnSea:                     StationNameWestgateOnSea,
 	StationCodeWesthoughton:                      StationNameWesthoughton,
 	StationCodeWestonMilton:                      StationNameWestonMilton,
 	StationCodeWestonsuperMare:                   StationNameWestonsuperMare,
@@ -2823,7 +2822,7 @@ var StationNameToCodeMap = map[string]CRSCode{
 	StationNameBingham:                           StationCodeBingham,
 	StationNameBingley:                           StationCodeBingley,
 	StationNameBirchgrove:                        StationCodeBirchgrove,
-	StationNameBirchingtononsea:                  StationCodeBirchingtononsea,
+	StationNameBirchingtonOnSea:                  StationCodeBirchingtonOnSea,
 	StationNameBirchwood:                         StationCodeBirchwood,
 	StationNameBirkbeck:                          StationCodeBirkbeck,
 	StationNameBirkdale:                          StationCodeBirkdale,
@@ -3572,7 +3571,7 @@ var StationNameToCodeMap = map[string]CRSCode{
 	StationNameGreenfaulds:                       StationCodeGreenfaulds,
 	StationNameGreenfield:                        StationCodeGreenfield,
 	StationNameGreenford:                         StationCodeGreenford,
-	StationNameGreenhithe:                        StationCodeGreenhithe,
+	StationNameGreenhitheForBluewater:            StationCodeGreenhitheForBluewater,
 	StationNameGreenockCentral:                   StationCodeGreenockCentral,
 	StationNameGreenockWest:                      StationCodeGreenockWest,
 	StationNameGreenwich:                         StationCodeGreenwich,
@@ -3718,7 +3717,7 @@ var StationNameToCodeMap = map[string]CRSCode{
 	StationNameHighStreetGlasgow:                 StationCodeHighStreetGlasgow,
 	StationNameHighStreetKensingtonUnderground:   StationCodeHighStreetKensingtonUnderground,
 	StationNameHighWycombe:                       StationCodeHighWycombe,
-	StationNameHighamKent:                        StationCodeHighamKent,
+	StationNameHigham:                            StationCodeHigham,
 	StationNameHighamsPark:                       StationCodeHighamsPark,
 	StationNameHighbridgeAndBurnham:              StationCodeHighbridgeAndBurnham,
 	StationNameHighburyAndIslington:              StationCodeHighburyAndIslington,
@@ -3818,7 +3817,7 @@ var StationNameToCodeMap = map[string]CRSCode{
 	StationNameJohnstoneStrathclyde:              StationCodeJohnstoneStrathclyde,
 	StationNameJordanhill:                        StationCodeJordanhill,
 	StationNameKearsleyManchester:                StationCodeKearsleyManchester,
-	StationNameKearsneyKent:                      StationCodeKearsneyKent,
+	StationNameKearsney:                          StationCodeKearsney,
 	StationNameKeighley:                          StationCodeKeighley,
 	StationNameKeith:                             StationCodeKeith,
 	StationNameKelvedon:                          StationCodeKelvedon,
@@ -4028,7 +4027,6 @@ var StationNameToCodeMap = map[string]CRSCode{
 	StationNameLondonPaddington:                  StationCodeLondonPaddington,
 	StationNameLondonRoadBrighton:                StationCodeLondonRoadBrighton,
 	StationNameLondonRoadGuildford:               StationCodeLondonRoadGuildford,
-	StationNameLondonStPancrasInternational:      StationCodeLondonStPancrasInternational,
 	StationNameLondonStPancrasIntl:               StationCodeLondonStPancrasIntl,
 	StationNameLondonVictoria:                    StationCodeLondonVictoria,
 	StationNameLondonWaterloo:                    StationCodeLondonWaterloo,
@@ -4778,7 +4776,7 @@ var StationNameToCodeMap = map[string]CRSCode{
 	StationNameStreethouse:                       StationCodeStreethouse,
 	StationNameStrines:                           StationCodeStrines,
 	StationNameStromeferry:                       StationCodeStromeferry,
-	StationNameStroodKent:                        StationCodeStroodKent,
+	StationNameStrood:                            StationCodeStrood,
 	StationNameStroudGloucs:                      StationCodeStroudGloucs,
 	StationNameSturry:                            StationCodeSturry,
 	StationNameStyal:                             StationCodeStyal,
@@ -5020,7 +5018,7 @@ var StationNameToCodeMap = map[string]CRSCode{
 	StationNameWesterHailes:                      StationCodeWesterHailes,
 	StationNameWesterfield:                       StationCodeWesterfield,
 	StationNameWesterton:                         StationCodeWesterton,
-	StationNameWestgateonSea:                     StationCodeWestgateonSea,
+	StationNameWestgateOnSea:                     StationCodeWestgateOnSea,
 	StationNameWesthoughton:                      StationCodeWesthoughton,
 	StationNameWestonMilton:                      StationCodeWestonMilton,
 	StationNameWestonsuperMare:                   StationCodeWestonsuperMare,
@@ -5396,7 +5394,7 @@ const (
 	StationNameBingham                           = "Bingham"
 	StationNameBingley                           = "Bingley"
 	StationNameBirchgrove                        = "Birchgrove"
-	StationNameBirchingtononsea                  = "Birchington-on-sea"
+	StationNameBirchingtonOnSea                  = "Birchington-on-Sea"
 	StationNameBirchwood                         = "Birchwood"
 	StationNameBirkbeck                          = "Birkbeck"
 	StationNameBirkdale                          = "Birkdale"
@@ -6145,7 +6143,7 @@ const (
 	StationNameGreenfaulds                       = "Greenfaulds"
 	StationNameGreenfield                        = "Greenfield"
 	StationNameGreenford                         = "Greenford"
-	StationNameGreenhithe                        = "Greenhithe"
+	StationNameGreenhitheForBluewater            = "Greenhithe for Bluewater"
 	StationNameGreenockCentral                   = "Greenock Central"
 	StationNameGreenockWest                      = "Greenock West"
 	StationNameGreenwich                         = "Greenwich"
@@ -6291,7 +6289,7 @@ const (
 	StationNameHighStreetGlasgow                 = "High Street (Glasgow)"
 	StationNameHighStreetKensingtonUnderground   = "High Street Kensington Underground"
 	StationNameHighWycombe                       = "High Wycombe"
-	StationNameHighamKent                        = "Higham (Kent)"
+	StationNameHigham                            = "Higham"
 	StationNameHighamsPark                       = "Highams Park"
 	StationNameHighbridgeAndBurnham              = "Highbridge & Burnham"
 	StationNameHighburyAndIslington              = "Highbury & Islington"
@@ -6391,7 +6389,7 @@ const (
 	StationNameJohnstoneStrathclyde              = "Johnstone (Strathclyde)"
 	StationNameJordanhill                        = "Jordanhill"
 	StationNameKearsleyManchester                = "Kearsley (Manchester)"
-	StationNameKearsneyKent                      = "Kearsney (Kent)"
+	StationNameKearsney                          = "Kearsney"
 	StationNameKeighley                          = "Keighley"
 	StationNameKeith                             = "Keith"
 	StationNameKelvedon                          = "Kelvedon"
@@ -6601,7 +6599,6 @@ const (
 	StationNameLondonPaddington                  = "London Paddington"
 	StationNameLondonRoadBrighton                = "London Road (Brighton)"
 	StationNameLondonRoadGuildford               = "London Road (Guildford)"
-	StationNameLondonStPancrasInternational      = "London St Pancras International"
 	StationNameLondonStPancrasIntl               = "London St Pancras (Intl)"
 	StationNameLondonVictoria                    = "London Victoria"
 	StationNameLondonWaterloo                    = "London Waterloo"
@@ -7351,7 +7348,7 @@ const (
 	StationNameStreethouse                       = "Streethouse"
 	StationNameStrines                           = "Strines"
 	StationNameStromeferry                       = "Stromeferry"
-	StationNameStroodKent                        = "Strood (Kent)"
+	StationNameStrood                            = "Strood"
 	StationNameStroudGloucs                      = "Stroud (Gloucs)"
 	StationNameSturry                            = "Sturry"
 	StationNameStyal                             = "Styal"
@@ -7593,7 +7590,7 @@ const (
 	StationNameWesterHailes                      = "Wester Hailes"
 	StationNameWesterfield                       = "Westerfield"
 	StationNameWesterton                         = "Westerton"
-	StationNameWestgateonSea                     = "Westgate-on-Sea"
+	StationNameWestgateOnSea                     = "Westgate-on-Sea"
 	StationNameWesthoughton                      = "Westhoughton"
 	StationNameWestonMilton                      = "Weston Milton"
 	StationNameWestonsuperMare                   = "Weston-super-Mare"
@@ -7977,7 +7974,7 @@ const (
 	StationCodeBingham                           CRSCode = "BIN"
 	StationCodeBingley                           CRSCode = "BIY"
 	StationCodeBirchgrove                        CRSCode = "BCG"
-	StationCodeBirchingtononsea                  CRSCode = "BCH"
+	StationCodeBirchingtonOnSea                  CRSCode = "BCH"
 	StationCodeBirchwood                         CRSCode = "BWD"
 	StationCodeBirkbeck                          CRSCode = "BIK"
 	StationCodeBirkdale                          CRSCode = "BDL"
@@ -8726,7 +8723,7 @@ const (
 	StationCodeGreenfaulds                       CRSCode = "GRL"
 	StationCodeGreenfield                        CRSCode = "GNF"
 	StationCodeGreenford                         CRSCode = "GFD"
-	StationCodeGreenhithe                        CRSCode = "GNH"
+	StationCodeGreenhitheForBluewater            CRSCode = "GNH"
 	StationCodeGreenockCentral                   CRSCode = "GKC"
 	StationCodeGreenockWest                      CRSCode = "GKW"
 	StationCodeGreenwich                         CRSCode = "GNW"
@@ -8872,7 +8869,7 @@ const (
 	StationCodeHighStreetGlasgow                 CRSCode = "HST"
 	StationCodeHighStreetKensingtonUnderground   CRSCode = "ZHS"
 	StationCodeHighWycombe                       CRSCode = "HWY"
-	StationCodeHighamKent                        CRSCode = "HGM"
+	StationCodeHigham                            CRSCode = "HGM"
 	StationCodeHighamsPark                       CRSCode = "HIP"
 	StationCodeHighbridgeAndBurnham              CRSCode = "HIG"
 	StationCodeHighburyAndIslington              CRSCode = "HHY"
@@ -8972,7 +8969,7 @@ const (
 	StationCodeJohnstoneStrathclyde              CRSCode = "JHN"
 	StationCodeJordanhill                        CRSCode = "JOR"
 	StationCodeKearsleyManchester                CRSCode = "KSL"
-	StationCodeKearsneyKent                      CRSCode = "KSN"
+	StationCodeKearsney                          CRSCode = "KSN"
 	StationCodeKeighley                          CRSCode = "KEI"
 	StationCodeKeith                             CRSCode = "KEH"
 	StationCodeKelvedon                          CRSCode = "KEL"
@@ -9182,8 +9179,7 @@ const (
 	StationCodeLondonPaddington                  CRSCode = "PAD"
 	StationCodeLondonRoadBrighton                CRSCode = "LRB"
 	StationCodeLondonRoadGuildford               CRSCode = "LRD"
-	StationCodeLondonStPancrasInternational      CRSCode = "STP"
-	StationCodeLondonStPancrasIntl               CRSCode = "SPX"
+	StationCodeLondonStPancrasIntl               CRSCode = "STP"
 	StationCodeLondonVictoria                    CRSCode = "VIC"
 	StationCodeLondonWaterloo                    CRSCode = "WAT"
 	StationCodeLondonWaterlooEast                CRSCode = "WAE"
@@ -9932,7 +9928,7 @@ const (
 	StationCodeStreethouse                       CRSCode = "SHC"
 	StationCodeStrines                           CRSCode = "SRN"
 	StationCodeStromeferry                       CRSCode = "STF"
-	StationCodeStroodKent                        CRSCode = "SOO"
+	StationCodeStrood                            CRSCode = "SOO"
 	StationCodeStroudGloucs                      CRSCode = "STD"
 	StationCodeSturry                            CRSCode = "STU"
 	StationCodeStyal                             CRSCode = "SYA"
@@ -10174,7 +10170,7 @@ const (
 	StationCodeWesterHailes                      CRSCode = "WTA"
 	StationCodeWesterfield                       CRSCode = "WFI"
 	StationCodeWesterton                         CRSCode = "WES"
-	StationCodeWestgateonSea                     CRSCode = "WGA"
+	StationCodeWestgateOnSea                     CRSCode = "WGA"
 	StationCodeWesthoughton                      CRSCode = "WHG"
 	StationCodeWestonMilton                      CRSCode = "WNM"
 	StationCodeWestonsuperMare                   CRSCode = "WSM"

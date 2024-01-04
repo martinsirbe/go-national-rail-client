@@ -1,0 +1,40 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <GetDepartureBoardResponse xmlns="http://thalesgroup.com/RTTI/2021-11-01/ldb/">
+            <GetStationBoardResult xmlns:lt="http://thalesgroup.com/RTTI/2012-01-13/ldb/types" xmlns:lt8="http://thalesgroup.com/RTTI/2021-11-01/ldb/types" xmlns:lt6="http://thalesgroup.com/RTTI/2017-02-02/ldb/types" xmlns:lt7="http://thalesgroup.com/RTTI/2017-10-01/ldb/types" xmlns:lt4="http://thalesgroup.com/RTTI/2015-11-27/ldb/types" xmlns:lt5="http://thalesgroup.com/RTTI/2016-02-16/ldb/types" xmlns:lt2="http://thalesgroup.com/RTTI/2014-02-20/ldb/types" xmlns:lt3="http://thalesgroup.com/RTTI/2015-05-14/ldb/types">
+                <lt4:generatedAt>2024-01-03T22:14:23.3784418+00:00</lt4:generatedAt>
+                <lt4:locationName>London Bridge</lt4:locationName>
+                <lt4:crs>LBG</lt4:crs>
+                <lt4:filterLocationName>Gillingham (Kent)</lt4:filterLocationName>
+                <lt4:filtercrs>GLM</lt4:filtercrs>
+                <lt4:platformAvailable>true</lt4:platformAvailable>
+                <lt8:trainServices>
+                    <lt8:service>
+                        <lt4:std>22:18</lt4:std>
+                        <lt4:etd>22:22</lt4:etd>
+                        <lt4:platform>4</lt4:platform>
+                        <lt4:operator>Thameslink</lt4:operator>
+                        <lt4:operatorCode>TL</lt4:operatorCode>
+                        <lt4:serviceType>train</lt4:serviceType>
+                        <lt4:length>8</lt4:length>
+                        <lt4:serviceID>3108056LNDNBDE_</lt4:serviceID>
+                        <lt5:rsid>TL353900</lt5:rsid>
+                        <lt5:origin>
+                            <lt4:location>
+                                <lt4:locationName>Kentish Town</lt4:locationName>
+                                <lt4:crs>KTN</lt4:crs>
+                            </lt4:location>
+                        </lt5:origin>
+                        <lt5:destination>
+                            <lt4:location>
+                                <lt4:locationName>Gillingham (Kent)</lt4:locationName>
+                                <lt4:crs>GLM</lt4:crs>
+                                <lt4:via>via Greenwich &amp; Woolwich Arsenal</lt4:via>
+                            </lt4:location>
+                        </lt5:destination>
+                    </lt8:service>
+                </lt8:trainServices>
+            </GetStationBoardResult>
+        </GetDepartureBoardResponse>
+    </soap:Body>
+</soap:Envelope>

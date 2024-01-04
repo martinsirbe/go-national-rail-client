@@ -8,8 +8,6 @@ import (
 	"os"
 	"strings"
 	"time"
-
-	"github.com/martinsirbe/go-national-rail-client/nationalrail/soap"
 )
 
 type Client struct {
@@ -17,6 +15,8 @@ type Client struct {
 	httpClient  *http.Client
 	url         string
 }
+
+var ErrWebServiceResponseMissing = errors.New("web-service response is missing")
 
 func NewClient(opts ...ClientOption) (*Client, error) {
 	client := &Client{}
@@ -44,7 +44,7 @@ func NewClient(opts ...ClientOption) (*Client, error) {
 	}
 
 	if client.url == "" {
-		client.url = "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx"
+		client.url = "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb12.asmx"
 	}
 
 	return client, nil
@@ -70,17 +70,7 @@ func (c *Client) GetArrivalsWithDetails(
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeArrBoardWithDetailsResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapArrivalBoardWithDetails(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetArrBoardWithDetailsResponse(resp)
 }
 
 // GetArrivalsAndDeparturesWithDetails returns all public arrivals and
@@ -103,17 +93,7 @@ func (c *Client) GetArrivalsAndDeparturesWithDetails(
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeArrDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapArrDepBoardWithDetails(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetArrDepBoardWithDetailsResponse(resp)
 }
 
 // GetArrivals returns all public arrivals for the supplied CRS code.
@@ -135,17 +115,7 @@ func (c *Client) GetArrivals(
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeArrivalBoardResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapArrivalBoard(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetArrivalBoardResponse(resp)
 }
 
 // GetArrivalsAndDepartures returns all public arrivals and departures for
@@ -168,17 +138,7 @@ func (c *Client) GetArrivalsAndDepartures(
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeArrivalDepartureBoardResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapArrivalDepartureBoard(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetArrivalDepartureBoardResponse(resp)
 }
 
 // GetDepartures returns all public departures for the supplied CRS code.
@@ -200,17 +160,7 @@ func (c *Client) GetDepartures(
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeDepartureBoardResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapDepartureBoard(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetDepartureBoardResponse(resp)
 }
 
 // GetDeparturesWithDetails returns all public departures for the supplied
@@ -233,17 +183,7 @@ func (c *Client) GetDeparturesWithDetails(
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeDepBoardWithDetailsResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapDepBoardWithDetails(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetDepBoardWithDetailsResponse(resp)
 }
 
 // GetFastestDepartures returns the public departure for the supplied CRS code
@@ -251,8 +191,9 @@ func (c *Client) GetDeparturesWithDetails(
 // the filtered location.
 func (c *Client) GetFastestDepartures(
 	crs CRSCode,
+	destinations []CRSCode,
 	opts ...RequestOption,
-) (*StationBoard, error) {
+) (*DeparturesBoard, error) {
 	if StationCodeToNameMap[crs] == "" {
 		return nil, errors.New("a valid CRS code is required")
 	}
@@ -262,26 +203,16 @@ func (c *Client) GetFastestDepartures(
 		return nil, err
 	}
 
-	if len(req.FilterList) < 1 || len(req.FilterList) > 15 {
-		return nil, errors.New("filter list must be in range of [1, 15]")
+	if len(destinations) < 1 || len(destinations) > 15 {
+		return nil, errors.New("destinations must be in range of [1, 15]")
 	}
 
-	resp, err := c.makeRequest(CreateGetFastestDeparturesRequest(c.accessToken, req))
+	resp, err := c.makeRequest(CreateGetFastestDeparturesRequest(c.accessToken, req, destinations))
 	if err != nil {
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeFastestDeparturesResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapFastestDepartures(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetFastestDeparturesResponse(resp)
 }
 
 // GetFastestDeparturesWithDetails returns the public departure for the supplied
@@ -289,8 +220,9 @@ func (c *Client) GetFastestDepartures(
 // at the filtered location, including service details.
 func (c *Client) GetFastestDeparturesWithDetails(
 	crs CRSCode,
+	destinations []CRSCode,
 	opts ...RequestOption,
-) (*StationBoard, error) {
+) (*DeparturesBoard, error) {
 	if StationCodeToNameMap[crs] == "" {
 		return nil, errors.New("a valid CRS code is required")
 	}
@@ -300,34 +232,26 @@ func (c *Client) GetFastestDeparturesWithDetails(
 		return nil, err
 	}
 
-	if len(req.FilterList) < 1 || len(req.FilterList) > 10 {
-		return nil, errors.New("filter list must be in range of [1, 10]")
+	if len(destinations) < 1 || len(destinations) > 10 {
+		return nil, errors.New("destinations must be in range of [1, 10]")
 	}
 
-	resp, err := c.makeRequest(CreateGetFastestDeparturesWithDetailsRequest(c.accessToken, req))
+	resp, err := c.makeRequest(CreateGetFastestDeparturesWithDetailsRequest(c.accessToken, req,
+		destinations))
 	if err != nil {
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeFastestDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapFastestDeparturesWithDetails(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetFastestDeparturesWithDetailsResponse(resp)
 }
 
 // GetNextDepartures returns the next public departure for the supplied CRS code
 // to the locations specified in the filter.
 func (c *Client) GetNextDepartures(
 	crs CRSCode,
+	destinations []CRSCode,
 	opts ...RequestOption,
-) (*StationBoard, error) {
+) (*DeparturesBoard, error) {
 	if StationCodeToNameMap[crs] == "" {
 		return nil, errors.New("a valid CRS code is required")
 	}
@@ -337,34 +261,25 @@ func (c *Client) GetNextDepartures(
 		return nil, err
 	}
 
-	if len(req.FilterList) < 1 || len(req.FilterList) > 25 {
-		return nil, errors.New("filter list must be in range of [1, 25]")
+	if len(destinations) < 1 || len(destinations) > 25 {
+		return nil, errors.New("destinations must be in range of [1, 25]")
 	}
 
-	resp, err := c.makeRequest(CreateGetNextDeparturesRequest(c.accessToken, req))
+	resp, err := c.makeRequest(CreateGetNextDeparturesRequest(c.accessToken, req, destinations))
 	if err != nil {
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeNextDeparturesResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapNextDepartures(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetNextDeparturesResponse(resp)
 }
 
 // GetNextDeparturesWithDetails returns the next public departure for the supplied
 // CRS code to the locations specified in the filter, including service details.
 func (c *Client) GetNextDeparturesWithDetails(
 	crs CRSCode,
+	destinations []CRSCode,
 	opts ...RequestOption,
-) (*StationBoard, error) {
+) (*DeparturesBoard, error) {
 	if StationCodeToNameMap[crs] == "" {
 		return nil, errors.New("a valid CRS code is required")
 	}
@@ -374,26 +289,17 @@ func (c *Client) GetNextDeparturesWithDetails(
 		return nil, err
 	}
 
-	if len(req.FilterList) < 1 || len(req.FilterList) > 10 {
-		return nil, errors.New("filter list must be in range of [1, 10]")
+	if len(destinations) < 1 || len(destinations) > 10 {
+		return nil, errors.New("destinations must be in range of [1, 10]")
 	}
 
-	resp, err := c.makeRequest(CreateGetNextDeparturesWithDetailsRequest(c.accessToken, req))
+	resp, err := c.makeRequest(CreateGetNextDeparturesWithDetailsRequest(c.accessToken, req,
+		destinations))
 	if err != nil {
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeNextDeparturesWithDetailsResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapNextDeparturesWithDetails(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetNextDeparturesWithDetailsResponse(resp)
 }
 
 // GetServiceDetails returns service details for a specific service identified by
@@ -403,23 +309,13 @@ func (c *Client) GetNextDeparturesWithDetails(
 // This is normally for two minutes after it is expected to have departed, or after
 // a terminal arrival. If a request is made for a service that is no longer available
 // then ErrGone error is returned.
-func (c *Client) GetServiceDetails(serviceID string) (*TrainServiceDetails, error) {
+func (c *Client) GetServiceDetails(serviceID string) (*ServiceDetails, error) {
 	resp, err := c.makeRequest(CreateGetServiceDetailsRequest(c.accessToken, serviceID))
 	if err != nil {
 		return nil, err
 	}
 
-	decodedResp, err := soap.DecodeServiceDetailsResponse(strings.NewReader(string(resp)))
-	if err != nil {
-		return nil, fmt.Errorf("failed to decode xml response: %w", err)
-	}
-
-	mappedResp, err := MapServiceDetails(decodedResp)
-	if err != nil {
-		return nil, fmt.Errorf("failed to map response to the simplified model: %w", err)
-	}
-
-	return mappedResp, nil
+	return MapGetServiceDetailsResponse(resp)
 }
 
 // GetCRSFromKeyword used to match the given keyword to train station names
@@ -500,9 +396,6 @@ func constructDeparturesBoardRequest(
 		CRS:        crs,
 		TimeOffset: props.TimeOffset,
 		TimeWindow: props.TimeWindow,
-	}
-	if len(props.FilterList) != 0 {
-		req.FilterList = props.FilterList
 	}
 
 	return &req, nil

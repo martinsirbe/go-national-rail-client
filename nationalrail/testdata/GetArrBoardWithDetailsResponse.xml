@@ -1,0 +1,1211 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <GetArrBoardWithDetailsResponse xmlns="http://thalesgroup.com/RTTI/2021-11-01/ldb/">
+      <GetStationBoardResult xmlns:lt="http://thalesgroup.com/RTTI/2012-01-13/ldb/types" xmlns:lt8="http://thalesgroup.com/RTTI/2021-11-01/ldb/types" xmlns:lt6="http://thalesgroup.com/RTTI/2017-02-02/ldb/types" xmlns:lt7="http://thalesgroup.com/RTTI/2017-10-01/ldb/types" xmlns:lt4="http://thalesgroup.com/RTTI/2015-11-27/ldb/types" xmlns:lt5="http://thalesgroup.com/RTTI/2016-02-16/ldb/types" xmlns:lt2="http://thalesgroup.com/RTTI/2014-02-20/ldb/types" xmlns:lt3="http://thalesgroup.com/RTTI/2015-05-14/ldb/types">
+        <lt4:generatedAt>2024-01-03T08:55:05.8471861+00:00</lt4:generatedAt>
+        <lt4:locationName>Gillingham (Kent)</lt4:locationName>
+        <lt4:crs>GLM</lt4:crs>
+        <lt4:filterLocationName>Rainham (Kent)</lt4:filterLocationName>
+        <lt4:filtercrs>RAI</lt4:filtercrs>
+        <lt4:filterType>from</lt4:filterType>
+        <lt4:nrccMessages>
+          <lt:message>&lt;p&gt;
+The lifts are out of order between Platform 3 and the overbridge at Gillingham Kent station.&lt;/p&gt;</lt:message>
+          <lt:message>
+Severe weather to impact Southern, Gatwick Express and Thameslink services today. More details can be found in &lt;a href="https://www.nationalrail.co.uk/service-disruptions/horsham-20240102/"&gt;Latest Travel News&lt;/a&gt;</lt:message>
+        </lt4:nrccMessages>
+        <lt4:platformAvailable>true</lt4:platformAvailable>
+        <lt8:trainServices>
+          <lt8:service>
+            <lt4:sta>09:23</lt4:sta>
+            <lt4:eta>On time</lt4:eta>
+            <lt4:platform>2</lt4:platform>
+            <lt4:operator>Southeastern</lt4:operator>
+            <lt4:operatorCode>SE</lt4:operatorCode>
+            <lt4:serviceType>train</lt4:serviceType>
+            <lt4:length>6</lt4:length>
+            <lt4:serviceID>3110547GLNGHMK_</lt4:serviceID>
+            <lt5:origin>
+              <lt4:location>
+                <lt4:locationName>Faversham</lt4:locationName>
+                <lt4:crs>FAV</lt4:crs>
+              </lt4:location>
+            </lt5:origin>
+            <lt5:destination>
+              <lt4:location>
+                <lt4:locationName>London St Pancras (Intl)</lt4:locationName>
+                <lt4:crs>STP</lt4:crs>
+              </lt4:location>
+            </lt5:destination>
+            <lt8:formation>
+              <lt8:coaches>
+                <lt8:coach number="A1">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet>Accessible</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="A2">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet status="Unknown">None</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="A3">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet status="Unknown">None</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="A4">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet status="Unknown">None</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="A5">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet status="Unknown">None</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="A6">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet>Standard</lt8:toilet>
+                </lt8:coach>
+              </lt8:coaches>
+            </lt8:formation>
+            <lt8:previousCallingPoints>
+              <lt8:callingPointList>
+                <lt8:callingPoint>
+                  <lt8:locationName>Faversham</lt8:locationName>
+                  <lt8:crs>FAV</lt8:crs>
+                  <lt8:st>09:00</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>6</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A5">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A6">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Sittingbourne</lt8:locationName>
+                  <lt8:crs>SIT</lt8:crs>
+                  <lt8:st>09:10</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>6</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A5">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A6">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Rainham (Kent)</lt8:locationName>
+                  <lt8:crs>RAI</lt8:crs>
+                  <lt8:st>09:19</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>6</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A5">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A6">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+              </lt8:callingPointList>
+            </lt8:previousCallingPoints>
+          </lt8:service>
+          <lt8:service>
+            <lt4:sta>09:29</lt4:sta>
+            <lt4:eta>On time</lt4:eta>
+            <lt4:platform>2</lt4:platform>
+            <lt4:operator>Southeastern</lt4:operator>
+            <lt4:operatorCode>SE</lt4:operatorCode>
+            <lt4:serviceType>train</lt4:serviceType>
+            <lt4:length>8</lt4:length>
+            <lt4:serviceID>3110958GLNGHMK_</lt4:serviceID>
+            <lt5:rsid>SE512001</lt5:rsid>
+            <lt5:origin>
+              <lt4:location>
+                <lt4:locationName>Ramsgate</lt4:locationName>
+                <lt4:crs>RAM</lt4:crs>
+              </lt4:location>
+              <lt4:location>
+                <lt4:locationName>Dover Priory</lt4:locationName>
+                <lt4:crs>DVP</lt4:crs>
+              </lt4:location>
+            </lt5:origin>
+            <lt5:destination>
+              <lt4:location>
+                <lt4:locationName>London Victoria</lt4:locationName>
+                <lt4:crs>VIC</lt4:crs>
+              </lt4:location>
+            </lt5:destination>
+            <lt8:formation>
+              <lt8:coaches>
+                <lt8:coach number="A1">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet status="Unknown">None</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="A2">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet>Standard</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="A3">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet>Accessible</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="A4">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet status="Unknown">None</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="B1">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet status="Unknown">None</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="B2">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet>Standard</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="B3">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet>Accessible</lt8:toilet>
+                </lt8:coach>
+                <lt8:coach number="B4">
+                  <lt8:coachClass>Standard</lt8:coachClass>
+                  <lt8:toilet status="Unknown">None</lt8:toilet>
+                </lt8:coach>
+              </lt8:coaches>
+            </lt8:formation>
+            <lt8:previousCallingPoints>
+              <lt8:callingPointList>
+                <lt8:callingPoint>
+                  <lt8:locationName>Ramsgate</lt8:locationName>
+                  <lt8:crs>RAM</lt8:crs>
+                  <lt8:st>08:12</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>3</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>9</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>0</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>35</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>11</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>18</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Dumpton Park</lt8:locationName>
+                  <lt8:crs>DMP</lt8:crs>
+                  <lt8:st>08:15</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>0</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>0</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>22</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>35</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>11</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>18</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Broadstairs</lt8:locationName>
+                  <lt8:crs>BSR</lt8:crs>
+                  <lt8:st>08:18</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Margate</lt8:locationName>
+                  <lt8:crs>MAR</lt8:crs>
+                  <lt8:st>08:23</lt8:st>
+                  <lt8:at>08:25</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>0</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>5</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>23</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>23</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>12</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>6</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>9</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>10</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Westgate-on-Sea</lt8:locationName>
+                  <lt8:crs>WGA</lt8:crs>
+                  <lt8:st>08:27</lt8:st>
+                  <lt8:at>08:29</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>0</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>5</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>23</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>23</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>6</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Birchington-on-Sea</lt8:locationName>
+                  <lt8:crs>BCH</lt8:crs>
+                  <lt8:st>08:30</lt8:st>
+                  <lt8:at>08:32</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>12</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>16</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>30</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>6</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Herne Bay</lt8:locationName>
+                  <lt8:crs>HNB</lt8:crs>
+                  <lt8:st>08:39</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>15</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>11</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>18</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>27</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>27</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>12</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>11</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>3</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Chestfield &amp; Swalecliffe</lt8:locationName>
+                  <lt8:crs>CSW</lt8:crs>
+                  <lt8:st>08:43</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Whitstable</lt8:locationName>
+                  <lt8:crs>WHI</lt8:crs>
+                  <lt8:st>08:46</lt8:st>
+                  <lt8:at>08:48</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>28</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>32</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>14</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>20</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>25</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>14</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>3</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Faversham</lt8:locationName>
+                  <lt8:crs>FAV</lt8:crs>
+                  <lt8:st>09:04</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>8</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Teynham</lt8:locationName>
+                  <lt8:crs>TEY</lt8:crs>
+                  <lt8:st>09:10</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>8</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Sittingbourne</lt8:locationName>
+                  <lt8:crs>SIT</lt8:crs>
+                  <lt8:st>09:15</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>8</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Newington</lt8:locationName>
+                  <lt8:crs>NGT</lt8:crs>
+                  <lt8:st>09:20</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>8</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Rainham (Kent)</lt8:locationName>
+                  <lt8:crs>RAI</lt8:crs>
+                  <lt8:st>09:24</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>8</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="B4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+              </lt8:callingPointList>
+              <lt8:callingPointList>
+                <lt8:callingPoint>
+                  <lt8:locationName>Dover Priory</lt8:locationName>
+                  <lt8:crs>DVP</lt8:crs>
+                  <lt8:st>08:16</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>35</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>11</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>18</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Kearsney</lt8:locationName>
+                  <lt8:crs>KSN</lt8:crs>
+                  <lt8:st>08:20</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>12</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>6</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>9</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>10</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Shepherds Well</lt8:locationName>
+                  <lt8:crs>SPH</lt8:crs>
+                  <lt8:st>08:26</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>6</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Snowdown</lt8:locationName>
+                  <lt8:crs>SWO</lt8:crs>
+                  <lt8:st>08:29</lt8:st>
+                  <lt8:at>No report</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>6</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Aylesham</lt8:locationName>
+                  <lt8:crs>AYH</lt8:crs>
+                  <lt8:st>08:32</lt8:st>
+                  <lt8:at>No report</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Adisham</lt8:locationName>
+                  <lt8:crs>ADM</lt8:crs>
+                  <lt8:st>08:35</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>17</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>8</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>2</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>3</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Bekesbourne</lt8:locationName>
+                  <lt8:crs>BKS</lt8:crs>
+                  <lt8:st>08:39</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>27</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>12</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>11</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>3</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Canterbury East</lt8:locationName>
+                  <lt8:crs>CBE</lt8:crs>
+                  <lt8:st>08:45</lt8:st>
+                  <lt8:at>On time</lt8:at>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>25</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>14</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>13</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>3</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Selling</lt8:locationName>
+                  <lt8:crs>SEG</lt8:crs>
+                  <lt8:st>08:54</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>27</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                        <lt8:loading>14</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                        <lt8:loading>9</lt8:loading>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                        <lt8:loading>3</lt8:loading>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+                <lt8:callingPoint>
+                  <lt8:locationName>Faversham</lt8:locationName>
+                  <lt8:crs>FAV</lt8:crs>
+                  <lt8:st>09:04</lt8:st>
+                  <lt8:et>On time</lt8:et>
+                  <lt8:length>4</lt8:length>
+                  <lt8:formation>
+                    <lt8:coaches>
+                      <lt8:coach number="A1">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A2">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Standard</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A3">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet>Accessible</lt8:toilet>
+                      </lt8:coach>
+                      <lt8:coach number="A4">
+                        <lt8:coachClass>Standard</lt8:coachClass>
+                        <lt8:toilet status="Unknown">None</lt8:toilet>
+                      </lt8:coach>
+                    </lt8:coaches>
+                  </lt8:formation>
+                </lt8:callingPoint>
+              </lt8:callingPointList>
+            </lt8:previousCallingPoints>
+          </lt8:service>
+        </lt8:trainServices>
+      </GetStationBoardResult>
+    </GetArrBoardWithDetailsResponse>
+  </soap:Body>
+</soap:Envelope>

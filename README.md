@@ -12,24 +12,19 @@ The client have been developed based on [Live Departure Boards Web Service][1] d
 ## Getting Started
 To use this client, register for an OpenLDBWS access token at [National Rail Enquiries][2].
 
-## Configuration
+## Configuration Access Token
 
-The API client can be configured using the following options:
-- **AccessTokenOpt**: Set using `AccessTokenOpt("YOUR_ACCESS_TOKEN")`. If not provided, the library attempts to 
-retrieve the access token from the `NR_ACCESS_TOKEN` environment variable. This token is crucial for API authentication.  
-Client initialisation will fail if neither `AccessTokenOpt` nor `NR_ACCESS_TOKEN` environment variable is provided.
+The access token is mandatory and can be set in one of two ways:
+1. By setting the `NR_ACCESS_TOKEN` environment variable.
+2. By using the `AccessTokenOpt("YOUR_ACCESS_TOKEN")` client option.
 
-- **HTTPClientOpt**: Customised using `HTTPClientOpt(customHttpClient)`. If not provided, a default HTTP client with 
-the following configuration is used:
-    - `Timeout`: 10 seconds
-    - `MaxIdleConns`: 10 connections
-    - `MaxConnsPerHost`: 10 connections
-    - `MaxIdleConnsPerHost`: 10 connections
-
-- **URLOpt**: Set using `URLOpt("https://example.com")`. If not provided, will use `https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx`.
+If the client option is not provided, the client will attempt to use the access token from 
+the environment variable. Please note that the access token is crucial for OpenLDBWS authentication; without it, 
+client initialisation will fail.  
+If an invalid access token is provided, requests will fail authentication.
 
 ## Examples
-### Obtain Departure Board
+### Obtain Departure Board With Details
 To retrieve the departure board for a specific train station, provide the station code and the desired number of 
 departures. This example demonstrates how to obtain the departure board for Gillingham (Kent) [GLM], displaying 5 
 upcoming train departures.
@@ -38,32 +33,47 @@ upcoming train departures.
 package main
 
 import (
-  "fmt"
+	"fmt"
+	"strconv"
 
-  nr "github.com/martinsirbe/go-national-rail-client/nationalrail"
+	nr "github.com/martinsirbe/go-national-rail-client/nationalrail"
 )
 
 func main() {
   client, err := nr.NewClient(
     nr.AccessTokenOpt("e995265f-df60-4787-bafc-af5a433f9b22"),
   )
+  if err != nil {
+    panic(err)
+  }
 
-  board, err := client.GetDepartures(nr.StationCodeGillinghamKent, nr.NumRowsOpt(5))
+  board, err := client.GetDeparturesWithDetails(nr.StationCodeGillinghamKent, nr.NumRowsOpt(5))
   if err != nil {
     panic(err)
   }
 
   fmt.Printf("%s [%s] Departure Board:\n", board.LocationName, board.CRS)
   fmt.Println("----------------------------------------")
-  fmt.Println("Time  | Platform | Status  | Destination")
+  fmt.Println(" Time\t| Platform\t| Departure Status\t| Destination\t")
   fmt.Println("----------------------------------------")
-  for _, s := range board.TrainServices {
-    platform := "?"
-    if s.Platform != nil {
-      platform = *s.Platform
+
+  for _, s := range board.Services {
+    std := "?"
+    if s.STD != nil {
+      std = *s.STD
     }
 
-    fmt.Printf("%s |    %s     | %s | %s [%s]\n", s.STD, platform, s.ETD, s.Destination.Name, s.Destination.CRS)
+    platform := "X"
+    if s.Platform != 0 {
+      platform = strconv.Itoa(s.Platform)
+    }
+
+    etd := "?"
+    if s.ETD != nil {
+      etd = *s.ETD
+    }
+
+    fmt.Printf(" %s\t| %s\t| %s\t| %s [%s]\t\n", std, platform, etd, s.Destination.Name, s.Destination.CRS)
   }
 }
 ```
@@ -72,64 +82,13 @@ Output:
 ```shell
 Gillingham (Kent) [GLM] Departure Board:
 ----------------------------------------
-Time  | Platform | Status  | Destination
+ Time   | Platform      | Departure Status      | Destination   
 ----------------------------------------
-12:57 |    2     | On time | London Cannon Street [CST]
-13:04 |    2     | On time | Kentish Town [KTN]
-13:07 |    3     | On time | Ramsgate [RAM]
-13:10 |    2     | On time | London Cannon Street [CST]
-13:11 |    3     | On time | Rainham (Kent) [RAI]
-```
-
-### Obtain Fastest Departures
-```golang
-package main
-
-import (
-	"fmt"
-
-	nr "github.com/martinsirbe/go-national-rail-client/nationalrail"
-)
-
-func main() {
-	client, err := nr.NewClient(
-		nr.AccessTokenOpt("e995265f-df60-4787-bafc-af5a433f9b22"),
-	)
-
-	board, err := client.GetFastestDepartures(
-		nr.StationCodeGillinghamKent,
-		nr.FilterDestinationsOpt([]nr.CRSCode{
-			nr.StationCodeRochester,
-			nr.StationCodeSittingbourne,
-		}),
-	)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("%s [%s] Departure Board:\n", board.LocationName, board.CRS)
-	fmt.Println("----------------------------------------")
-	fmt.Println("Time  | Platform | Status  | Destination")
-	fmt.Println("----------------------------------------")
-	for _, s := range board.TrainServices {
-		platform := "?"
-		if s.Platform != nil {
-			platform = *s.Platform
-		}
-
-		fmt.Printf("%s |    %s     | %s | %s [%s]\n", s.STD, platform, s.ETD, s.Destination.Name, s.Destination.CRS)
-	}
-}
-```
-
-Output:
-```shell
-Gillingham (Kent) [GLM] Departure Board:
-----------------------------------------
-Time  | Platform | Status  | Destination
-----------------------------------------
-20:04 |    2     | On time | Kentish Town [KTN]
-20:06 |    3     | On time | Ramsgate [RAM]
+ 09:24  | X     | Cancelled             | London St Pancras (Intl) [STP]        
+ 09:30  | 2     | 09:32         | London Victoria [VIC] 
+ 09:30  | 3     | 09:32         | Ramsgate [RAM]        
+ 09:34  | 2     | On time               | Luton [LUT]   
+ 09:36  | 3     | 09:47         | Faversham [FAV]    
 ```
 
 ## License

@@ -35,7 +35,6 @@ type RequestProperties struct {
 	FilterType *string
 	TimeOffset *int
 	TimeWindow *int
-	FilterList []string
 }
 
 type RequestOption func(*RequestProperties) error
@@ -97,18 +96,6 @@ func NumRowsOpt(n int) RequestOption {
 			return errors.New("number of rows must be in range of [1, 10]")
 		}
 		p.NumRows = &n
-		return nil
-	}
-}
-
-// FilterDestinationsOpt a list of CRS codes of the destinations location to filter.
-func FilterDestinationsOpt(codes []CRSCode) RequestOption {
-	return func(p *RequestProperties) error {
-		var crss []string
-		for _, crs := range codes {
-			crss = append(crss, string(crs))
-		}
-		p.FilterList = crss
 		return nil
 	}
 }

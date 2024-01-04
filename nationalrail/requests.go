@@ -6,18 +6,18 @@ import (
 )
 
 const (
-	soapEnvelope = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
-		xmlns:typ="http://thalesgroup.com/RTTI/2013-11-28/Token/types" 
-		xmlns:ldb="http://thalesgroup.com/RTTI/2017-10-01/ldb/">
-	   <soapenv:Header>
-		  <typ:AccessToken>
-			 <typ:TokenValue>%s</typ:TokenValue>
-		  </typ:AccessToken>
-	   </soapenv:Header>
-	   <soapenv:Body>
-		  %s
-	   </soapenv:Body>
-	</soapenv:Envelope>`
+	soapEnvelope = `<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+xmlns:typ="http://thalesgroup.com/RTTI/2013-11-28/Token/types" 
+xmlns:ldb="http://thalesgroup.com/RTTI/2021-11-01/ldb/">
+   <soap:Header>
+      <typ:AccessToken>
+         <typ:TokenValue>%s</typ:TokenValue>
+      </typ:AccessToken>
+   </soap:Header>
+   <soap:Body>
+      %s
+   </soap:Body>
+</soap:Envelope>`
 
 	getArrBoardWithDetailsRequest = `<ldb:GetArrBoardWithDetailsRequest>
          <ldb:numRows>%d</ldb:numRows>
@@ -182,9 +182,13 @@ func CreateGetDepBoardWithDetailsRequest(token string, req *StationBoardRequest)
 	))
 }
 
-func CreateGetFastestDeparturesRequest(token string, req *DeparturesBoardRequest) *strings.Reader {
+func CreateGetFastestDeparturesRequest(
+	token string,
+	req *DeparturesBoardRequest,
+	destinations []CRSCode,
+) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
-	filterListProperties := getFilterListProperties(req.FilterList)
+	filterListProperties := getFilterListProperties(destinations)
 
 	return strings.NewReader(fmt.Sprintf(
 		soapEnvelope,
@@ -198,9 +202,13 @@ func CreateGetFastestDeparturesRequest(token string, req *DeparturesBoardRequest
 	))
 }
 
-func CreateGetFastestDeparturesWithDetailsRequest(token string, req *DeparturesBoardRequest) *strings.Reader {
+func CreateGetFastestDeparturesWithDetailsRequest(
+	token string,
+	req *DeparturesBoardRequest,
+	destinations []CRSCode,
+) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
-	filterListProperties := getFilterListProperties(req.FilterList)
+	filterListProperties := getFilterListProperties(destinations)
 
 	return strings.NewReader(fmt.Sprintf(
 		soapEnvelope,
@@ -214,9 +222,13 @@ func CreateGetFastestDeparturesWithDetailsRequest(token string, req *DeparturesB
 	))
 }
 
-func CreateGetNextDeparturesRequest(token string, req *DeparturesBoardRequest) *strings.Reader {
+func CreateGetNextDeparturesRequest(
+	token string,
+	req *DeparturesBoardRequest,
+	destinations []CRSCode,
+) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
-	filterListProperties := getFilterListProperties(req.FilterList)
+	filterListProperties := getFilterListProperties(destinations)
 
 	return strings.NewReader(fmt.Sprintf(
 		soapEnvelope,
@@ -230,9 +242,13 @@ func CreateGetNextDeparturesRequest(token string, req *DeparturesBoardRequest) *
 	))
 }
 
-func CreateGetNextDeparturesWithDetailsRequest(token string, req *DeparturesBoardRequest) *strings.Reader {
+func CreateGetNextDeparturesWithDetailsRequest(
+	token string,
+	req *DeparturesBoardRequest,
+	destinations []CRSCode,
+) *strings.Reader {
 	optionalProperties := getOptionalRequestProperties(nil, nil, req.TimeOffset, req.TimeWindow)
-	filterListProperties := getFilterListProperties(req.FilterList)
+	filterListProperties := getFilterListProperties(destinations)
 
 	return strings.NewReader(fmt.Sprintf(
 		soapEnvelope,
@@ -295,11 +311,7 @@ func getTimeWindowProp(timeWindow *int) string {
 	return fmt.Sprintf("<ldb:timeWindow>%d</ldb:timeWindow>", *timeWindow)
 }
 
-func getFilterListProperties(filterList []string) string {
-	if len(filterList) == 0 {
-		return ""
-	}
-
+func getFilterListProperties(filterList []CRSCode) string {
 	var filterListProperties []string
 	for _, f := range filterList {
 		filterListProperties = append(filterListProperties, fmt.Sprintf("<ldb:crs>%s</ldb:crs>", f))

@@ -1,0 +1,66 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <GetFastestDeparturesWithDetailsResponse xmlns="http://thalesgroup.com/RTTI/2021-11-01/ldb/">
+            <DeparturesBoard xmlns:lt="http://thalesgroup.com/RTTI/2012-01-13/ldb/types" xmlns:lt8="http://thalesgroup.com/RTTI/2021-11-01/ldb/types" xmlns:lt6="http://thalesgroup.com/RTTI/2017-02-02/ldb/types" xmlns:lt7="http://thalesgroup.com/RTTI/2017-10-01/ldb/types" xmlns:lt4="http://thalesgroup.com/RTTI/2015-11-27/ldb/types" xmlns:lt5="http://thalesgroup.com/RTTI/2016-02-16/ldb/types" xmlns:lt2="http://thalesgroup.com/RTTI/2014-02-20/ldb/types" xmlns:lt3="http://thalesgroup.com/RTTI/2015-05-14/ldb/types">
+                <lt4:generatedAt>2024-01-03T23:25:18.9059932+00:00</lt4:generatedAt>
+                <lt4:locationName>Strood</lt4:locationName>
+                <lt4:crs>SOO</lt4:crs>
+                <lt4:platformAvailable>true</lt4:platformAvailable>
+                <lt8:departures>
+                    <lt8:destination crs="GLM">
+                        <lt8:service>
+                            <lt4:sta>23:29</lt4:sta>
+                            <lt4:eta>On time</lt4:eta>
+                            <lt4:std>23:29</lt4:std>
+                            <lt4:etd>On time</lt4:etd>
+                            <lt4:platform>1</lt4:platform>
+                            <lt4:operator>Thameslink</lt4:operator>
+                            <lt4:operatorCode>TL</lt4:operatorCode>
+                            <lt4:serviceType>train</lt4:serviceType>
+                            <lt4:length>8</lt4:length>
+                            <lt4:serviceID>3108056STROOD__</lt4:serviceID>
+                            <lt5:rsid>TL353900</lt5:rsid>
+                            <lt5:origin>
+                                <lt4:location>
+                                    <lt4:locationName>Kentish Town</lt4:locationName>
+                                    <lt4:crs>KTN</lt4:crs>
+                                </lt4:location>
+                            </lt5:origin>
+                            <lt5:destination>
+                                <lt4:location>
+                                    <lt4:locationName>Gillingham (Kent)</lt4:locationName>
+                                    <lt4:crs>GLM</lt4:crs>
+                                </lt4:location>
+                            </lt5:destination>
+                            <lt8:subsequentCallingPoints>
+                                <lt8:callingPointList>
+                                    <lt8:callingPoint>
+                                        <lt8:locationName>Rochester</lt8:locationName>
+                                        <lt8:crs>RTR</lt8:crs>
+                                        <lt8:st>23:32</lt8:st>
+                                        <lt8:et>On time</lt8:et>
+                                        <lt8:length>8</lt8:length>
+                                    </lt8:callingPoint>
+                                    <lt8:callingPoint>
+                                        <lt8:locationName>Chatham</lt8:locationName>
+                                        <lt8:crs>CTM</lt8:crs>
+                                        <lt8:st>23:36</lt8:st>
+                                        <lt8:et>On time</lt8:et>
+                                        <lt8:length>8</lt8:length>
+                                    </lt8:callingPoint>
+                                    <lt8:callingPoint>
+                                        <lt8:locationName>Gillingham (Kent)</lt8:locationName>
+                                        <lt8:crs>GLM</lt8:crs>
+                                        <lt8:st>23:40</lt8:st>
+                                        <lt8:et>On time</lt8:et>
+                                        <lt8:length>8</lt8:length>
+                                    </lt8:callingPoint>
+                                </lt8:callingPointList>
+                            </lt8:subsequentCallingPoints>
+                        </lt8:service>
+                    </lt8:destination>
+                </lt8:departures>
+            </DeparturesBoard>
+        </GetFastestDeparturesWithDetailsResponse>
+    </soap:Body>
+</soap:Envelope>
