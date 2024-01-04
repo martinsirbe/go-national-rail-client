@@ -34,61 +34,65 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strconv"
+
+	"github.com/jedib0t/go-pretty/v6/table"
 
 	nr "github.com/martinsirbe/go-national-rail-client/nationalrail"
 )
 
 func main() {
-  client, err := nr.NewClient(
-    nr.AccessTokenOpt("e995265f-df60-4787-bafc-af5a433f9b22"),
-  )
-  if err != nil {
-    panic(err)
-  }
+	client, err := nr.NewClient(
+		nr.AccessTokenOpt("e995265f-df60-4787-bafc-af5a433f9b22"),
+	)
+	if err != nil {
+		panic(err)
+	}
 
-  board, err := client.GetDeparturesWithDetails(nr.StationCodeGillinghamKent, nr.NumRowsOpt(5))
-  if err != nil {
-    panic(err)
-  }
+	board, err := client.GetDeparturesWithDetails(nr.StationCodeGillinghamKent, nr.NumRowsOpt(5))
+	if err != nil {
+		panic(err)
+	}
 
-  fmt.Printf("%s [%s] Departure Board:\n", board.LocationName, board.CRS)
-  fmt.Println("----------------------------------------")
-  fmt.Println(" Time\t| Platform\t| Departure Status\t| Destination\t")
-  fmt.Println("----------------------------------------")
+	t := table.NewWriter()
+	t.SetOutputMirror(os.Stdout)
+	t.AppendHeader(table.Row{"Time", "Platform", "Departure Status", "Destination"})
 
-  for _, s := range board.Services {
-    std := "?"
-    if s.STD != nil {
-      std = *s.STD
-    }
+	for _, s := range board.Services {
+		std := "?"
+		if s.STD != nil {
+			std = *s.STD
+		}
 
-    platform := "X"
-    if s.Platform != 0 {
-      platform = strconv.Itoa(s.Platform)
-    }
+		platform := "X"
+		if s.Platform != 0 {
+			platform = strconv.Itoa(s.Platform)
+		}
 
-    etd := "?"
-    if s.ETD != nil {
-      etd = *s.ETD
-    }
+		etd := "?"
+		if s.ETD != nil {
+			etd = *s.ETD
+		}
 
-    fmt.Printf(" %s\t| %s\t| %s\t| %s [%s]\t\n", std, platform, etd, s.Destination.Name, s.Destination.CRS)
-  }
+		t.AppendRow(table.Row{std, platform, etd, fmt.Sprintf("%s [%s]", s.Destination.Name, s.Destination.CRS)})
+	}
+
+	t.Render()
 }
 ```
 
 Output:
 ```shell
-Gillingham (Kent) [GLM] Departure Board:
-----------------------------------------
- Time   | Platform      | Departure Status      | Destination   
-----------------------------------------
- 09:24  | X     | Cancelled             | London St Pancras (Intl) [STP]        
- 09:30  | 2     | 09:32         | London Victoria [VIC] 
- 09:30  | 3     | 09:32         | Ramsgate [RAM]        
- 09:34  | 2     | On time               | Luton [LUT]   
- 09:36  | 3     | 09:47         | Faversham [FAV]    
++-------+----------+------------------+--------------------------------+
+| TIME  | PLATFORM | DEPARTURE STATUS | DESTINATION                    |
++-------+----------+------------------+--------------------------------+
+| 19:07 | 3        | 19:09            | Ramsgate [RAM]                 |
+| 19:11 | 3        | On time          | Rainham (Kent) [RAI]           |
+| 19:15 | 1        | On time          | London Victoria [VIC]          |
+| 19:24 | 2        | On time          | London St Pancras (Intl) [STP] |
+| 19:30 | 2        | On time          | London Victoria [VIC]          |
++-------+----------+------------------+--------------------------------+
 ```
 
 ## License
