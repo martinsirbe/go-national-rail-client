@@ -107,7 +107,7 @@ type CallingPoint struct {
 	Length       int       `xml:"length"`
 	LocationName string    `xml:"locationName"`
 	St           string    `xml:"st"`
-	DelayReason  *string   `xml:"delayReason,omitempty"`
+	DelayReason  *string   `xml:"delayReason"`
 }
 
 type CallingPointList struct {
@@ -147,6 +147,8 @@ type DeparturesBoard struct {
 }
 
 type GetDeparturesBoardResult struct {
+	Departures        Departures   `xml:"departures"`
+	NrccMessages      NrccMessages `xml:"nrccMessages"`
 	Lt                string       `xml:"lt,attr"`
 	Lt2               string       `xml:"lt2,attr"`
 	Lt3               string       `xml:"lt3,attr"`
@@ -156,10 +158,8 @@ type GetDeparturesBoardResult struct {
 	Lt7               string       `xml:"lt7,attr"`
 	Lt8               string       `xml:"lt8,attr"`
 	Crs               string       `xml:"crs"`
-	Departures        Departures   `xml:"departures"`
 	GeneratedAt       string       `xml:"generatedAt"`
 	LocationName      string       `xml:"locationName"`
-	NrccMessages      NrccMessages `xml:"nrccMessages"`
 	PlatformAvailable bool         `xml:"platformAvailable"`
 }
 
@@ -169,6 +169,9 @@ type ServiceDetails struct {
 }
 
 type GetServiceDetailsResult struct {
+	Formation               Formation               `xml:"formation"`
+	PreviousCallingPoints   PreviousCallingPoints   `xml:"previousCallingPoints"`
+	SubsequentCallingPoints SubsequentCallingPoints `xml:"subsequentCallingPoints"`
 	Lt                      string                  `xml:"lt,attr"`
 	Lt2                     string                  `xml:"lt2,attr"`
 	Lt3                     string                  `xml:"lt3,attr"`
@@ -177,21 +180,28 @@ type GetServiceDetailsResult struct {
 	Lt6                     string                  `xml:"lt6,attr"`
 	Lt7                     string                  `xml:"lt7,attr"`
 	Lt8                     string                  `xml:"lt8,attr"`
-	Ata                     string                  `xml:"ata"`
-	Atd                     string                  `xml:"atd"`
 	Crs                     string                  `xml:"crs"`
-	Formation               Formation               `xml:"formation"`
-	GeneratedAt             string                  `xml:"generatedAt"`
-	Length                  int                     `xml:"length"`
 	LocationName            string                  `xml:"locationName"`
 	Operator                string                  `xml:"operator"`
 	OperatorCode            string                  `xml:"operatorCode"`
-	Platform                int                     `xml:"platform"`
-	PreviousCallingPoints   PreviousCallingPoints   `xml:"previousCallingPoints"`
+	GeneratedAt             string                  `xml:"generatedAt"`
 	ServiceType             string                  `xml:"serviceType"`
-	Sta                     string                  `xml:"sta"`
-	Std                     string                  `xml:"std"`
-	SubsequentCallingPoints SubsequentCallingPoints `xml:"subsequentCallingPoints"`
+	CancelReason            *string                 `xml:"cancelReason"`
+	DelayReason             *string                 `xml:"delayReason"`
+	DiversionReason         *string                 `xml:"diversionReason"`
+	DivertedVia             *string                 `xml:"divertedVia"`
+	OverdueMessage          *string                 `xml:"overdueMessage"`
+	Sta                     *string                 `xml:"sta"`
+	Eta                     *string                 `xml:"eta"`
+	Ata                     *string                 `xml:"ata"`
+	Std                     *string                 `xml:"std"`
+	Etd                     *string                 `xml:"etd"`
+	Atd                     *string                 `xml:"atd"`
+	Length                  int                     `xml:"length"`
+	Platform                int                     `xml:"platform"`
+	IsCancelled             bool                    `xml:"isCancelled"`
+	DetachFront             bool                    `xml:"detachFront"`
+	IsReverseFormation      bool                    `xml:"isReverseFormation"`
 }
 
 type Departures struct {
@@ -233,7 +243,7 @@ type GetStationBoardResult struct {
 type Location struct {
 	Crs          string  `xml:"crs"`
 	LocationName string  `xml:"locationName"`
-	Via          *string `xml:"via,omitempty"`
+	Via          *string `xml:"via"`
 }
 
 type NrccMessages struct {
@@ -249,28 +259,23 @@ type PreviousCallingPoints struct {
 }
 
 type Service struct {
-	Destination  Destination `xml:"destination"`
-	Eta          string      `xml:"eta"`
-	Formation    Formation   `xml:"formation"`
-	Length       int         `xml:"length"`
-	Operator     string      `xml:"operator"`
-	OperatorCode string      `xml:"operatorCode"`
-	Origin       Origin      `xml:"origin"`
-	Platform     int         `xml:"platform"`
-	ServiceID    string      `xml:"serviceID"`
-	ServiceType  string      `xml:"serviceType"`
-	Sta          string      `xml:"sta"`
-
-	Rsid        *string `xml:"rsid,omitempty"`
-	DelayReason *string `xml:"delayReason,omitempty"`
-
-	// Only present in "WithDetails" responses .
-	PreviousCallingPoints *PreviousCallingPoints `xml:"previousCallingPoints,omitempty"`
-
-	// Optional response fields for Departures
-	Etd                     *string                  `xml:"etd,omitempty"`
-	Std                     *string                  `xml:"std,omitempty"`
-	SubsequentCallingPoints *SubsequentCallingPoints `xml:"subsequentCallingPoints,omitempty"`
+	Destination             Destination              `xml:"destination"`
+	Formation               Formation                `xml:"formation"`
+	Origin                  Origin                   `xml:"origin"`
+	PreviousCallingPoints   *PreviousCallingPoints   `xml:"previousCallingPoints"`
+	SubsequentCallingPoints *SubsequentCallingPoints `xml:"subsequentCallingPoints"`
+	Operator                string                   `xml:"operator"`
+	OperatorCode            string                   `xml:"operatorCode"`
+	ServiceID               string                   `xml:"serviceID"`
+	ServiceType             string                   `xml:"serviceType"`
+	Rsid                    *string                  `xml:"rsid"`
+	DelayReason             *string                  `xml:"delayReason"`
+	Sta                     *string                  `xml:"sta"`
+	Eta                     *string                  `xml:"eta"`
+	Std                     *string                  `xml:"std"`
+	Etd                     *string                  `xml:"etd"`
+	Length                  int                      `xml:"length"`
+	Platform                int                      `xml:"platform"`
 }
 
 type Toilet struct {

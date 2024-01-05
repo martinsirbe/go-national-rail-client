@@ -194,21 +194,21 @@ func mapService(s *soap.Service) *Service {
 			Name: s.Destination.Location.LocationName,
 			Via:  s.Destination.Location.Via,
 		},
-		ETA:    s.Eta,
 		Length: s.Length,
 		Operator: Operator{
 			Code: s.OperatorCode,
 			Name: s.Operator,
 		},
-		Platform: s.Platform,
-		STA:      s.Sta,
-		RSID:     s.Rsid,
-		ETD:      s.Etd,
-		STD:      s.Std,
+		Platform:        s.Platform,
+		RetailServiceID: s.Rsid,
 		Formation: Formation{
 			Coaches: mapCoaches(s.Formation.Coaches.Coach),
 		},
-		DelayReason: s.DelayReason,
+		DelayReason:              s.DelayReason,
+		ScheduledTimeOfArrival:   s.Sta,
+		EstimatedTimeOfArrival:   s.Eta,
+		ScheduledTimeOfDeparture: s.Std,
+		EstimatedTimeOfDeparture: s.Etd,
 	}
 
 	var origins []*Location
@@ -227,16 +227,16 @@ func mapService(s *soap.Service) *Service {
 			var callingPoints []*CallingPoint
 			for _, cp := range cpl.CallingPoint {
 				callingPoints = append(callingPoints, &CallingPoint{
-					CRS:  CRSCode(cp.Crs),
-					Name: cp.LocationName,
-					At:   cp.At,
-					Et:   cp.Et,
+					CRS:           CRSCode(cp.Crs),
+					Name:          cp.LocationName,
+					ActualTime:    cp.At,
+					EstimatedTime: cp.Et,
 					Formation: Formation{
 						Coaches: mapCoaches(cp.Formation.Coaches.Coach),
 					},
-					Length:      cp.Length,
-					St:          cp.St,
-					DelayReason: cp.DelayReason,
+					Length:        cp.Length,
+					ScheduledTime: cp.St,
+					DelayReason:   cp.DelayReason,
 				})
 			}
 
@@ -249,16 +249,16 @@ func mapService(s *soap.Service) *Service {
 		var callingPoints []*CallingPoint
 		for _, cp := range s.SubsequentCallingPoints.CallingPointList.CallingPoint {
 			callingPoints = append(callingPoints, &CallingPoint{
-				CRS:  CRSCode(cp.Crs),
-				Name: cp.LocationName,
-				At:   cp.At,
-				Et:   cp.Et,
+				CRS:           CRSCode(cp.Crs),
+				Name:          cp.LocationName,
+				ActualTime:    cp.At,
+				EstimatedTime: cp.Et,
 				Formation: Formation{
 					Coaches: mapCoaches(cp.Formation.Coaches.Coach),
 				},
-				Length:      cp.Length,
-				St:          cp.St,
-				DelayReason: cp.DelayReason,
+				Length:        cp.Length,
+				ScheduledTime: cp.St,
+				DelayReason:   cp.DelayReason,
 			})
 		}
 		service.SubsequentCallingPoints = callingPoints
@@ -270,13 +270,33 @@ func mapService(s *soap.Service) *Service {
 func mapCoaches(c []soap.Coach) []*Coach {
 	var coaches []*Coach
 	for _, coach := range c {
+		ts := ToiletServiceStatusUnknown
+		if coach.Toilet.Status != nil {
+			switch *coach.Toilet.Status {
+			case "InService":
+				ts = ToiletServiceStatusInService
+			case "NotInService":
+				ts = ToiletServiceStatusNotInService
+			}
+		}
+
+		tt := ToiletTypeUnknown
+		switch coach.Toilet.CharData {
+		case "None":
+			tt = ToiletTypeNone
+		case "Standard":
+			tt = ToiletTypeStandard
+		case "Accessible":
+			tt = ToiletTypeAccessible
+		}
+
 		coaches = append(coaches, &Coach{
 			Number:  coach.Number,
 			Class:   coach.CoachClass,
 			Loading: coach.Loading,
 			Toilet: Toilet{
-				Status:   coach.Toilet.Status,
-				CharData: coach.Toilet.CharData,
+				Status: ts,
+				Type:   tt,
 			},
 		})
 	}
@@ -332,9 +352,12 @@ func mapDeparturesBoard(sbr soap.GetDeparturesBoardResult) (*DeparturesBoard, er
 }
 
 func mapServiceDetails(s *soap.GetServiceDetailsResult) (*ServiceDetails, error) {
+	var divertedVia *CRSCode
+	if s.DivertedVia != nil {
+		via := CRSCode(*s.DivertedVia)
+		divertedVia = &via
+	}
 	serviceDetails := ServiceDetails{
-		ATA: s.Ata,
-		ATD: s.Atd,
 		CRS: CRSCode(s.Crs),
 		Formation: Formation{
 			Coaches: mapCoaches(s.Formation.Coaches.Coach),
@@ -345,10 +368,22 @@ func mapServiceDetails(s *soap.GetServiceDetailsResult) (*ServiceDetails, error)
 			Code: s.OperatorCode,
 			Name: s.Operator,
 		},
-		Platform: s.Platform,
-		Type:     s.ServiceType,
-		STA:      s.Sta,
-		STD:      s.Std,
+		Platform:                 s.Platform,
+		Type:                     s.ServiceType,
+		ScheduledTimeOfArrival:   s.Sta,
+		EstimatedTimeOfArrival:   s.Eta,
+		ActualTimeOfArrival:      s.Ata,
+		ScheduledTimeOfDeparture: s.Std,
+		EstimatedTimeOfDeparture: s.Etd,
+		ActualTimeOfDeparture:    s.Atd,
+		IsCancelled:              s.IsCancelled,
+		CancelReason:             s.CancelReason,
+		DelayReason:              s.DelayReason,
+		DetachFront:              s.DetachFront,
+		DiversionReason:          s.DiversionReason,
+		DivertedVia:              divertedVia,
+		OverdueMessage:           s.OverdueMessage,
+		IsReverseFormation:       s.IsReverseFormation,
 	}
 
 	if s.GeneratedAt != "" {
@@ -365,16 +400,16 @@ func mapServiceDetails(s *soap.GetServiceDetailsResult) (*ServiceDetails, error)
 		var callingPoints []*CallingPoint
 		for _, cp := range cpl.CallingPoint {
 			callingPoints = append(callingPoints, &CallingPoint{
-				CRS:  CRSCode(cp.Crs),
-				Name: cp.LocationName,
-				At:   cp.At,
-				Et:   cp.Et,
+				CRS:           CRSCode(cp.Crs),
+				Name:          cp.LocationName,
+				ActualTime:    cp.At,
+				EstimatedTime: cp.Et,
 				Formation: Formation{
 					Coaches: mapCoaches(cp.Formation.Coaches.Coach),
 				},
-				Length:      cp.Length,
-				St:          cp.St,
-				DelayReason: cp.DelayReason,
+				Length:        cp.Length,
+				ScheduledTime: cp.St,
+				DelayReason:   cp.DelayReason,
 			})
 		}
 
@@ -385,16 +420,16 @@ func mapServiceDetails(s *soap.GetServiceDetailsResult) (*ServiceDetails, error)
 	var callingPoints []*CallingPoint
 	for _, cp := range s.SubsequentCallingPoints.CallingPointList.CallingPoint {
 		callingPoints = append(callingPoints, &CallingPoint{
-			CRS:  CRSCode(cp.Crs),
-			Name: cp.LocationName,
-			At:   cp.At,
-			Et:   cp.Et,
+			CRS:           CRSCode(cp.Crs),
+			Name:          cp.LocationName,
+			ActualTime:    cp.At,
+			EstimatedTime: cp.Et,
 			Formation: Formation{
 				Coaches: mapCoaches(cp.Formation.Coaches.Coach),
 			},
-			Length:      cp.Length,
-			St:          cp.St,
-			DelayReason: cp.DelayReason,
+			Length:        cp.Length,
+			ScheduledTime: cp.St,
+			DelayReason:   cp.DelayReason,
 		})
 	}
 	serviceDetails.SubsequentCallingPoints = callingPoints

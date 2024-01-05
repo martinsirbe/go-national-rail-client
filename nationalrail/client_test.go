@@ -54,7 +54,7 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 								Name: nr.StationNameFaversham,
 							},
 						},
-						ETA: "On time",
+						EstimatedTimeOfArrival: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -62,8 +62,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -71,8 +71,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -80,8 +80,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -89,8 +89,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -98,8 +98,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -107,8 +107,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 							},
@@ -122,10 +122,10 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 						PreviousCallingPointsPerOrigin: [][]*nr.CallingPoint{
 							{
 								{
-									CRS:  nr.StationCodeFaversham,
-									Name: nr.StationNameFaversham,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeFaversham,
+									Name:          nr.StationNameFaversham,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -133,8 +133,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -142,8 +142,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -151,8 +151,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -160,8 +160,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -169,8 +169,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -178,20 +178,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 										},
 									},
-									Length: 6,
-									St:     "09:00",
+									Length:        6,
+									ScheduledTime: "09:00",
 								},
 								{
-									CRS:  nr.StationCodeSittingbourne,
-									Name: nr.StationNameSittingbourne,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeSittingbourne,
+									Name:          nr.StationNameSittingbourne,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -199,8 +199,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -208,8 +208,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -217,8 +217,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -226,8 +226,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -235,8 +235,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -244,20 +244,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 										},
 									},
-									Length: 6,
-									St:     "09:10",
+									Length:        6,
+									ScheduledTime: "09:10",
 								},
 								{
-									CRS:  nr.StationCodeRainhamKent,
-									Name: nr.StationNameRainhamKent,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeRainhamKent,
+									Name:          nr.StationNameRainhamKent,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -265,8 +265,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -274,8 +274,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -283,8 +283,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -292,8 +292,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -301,8 +301,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -310,19 +310,19 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 										},
 									},
-									Length: 6,
-									St:     "09:19",
+									Length:        6,
+									ScheduledTime: "09:19",
 								},
 							},
 						},
-						RSID: nil,
-						STA:  "09:23",
+						RetailServiceID:        nil,
+						ScheduledTimeOfArrival: pstr("09:23"),
 					},
 					{
 						ID:   "3110958GLNGHMK_",
@@ -341,7 +341,7 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 								Name: nr.StationNameDoverPriory,
 							},
 						},
-						ETA: "On time",
+						EstimatedTimeOfArrival: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -349,8 +349,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -358,8 +358,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -367,8 +367,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -376,8 +376,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -385,8 +385,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -394,8 +394,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -403,8 +403,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -412,8 +412,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
@@ -427,10 +427,10 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 						PreviousCallingPointsPerOrigin: [][]*nr.CallingPoint{
 							{
 								{
-									CRS:  nr.StationCodeRamsgate,
-									Name: nr.StationNameRamsgate,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeRamsgate,
+									Name:          nr.StationNameRamsgate,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -438,8 +438,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -447,8 +447,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(9),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -456,8 +456,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -465,8 +465,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -474,8 +474,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(35),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -483,8 +483,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(11),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -492,8 +492,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -501,20 +501,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(18),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:12",
+									Length:        4,
+									ScheduledTime: "08:12",
 								},
 								{
-									CRS:  nr.StationCodeDumptonPark,
-									Name: nr.StationNameDumptonPark,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeDumptonPark,
+									Name:          nr.StationNameDumptonPark,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -522,8 +522,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -531,8 +531,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -540,8 +540,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -549,8 +549,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(22),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -558,8 +558,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(35),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -567,8 +567,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(11),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -576,8 +576,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -585,20 +585,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(18),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:15",
+									Length:        4,
+									ScheduledTime: "08:15",
 								},
 								{
-									CRS:  nr.StationCodeBroadstairs,
-									Name: nr.StationNameBroadstairs,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeBroadstairs,
+									Name:          nr.StationNameBroadstairs,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -606,8 +606,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -615,8 +615,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -624,8 +624,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -633,8 +633,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -642,8 +642,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -651,8 +651,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -660,8 +660,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -669,20 +669,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:18",
+									Length:        4,
+									ScheduledTime: "08:18",
 								},
 								{
-									CRS:  nr.StationCodeMargate,
-									Name: nr.StationNameMargate,
-									At:   pstr("08:25"),
-									Et:   nil,
+									CRS:           nr.StationCodeMargate,
+									Name:          nr.StationNameMargate,
+									ActualTime:    pstr("08:25"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -690,8 +690,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -699,8 +699,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(5),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -708,8 +708,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(23),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -717,8 +717,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(23),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -726,8 +726,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(12),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -735,8 +735,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -744,8 +744,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(9),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -753,20 +753,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(10),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:23",
+									Length:        4,
+									ScheduledTime: "08:23",
 								},
 								{
-									CRS:  nr.StationCodeWestgateOnSea,
-									Name: nr.StationNameWestgateOnSea,
-									At:   pstr("08:29"),
-									Et:   nil,
+									CRS:           nr.StationCodeWestgateOnSea,
+									Name:          nr.StationNameWestgateOnSea,
+									ActualTime:    pstr("08:29"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -774,8 +774,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -783,8 +783,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(5),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -792,8 +792,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(23),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -801,8 +801,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(23),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -810,8 +810,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -819,8 +819,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -828,8 +828,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -837,20 +837,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:27",
+									Length:        4,
+									ScheduledTime: "08:27",
 								},
 								{
-									CRS:  nr.StationCodeBirchingtonOnSea,
-									Name: nr.StationNameBirchingtonOnSea,
-									At:   pstr("08:32"),
-									Et:   nil,
+									CRS:           nr.StationCodeBirchingtonOnSea,
+									Name:          nr.StationNameBirchingtonOnSea,
+									ActualTime:    pstr("08:32"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -858,8 +858,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -867,8 +867,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(12),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -876,8 +876,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(16),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -885,8 +885,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(30),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -894,8 +894,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -903,8 +903,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -912,8 +912,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -921,20 +921,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:30",
+									Length:        4,
+									ScheduledTime: "08:30",
 								},
 								{
-									CRS:  nr.StationCodeHerneBay,
-									Name: nr.StationNameHerneBay,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeHerneBay,
+									Name:          nr.StationNameHerneBay,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -942,8 +942,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(15),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -951,8 +951,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(11),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -960,8 +960,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(18),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -969,8 +969,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(27),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -978,8 +978,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(27),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -987,8 +987,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(12),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -996,8 +996,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(11),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1005,20 +1005,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:39",
+									Length:        4,
+									ScheduledTime: "08:39",
 								},
 								{
-									CRS:  nr.StationCodeChestfieldAndSwalecliffe,
-									Name: nr.StationNameChestfieldAndSwalecliffe,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeChestfieldAndSwalecliffe,
+									Name:          nr.StationNameChestfieldAndSwalecliffe,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1026,8 +1026,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1035,8 +1035,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1044,8 +1044,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1053,8 +1053,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1062,8 +1062,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1071,8 +1071,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1080,8 +1080,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1089,20 +1089,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:43",
+									Length:        4,
+									ScheduledTime: "08:43",
 								},
 								{
-									CRS:  nr.StationCodeWhitstable,
-									Name: nr.StationNameWhitstable,
-									At:   pstr("08:48"),
-									Et:   nil,
+									CRS:           nr.StationCodeWhitstable,
+									Name:          nr.StationNameWhitstable,
+									ActualTime:    pstr("08:48"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1110,8 +1110,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(28),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1119,8 +1119,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(32),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1128,8 +1128,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(14),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1137,8 +1137,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(20),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1146,8 +1146,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(25),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1155,8 +1155,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(14),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1164,8 +1164,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1173,20 +1173,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:46",
+									Length:        4,
+									ScheduledTime: "08:46",
 								},
 								{
-									CRS:  nr.StationCodeFaversham,
-									Name: nr.StationNameFaversham,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeFaversham,
+									Name:          nr.StationNameFaversham,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1194,8 +1194,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1203,8 +1203,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1212,8 +1212,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1221,8 +1221,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1230,8 +1230,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1239,8 +1239,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1248,8 +1248,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1257,20 +1257,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "09:04",
+									Length:        8,
+									ScheduledTime: "09:04",
 								},
 								{
-									CRS:  nr.StationCodeTeynham,
-									Name: nr.StationNameTeynham,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeTeynham,
+									Name:          nr.StationNameTeynham,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1278,8 +1278,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1287,8 +1287,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1296,8 +1296,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1305,8 +1305,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1314,8 +1314,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1323,8 +1323,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1332,8 +1332,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1341,20 +1341,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "09:10",
+									Length:        8,
+									ScheduledTime: "09:10",
 								},
 								{
-									CRS:  nr.StationCodeSittingbourne,
-									Name: nr.StationNameSittingbourne,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeSittingbourne,
+									Name:          nr.StationNameSittingbourne,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1362,8 +1362,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1371,8 +1371,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1380,8 +1380,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1389,8 +1389,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1398,8 +1398,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1407,8 +1407,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1416,8 +1416,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1425,20 +1425,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "09:15",
+									Length:        8,
+									ScheduledTime: "09:15",
 								},
 								{
-									CRS:  nr.StationCodeNewington,
-									Name: nr.StationNameNewington,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeNewington,
+									Name:          nr.StationNameNewington,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1446,8 +1446,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1455,8 +1455,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1464,8 +1464,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1473,8 +1473,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1482,8 +1482,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1491,8 +1491,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1500,8 +1500,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1509,20 +1509,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "09:20",
+									Length:        8,
+									ScheduledTime: "09:20",
 								},
 								{
-									CRS:  nr.StationCodeRainhamKent,
-									Name: nr.StationNameRainhamKent,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeRainhamKent,
+									Name:          nr.StationNameRainhamKent,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1530,8 +1530,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1539,8 +1539,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1548,8 +1548,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1557,8 +1557,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1566,8 +1566,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1575,8 +1575,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1584,8 +1584,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1593,22 +1593,22 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "09:24",
+									Length:        8,
+									ScheduledTime: "09:24",
 								},
 							},
 							{
 								{
-									CRS:  nr.StationCodeDoverPriory,
-									Name: nr.StationNameDoverPriory,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeDoverPriory,
+									Name:          nr.StationNameDoverPriory,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1616,8 +1616,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(35),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1625,8 +1625,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(11),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1634,8 +1634,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1643,20 +1643,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(18),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:16",
+									Length:        4,
+									ScheduledTime: "08:16",
 								},
 								{
-									CRS:  nr.StationCodeKearsney,
-									Name: nr.StationNameKearsney,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeKearsney,
+									Name:          nr.StationNameKearsney,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1664,8 +1664,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(12),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1673,8 +1673,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1682,8 +1682,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(9),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1691,20 +1691,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(10),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:20",
+									Length:        4,
+									ScheduledTime: "08:20",
 								},
 								{
-									CRS:  nr.StationCodeShepherdsWell,
-									Name: nr.StationNameShepherdsWell,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeShepherdsWell,
+									Name:          nr.StationNameShepherdsWell,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1712,8 +1712,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1721,8 +1721,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1730,8 +1730,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1739,20 +1739,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:26",
+									Length:        4,
+									ScheduledTime: "08:26",
 								},
 								{
-									CRS:  nr.StationCodeSnowdown,
-									Name: nr.StationNameSnowdown,
-									At:   pstr("No report"),
-									Et:   nil,
+									CRS:           nr.StationCodeSnowdown,
+									Name:          nr.StationNameSnowdown,
+									ActualTime:    pstr("No report"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1760,8 +1760,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1769,8 +1769,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1778,8 +1778,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1787,20 +1787,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:29",
+									Length:        4,
+									ScheduledTime: "08:29",
 								},
 								{
-									CRS:  nr.StationCodeAylesham,
-									Name: nr.StationNameAylesham,
-									At:   pstr("No report"),
-									Et:   nil,
+									CRS:           nr.StationCodeAylesham,
+									Name:          nr.StationNameAylesham,
+									ActualTime:    pstr("No report"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1808,8 +1808,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1817,8 +1817,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1826,8 +1826,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1835,20 +1835,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:32",
+									Length:        4,
+									ScheduledTime: "08:32",
 								},
 								{
-									CRS:  nr.StationCodeAdisham,
-									Name: nr.StationNameAdisham,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeAdisham,
+									Name:          nr.StationNameAdisham,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1856,8 +1856,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(17),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1865,8 +1865,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(8),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1874,8 +1874,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1883,20 +1883,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:35",
+									Length:        4,
+									ScheduledTime: "08:35",
 								},
 								{
-									CRS:  nr.StationCodeBekesbourne,
-									Name: nr.StationNameBekesbourne,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeBekesbourne,
+									Name:          nr.StationNameBekesbourne,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1904,8 +1904,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(27),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1913,8 +1913,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(12),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1922,8 +1922,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(11),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1931,20 +1931,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:39",
+									Length:        4,
+									ScheduledTime: "08:39",
 								},
 								{
-									CRS:  nr.StationCodeCanterburyEast,
-									Name: nr.StationNameCanterburyEast,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeCanterburyEast,
+									Name:          nr.StationNameCanterburyEast,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -1952,8 +1952,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(25),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -1961,8 +1961,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(14),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -1970,8 +1970,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(13),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -1979,20 +1979,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:45",
+									Length:        4,
+									ScheduledTime: "08:45",
 								},
 								{
-									CRS:  nr.StationCodeSelling,
-									Name: nr.StationNameSelling,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeSelling,
+									Name:          nr.StationNameSelling,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2000,8 +2000,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(27),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2009,8 +2009,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(14),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2018,8 +2018,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(9),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2027,20 +2027,20 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "08:54",
+									Length:        4,
+									ScheduledTime: "08:54",
 								},
 								{
-									CRS:  nr.StationCodeFaversham,
-									Name: nr.StationNameFaversham,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeFaversham,
+									Name:          nr.StationNameFaversham,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2048,8 +2048,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2057,8 +2057,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2066,8 +2066,8 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2075,19 +2075,19 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 4,
-									St:     "09:04",
+									Length:        4,
+									ScheduledTime: "09:04",
 								},
 							},
 						},
-						RSID: pstr("SE512001"),
-						STA:  "09:29",
+						RetailServiceID:        pstr("SE512001"),
+						ScheduledTimeOfArrival: pstr("09:29"),
 					},
 				},
 				PlatformAvailable: true,
@@ -2167,12 +2167,12 @@ func TestGetArrivalsWithDetails(t *testing.T) {
 				assert.Equal(t, expectedService.ID, actualService.ID)
 				assert.Equal(t, expectedService.Type, actualService.Type)
 				assert.Equal(t, expectedService.Destination, actualService.Destination)
-				assert.Equal(t, expectedService.ETA, actualService.ETA)
+				assert.Equal(t, expectedService.EstimatedTimeOfArrival, actualService.EstimatedTimeOfArrival)
 				assert.Equal(t, expectedService.Length, actualService.Length)
 				assert.Equal(t, expectedService.Operator, actualService.Operator)
 				assert.Equal(t, expectedService.Platform, actualService.Platform)
-				assert.Equal(t, expectedService.RSID, actualService.RSID)
-				assert.Equal(t, expectedService.STA, actualService.STA)
+				assert.Equal(t, expectedService.RetailServiceID, actualService.RetailServiceID)
+				assert.Equal(t, expectedService.ScheduledTimeOfArrival, actualService.ScheduledTimeOfArrival)
 
 				assert.ElementsMatch(t, expectedService.Origins, actualService.Origins)
 				assert.ElementsMatch(t, expectedService.Formation.Coaches, actualService.Formation.Coaches)
@@ -2225,7 +2225,7 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 								Name: nr.StationNameRamsgate,
 							},
 						},
-						ETA: "19:59",
+						EstimatedTimeOfArrival: pstr("19:59"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -2233,8 +2233,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -2242,8 +2242,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -2251,8 +2251,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -2260,8 +2260,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -2269,8 +2269,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -2278,8 +2278,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -2287,8 +2287,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 
@@ -2297,8 +2297,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
@@ -2312,10 +2312,10 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 						PreviousCallingPointsPerOrigin: [][]*nr.CallingPoint{
 							{
 								{
-									CRS:  nr.StationCodeRamsgate,
-									Name: nr.StationNameRamsgate,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeRamsgate,
+									Name:          nr.StationNameRamsgate,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2323,8 +2323,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(8),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2332,8 +2332,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(5),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2341,8 +2341,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(9),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2350,8 +2350,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(10),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2359,8 +2359,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(48),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2368,8 +2368,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(26),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2377,8 +2377,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(10),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 
@@ -2387,21 +2387,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(25),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "18:52",
-									DelayReason: nil,
+									Length:        8,
+									ScheduledTime: "18:52",
+									DelayReason:   nil,
 								},
 								{
-									CRS:  nr.StationCodeDumptonPark,
-									Name: nr.StationNameDumptonPark,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeDumptonPark,
+									Name:          nr.StationNameDumptonPark,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2409,8 +2409,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(12),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2418,8 +2418,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2427,8 +2427,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(5),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2436,8 +2436,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(18),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2445,8 +2445,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2454,8 +2454,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2463,8 +2463,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(5),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 
@@ -2473,21 +2473,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(4),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "18:55",
-									DelayReason: nil,
+									Length:        8,
+									ScheduledTime: "18:55",
+									DelayReason:   nil,
 								},
 								{
-									CRS:  nr.StationCodeBroadstairs,
-									Name: nr.StationNameBroadstairs,
-									At:   pstr("On time"),
-									Et:   nil,
+									CRS:           nr.StationCodeBroadstairs,
+									Name:          nr.StationNameBroadstairs,
+									ActualTime:    pstr("On time"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2495,8 +2495,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2504,8 +2504,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2513,8 +2513,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2522,8 +2522,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2531,8 +2531,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2540,8 +2540,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2549,8 +2549,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 
@@ -2559,21 +2559,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "18:58",
-									DelayReason: nil,
+									Length:        8,
+									ScheduledTime: "18:58",
+									DelayReason:   nil,
 								},
 								{
-									CRS:  nr.StationCodeMargate,
-									Name: nr.StationNameMargate,
-									At:   pstr("19:09"),
-									Et:   nil,
+									CRS:           nr.StationCodeMargate,
+									Name:          nr.StationNameMargate,
+									ActualTime:    pstr("19:09"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2581,8 +2581,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(25),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2590,8 +2590,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2599,8 +2599,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2608,8 +2608,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(28),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2617,8 +2617,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2626,8 +2626,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2635,8 +2635,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(2),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2644,21 +2644,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(0),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:04",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:04",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 								{
-									CRS:  nr.StationCodeWestgateOnSea,
-									Name: nr.StationNameWestgateOnSea,
-									At:   pstr("19:14"),
-									Et:   nil,
+									CRS:           nr.StationCodeWestgateOnSea,
+									Name:          nr.StationNameWestgateOnSea,
+									ActualTime:    pstr("19:14"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2666,8 +2666,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2675,8 +2675,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2684,8 +2684,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2693,8 +2693,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2702,8 +2702,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2711,8 +2711,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2720,8 +2720,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2729,21 +2729,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:08",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:08",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 								{
-									CRS:  nr.StationCodeBirchingtonOnSea,
-									Name: nr.StationNameBirchingtonOnSea,
-									At:   pstr("19:17"),
-									Et:   nil,
+									CRS:           nr.StationCodeBirchingtonOnSea,
+									Name:          nr.StationNameBirchingtonOnSea,
+									ActualTime:    pstr("19:17"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2751,8 +2751,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(25),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2760,8 +2760,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(11),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2769,8 +2769,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(4),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2778,8 +2778,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(33),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2787,8 +2787,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(7),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2796,8 +2796,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2805,8 +2805,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(5),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2814,21 +2814,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:12",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:12",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 								{
-									CRS:  nr.StationCodeHerneBay,
-									Name: nr.StationNameHerneBay,
-									At:   pstr("19:25"),
-									Et:   nil,
+									CRS:           nr.StationCodeHerneBay,
+									Name:          nr.StationNameHerneBay,
+									ActualTime:    pstr("19:25"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2836,8 +2836,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(28),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2845,8 +2845,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(12),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2854,8 +2854,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(4),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2863,8 +2863,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(45),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2872,8 +2872,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(7),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2881,8 +2881,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2890,8 +2890,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2899,21 +2899,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:21",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:21",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 								{
-									CRS:  nr.StationCodeChestfieldAndSwalecliffe,
-									Name: nr.StationNameChestfieldAndSwalecliffe,
-									At:   pstr("19:29"),
-									Et:   nil,
+									CRS:           nr.StationCodeChestfieldAndSwalecliffe,
+									Name:          nr.StationNameChestfieldAndSwalecliffe,
+									ActualTime:    pstr("19:29"),
+									EstimatedTime: nil,
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -2921,8 +2921,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(28),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2930,8 +2930,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(12),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2939,8 +2939,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(4),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2948,8 +2948,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(45),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2957,8 +2957,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(7),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -2966,8 +2966,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(6),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -2975,8 +2975,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -2984,21 +2984,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: pint(3),
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:24",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:24",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 								{
-									CRS:  nr.StationCodeWhitstable,
-									Name: nr.StationNameWhitstable,
-									At:   nil,
-									Et:   pstr("19:31"),
+									CRS:           nr.StationCodeWhitstable,
+									Name:          nr.StationNameWhitstable,
+									ActualTime:    nil,
+									EstimatedTime: pstr("19:31"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -3006,8 +3006,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3015,8 +3015,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -3024,8 +3024,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -3033,8 +3033,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3042,8 +3042,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3051,8 +3051,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -3060,8 +3060,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -3069,21 +3069,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:28",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:28",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 								{
-									CRS:  nr.StationCodeFaversham,
-									Name: nr.StationNameFaversham,
-									At:   nil,
-									Et:   pstr("19:40"),
+									CRS:           nr.StationCodeFaversham,
+									Name:          nr.StationNameFaversham,
+									ActualTime:    nil,
+									EstimatedTime: pstr("19:40"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -3091,8 +3091,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3100,8 +3100,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -3109,8 +3109,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -3118,8 +3118,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3127,8 +3127,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3136,8 +3136,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -3145,8 +3145,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -3154,21 +3154,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:37",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:37",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 								{
-									CRS:  nr.StationCodeSittingbourne,
-									Name: nr.StationNameSittingbourne,
-									At:   nil,
-									Et:   pstr("19:48"),
+									CRS:           nr.StationCodeSittingbourne,
+									Name:          nr.StationNameSittingbourne,
+									ActualTime:    nil,
+									EstimatedTime: pstr("19:48"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -3176,8 +3176,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3185,8 +3185,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -3194,8 +3194,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -3203,8 +3203,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3212,8 +3212,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3221,8 +3221,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -3230,8 +3230,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -3239,21 +3239,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:45",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:45",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 								{
-									CRS:  nr.StationCodeRainhamKent,
-									Name: nr.StationNameRainhamKent,
-									At:   nil,
-									Et:   pstr("19:55"),
+									CRS:           nr.StationCodeRainhamKent,
+									Name:          nr.StationNameRainhamKent,
+									ActualTime:    nil,
+									EstimatedTime: pstr("19:55"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -3261,8 +3261,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3270,8 +3270,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -3279,8 +3279,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -3288,8 +3288,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3297,8 +3297,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -3306,8 +3306,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -3315,8 +3315,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -3324,28 +3324,28 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length:      8,
-									St:          "19:52",
-									DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+									Length:        8,
+									ScheduledTime: "19:52",
+									DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 								},
 							},
 						},
-						RSID: nil,
-						STA:  "19:57",
-						ETD:  pstr("19:59"),
-						STD:  pstr("19:57"),
+						RetailServiceID:          nil,
+						ScheduledTimeOfArrival:   pstr("19:57"),
+						EstimatedTimeOfDeparture: pstr("19:59"),
+						ScheduledTimeOfDeparture: pstr("19:57"),
 						SubsequentCallingPoints: []*nr.CallingPoint{
 							{
-								CRS:  nr.StationCodeChatham,
-								Name: nr.StationNameChatham,
-								At:   nil,
-								Et:   pstr("20:03"),
+								CRS:           nr.StationCodeChatham,
+								Name:          nr.StationNameChatham,
+								ActualTime:    nil,
+								EstimatedTime: pstr("20:03"),
 								Formation: nr.Formation{
 									Coaches: []*nr.Coach{
 										{
@@ -3353,8 +3353,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3362,8 +3362,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3371,8 +3371,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3380,8 +3380,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3389,8 +3389,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3398,8 +3398,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3407,8 +3407,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 
@@ -3417,21 +3417,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 									},
 								},
-								Length:      8,
-								St:          "20:01",
-								DelayReason: pstr("This train has been delayed by a safety inspection of the track"),
+								Length:        8,
+								ScheduledTime: "20:01",
+								DelayReason:   pstr("This train has been delayed by a safety inspection of the track"),
 							},
 							{
-								CRS:  nr.StationCodeRochester,
-								Name: nr.StationNameRochester,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeRochester,
+								Name:          nr.StationNameRochester,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: []*nr.Coach{
 										{
@@ -3439,8 +3439,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3448,8 +3448,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3457,8 +3457,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3466,8 +3466,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3475,8 +3475,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3484,8 +3484,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3493,8 +3493,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3502,21 +3502,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 									},
 								},
-								Length:      8,
-								St:          "20:05",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:05",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeMeopham,
-								Name: nr.StationNameMeopham,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeMeopham,
+								Name:          nr.StationNameMeopham,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: []*nr.Coach{
 										{
@@ -3524,8 +3524,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3533,8 +3533,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3542,8 +3542,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3551,8 +3551,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3560,8 +3560,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3569,8 +3569,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3578,8 +3578,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3587,21 +3587,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 									},
 								},
-								Length:      8,
-								St:          "20:16",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:16",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeLongfield,
-								Name: nr.StationNameLongfield,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeLongfield,
+								Name:          nr.StationNameLongfield,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: []*nr.Coach{
 										{
@@ -3609,8 +3609,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3618,8 +3618,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3627,8 +3627,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3636,8 +3636,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3645,8 +3645,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3654,8 +3654,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3663,8 +3663,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3672,21 +3672,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 									},
 								},
-								Length:      8,
-								St:          "20:20",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:20",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeBromleySouth,
-								Name: nr.StationNameBromleySouth,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeBromleySouth,
+								Name:          nr.StationNameBromleySouth,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: []*nr.Coach{
 										{
@@ -3694,8 +3694,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3703,8 +3703,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3712,8 +3712,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3721,8 +3721,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3730,8 +3730,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3739,8 +3739,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3748,8 +3748,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3757,21 +3757,21 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 									},
 								},
-								Length:      8,
-								St:          "20:32",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:32",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeLondonVictoria,
-								Name: nr.StationNameLondonVictoria,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeLondonVictoria,
+								Name:          nr.StationNameLondonVictoria,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: []*nr.Coach{
 										{
@@ -3779,8 +3779,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3788,8 +3788,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3797,8 +3797,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3806,8 +3806,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3815,8 +3815,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 										{
@@ -3824,8 +3824,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Standard",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeStandard,
 											},
 										},
 										{
@@ -3833,8 +3833,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   nil,
-												CharData: "Accessible",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeAccessible,
 											},
 										},
 										{
@@ -3842,15 +3842,15 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 											Class:   "Standard",
 											Loading: nil,
 											Toilet: nr.Toilet{
-												Status:   pstr("Unknown"),
-												CharData: "None",
+												Status: nr.ToiletServiceStatusUnknown,
+												Type:   nr.ToiletTypeNone,
 											},
 										},
 									},
 								},
-								Length:      8,
-								St:          "20:51",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:51",
+								DelayReason:   nil,
 							},
 						},
 					},
@@ -3867,7 +3867,7 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 								Name: nr.StationNameRainhamKent,
 							},
 						},
-						ETA: "On time",
+						EstimatedTimeOfArrival: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: nil,
 						},
@@ -3880,323 +3880,323 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 						PreviousCallingPointsPerOrigin: [][]*nr.CallingPoint{
 							{
 								{
-									CRS:  nr.StationCodeRainhamKent,
-									Name: nr.StationNameRainhamKent,
-									At:   nil,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeRainhamKent,
+									Name:          nr.StationNameRainhamKent,
+									ActualTime:    nil,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: nil,
 									},
-									Length:      8,
-									St:          "19:58",
-									DelayReason: nil,
+									Length:        8,
+									ScheduledTime: "19:58",
+									DelayReason:   nil,
 								},
 							},
 						},
-						RSID: nil,
-						STA:  "20:03",
-						ETD:  pstr("On time"),
-						STD:  pstr("20:04"),
+						RetailServiceID:          nil,
+						ScheduledTimeOfArrival:   pstr("20:03"),
+						EstimatedTimeOfDeparture: pstr("On time"),
+						ScheduledTimeOfDeparture: pstr("20:04"),
 						SubsequentCallingPoints: []*nr.CallingPoint{
 							{
-								CRS:  nr.StationCodeChatham,
-								Name: nr.StationNameChatham,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeChatham,
+								Name:          nr.StationNameChatham,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:08",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:08",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeRochester,
-								Name: nr.StationNameRochester,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeRochester,
+								Name:          nr.StationNameRochester,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:11",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:11",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeStrood,
-								Name: nr.StationNameStrood,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeStrood,
+								Name:          nr.StationNameStrood,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:15",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:15",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeHigham,
-								Name: nr.StationNameHigham,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeHigham,
+								Name:          nr.StationNameHigham,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:20",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:20",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeGravesend,
-								Name: nr.StationNameGravesend,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeGravesend,
+								Name:          nr.StationNameGravesend,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:27",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:27",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeNorthfleet,
-								Name: nr.StationNameNorthfleet,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeNorthfleet,
+								Name:          nr.StationNameNorthfleet,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:31",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:31",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeSwanscombe,
-								Name: nr.StationNameSwanscombe,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeSwanscombe,
+								Name:          nr.StationNameSwanscombe,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:33",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:33",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeGreenhitheForBluewater,
-								Name: nr.StationNameGreenhitheForBluewater,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeGreenhitheForBluewater,
+								Name:          nr.StationNameGreenhitheForBluewater,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:37",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:37",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeStoneCrossing,
-								Name: nr.StationNameStoneCrossing,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeStoneCrossing,
+								Name:          nr.StationNameStoneCrossing,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:39",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:39",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeDartford,
-								Name: nr.StationNameDartford,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeDartford,
+								Name:          nr.StationNameDartford,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:45",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:45",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeSladeGreen,
-								Name: nr.StationNameSladeGreen,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeSladeGreen,
+								Name:          nr.StationNameSladeGreen,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:52",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:52",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeAbbeyWood,
-								Name: nr.StationNameAbbeyWood,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeAbbeyWood,
+								Name:          nr.StationNameAbbeyWood,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "20:58",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "20:58",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodePlumstead,
-								Name: nr.StationNamePlumstead,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodePlumstead,
+								Name:          nr.StationNamePlumstead,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:01",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:01",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeWoolwichArsenal,
-								Name: nr.StationNameWoolwichArsenal,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeWoolwichArsenal,
+								Name:          nr.StationNameWoolwichArsenal,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:04",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:04",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeCharlton,
-								Name: nr.StationNameCharlton,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeCharlton,
+								Name:          nr.StationNameCharlton,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:10",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:10",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeWestcombePark,
-								Name: nr.StationNameWestcombePark,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeWestcombePark,
+								Name:          nr.StationNameWestcombePark,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:12",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:12",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeMazeHill,
-								Name: nr.StationNameMazeHill,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeMazeHill,
+								Name:          nr.StationNameMazeHill,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:14",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:14",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeGreenwich,
-								Name: nr.StationNameGreenwich,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeGreenwich,
+								Name:          nr.StationNameGreenwich,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:17",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:17",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeDeptford,
-								Name: nr.StationNameDeptford,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeDeptford,
+								Name:          nr.StationNameDeptford,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:20",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:20",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeLondonBridge,
-								Name: nr.StationNameLondonBridge,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeLondonBridge,
+								Name:          nr.StationNameLondonBridge,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:27",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:27",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeLondonBlackfriars,
-								Name: nr.StationNameLondonBlackfriars,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeLondonBlackfriars,
+								Name:          nr.StationNameLondonBlackfriars,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:34",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:34",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeCityThameslink,
-								Name: nr.StationNameCityThameslink,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeCityThameslink,
+								Name:          nr.StationNameCityThameslink,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:36",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:36",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeFarringdon,
-								Name: nr.StationNameFarringdon,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeFarringdon,
+								Name:          nr.StationNameFarringdon,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:38",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:38",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeLondonStPancrasIntl,
-								Name: nr.StationNameLondonStPancrasIntl,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeLondonStPancrasIntl,
+								Name:          nr.StationNameLondonStPancrasIntl,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:43",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:43",
+								DelayReason:   nil,
 							},
 							{
-								CRS:  nr.StationCodeKentishTown,
-								Name: nr.StationNameKentishTown,
-								At:   nil,
-								Et:   pstr("On time"),
+								CRS:           nr.StationCodeKentishTown,
+								Name:          nr.StationNameKentishTown,
+								ActualTime:    nil,
+								EstimatedTime: pstr("On time"),
 								Formation: nr.Formation{
 									Coaches: nil,
 								},
-								Length:      8,
-								St:          "21:48",
-								DelayReason: nil,
+								Length:        8,
+								ScheduledTime: "21:48",
+								DelayReason:   nil,
 							},
 						},
 					},
@@ -4277,12 +4277,12 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 				assert.Equal(t, expectedService.ID, actualService.ID)
 				assert.Equal(t, expectedService.Type, actualService.Type)
 				assert.Equal(t, expectedService.Destination, actualService.Destination)
-				assert.Equal(t, expectedService.ETA, actualService.ETA)
+				assert.Equal(t, expectedService.EstimatedTimeOfArrival, actualService.EstimatedTimeOfArrival)
 				assert.Equal(t, expectedService.Length, actualService.Length)
 				assert.Equal(t, expectedService.Operator, actualService.Operator)
 				assert.Equal(t, expectedService.Platform, actualService.Platform)
-				assert.Equal(t, expectedService.RSID, actualService.RSID)
-				assert.Equal(t, expectedService.STA, actualService.STA)
+				assert.Equal(t, expectedService.RetailServiceID, actualService.RetailServiceID)
+				assert.Equal(t, expectedService.ScheduledTimeOfArrival, actualService.ScheduledTimeOfArrival)
 
 				assert.ElementsMatch(t, expectedService.Origins, actualService.Origins)
 				assert.ElementsMatch(t, expectedService.Formation.Coaches, actualService.Formation.Coaches)
@@ -4299,8 +4299,8 @@ func TestGetArrivalsAndDeparturesWithDetails(t *testing.T) {
 					compareCallingPoint(t, expectedCallingPoint, actualCallingPoint)
 				}
 
-				assert.Equal(t, expectedService.ETD, actualService.ETD)
-				assert.Equal(t, expectedService.STD, actualService.STD)
+				assert.Equal(t, expectedService.EstimatedTimeOfDeparture, actualService.EstimatedTimeOfDeparture)
+				assert.Equal(t, expectedService.ScheduledTimeOfDeparture, actualService.ScheduledTimeOfDeparture)
 			}
 		})
 	}
@@ -4343,7 +4343,7 @@ func TestGetArrivals(t *testing.T) {
 								Name: nr.StationNameRamsgate,
 							},
 						},
-						ETA: "21:03",
+						EstimatedTimeOfArrival: pstr("21:03"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -4351,8 +4351,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: pint(0),
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4360,8 +4360,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: pint(6),
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -4369,8 +4369,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: pint(5),
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -4378,8 +4378,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: pint(20),
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4387,8 +4387,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: pint(5),
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4396,8 +4396,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: pint(9),
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -4405,8 +4405,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: pint(0),
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -4414,8 +4414,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: pint(0),
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
@@ -4425,9 +4425,9 @@ func TestGetArrivals(t *testing.T) {
 							Code: "SE",
 							Name: "Southeastern",
 						},
-						Platform:    2,
-						STA:         "20:57",
-						DelayReason: pstr("This train has been delayed by a problem currently under investigation"),
+						Platform:               2,
+						ScheduledTimeOfArrival: pstr("20:57"),
+						DelayReason:            pstr("This train has been delayed by a problem currently under investigation"),
 					},
 					{
 						ID:   "3111024GLNGHMK_",
@@ -4442,7 +4442,7 @@ func TestGetArrivals(t *testing.T) {
 								Name: nr.StationNameDoverPriory,
 							},
 						},
-						ETA: "On time",
+						EstimatedTimeOfArrival: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -4450,8 +4450,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4459,8 +4459,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -4468,8 +4468,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -4477,8 +4477,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
@@ -4488,8 +4488,8 @@ func TestGetArrivals(t *testing.T) {
 							Code: "SE",
 							Name: "Southeastern",
 						},
-						Platform: 2,
-						STA:      "21:29",
+						Platform:               2,
+						ScheduledTimeOfArrival: pstr("21:29"),
 					},
 					{
 						ID:   "3111026GLNGHMK_",
@@ -4504,7 +4504,7 @@ func TestGetArrivals(t *testing.T) {
 								Name: nr.StationNameRamsgate,
 							},
 						},
-						ETA: "On time",
+						EstimatedTimeOfArrival: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -4512,8 +4512,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4521,8 +4521,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -4530,8 +4530,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -4539,8 +4539,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4548,8 +4548,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4557,8 +4557,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -4566,8 +4566,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -4575,8 +4575,8 @@ func TestGetArrivals(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
@@ -4586,8 +4586,8 @@ func TestGetArrivals(t *testing.T) {
 							Code: "SE",
 							Name: "Southeastern",
 						},
-						Platform: 0,
-						STA:      "21:57",
+						Platform:               0,
+						ScheduledTimeOfArrival: pstr("21:57"),
 					},
 				},
 				PlatformAvailable: true,
@@ -4665,11 +4665,11 @@ func TestGetArrivals(t *testing.T) {
 				assert.Equal(t, expectedService.ID, actualService.ID)
 				assert.Equal(t, expectedService.Type, actualService.Type)
 				assert.Equal(t, expectedService.Destination, actualService.Destination)
-				assert.Equal(t, expectedService.ETA, actualService.ETA)
+				assert.Equal(t, expectedService.EstimatedTimeOfArrival, actualService.EstimatedTimeOfArrival)
 				assert.Equal(t, expectedService.Length, actualService.Length)
 				assert.Equal(t, expectedService.Operator, actualService.Operator)
 				assert.Equal(t, expectedService.Platform, actualService.Platform)
-				assert.Equal(t, expectedService.STA, actualService.STA)
+				assert.Equal(t, expectedService.ScheduledTimeOfArrival, actualService.ScheduledTimeOfArrival)
 
 				assert.ElementsMatch(t, expectedService.Origins, actualService.Origins)
 				assert.ElementsMatch(t, expectedService.Formation.Coaches, actualService.Formation.Coaches)
@@ -4715,7 +4715,7 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 								Name: nr.StationNameRamsgate,
 							},
 						},
-						ETA: "On time",
+						EstimatedTimeOfArrival: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -4723,8 +4723,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4732,8 +4732,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -4741,8 +4741,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -4750,8 +4750,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4759,8 +4759,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4768,8 +4768,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -4777,8 +4777,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -4786,8 +4786,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
@@ -4797,10 +4797,10 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 							Code: "SE",
 							Name: "Southeastern",
 						},
-						Platform: 1,
-						STA:      "22:05",
-						ETD:      pstr("On time"),
-						STD:      pstr("22:05"),
+						Platform:                 1,
+						ScheduledTimeOfArrival:   pstr("22:05"),
+						EstimatedTimeOfDeparture: pstr("On time"),
+						ScheduledTimeOfDeparture: pstr("22:05"),
 					},
 					{
 						ID:   "3090708RCHT____",
@@ -4815,7 +4815,7 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 								Name: nr.StationNameGillinghamKent,
 							},
 						},
-						ETA: "On time",
+						EstimatedTimeOfArrival: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -4823,8 +4823,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4832,8 +4832,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -4841,8 +4841,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4850,8 +4850,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -4859,8 +4859,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -4868,8 +4868,8 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
@@ -4879,10 +4879,10 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 							Code: "SE",
 							Name: "Southeastern",
 						},
-						Platform: 1,
-						STA:      "22:22",
-						ETD:      pstr("On time"),
-						STD:      pstr("22:23"),
+						Platform:                 1,
+						ScheduledTimeOfArrival:   pstr("22:22"),
+						EstimatedTimeOfDeparture: pstr("On time"),
+						ScheduledTimeOfDeparture: pstr("22:23"),
 					},
 				},
 				PlatformAvailable: true,
@@ -4961,17 +4961,17 @@ func TestGetArrivalsAndDepartures(t *testing.T) {
 				assert.Equal(t, expectedService.ID, actualService.ID)
 				assert.Equal(t, expectedService.Type, actualService.Type)
 				assert.Equal(t, expectedService.Destination, actualService.Destination)
-				assert.Equal(t, expectedService.ETA, actualService.ETA)
+				assert.Equal(t, expectedService.EstimatedTimeOfArrival, actualService.EstimatedTimeOfArrival)
 				assert.Equal(t, expectedService.Length, actualService.Length)
 				assert.Equal(t, expectedService.Operator, actualService.Operator)
 				assert.Equal(t, expectedService.Platform, actualService.Platform)
-				assert.Equal(t, expectedService.STA, actualService.STA)
+				assert.Equal(t, expectedService.ScheduledTimeOfArrival, actualService.ScheduledTimeOfArrival)
 
 				assert.ElementsMatch(t, expectedService.Origins, actualService.Origins)
 				assert.ElementsMatch(t, expectedService.Formation.Coaches, actualService.Formation.Coaches)
 
-				assert.Equal(t, expectedService.ETD, actualService.ETD)
-				assert.Equal(t, expectedService.STD, actualService.STD)
+				assert.Equal(t, expectedService.EstimatedTimeOfDeparture, actualService.EstimatedTimeOfDeparture)
+				assert.Equal(t, expectedService.ScheduledTimeOfDeparture, actualService.ScheduledTimeOfDeparture)
 			}
 		})
 	}
@@ -5020,10 +5020,10 @@ func TestGetDepartures(t *testing.T) {
 							Code: "TL",
 							Name: "Thameslink",
 						},
-						Platform: 4,
-						RSID:     pstr("TL353900"),
-						ETD:      pstr("22:22"),
-						STD:      pstr("22:18"),
+						Platform:                 4,
+						RetailServiceID:          pstr("TL353900"),
+						EstimatedTimeOfDeparture: pstr("22:22"),
+						ScheduledTimeOfDeparture: pstr("22:18"),
 					},
 				},
 				PlatformAvailable: true,
@@ -5098,18 +5098,18 @@ func TestGetDepartures(t *testing.T) {
 				assert.Equal(t, expectedService.ID, actualService.ID)
 				assert.Equal(t, expectedService.Type, actualService.Type)
 				assert.Equal(t, expectedService.Destination, actualService.Destination)
-				assert.Equal(t, expectedService.ETA, actualService.ETA)
+				assert.Equal(t, expectedService.EstimatedTimeOfArrival, actualService.EstimatedTimeOfArrival)
 				assert.Equal(t, expectedService.Length, actualService.Length)
 				assert.Equal(t, expectedService.Operator, actualService.Operator)
 				assert.Equal(t, expectedService.Platform, actualService.Platform)
-				assert.Equal(t, expectedService.RSID, actualService.RSID)
-				assert.Equal(t, expectedService.STA, actualService.STA)
+				assert.Equal(t, expectedService.RetailServiceID, actualService.RetailServiceID)
+				assert.Equal(t, expectedService.ScheduledTimeOfArrival, actualService.ScheduledTimeOfArrival)
 
 				assert.ElementsMatch(t, expectedService.Origins, actualService.Origins)
 				assert.ElementsMatch(t, expectedService.Formation.Coaches, actualService.Formation.Coaches)
 
-				assert.Equal(t, expectedService.ETD, actualService.ETD)
-				assert.Equal(t, expectedService.STD, actualService.STD)
+				assert.Equal(t, expectedService.EstimatedTimeOfDeparture, actualService.EstimatedTimeOfDeparture)
+				assert.Equal(t, expectedService.ScheduledTimeOfDeparture, actualService.ScheduledTimeOfDeparture)
 			}
 		})
 	}
@@ -5240,7 +5240,7 @@ func TestGetFastestDepartures(t *testing.T) {
 									Name: nr.StationNameRamsgate,
 								},
 							},
-							ETA: "On time",
+							EstimatedTimeOfArrival: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -5248,8 +5248,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5257,8 +5257,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5266,8 +5266,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5275,8 +5275,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5284,8 +5284,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5293,8 +5293,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5302,8 +5302,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5311,8 +5311,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5320,8 +5320,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5329,8 +5329,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5338,8 +5338,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5347,8 +5347,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5356,8 +5356,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5365,8 +5365,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5374,8 +5374,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5383,8 +5383,8 @@ func TestGetFastestDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
@@ -5394,10 +5394,10 @@ func TestGetFastestDepartures(t *testing.T) {
 								Code: "SE",
 								Name: "Southeastern",
 							},
-							Platform: 2,
-							STA:      "23:13",
-							ETD:      pstr("On time"),
-							STD:      pstr("23:18"),
+							Platform:                 2,
+							ScheduledTimeOfArrival:   pstr("23:13"),
+							EstimatedTimeOfDeparture: pstr("On time"),
+							ScheduledTimeOfDeparture: pstr("23:18"),
 						},
 					},
 				},
@@ -5521,38 +5521,38 @@ func TestGetFastestDeparturesWithDetails(t *testing.T) {
 									Name: nr.StationNameKentishTown,
 								},
 							},
-							ETA:    "On time",
-							Length: 8,
+							EstimatedTimeOfArrival: pstr("On time"),
+							Length:                 8,
 							Operator: nr.Operator{
 								Code: "TL",
 								Name: "Thameslink",
 							},
-							Platform: 1,
-							RSID:     pstr("TL353900"),
-							STA:      "23:29",
-							ETD:      pstr("On time"),
-							STD:      pstr("23:29"),
+							Platform:                 1,
+							RetailServiceID:          pstr("TL353900"),
+							ScheduledTimeOfArrival:   pstr("23:29"),
+							EstimatedTimeOfDeparture: pstr("On time"),
+							ScheduledTimeOfDeparture: pstr("23:29"),
 							SubsequentCallingPoints: []*nr.CallingPoint{
 								{
-									CRS:    nr.StationCodeRochester,
-									Name:   nr.StationNameRochester,
-									Et:     pstr("On time"),
-									Length: 8,
-									St:     "23:32",
+									CRS:           nr.StationCodeRochester,
+									Name:          nr.StationNameRochester,
+									EstimatedTime: pstr("On time"),
+									Length:        8,
+									ScheduledTime: "23:32",
 								},
 								{
-									CRS:    nr.StationCodeChatham,
-									Name:   nr.StationNameChatham,
-									Et:     pstr("On time"),
-									Length: 8,
-									St:     "23:36",
+									CRS:           nr.StationCodeChatham,
+									Name:          nr.StationNameChatham,
+									EstimatedTime: pstr("On time"),
+									Length:        8,
+									ScheduledTime: "23:36",
 								},
 								{
-									CRS:    nr.StationCodeGillinghamKent,
-									Name:   nr.StationNameGillinghamKent,
-									Et:     pstr("On time"),
-									Length: 8,
-									St:     "23:40",
+									CRS:           nr.StationCodeGillinghamKent,
+									Name:          nr.StationNameGillinghamKent,
+									EstimatedTime: pstr("On time"),
+									Length:        8,
+									ScheduledTime: "23:40",
 								},
 							},
 						},
@@ -5675,7 +5675,7 @@ func TestGetNextDepartures(t *testing.T) {
 									Name: nr.StationNameLondonVictoria,
 								},
 							},
-							ETA: "On time",
+							EstimatedTimeOfArrival: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -5683,8 +5683,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5692,8 +5692,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5701,8 +5701,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5710,8 +5710,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5719,8 +5719,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5728,8 +5728,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5737,8 +5737,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5746,8 +5746,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5755,8 +5755,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5764,8 +5764,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5773,8 +5773,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5782,8 +5782,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5791,8 +5791,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5800,8 +5800,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5809,8 +5809,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5818,8 +5818,8 @@ func TestGetNextDepartures(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
@@ -5829,10 +5829,10 @@ func TestGetNextDepartures(t *testing.T) {
 								Code: "SE",
 								Name: "Southeastern",
 							},
-							Platform: 3,
-							STA:      "00:01",
-							ETD:      pstr("On time"),
-							STD:      pstr("00:01"),
+							Platform:                 3,
+							ScheduledTimeOfArrival:   pstr("00:01"),
+							EstimatedTimeOfDeparture: pstr("On time"),
+							ScheduledTimeOfDeparture: pstr("00:01"),
 						},
 					},
 				},
@@ -5956,7 +5956,7 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 									Name: nr.StationNameLondonVictoria,
 								},
 							},
-							ETA: "On time",
+							EstimatedTimeOfArrival: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -5964,8 +5964,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -5973,8 +5973,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -5982,8 +5982,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -5991,8 +5991,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -6000,8 +6000,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -6009,8 +6009,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -6018,8 +6018,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -6027,8 +6027,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -6036,8 +6036,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -6045,8 +6045,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -6054,8 +6054,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -6063,8 +6063,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -6072,8 +6072,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -6081,8 +6081,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -6090,8 +6090,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -6099,8 +6099,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
@@ -6110,15 +6110,15 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 								Code: "SE",
 								Name: "Southeastern",
 							},
-							Platform: 3,
-							STA:      "00:01",
-							ETD:      pstr("On time"),
-							STD:      pstr("00:01"),
+							Platform:                 3,
+							ScheduledTimeOfArrival:   pstr("00:01"),
+							EstimatedTimeOfDeparture: pstr("On time"),
+							ScheduledTimeOfDeparture: pstr("00:01"),
 							SubsequentCallingPoints: []*nr.CallingPoint{
 								{
-									CRS:  nr.StationCodeRainhamKent,
-									Name: nr.StationNameRainhamKent,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeRainhamKent,
+									Name:          nr.StationNameRainhamKent,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -6126,8 +6126,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6135,8 +6135,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6144,8 +6144,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6153,8 +6153,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6162,8 +6162,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6171,8 +6171,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6180,8 +6180,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6189,8 +6189,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6198,8 +6198,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6207,8 +6207,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6216,8 +6216,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6225,8 +6225,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6234,8 +6234,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6243,8 +6243,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6252,8 +6252,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6261,19 +6261,19 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "00:06",
+									Length:        8,
+									ScheduledTime: "00:06",
 								},
 								{
-									CRS:  nr.StationCodeNewington,
-									Name: nr.StationNameNewington,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeNewington,
+									Name:          nr.StationNameNewington,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -6281,8 +6281,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6290,8 +6290,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6299,8 +6299,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6308,8 +6308,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6317,8 +6317,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6326,8 +6326,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6335,8 +6335,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6344,8 +6344,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6353,8 +6353,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6362,8 +6362,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6371,8 +6371,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6380,8 +6380,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6389,8 +6389,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6398,8 +6398,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6407,8 +6407,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6416,19 +6416,19 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "00:10",
+									Length:        8,
+									ScheduledTime: "00:10",
 								},
 								{
-									CRS:  nr.StationCodeSittingbourne,
-									Name: nr.StationNameSittingbourne,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeSittingbourne,
+									Name:          nr.StationNameSittingbourne,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -6436,8 +6436,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6445,8 +6445,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6454,8 +6454,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6463,8 +6463,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6472,8 +6472,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6481,8 +6481,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6490,8 +6490,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6499,8 +6499,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6508,8 +6508,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6517,8 +6517,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6526,8 +6526,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6535,8 +6535,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6544,8 +6544,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6553,8 +6553,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6562,8 +6562,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6571,19 +6571,19 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "00:15",
+									Length:        8,
+									ScheduledTime: "00:15",
 								},
 								{
-									CRS:  nr.StationCodeTeynham,
-									Name: nr.StationNameTeynham,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeTeynham,
+									Name:          nr.StationNameTeynham,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -6591,8 +6591,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6600,8 +6600,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6609,8 +6609,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6618,8 +6618,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6627,8 +6627,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6636,8 +6636,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6645,8 +6645,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6654,8 +6654,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6663,8 +6663,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6672,8 +6672,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6681,8 +6681,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6690,8 +6690,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6699,8 +6699,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6708,8 +6708,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6717,8 +6717,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6726,19 +6726,19 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "00:20",
+									Length:        8,
+									ScheduledTime: "00:20",
 								},
 								{
-									CRS:  nr.StationCodeFaversham,
-									Name: nr.StationNameFaversham,
-									Et:   pstr("On time"),
+									CRS:           nr.StationCodeFaversham,
+									Name:          nr.StationNameFaversham,
+									EstimatedTime: pstr("On time"),
 									Formation: nr.Formation{
 										Coaches: []*nr.Coach{
 											{
@@ -6746,8 +6746,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6755,8 +6755,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6764,8 +6764,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6773,8 +6773,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6782,8 +6782,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6791,8 +6791,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6800,8 +6800,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6809,8 +6809,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6818,8 +6818,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6827,8 +6827,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6836,8 +6836,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6845,8 +6845,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6854,8 +6854,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 											{
@@ -6863,8 +6863,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Standard",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeStandard,
 												},
 											},
 											{
@@ -6872,8 +6872,8 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   nil,
-													CharData: "Accessible",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeAccessible,
 												},
 											},
 											{
@@ -6881,14 +6881,14 @@ func TestGetNextDeparturesWithDetails(t *testing.T) {
 												Class:   "Standard",
 												Loading: nil,
 												Toilet: nr.Toilet{
-													Status:   pstr("Unknown"),
-													CharData: "None",
+													Status: nr.ToiletServiceStatusUnknown,
+													Type:   nr.ToiletTypeNone,
 												},
 											},
 										},
 									},
-									Length: 8,
-									St:     "00:26",
+									Length:        8,
+									ScheduledTime: "00:26",
 								},
 							},
 						},
@@ -7000,8 +7000,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   pstr("Unknown"),
-								CharData: "None",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeNone,
 							},
 						},
 						{
@@ -7009,8 +7009,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   nil,
-								CharData: "Standard",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeStandard,
 							},
 						},
 						{
@@ -7018,8 +7018,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   nil,
-								CharData: "Accessible",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeAccessible,
 							},
 						},
 						{
@@ -7027,8 +7027,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   pstr("Unknown"),
-								CharData: "None",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeNone,
 							},
 						},
 						{
@@ -7036,8 +7036,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   pstr("Unknown"),
-								CharData: "None",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeNone,
 							},
 						},
 						{
@@ -7045,8 +7045,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   nil,
-								CharData: "Standard",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeStandard,
 							},
 						},
 						{
@@ -7054,8 +7054,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   nil,
-								CharData: "Accessible",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeAccessible,
 							},
 						},
 						{
@@ -7063,8 +7063,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   pstr("Unknown"),
-								CharData: "None",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeNone,
 							},
 						},
 						{
@@ -7072,8 +7072,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   pstr("Unknown"),
-								CharData: "None",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeNone,
 							},
 						},
 						{
@@ -7081,8 +7081,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   nil,
-								CharData: "Standard",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeStandard,
 							},
 						},
 						{
@@ -7090,8 +7090,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   nil,
-								CharData: "Accessible",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeAccessible,
 							},
 						},
 						{
@@ -7099,8 +7099,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   pstr("Unknown"),
-								CharData: "None",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeNone,
 							},
 						},
 						{
@@ -7108,8 +7108,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   pstr("Unknown"),
-								CharData: "None",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeNone,
 							},
 						},
 						{
@@ -7117,8 +7117,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   nil,
-								CharData: "Standard",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeStandard,
 							},
 						},
 						{
@@ -7126,8 +7126,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   nil,
-								CharData: "Accessible",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeAccessible,
 							},
 						},
 						{
@@ -7135,8 +7135,8 @@ func TestGetServiceDetails(t *testing.T) {
 							Class:   "Standard",
 							Loading: nil,
 							Toilet: nr.Toilet{
-								Status:   pstr("Unknown"),
-								CharData: "None",
+								Status: nr.ToiletServiceStatusUnknown,
+								Type:   nr.ToiletTypeNone,
 							},
 						},
 					},
@@ -7152,9 +7152,9 @@ func TestGetServiceDetails(t *testing.T) {
 				PreviousCallingPointsPerOrigin: [][]*nr.CallingPoint{
 					{
 						{
-							CRS:  nr.StationCodeLondonVictoria,
-							Name: nr.StationNameLondonVictoria,
-							At:   pstr("On time"),
+							CRS:        nr.StationCodeLondonVictoria,
+							Name:       nr.StationNameLondonVictoria,
+							ActualTime: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -7162,8 +7162,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7171,8 +7171,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7180,8 +7180,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7189,8 +7189,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7198,8 +7198,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7207,8 +7207,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7216,8 +7216,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7225,8 +7225,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7234,8 +7234,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7243,8 +7243,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7252,8 +7252,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7261,8 +7261,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7270,8 +7270,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7279,8 +7279,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7288,8 +7288,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7297,19 +7297,19 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
 							},
-							Length: 8,
-							St:     "23:10",
+							Length:        8,
+							ScheduledTime: "23:10",
 						},
 						{
-							CRS:  nr.StationCodeBromleySouth,
-							Name: nr.StationNameBromleySouth,
-							At:   pstr("On time"),
+							CRS:        nr.StationCodeBromleySouth,
+							Name:       nr.StationNameBromleySouth,
+							ActualTime: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -7317,8 +7317,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7326,8 +7326,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7335,8 +7335,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7344,8 +7344,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7353,8 +7353,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7362,8 +7362,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7371,8 +7371,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7380,8 +7380,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7389,8 +7389,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7398,8 +7398,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7407,8 +7407,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7416,8 +7416,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7425,8 +7425,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7434,8 +7434,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7443,8 +7443,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7452,19 +7452,19 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
 							},
-							Length: 8,
-							St:     "23:27",
+							Length:        8,
+							ScheduledTime: "23:27",
 						},
 						{
-							CRS:  nr.StationCodeLongfield,
-							Name: nr.StationNameLongfield,
-							At:   pstr("On time"),
+							CRS:        nr.StationCodeLongfield,
+							Name:       nr.StationNameLongfield,
+							ActualTime: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -7472,8 +7472,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7481,8 +7481,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7490,8 +7490,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7499,8 +7499,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7508,8 +7508,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7517,8 +7517,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7526,8 +7526,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7535,8 +7535,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7544,8 +7544,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7553,8 +7553,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7562,8 +7562,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7571,8 +7571,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7580,8 +7580,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7589,8 +7589,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7598,8 +7598,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7607,19 +7607,19 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
 							},
-							Length: 8,
-							St:     "23:39",
+							Length:        8,
+							ScheduledTime: "23:39",
 						},
 						{
-							CRS:  nr.StationCodeMeopham,
-							Name: nr.StationNameMeopham,
-							At:   pstr("On time"),
+							CRS:        nr.StationCodeMeopham,
+							Name:       nr.StationNameMeopham,
+							ActualTime: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -7627,8 +7627,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7636,8 +7636,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7645,8 +7645,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7654,8 +7654,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7663,8 +7663,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7672,8 +7672,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7681,8 +7681,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7690,8 +7690,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7699,8 +7699,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7708,8 +7708,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7717,8 +7717,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7726,8 +7726,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7735,8 +7735,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7744,8 +7744,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7753,8 +7753,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7762,19 +7762,19 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
 							},
-							Length: 8,
-							St:     "23:43",
+							Length:        8,
+							ScheduledTime: "23:43",
 						},
 						{
-							CRS:  nr.StationCodeRochester,
-							Name: nr.StationNameRochester,
-							At:   pstr("On time"),
+							CRS:        nr.StationCodeRochester,
+							Name:       nr.StationNameRochester,
+							ActualTime: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -7782,8 +7782,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7791,8 +7791,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7800,8 +7800,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7809,8 +7809,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7818,8 +7818,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7827,8 +7827,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7836,8 +7836,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7845,8 +7845,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7854,8 +7854,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7863,8 +7863,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7872,8 +7872,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7881,8 +7881,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7890,8 +7890,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7899,8 +7899,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7908,8 +7908,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7917,19 +7917,19 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
 							},
-							Length: 8,
-							St:     "23:53",
+							Length:        8,
+							ScheduledTime: "23:53",
 						},
 						{
-							CRS:  nr.StationCodeChatham,
-							Name: nr.StationNameChatham,
-							At:   pstr("On time"),
+							CRS:        nr.StationCodeChatham,
+							Name:       nr.StationNameChatham,
+							ActualTime: pstr("On time"),
 							Formation: nr.Formation{
 								Coaches: []*nr.Coach{
 									{
@@ -7937,8 +7937,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7946,8 +7946,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7955,8 +7955,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -7964,8 +7964,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7973,8 +7973,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -7982,8 +7982,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -7991,8 +7991,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -8000,8 +8000,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -8009,8 +8009,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -8018,8 +8018,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -8027,8 +8027,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -8036,8 +8036,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -8045,8 +8045,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 									{
@@ -8054,8 +8054,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Standard",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeStandard,
 										},
 									},
 									{
@@ -8063,8 +8063,8 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   nil,
-											CharData: "Accessible",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeAccessible,
 										},
 									},
 									{
@@ -8072,26 +8072,26 @@ func TestGetServiceDetails(t *testing.T) {
 										Class:   "Standard",
 										Loading: nil,
 										Toilet: nr.Toilet{
-											Status:   pstr("Unknown"),
-											CharData: "None",
+											Status: nr.ToiletServiceStatusUnknown,
+											Type:   nr.ToiletTypeNone,
 										},
 									},
 								},
 							},
-							Length: 8,
-							St:     "23:57",
+							Length:        8,
+							ScheduledTime: "23:57",
 						},
 					},
 				},
-				ATA: "On time",
-				ATD: "On time",
-				STD: "00:01",
-				STA: "00:01",
+				ActualTimeOfArrival:      pstr("On time"),
+				ActualTimeOfDeparture:    pstr("On time"),
+				ScheduledTimeOfDeparture: pstr("00:01"),
+				ScheduledTimeOfArrival:   pstr("00:01"),
 				SubsequentCallingPoints: []*nr.CallingPoint{
 					{
-						CRS:  nr.StationCodeRainhamKent,
-						Name: nr.StationNameRainhamKent,
-						At:   pstr("On time"),
+						CRS:        nr.StationCodeRainhamKent,
+						Name:       nr.StationNameRainhamKent,
+						ActualTime: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -8099,8 +8099,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8108,8 +8108,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8117,8 +8117,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8126,8 +8126,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8135,8 +8135,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8144,8 +8144,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8153,8 +8153,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8162,8 +8162,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8171,8 +8171,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8180,8 +8180,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8189,8 +8189,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8198,8 +8198,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8207,8 +8207,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8216,8 +8216,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8225,8 +8225,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8234,19 +8234,19 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
 						},
-						Length: 8,
-						St:     "00:06",
+						Length:        8,
+						ScheduledTime: "00:06",
 					},
 					{
-						CRS:  nr.StationCodeNewington,
-						Name: nr.StationNameNewington,
-						Et:   pstr("On time"),
+						CRS:           nr.StationCodeNewington,
+						Name:          nr.StationNameNewington,
+						EstimatedTime: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -8254,8 +8254,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8263,8 +8263,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8272,8 +8272,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8281,8 +8281,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8290,8 +8290,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8299,8 +8299,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8308,8 +8308,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8317,8 +8317,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8326,8 +8326,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8335,8 +8335,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8344,8 +8344,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8353,8 +8353,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8362,8 +8362,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8371,8 +8371,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8380,8 +8380,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8389,19 +8389,19 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
 						},
-						Length: 8,
-						St:     "00:10",
+						Length:        8,
+						ScheduledTime: "00:10",
 					},
 					{
-						CRS:  nr.StationCodeSittingbourne,
-						Name: nr.StationNameSittingbourne,
-						Et:   pstr("On time"),
+						CRS:           nr.StationCodeSittingbourne,
+						Name:          nr.StationNameSittingbourne,
+						EstimatedTime: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -8409,8 +8409,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8418,8 +8418,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8427,8 +8427,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8436,8 +8436,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8445,8 +8445,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8454,8 +8454,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8463,8 +8463,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8472,8 +8472,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8481,8 +8481,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8490,8 +8490,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8499,8 +8499,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8508,8 +8508,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8517,8 +8517,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8526,8 +8526,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8535,8 +8535,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8544,19 +8544,19 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
 						},
-						Length: 8,
-						St:     "00:15",
+						Length:        8,
+						ScheduledTime: "00:15",
 					},
 					{
-						CRS:  nr.StationCodeTeynham,
-						Name: nr.StationNameTeynham,
-						Et:   pstr("On time"),
+						CRS:           nr.StationCodeTeynham,
+						Name:          nr.StationNameTeynham,
+						EstimatedTime: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -8564,8 +8564,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8573,8 +8573,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8582,8 +8582,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8591,8 +8591,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8600,8 +8600,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8609,8 +8609,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8618,8 +8618,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8627,8 +8627,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8636,8 +8636,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8645,8 +8645,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8654,8 +8654,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8663,8 +8663,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8672,8 +8672,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8681,8 +8681,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8690,8 +8690,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8699,19 +8699,19 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
 						},
-						Length: 8,
-						St:     "00:20",
+						Length:        8,
+						ScheduledTime: "00:20",
 					},
 					{
-						CRS:  nr.StationCodeFaversham,
-						Name: nr.StationNameFaversham,
-						Et:   pstr("On time"),
+						CRS:           nr.StationCodeFaversham,
+						Name:          nr.StationNameFaversham,
+						EstimatedTime: pstr("On time"),
 						Formation: nr.Formation{
 							Coaches: []*nr.Coach{
 								{
@@ -8719,8 +8719,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8728,8 +8728,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8737,8 +8737,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8746,8 +8746,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8755,8 +8755,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8764,8 +8764,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8773,8 +8773,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8782,8 +8782,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8791,8 +8791,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8800,8 +8800,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8809,8 +8809,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8818,8 +8818,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8827,8 +8827,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 								{
@@ -8836,8 +8836,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Standard",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeStandard,
 									},
 								},
 								{
@@ -8845,8 +8845,8 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   nil,
-										CharData: "Accessible",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeAccessible,
 									},
 								},
 								{
@@ -8854,14 +8854,14 @@ func TestGetServiceDetails(t *testing.T) {
 									Class:   "Standard",
 									Loading: nil,
 									Toilet: nr.Toilet{
-										Status:   pstr("Unknown"),
-										CharData: "None",
+										Status: nr.ToiletServiceStatusUnknown,
+										Type:   nr.ToiletTypeNone,
 									},
 								},
 							},
 						},
-						Length: 8,
-						St:     "00:26",
+						Length:        8,
+						ScheduledTime: "00:26",
 					},
 				},
 				GeneratedAt: timeFromRFC3339(t, "2024-01-04T00:07:52.5881196Z"),
@@ -8906,11 +8906,11 @@ func TestGetServiceDetails(t *testing.T) {
 			assert.Equal(t, tc.expectedServiceDetails.Length, serviceDetails.Length)
 			assert.Equal(t, tc.expectedServiceDetails.Operator, serviceDetails.Operator)
 			assert.Equal(t, tc.expectedServiceDetails.PreviousCallingPointsPerOrigin, serviceDetails.PreviousCallingPointsPerOrigin)
-			assert.Equal(t, tc.expectedServiceDetails.ATA, serviceDetails.ATA)
-			assert.Equal(t, tc.expectedServiceDetails.ATD, serviceDetails.ATD)
-			assert.Equal(t, tc.expectedServiceDetails.STA, serviceDetails.STA)
-			assert.Equal(t, tc.expectedServiceDetails.ETD, serviceDetails.ETD)
-			assert.Equal(t, tc.expectedServiceDetails.STD, serviceDetails.STD)
+			assert.Equal(t, tc.expectedServiceDetails.ActualTimeOfArrival, serviceDetails.ActualTimeOfArrival)
+			assert.Equal(t, tc.expectedServiceDetails.ActualTimeOfDeparture, serviceDetails.ActualTimeOfDeparture)
+			assert.Equal(t, tc.expectedServiceDetails.ScheduledTimeOfArrival, serviceDetails.ScheduledTimeOfArrival)
+			assert.Equal(t, tc.expectedServiceDetails.EstimatedTimeOfDeparture, serviceDetails.EstimatedTimeOfDeparture)
+			assert.Equal(t, tc.expectedServiceDetails.ScheduledTimeOfDeparture, serviceDetails.ScheduledTimeOfDeparture)
 			assert.Equal(t, tc.expectedServiceDetails.GeneratedAt, serviceDetails.GeneratedAt.UTC())
 			assert.ElementsMatch(t, tc.expectedServiceDetails.Formation.Coaches, serviceDetails.Formation.Coaches)
 
@@ -8930,9 +8930,9 @@ func compareCallingPoint(
 	assert.Equal(t, expectedCallingPoint.CRS, actualCallingPoint.CRS)
 	assert.Equal(t, expectedCallingPoint.Name, actualCallingPoint.Name)
 	assert.Equal(t, expectedCallingPoint.Length, actualCallingPoint.Length)
-	assert.Equal(t, expectedCallingPoint.St, actualCallingPoint.St)
-	assert.Equal(t, expectedCallingPoint.At, actualCallingPoint.At)
-	assert.Equal(t, expectedCallingPoint.Et, actualCallingPoint.Et)
+	assert.Equal(t, expectedCallingPoint.ScheduledTime, actualCallingPoint.ScheduledTime)
+	assert.Equal(t, expectedCallingPoint.ActualTime, actualCallingPoint.ActualTime)
+	assert.Equal(t, expectedCallingPoint.EstimatedTime, actualCallingPoint.EstimatedTime)
 	assert.Equal(t, expectedCallingPoint.DelayReason, actualCallingPoint.DelayReason)
 	require.ElementsMatch(t, expectedCallingPoint.Formation.Coaches, actualCallingPoint.Formation.Coaches)
 }
